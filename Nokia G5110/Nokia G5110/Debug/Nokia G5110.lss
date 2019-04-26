@@ -1,0 +1,371 @@
+
+Nokia G5110.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         0000017a  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         000001f8  00800060  0000017a  0000020e  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          000001fb  00800258  00800258  00000406  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  00000406  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000438  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 00000070  00000000  00000000  00000474  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   0000119b  00000000  00000000  000004e4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 000007f2  00000000  00000000  0000167f  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   000003e7  00000000  00000000  00001e71  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  000000b4  00000000  00000000  00002258  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    00000560  00000000  00000000  0000230c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    000002c1  00000000  00000000  0000286c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000050  00000000  00000000  00002b2d  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	13 c0       	rjmp	.+38     	; 0x28 <__ctors_end>
+   2:	37 c0       	rjmp	.+110    	; 0x72 <__bad_interrupt>
+   4:	36 c0       	rjmp	.+108    	; 0x72 <__bad_interrupt>
+   6:	35 c0       	rjmp	.+106    	; 0x72 <__bad_interrupt>
+   8:	34 c0       	rjmp	.+104    	; 0x72 <__bad_interrupt>
+   a:	33 c0       	rjmp	.+102    	; 0x72 <__bad_interrupt>
+   c:	32 c0       	rjmp	.+100    	; 0x72 <__bad_interrupt>
+   e:	31 c0       	rjmp	.+98     	; 0x72 <__bad_interrupt>
+  10:	30 c0       	rjmp	.+96     	; 0x72 <__bad_interrupt>
+  12:	2f c0       	rjmp	.+94     	; 0x72 <__bad_interrupt>
+  14:	2e c0       	rjmp	.+92     	; 0x72 <__bad_interrupt>
+  16:	2d c0       	rjmp	.+90     	; 0x72 <__bad_interrupt>
+  18:	2c c0       	rjmp	.+88     	; 0x72 <__bad_interrupt>
+  1a:	2b c0       	rjmp	.+86     	; 0x72 <__bad_interrupt>
+  1c:	2a c0       	rjmp	.+84     	; 0x72 <__bad_interrupt>
+  1e:	29 c0       	rjmp	.+82     	; 0x72 <__bad_interrupt>
+  20:	28 c0       	rjmp	.+80     	; 0x72 <__bad_interrupt>
+  22:	27 c0       	rjmp	.+78     	; 0x72 <__bad_interrupt>
+  24:	26 c0       	rjmp	.+76     	; 0x72 <__bad_interrupt>
+
+00000026 <__ctors_start>:
+  26:	4b 00       	.word	0x004b	; ????
+
+00000028 <__ctors_end>:
+  28:	11 24       	eor	r1, r1
+  2a:	1f be       	out	0x3f, r1	; 63
+  2c:	cf e5       	ldi	r28, 0x5F	; 95
+  2e:	d4 e0       	ldi	r29, 0x04	; 4
+  30:	de bf       	out	0x3e, r29	; 62
+  32:	cd bf       	out	0x3d, r28	; 61
+
+00000034 <__do_copy_data>:
+  34:	12 e0       	ldi	r17, 0x02	; 2
+  36:	a0 e6       	ldi	r26, 0x60	; 96
+  38:	b0 e0       	ldi	r27, 0x00	; 0
+  3a:	ea e7       	ldi	r30, 0x7A	; 122
+  3c:	f1 e0       	ldi	r31, 0x01	; 1
+  3e:	02 c0       	rjmp	.+4      	; 0x44 <__SREG__+0x5>
+  40:	05 90       	lpm	r0, Z+
+  42:	0d 92       	st	X+, r0
+  44:	a8 35       	cpi	r26, 0x58	; 88
+  46:	b1 07       	cpc	r27, r17
+  48:	d9 f7       	brne	.-10     	; 0x40 <__SREG__+0x1>
+
+0000004a <__do_clear_bss>:
+  4a:	24 e0       	ldi	r18, 0x04	; 4
+  4c:	a8 e5       	ldi	r26, 0x58	; 88
+  4e:	b2 e0       	ldi	r27, 0x02	; 2
+  50:	01 c0       	rjmp	.+2      	; 0x54 <.do_clear_bss_start>
+
+00000052 <.do_clear_bss_loop>:
+  52:	1d 92       	st	X+, r1
+
+00000054 <.do_clear_bss_start>:
+  54:	a3 35       	cpi	r26, 0x53	; 83
+  56:	b2 07       	cpc	r27, r18
+  58:	e1 f7       	brne	.-8      	; 0x52 <.do_clear_bss_loop>
+
+0000005a <__do_global_ctors>:
+  5a:	10 e0       	ldi	r17, 0x00	; 0
+  5c:	c4 e1       	ldi	r28, 0x14	; 20
+  5e:	d0 e0       	ldi	r29, 0x00	; 0
+  60:	03 c0       	rjmp	.+6      	; 0x68 <__do_global_ctors+0xe>
+  62:	21 97       	sbiw	r28, 0x01	; 1
+  64:	fe 01       	movw	r30, r28
+  66:	81 d0       	rcall	.+258    	; 0x16a <__tablejump2__>
+  68:	c3 31       	cpi	r28, 0x13	; 19
+  6a:	d1 07       	cpc	r29, r17
+  6c:	d1 f7       	brne	.-12     	; 0x62 <__do_global_ctors+0x8>
+  6e:	02 d0       	rcall	.+4      	; 0x74 <main>
+  70:	82 c0       	rjmp	.+260    	; 0x176 <_exit>
+
+00000072 <__bad_interrupt>:
+  72:	c6 cf       	rjmp	.-116    	; 0x0 <__vectors>
+
+00000074 <main>:
+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+};
+int main(void)
+{	
+	DDRC |= (1 << 5);
+  74:	a5 9a       	sbi	0x14, 5	; 20
+	PORTC |= (1 << 5);
+  76:	ad 9a       	sbi	0x15, 5	; 21
+	lcd.begin();
+  78:	88 e5       	ldi	r24, 0x58	; 88
+  7a:	92 e0       	ldi	r25, 0x02	; 2
+  7c:	5c d0       	rcall	.+184    	; 0x136 <_ZN9Nokia51105beginEv>
+  7e:	08 e5       	ldi	r16, 0x58	; 88
+  80:	12 e0       	ldi	r17, 0x02	; 2
+  82:	c0 e6       	ldi	r28, 0x60	; 96
+  84:	d0 e0       	ldi	r29, 0x00	; 0
+	while(1){
+		for (int i = 0; i < 504; i++){
+			lcd.sendData(grap[i]);
+  86:	69 91       	ld	r22, Y+
+  88:	88 e5       	ldi	r24, 0x58	; 88
+  8a:	92 e0       	ldi	r25, 0x02	; 2
+  8c:	2a d0       	rcall	.+84     	; 0xe2 <_ZN9Nokia51108sendDataEh>
+{	
+	DDRC |= (1 << 5);
+	PORTC |= (1 << 5);
+	lcd.begin();
+	while(1){
+		for (int i = 0; i < 504; i++){
+  8e:	c0 17       	cp	r28, r16
+  90:	d1 07       	cpc	r29, r17
+  92:	b9 f3       	breq	.-18     	; 0x82 <main+0xe>
+  94:	f8 cf       	rjmp	.-16     	; 0x86 <main+0x12>
+
+00000096 <_GLOBAL__sub_I_main>:
+ * Author : tanph
+ */ 
+
+#include "N5110.h"
+
+static Nokia5110 lcd;
+  96:	88 e5       	ldi	r24, 0x58	; 88
+  98:	92 e0       	ldi	r25, 0x02	; 2
+  9a:	28 d0       	rcall	.+80     	; 0xec <_ZN9Nokia5110C1Ev>
+  9c:	08 95       	ret
+
+0000009e <_ZN9Nokia51104sendEih>:
+#include "N5110.h"
+void Nokia5110::send(int type, uint8_t data){
+	register int i;
+	LCD_PORT &= ~(1 << SCE);
+  9e:	c2 98       	cbi	0x18, 2	; 24
+	
+	if (type)
+  a0:	67 2b       	or	r22, r23
+  a2:	11 f0       	breq	.+4      	; 0xa8 <_ZN9Nokia51104sendEih+0xa>
+		LCD_PORT |= (1 << DC);
+  a4:	c0 9a       	sbi	0x18, 0	; 24
+  a6:	14 c0       	rjmp	.+40     	; 0xd0 <_ZN9Nokia51104sendEih+0x32>
+	else
+		LCD_PORT &= ~(1 << DC );
+  a8:	c0 98       	cbi	0x18, 0	; 24
+  aa:	12 c0       	rjmp	.+36     	; 0xd0 <_ZN9Nokia51104sendEih+0x32>
+	
+	for (i = 0; i < 8; i++){
+		if ((data >> (7 - i)) & 0x01)
+  ac:	9a 01       	movw	r18, r20
+  ae:	08 2e       	mov	r0, r24
+  b0:	02 c0       	rjmp	.+4      	; 0xb6 <_ZN9Nokia51104sendEih+0x18>
+  b2:	35 95       	asr	r19
+  b4:	27 95       	ror	r18
+  b6:	0a 94       	dec	r0
+  b8:	e2 f7       	brpl	.-8      	; 0xb2 <_ZN9Nokia51104sendEih+0x14>
+  ba:	20 ff       	sbrs	r18, 0
+  bc:	02 c0       	rjmp	.+4      	; 0xc2 <_ZN9Nokia51104sendEih+0x24>
+			LCD_PORT |= (1 << SDIN);
+  be:	c3 9a       	sbi	0x18, 3	; 24
+  c0:	01 c0       	rjmp	.+2      	; 0xc4 <_ZN9Nokia51104sendEih+0x26>
+		else
+			LCD_PORT &= ~(1 << SDIN);
+  c2:	c3 98       	cbi	0x18, 3	; 24
+			
+		LCD_PORT |= (1 << SCLK);
+  c4:	c5 9a       	sbi	0x18, 5	; 24
+		LCD_PORT &= ~(1 << SCLK);
+  c6:	c5 98       	cbi	0x18, 5	; 24
+  c8:	01 97       	sbiw	r24, 0x01	; 1
+  ca:	80 f7       	brcc	.-32     	; 0xac <_ZN9Nokia51104sendEih+0xe>
+	}
+	
+	LCD_PORT |= (1 << SCE);
+  cc:	c2 9a       	sbi	0x18, 2	; 24
+}
+  ce:	08 95       	ret
+#include "N5110.h"
+void Nokia5110::send(int type, uint8_t data){
+  d0:	87 e0       	ldi	r24, 0x07	; 7
+  d2:	90 e0       	ldi	r25, 0x00	; 0
+		LCD_PORT |= (1 << DC);
+	else
+		LCD_PORT &= ~(1 << DC );
+	
+	for (i = 0; i < 8; i++){
+		if ((data >> (7 - i)) & 0x01)
+  d4:	50 e0       	ldi	r21, 0x00	; 0
+  d6:	ea cf       	rjmp	.-44     	; 0xac <_ZN9Nokia51104sendEih+0xe>
+
+000000d8 <_ZN9Nokia511011sendCommandEh>:
+	}
+	
+	LCD_PORT |= (1 << SCE);
+}
+
+void Nokia5110::sendCommand(uint8_t cmd){
+  d8:	46 2f       	mov	r20, r22
+	send(PCD8544_cmd, cmd);
+  da:	60 e0       	ldi	r22, 0x00	; 0
+  dc:	70 e0       	ldi	r23, 0x00	; 0
+  de:	df df       	rcall	.-66     	; 0x9e <_ZN9Nokia51104sendEih>
+  e0:	08 95       	ret
+
+000000e2 <_ZN9Nokia51108sendDataEh>:
+}
+void Nokia5110::sendData(uint8_t data){
+  e2:	46 2f       	mov	r20, r22
+	send(PCD8544_data, data);
+  e4:	61 e0       	ldi	r22, 0x01	; 1
+  e6:	70 e0       	ldi	r23, 0x00	; 0
+  e8:	da df       	rcall	.-76     	; 0x9e <_ZN9Nokia51104sendEih>
+  ea:	08 95       	ret
+
+000000ec <_ZN9Nokia5110C1Ev>:
+}
+
+Nokia5110::Nokia5110(){
+  ec:	dc 01       	movw	r26, r24
+	this->cursor_x = 0;
+  ee:	1c 92       	st	X, r1
+	this->cursor_y = 0;
+  f0:	11 96       	adiw	r26, 0x01	; 1
+  f2:	1c 92       	st	X, r1
+  f4:	11 97       	sbiw	r26, 0x01	; 1
+	this->inverse_output = false;
+  f6:	12 96       	adiw	r26, 0x02	; 2
+  f8:	1c 92       	st	X, r1
+	LCD_DDR |= (1 << RST) | (1 << SCE) | (1 << DC) | (1 << SDIN) | (1 << SCLK);
+  fa:	27 b3       	in	r18, 0x17	; 23
+  fc:	2f 62       	ori	r18, 0x2F	; 47
+  fe:	27 bb       	out	0x17, r18	; 23
+	LCD_PORT |= (1 << RST) | (1 << SCE);
+ 100:	28 b3       	in	r18, 0x18	; 24
+ 102:	26 60       	ori	r18, 0x06	; 6
+ 104:	28 bb       	out	0x18, r18	; 24
+ 106:	fc 01       	movw	r30, r24
+ 108:	33 96       	adiw	r30, 0x03	; 3
+ 10a:	85 50       	subi	r24, 0x05	; 5
+ 10c:	9e 4f       	sbci	r25, 0xFE	; 254
+	for (int i = 0; i < 504; i++)
+		this->screen[i] = 0x00;
+ 10e:	11 92       	st	Z+, r1
+	this->cursor_x = 0;
+	this->cursor_y = 0;
+	this->inverse_output = false;
+	LCD_DDR |= (1 << RST) | (1 << SCE) | (1 << DC) | (1 << SDIN) | (1 << SCLK);
+	LCD_PORT |= (1 << RST) | (1 << SCE);
+	for (int i = 0; i < 504; i++)
+ 110:	e8 17       	cp	r30, r24
+ 112:	f9 07       	cpc	r31, r25
+ 114:	e1 f7       	brne	.-8      	; 0x10e <_ZN9Nokia5110C1Ev+0x22>
+		this->screen[i] = 0x00;
+}
+ 116:	08 95       	ret
+
+00000118 <_ZN9Nokia51105resetEv>:
+
+void Nokia5110::reset(){
+	LCD_PORT |= (1 << RST) | (1 << SCE);
+ 118:	88 b3       	in	r24, 0x18	; 24
+ 11a:	86 60       	ori	r24, 0x06	; 6
+ 11c:	88 bb       	out	0x18, r24	; 24
+	
+	LCD_PORT &= ~(1 << RST);
+ 11e:	c1 98       	cbi	0x18, 1	; 24
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 120:	2f ef       	ldi	r18, 0xFF	; 255
+ 122:	80 e7       	ldi	r24, 0x70	; 112
+ 124:	92 e0       	ldi	r25, 0x02	; 2
+ 126:	21 50       	subi	r18, 0x01	; 1
+ 128:	80 40       	sbci	r24, 0x00	; 0
+ 12a:	90 40       	sbci	r25, 0x00	; 0
+ 12c:	e1 f7       	brne	.-8      	; 0x126 <_ZN9Nokia51105resetEv+0xe>
+ 12e:	00 c0       	rjmp	.+0      	; 0x130 <_ZN9Nokia51105resetEv+0x18>
+ 130:	00 00       	nop
+	_delay_ms(100);
+	LCD_PORT |= (1 << RST);
+ 132:	c1 9a       	sbi	0x18, 1	; 24
+ 134:	08 95       	ret
+
+00000136 <_ZN9Nokia51105beginEv>:
+}
+
+void Nokia5110::begin(){
+ 136:	cf 93       	push	r28
+ 138:	df 93       	push	r29
+ 13a:	ec 01       	movw	r28, r24
+	this->reset();
+ 13c:	ed df       	rcall	.-38     	; 0x118 <_ZN9Nokia51105resetEv>
+	
+	LCD_PORT &= ~(1 << SCE);
+ 13e:	c2 98       	cbi	0x18, 2	; 24
+	
+	this->sendCommand(0x21); // H = 1
+ 140:	61 e2       	ldi	r22, 0x21	; 33
+ 142:	ce 01       	movw	r24, r28
+ 144:	c9 df       	rcall	.-110    	; 0xd8 <_ZN9Nokia511011sendCommandEh>
+	this->sendCommand(0x04); // TC2
+ 146:	64 e0       	ldi	r22, 0x04	; 4
+ 148:	ce 01       	movw	r24, r28
+ 14a:	c6 df       	rcall	.-116    	; 0xd8 <_ZN9Nokia511011sendCommandEh>
+	this->sendCommand(0x14); // Bias 1 : 48
+ 14c:	64 e1       	ldi	r22, 0x14	; 20
+ 14e:	ce 01       	movw	r24, r28
+ 150:	c3 df       	rcall	.-122    	; 0xd8 <_ZN9Nokia511011sendCommandEh>
+	this->sendCommand(0x80 | 0x21); //VOP[6:0] = (VLCD - 3,06) / 0.06
+ 152:	61 ea       	ldi	r22, 0xA1	; 161
+ 154:	ce 01       	movw	r24, r28
+ 156:	c0 df       	rcall	.-128    	; 0xd8 <_ZN9Nokia511011sendCommandEh>
+	
+	this->sendCommand(0x20); //H = 0
+ 158:	60 e2       	ldi	r22, 0x20	; 32
+ 15a:	ce 01       	movw	r24, r28
+ 15c:	bd df       	rcall	.-134    	; 0xd8 <_ZN9Nokia511011sendCommandEh>
+	this->sendCommand(0x0C); //All segment ON
+ 15e:	6c e0       	ldi	r22, 0x0C	; 12
+ 160:	ce 01       	movw	r24, r28
+ 162:	ba df       	rcall	.-140    	; 0xd8 <_ZN9Nokia511011sendCommandEh>
+}
+ 164:	df 91       	pop	r29
+ 166:	cf 91       	pop	r28
+ 168:	08 95       	ret
+
+0000016a <__tablejump2__>:
+ 16a:	ee 0f       	add	r30, r30
+ 16c:	ff 1f       	adc	r31, r31
+ 16e:	05 90       	lpm	r0, Z+
+ 170:	f4 91       	lpm	r31, Z
+ 172:	e0 2d       	mov	r30, r0
+ 174:	09 94       	ijmp
+
+00000176 <_exit>:
+ 176:	f8 94       	cli
+
+00000178 <__stop_program>:
+ 178:	ff cf       	rjmp	.-2      	; 0x178 <__stop_program>
