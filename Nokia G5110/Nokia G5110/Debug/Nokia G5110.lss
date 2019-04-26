@@ -330,11 +330,11 @@ void Nokia5110::begin(){
  140:	61 e2       	ldi	r22, 0x21	; 33
  142:	ce 01       	movw	r24, r28
  144:	c9 df       	rcall	.-110    	; 0xd8 <_ZN9Nokia511011sendCommandEh>
-	this->sendCommand(0x04); // TC2
+	this->sendCommand(0x04); // TC0
  146:	64 e0       	ldi	r22, 0x04	; 4
  148:	ce 01       	movw	r24, r28
  14a:	c6 df       	rcall	.-116    	; 0xd8 <_ZN9Nokia511011sendCommandEh>
-	this->sendCommand(0x14); // Bias 1 : 48
+	this->sendCommand(0x14); // Bias 1:40 - 1:34
  14c:	64 e1       	ldi	r22, 0x14	; 20
  14e:	ce 01       	movw	r24, r28
  150:	c3 df       	rcall	.-122    	; 0xd8 <_ZN9Nokia511011sendCommandEh>

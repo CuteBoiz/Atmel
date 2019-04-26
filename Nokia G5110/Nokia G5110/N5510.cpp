@@ -52,8 +52,8 @@ void Nokia5110::begin(){
 	LCD_PORT &= ~(1 << SCE);
 	
 	this->sendCommand(0x21); // H = 1
-	this->sendCommand(0x04); // TC2
-	this->sendCommand(0x14); // Bias 1 : 48
+	this->sendCommand(0x04); // TC0
+	this->sendCommand(0x14); // Bias 1:40 - 1:34
 	this->sendCommand(0x80 | 0x21); //VOP[6:0] = (VLCD - 3,06) / 0.06 (Chinh do tuong phan)
 	
 	this->sendCommand(0x20); //H = 0
