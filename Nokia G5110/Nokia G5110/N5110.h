@@ -44,17 +44,9 @@ public:
 	
 	void setCursor(uint8_t column, uint8_t row);
 	
-	void clear(void);
-	void clearLine(void);
-	
-	void setPower(bool on);
-	
 	void reset();
 	void begin(void);
-	void stop(void);
 	
-	
-	void write(uint8_t data);
 private:
 	uint8_t cursor_x;
 	uint8_t cursor_y;
@@ -63,7 +55,8 @@ private:
 	uint8_t screen[504];
 
 };
-
+/*
+Dung quan tam khuc nay
 const PROGMEM uint8_t charset[][5] = {
 	{ 0x00, 0x00, 0x00, 0x00, 0x00 },  // 20 space
 	{ 0x00, 0x00, 0x5f, 0x00, 0x00 },  // 21 !
@@ -162,5 +155,5 @@ const PROGMEM uint8_t charset[][5] = {
 	{ 0x10, 0x08, 0x08, 0x10, 0x08 },  // 7e ~
 	{ 0x00, 0x00, 0x00, 0x00, 0x00 }   // 7f
 };
-
+*/
 #endif /* N5110_H_ */

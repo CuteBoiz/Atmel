@@ -15,19 +15,19 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY
   5 .debug_aranges 00000070  00000000  00000000  00000474  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   0000119b  00000000  00000000  000004e4  2**0
+  6 .debug_info   00000c51  00000000  00000000  000004e4  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 000007f2  00000000  00000000  0000167f  2**0
+  7 .debug_abbrev 000007c0  00000000  00000000  00001135  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   000003e7  00000000  00000000  00001e71  2**0
+  8 .debug_line   000003e7  00000000  00000000  000018f5  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  000000b4  00000000  00000000  00002258  2**2
+  9 .debug_frame  000000b4  00000000  00000000  00001cdc  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    00000560  00000000  00000000  0000230c  2**0
+ 10 .debug_str    000004c0  00000000  00000000  00001d90  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    000002c1  00000000  00000000  0000286c  2**0
+ 11 .debug_loc    000002c1  00000000  00000000  00002250  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 00000050  00000000  00000000  00002b2d  2**0
+ 12 .debug_ranges 00000050  00000000  00000000  00002511  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -338,7 +338,7 @@ void Nokia5110::begin(){
  14c:	64 e1       	ldi	r22, 0x14	; 20
  14e:	ce 01       	movw	r24, r28
  150:	c3 df       	rcall	.-122    	; 0xd8 <_ZN9Nokia511011sendCommandEh>
-	this->sendCommand(0x80 | 0x21); //VOP[6:0] = (VLCD - 3,06) / 0.06
+	this->sendCommand(0x80 | 0x21); //VOP[6:0] = (VLCD - 3,06) / 0.06 (Chinh do tuong phan)
  152:	61 ea       	ldi	r22, 0xA1	; 161
  154:	ce 01       	movw	r24, r28
  156:	c0 df       	rcall	.-128    	; 0xd8 <_ZN9Nokia511011sendCommandEh>
@@ -347,7 +347,7 @@ void Nokia5110::begin(){
  158:	60 e2       	ldi	r22, 0x20	; 32
  15a:	ce 01       	movw	r24, r28
  15c:	bd df       	rcall	.-134    	; 0xd8 <_ZN9Nokia511011sendCommandEh>
-	this->sendCommand(0x0C); //All segment ON
+	this->sendCommand(0x0C); //Normal Mode
  15e:	6c e0       	ldi	r22, 0x0C	; 12
  160:	ce 01       	movw	r24, r28
  162:	ba df       	rcall	.-140    	; 0xd8 <_ZN9Nokia511011sendCommandEh>
