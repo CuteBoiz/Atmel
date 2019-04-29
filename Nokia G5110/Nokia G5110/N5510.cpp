@@ -49,17 +49,49 @@ void Nokia5110::reset(){
 	LCD_PORT |= (1 << RST);
 }
 
+void Nokia5110::clearSreen(){
+	setCursor(0, 0);
+	for (int i = 0; i < 504; i++)
+		sendData(0x00);
+}
+
 void Nokia5110::begin(){
 	this->reset();
 	
 	this->sendCommand(0x21); // H = 1
-	this->sendCommand(0x80 | 0x10); //VOP[6:0] = (VLCD - 3,06) / 0.06 (Chinh do tuong phan)
+	this->sendCommand(0x80 | 0x15); //VOP[6:0] = (VLCD - 3,06) / 0.06 (Chinh do tuong phan)
 	this->sendCommand(0x04); // TC0			
 	this->sendCommand(0x14); // Bias 1:40 - 1:34
 	
 	this->sendCommand(0x20); //H = 0
 	this->sendCommand(0x80);
 	this->sendCommand(0x40);
-	this->sendCommand(0x0C); //Normal Mode	
+	this->sendCommand(0x0C); //Normal Mode
+	
+	this->clearSreen();
 }
 
+void Nokia5110::fillUp(char *data){
+	register int i = 0;
+	int length = 0;
+	while (data[i]){
+		length++;
+		i++;
+	}
+	for (i = 0; i < length; i++){
+		this->sendChar(data[i]);
+	}
+	for (i = 0; i < (14-length)*6; i++){
+		this->sendData(0x00);
+	}
+}
+void Nokia5110::sendChar(char data)
+{
+	for(int i = 0; i < 5; i++)
+	{
+		this->sendData(CHARSET[int(data) - 0x20][i]);
+	}
+	this->sendData(0x00);
+}
+
+	
