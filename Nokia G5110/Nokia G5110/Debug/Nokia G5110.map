@@ -21,6 +21,8 @@ Discarded input sections
  .text          0x00000000        0x0 N5510.o
  .data          0x00000000        0x0 N5510.o
  .bss           0x00000000        0x0 N5510.o
+ .text._ZN9Nokia51109setCursorEhh
+                0x00000000       0x24 N5510.o
  .text          0x00000000        0x0 a:/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr4\libgcc.a(_exit.o)
  .data          0x00000000        0x0 a:/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr4\libgcc.a(_exit.o)
  .bss           0x00000000        0x0 a:/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr4\libgcc.a(_exit.o)
@@ -227,7 +229,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0x17a
+.text           0x00000000      0x16e
  *(.vectors)
  .vectors       0x00000000       0x26 A:/Atmel/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega8a/avr4/crtatmega8a.o
                 0x00000000                __vector_default
@@ -310,36 +312,36 @@ END GROUP
                 0x00000072                __vector_18
                 0x00000074                . = ALIGN (0x2)
  *(.text.*)
- .text.main     0x00000074       0x22 main.o
+ .text.main     0x00000074       0x34 main.o
                 0x00000074                main
- .text._GLOBAL__sub_I_main
-                0x00000096        0x8 main.o
+ .text._GLOBAL__sub_I_grap
+                0x000000a8        0x8 main.o
  .text._ZN9Nokia51104sendEih
-                0x0000009e       0x3a N5510.o
-                0x0000009e                _ZN9Nokia51104sendEih
+                0x000000b0       0x3a N5510.o
+                0x000000b0                _ZN9Nokia51104sendEih
  .text._ZN9Nokia511011sendCommandEh
-                0x000000d8        0xa N5510.o
-                0x000000d8                _ZN9Nokia511011sendCommandEh
+                0x000000ea        0xa N5510.o
+                0x000000ea                _ZN9Nokia511011sendCommandEh
  .text._ZN9Nokia51108sendDataEh
-                0x000000e2        0xa N5510.o
-                0x000000e2                _ZN9Nokia51108sendDataEh
+                0x000000f4        0xa N5510.o
+                0x000000f4                _ZN9Nokia51108sendDataEh
  .text._ZN9Nokia5110C2Ev
-                0x000000ec       0x2c N5510.o
-                0x000000ec                _ZN9Nokia5110C2Ev
-                0x000000ec                _ZN9Nokia5110C1Ev
+                0x000000fe       0x16 N5510.o
+                0x000000fe                _ZN9Nokia5110C2Ev
+                0x000000fe                _ZN9Nokia5110C1Ev
  .text._ZN9Nokia51105resetEv
-                0x00000118       0x1e N5510.o
-                0x00000118                _ZN9Nokia51105resetEv
+                0x00000114        0xc N5510.o
+                0x00000114                _ZN9Nokia51105resetEv
  .text._ZN9Nokia51105beginEv
-                0x00000136       0x34 N5510.o
-                0x00000136                _ZN9Nokia51105beginEv
- .text.libgcc   0x0000016a        0xc a:/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr4\libgcc.a(_tablejump2.o)
-                0x0000016a                __tablejump2__
-                0x00000176                . = ALIGN (0x2)
+                0x00000120       0x3e N5510.o
+                0x00000120                _ZN9Nokia51105beginEv
+ .text.libgcc   0x0000015e        0xc a:/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr4\libgcc.a(_tablejump2.o)
+                0x0000015e                __tablejump2__
+                0x0000016a                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00000176        0x0 a:/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr4\libgcc.a(_exit.o)
-                0x00000176                _exit
-                0x00000176                exit
+ .fini9         0x0000016a        0x0 a:/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr4\libgcc.a(_exit.o)
+                0x0000016a                _exit
+                0x0000016a                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -358,39 +360,40 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00000176        0x4 a:/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr4\libgcc.a(_exit.o)
+ .fini0         0x0000016a        0x4 a:/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr4\libgcc.a(_exit.o)
  *(.fini0)
-                0x0000017a                _etext = .
+                0x0000016e                _etext = .
 
-.data           0x00800060      0x1f8 load address 0x0000017a
+.data           0x00800060      0x1f8 load address 0x0000016e
                 0x00800060                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
+ .data.grap     0x00800060      0x1f8 main.o
+                0x00800060                grap
  *(.gnu.linkonce.d*)
  *(.rodata)
  *(.rodata*)
- .rodata._ZL4grap
-                0x00800060      0x1f8 main.o
  *(.gnu.linkonce.r*)
                 0x00800258                . = ALIGN (0x2)
                 0x00800258                _edata = .
                 0x00800258                PROVIDE (__data_end, .)
 
-.bss            0x00800258      0x1fb
+.bss            0x00800258        0x3
                 0x00800258                PROVIDE (__bss_start, .)
  *(.bss)
  *(.bss*)
- .bss._ZL3lcd   0x00800258      0x1fb main.o
+ .bss.lcd       0x00800258        0x3 main.o
+                0x00800258                lcd
  *(COMMON)
-                0x00800453                PROVIDE (__bss_end, .)
-                0x0000017a                __data_load_start = LOADADDR (.data)
-                0x00000372                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x0080025b                PROVIDE (__bss_end, .)
+                0x0000016e                __data_load_start = LOADADDR (.data)
+                0x00000366                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x00800453        0x0
+.noinit         0x0080025b        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
  *(.noinit*)
                 [!provide]                PROVIDE (__noinit_end, .)
-                0x00800453                _end = .
+                0x0080025b                _end = .
                 [!provide]                PROVIDE (__heap_start, .)
 
 .eeprom         0x00810000        0x0
@@ -456,51 +459,51 @@ END GROUP
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x00000000       0x70
+.debug_aranges  0x00000000       0x78
  *(.debug_aranges)
  .debug_aranges
                 0x00000000       0x28 main.o
  .debug_aranges
-                0x00000028       0x48 N5510.o
+                0x00000028       0x50 N5510.o
 
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000      0xc51
+.debug_info     0x00000000      0xd75
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x48c A:/Atmel/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega8a/avr4/crtatmega8a.o
- .debug_info    0x0000048c      0x2d3 main.o
- .debug_info    0x0000075f      0x4f2 N5510.o
+ .debug_info    0x0000048c      0x3a2 main.o
+ .debug_info    0x0000082e      0x547 N5510.o
 
-.debug_abbrev   0x00000000      0x7c0
+.debug_abbrev   0x00000000      0x7bf
  *(.debug_abbrev)
  .debug_abbrev  0x00000000      0x44e A:/Atmel/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega8a/avr4/crtatmega8a.o
- .debug_abbrev  0x0000044e      0x170 main.o
- .debug_abbrev  0x000005be      0x202 N5510.o
+ .debug_abbrev  0x0000044e      0x1d8 main.o
+ .debug_abbrev  0x00000626      0x199 N5510.o
 
-.debug_line     0x00000000      0x3e7
+.debug_line     0x00000000      0x404
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x109 A:/Atmel/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega8a/avr4/crtatmega8a.o
- .debug_line    0x00000109       0xc9 main.o
- .debug_line    0x000001d2      0x215 N5510.o
+ .debug_line    0x00000109      0x11d main.o
+ .debug_line    0x00000226      0x1de N5510.o
 
-.debug_frame    0x00000000       0xb4
+.debug_frame    0x00000000       0xd0
  *(.debug_frame)
  .debug_frame   0x00000000       0x34 main.o
- .debug_frame   0x00000034       0x80 N5510.o
+ .debug_frame   0x00000034       0x9c N5510.o
 
-.debug_str      0x00000000      0x4c0
+.debug_str      0x00000000      0x51b
  *(.debug_str)
  .debug_str     0x00000000      0x17a A:/Atmel/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega8a/avr4/crtatmega8a.o
- .debug_str     0x0000017a      0x2d0 main.o
-                                0x30e (size before relaxing)
- .debug_str     0x0000044a       0x76 N5510.o
-                                0x319 (size before relaxing)
+ .debug_str     0x0000017a      0x376 main.o
+                                0x3b4 (size before relaxing)
+ .debug_str     0x000004f0       0x2b N5510.o
+                                0x320 (size before relaxing)
 
-.debug_loc      0x00000000      0x2c1
+.debug_loc      0x00000000      0x306
  *(.debug_loc)
  .debug_loc     0x00000000       0x77 main.o
- .debug_loc     0x00000077      0x24a N5510.o
+ .debug_loc     0x00000077      0x28f N5510.o
 
 .debug_macinfo
  *(.debug_macinfo)
@@ -520,10 +523,10 @@ END GROUP
 .debug_pubtypes
  *(.debug_pubtypes)
 
-.debug_ranges   0x00000000       0x50
+.debug_ranges   0x00000000       0x70
  *(.debug_ranges)
  .debug_ranges  0x00000000       0x18 main.o
- .debug_ranges  0x00000018       0x38 N5510.o
+ .debug_ranges  0x00000018       0x58 N5510.o
 
 .debug_macro
  *(.debug_macro)
