@@ -59,7 +59,7 @@ void Nokia5110::begin(){
 	this->reset();
 	
 	this->sendCommand(0x21); // H = 1
-	this->sendCommand(0x80 | 0x15); //VOP[6:0] = (VLCD - 3,06) / 0.06 (Chinh do tuong phan)
+	this->sendCommand(0x80 | 0x5); //VOP[6:0] = (VLCD - 3,06) / 0.06 (Chinh do tuong phan)
 	this->sendCommand(0x04); // TC0			
 	this->sendCommand(0x14); // Bias 1:40 - 1:34
 	

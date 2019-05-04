@@ -17,7 +17,7 @@ int main(void)
 	PORTC |= (1 << 5);
 	lcd.begin();
 	while(1){
-		lcd.setCursor(0 ,0);
+		//lcd.setCursor(0 ,0);
 		lcd.fillUp("PHAT");
 		lcd.setCursor(0 ,1);
 		lcd.fillUp("VINH NGU");

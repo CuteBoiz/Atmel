@@ -23,7 +23,7 @@
 
 #define	RST			1 //Reset(active low)
 #define SCE			2 //Chip enable (active low)
-#define DC			0 //Data (active high) - Command (active low)
+#define DC			6 //Data (active high) - Command (active low)
 #define SDIN		3 //Serial data
 #define SCLK		5 //Serial clock
 
