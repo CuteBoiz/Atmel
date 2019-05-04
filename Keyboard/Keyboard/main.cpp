@@ -34,12 +34,12 @@ int main(void)
 	USART_Init();
     sendString("Begin!\n");
 	DDRC |= (1<<5);
-	PORTC |= (1<<5);
 	abc.begin();
 	
 	sei();
     while (1) 
     {
+		PORTC |= (1<<5);
 		if (abc.available()){
 			char data = abc.read();
 			USART_Transmit(data);

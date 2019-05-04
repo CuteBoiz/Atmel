@@ -19,7 +19,7 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING
   7 .debug_abbrev 0000090b  00000000  00000000  000017cf  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   00000983  00000000  00000000  000020da  2**0
+  8 .debug_line   00000984  00000000  00000000  000020da  2**0
                   CONTENTS, READONLY, DEBUGGING
   9 .debug_frame  0000015c  00000000  00000000  00002a60  2**2
                   CONTENTS, READONLY, DEBUGGING
@@ -615,7 +615,7 @@ uint8_t KeyBoard::read(){
  3fc:	cd e8       	ldi	r28, 0x8D	; 141
  3fe:	01 c0       	rjmp	.+2      	; 0x402 <__LOCK_REGION_LENGTH__+0x2>
  400:	cc e8       	ldi	r28, 0x8C	; 140
-			if (kbCapslock)
+			if (kbCapslock){
  402:	20 91 6f 00 	lds	r18, 0x006F	; 0x80006f <kbCapslock>
  406:	22 23       	and	r18, r18
  408:	19 f0       	breq	.+6      	; 0x410 <__LOCK_REGION_LENGTH__+0x10>
@@ -623,7 +623,8 @@ uint8_t KeyBoard::read(){
  40a:	64 e0       	ldi	r22, 0x04	; 4
  40c:	07 df       	rcall	.-498    	; 0x21c <_ZN8KeyBoard8setLightEh>
  40e:	1c c0       	rjmp	.+56     	; 0x448 <__LOCK_REGION_LENGTH__+0x48>
-			else
+			}
+			else{
 				setLight(0x00);
  410:	60 e0       	ldi	r22, 0x00	; 0
  412:	04 df       	rcall	.-504    	; 0x21c <_ZN8KeyBoard8setLightEh>
@@ -643,6 +644,7 @@ uint8_t KeyBoard::read(){
  422:	e1 f7       	brne	.-8      	; 0x41c <__LOCK_REGION_LENGTH__+0x1c>
  424:	00 c0       	rjmp	.+0      	; 0x426 <__LOCK_REGION_LENGTH__+0x26>
  426:	00 00       	nop
+			}
 			break;
 		
 		default:
@@ -674,7 +676,7 @@ uint8_t KeyBoard::read(){
 			kbCapslock = false;
 	}
 	
-	if (((result>= 'a') && (result <= 'z')) && ((kbShift && !kbCapslock) || (!kbShift && kbCapslock)))
+	if (((result>= 'a') && (result <= 'z')) && ((kbShift && !kbCapslock) || (!kbShift && kbCapslock))){
  448:	8f e9       	ldi	r24, 0x9F	; 159
  44a:	8c 0f       	add	r24, r28
  44c:	8a 31       	cpi	r24, 0x1A	; 26
@@ -789,10 +791,10 @@ uint8_t KeyBoard::read(){
  4d6:	cf e3       	ldi	r28, 0x3F	; 63
 	}
 	
-	if (((result>= 'a') && (result <= 'z')) && ((kbShift && !kbCapslock) || (!kbShift && kbCapslock)))
+	if (((result>= 'a') && (result <= 'z')) && ((kbShift && !kbCapslock) || (!kbShift && kbCapslock))){
 		result = result + ('A' - 'a');
-	
-	charBuffer = 0;
+	}
+	charBuffer = 0x00;
  4d8:	10 92 76 00 	sts	0x0076, r1	; 0x800076 <charBuffer>
 	return result;
 }
@@ -852,16 +854,18 @@ ISR(INT0_vect){
 			}
 			
 			case 2: case 3: case 4: case 5: case 6: case 7: case 8: case 9:{ //Data bits
-				if (cmdValue & 0x01)
+				if (cmdValue & 0x01){
  53c:	80 91 6b 00 	lds	r24, 0x006B	; 0x80006b <cmdValue>
  540:	80 ff       	sbrs	r24, 0
  542:	02 c0       	rjmp	.+4      	; 0x548 <__vector_1+0x66>
-				DATA_PORT |= (1<<DATA_PIN);
+					DATA_PORT |= (1<<DATA_PIN);
  544:	93 9a       	sbi	0x12, 3	; 18
  546:	01 c0       	rjmp	.+2      	; 0x54a <__vector_1+0x68>
-				else
-				DATA_PORT &= ~(1<<DATA_PIN);
+				}
+				else{
+					DATA_PORT &= ~(1<<DATA_PIN);
  548:	93 98       	cbi	0x12, 3	; 18
+				}
 				cmdValue = cmdValue >> 1;
  54a:	80 91 6b 00 	lds	r24, 0x006B	; 0x80006b <cmdValue>
  54e:	90 e0       	ldi	r25, 0x00	; 0
@@ -872,18 +876,20 @@ ISR(INT0_vect){
  558:	9d c0       	rjmp	.+314    	; 0x694 <__vector_1+0x1b2>
 			}
 			
-			case 10:{
-				if (cmdParity)
+			case 10: {
+				if (cmdParity){
  55a:	80 91 69 00 	lds	r24, 0x0069	; 0x800069 <cmdParity>
  55e:	88 23       	and	r24, r24
  560:	11 f0       	breq	.+4      	; 0x566 <__vector_1+0x84>
-				DATA_PORT |= (1<<DATA_PIN);
+					DATA_PORT |= (1<<DATA_PIN);
  562:	93 9a       	sbi	0x12, 3	; 18
  564:	97 c0       	rjmp	.+302    	; 0x694 <__vector_1+0x1b2>
-				else
-				DATA_PORT &= ~(1<<DATA_PIN);
+				}
+				else{
+					DATA_PORT &= ~(1<<DATA_PIN);
  566:	93 98       	cbi	0x12, 3	; 18
  568:	95 c0       	rjmp	.+298    	; 0x694 <__vector_1+0x1b2>
+				}
 				break;
 			}
 			
@@ -897,16 +903,18 @@ ISR(INT0_vect){
 			}
 			
 			case 12:{ //ACK from KB
-				if (!(PIND & (1<<DATA_PIN)))
+				if (!(PIND & (1<<DATA_PIN))){
  570:	83 99       	sbic	0x10, 3	; 16
  572:	03 c0       	rjmp	.+6      	; 0x57a <__vector_1+0x98>
-				cmdACKValue = 0;
+					cmdACKValue = 0;
  574:	10 92 6a 00 	sts	0x006A, r1	; 0x80006a <cmdACKValue>
  578:	03 c0       	rjmp	.+6      	; 0x580 <__vector_1+0x9e>
-				else
-				cmdACKValue = 1;
+				}
+				else{
+					cmdACKValue = 1;
  57a:	81 e0       	ldi	r24, 0x01	; 1
  57c:	80 93 6a 00 	sts	0x006A, r24	; 0x80006a <cmdACKValue>
+				}
 				cmdInProgress = false;
  580:	10 92 6e 00 	sts	0x006E, r1	; 0x80006e <cmdInProgress>
  584:	87 c0       	rjmp	.+270    	; 0x694 <__vector_1+0x1b2>
@@ -915,14 +923,14 @@ ISR(INT0_vect){
 	}
 	//Get Data
 	int value;
-	if (!(PIND & (1<<DATA_PIN)))
+	if (!(PIND & (1<<DATA_PIN))){
  586:	90 b3       	in	r25, 0x10	; 16
-	value = 0;
-	else
-	value = 1;
+	else{
+		value = 1;
+	}
 	
 	//shift data from LSB -> MSB
-	if (bufferPos > 0 && bufferPos < 11)
+	if (bufferPos > 0 && bufferPos < 11){
  588:	80 91 75 00 	lds	r24, 0x0075	; 0x800075 <bufferPos>
  58c:	88 23       	and	r24, r24
  58e:	29 f0       	breq	.+10     	; 0x59a <__vector_1+0xb8>
@@ -930,7 +938,8 @@ ISR(INT0_vect){
  594:	8b 30       	cpi	r24, 0x0B	; 11
  596:	08 f4       	brcc	.+2      	; 0x59a <__vector_1+0xb8>
  598:	6b c0       	rjmp	.+214    	; 0x670 <__vector_1+0x18e>
-	currentBuffer |= (value << (bufferPos - 1));
+		currentBuffer |= (value << (bufferPos - 1));
+	}
 	bufferPos++;
  59a:	80 91 75 00 	lds	r24, 0x0075	; 0x800075 <bufferPos>
  59e:	8f 5f       	subi	r24, 0xFF	; 255
@@ -1052,17 +1061,19 @@ ISR(INT0_vect){
 			}
 			
 			default: { //A Normal key pressed
-				if (kbRelease)
+				if (kbRelease){
  652:	90 91 73 00 	lds	r25, 0x0073	; 0x800073 <kbRelease>
  656:	99 23       	and	r25, r25
  658:	21 f0       	breq	.+8      	; 0x662 <__vector_1+0x180>
-				kbRelease	= true;
+					kbRelease	= true;
  65a:	81 e0       	ldi	r24, 0x01	; 1
  65c:	80 93 73 00 	sts	0x0073, r24	; 0x800073 <kbRelease>
  660:	02 c0       	rjmp	.+4      	; 0x666 <__vector_1+0x184>
-				else
-				charBuffer	= currentBuffer;
+				}
+				else{
+					charBuffer	= currentBuffer;
  662:	80 93 76 00 	sts	0x0076, r24	; 0x800076 <charBuffer>
+				}
 			}
 		}
 		currentBuffer	= 0;
@@ -1070,12 +1081,12 @@ ISR(INT0_vect){
 		bufferPos		= 0;
  66a:	10 92 75 00 	sts	0x0075, r1	; 0x800075 <bufferPos>
  66e:	12 c0       	rjmp	.+36     	; 0x694 <__vector_1+0x1b2>
-	else
-	value = 1;
+		value = 1;
+	}
 	
 	//shift data from LSB -> MSB
-	if (bufferPos > 0 && bufferPos < 11)
-	currentBuffer |= (value << (bufferPos - 1));
+	if (bufferPos > 0 && bufferPos < 11){
+		currentBuffer |= (value << (bufferPos - 1));
  670:	80 91 75 00 	lds	r24, 0x0075	; 0x800075 <bufferPos>
  674:	93 fb       	bst	r25, 3
  676:	22 27       	eor	r18, r18
@@ -1182,23 +1193,23 @@ int main(void)
  6e0:	ee df       	rcall	.-36     	; 0x6be <_Z10sendStringPc>
 	DDRC |= (1<<5);
  6e2:	a5 9a       	sbi	0x14, 5	; 20
-	PORTC |= (1<<5);
- 6e4:	ad 9a       	sbi	0x15, 5	; 21
 	abc.begin();
- 6e6:	88 e7       	ldi	r24, 0x78	; 120
- 6e8:	90 e0       	ldi	r25, 0x00	; 0
- 6ea:	70 dd       	rcall	.-1312   	; 0x1cc <_ZN8KeyBoard5beginEv>
+ 6e4:	88 e7       	ldi	r24, 0x78	; 120
+ 6e6:	90 e0       	ldi	r25, 0x00	; 0
+ 6e8:	71 dd       	rcall	.-1310   	; 0x1cc <_ZN8KeyBoard5beginEv>
 	
 	sei();
- 6ec:	78 94       	sei
+ 6ea:	78 94       	sei
     while (1) 
     {
+		PORTC |= (1<<5);
+ 6ec:	ad 9a       	sbi	0x15, 5	; 21
 		if (abc.available()){
  6ee:	88 e7       	ldi	r24, 0x78	; 120
  6f0:	90 e0       	ldi	r25, 0x00	; 0
  6f2:	a8 dd       	rcall	.-1200   	; 0x244 <_ZN8KeyBoard9availableEv>
  6f4:	88 23       	and	r24, r24
- 6f6:	d9 f3       	breq	.-10     	; 0x6ee <main+0x14>
+ 6f6:	d1 f3       	breq	.-12     	; 0x6ec <main+0x12>
 			char data = abc.read();
  6f8:	88 e7       	ldi	r24, 0x78	; 120
  6fa:	90 e0       	ldi	r25, 0x00	; 0
@@ -1208,7 +1219,7 @@ int main(void)
  700:	da df       	rcall	.-76     	; 0x6b6 <_Z14USART_Transmitc>
 			if (data == 'f'){
  702:	c6 36       	cpi	r28, 0x66	; 102
- 704:	a1 f7       	brne	.-24     	; 0x6ee <main+0x14>
+ 704:	99 f7       	brne	.-26     	; 0x6ec <main+0x12>
 				PORTC &= ~(1<<5);
  706:	ad 98       	cbi	0x15, 5	; 21
  708:	2f ef       	ldi	r18, 0xFF	; 255
@@ -1220,7 +1231,7 @@ int main(void)
  714:	e1 f7       	brne	.-8      	; 0x70e <main+0x34>
  716:	00 c0       	rjmp	.+0      	; 0x718 <main+0x3e>
  718:	00 00       	nop
- 71a:	e9 cf       	rjmp	.-46     	; 0x6ee <main+0x14>
+ 71a:	e8 cf       	rjmp	.-48     	; 0x6ec <main+0x12>
 
 0000071c <_GLOBAL__sub_I__Z10USART_Initv>:
 		USART_Transmit(data[i]);

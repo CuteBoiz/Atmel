@@ -197,10 +197,12 @@ uint8_t KeyBoard::read(){
 		
 		case 0x58: 
 			result = kbCapslock ? CAPLOCK_ON : CAPLOCK_OFF; 
-			if (kbCapslock)
+			if (kbCapslock){
 				setLight(0x04);
-			else
+			}
+			else{
 				setLight(0x00);
+			}
 			break;
 		
 		default:
@@ -214,10 +216,10 @@ uint8_t KeyBoard::read(){
 			kbCapslock = false;
 	}
 	
-	if (((result>= 'a') && (result <= 'z')) && ((kbShift && !kbCapslock) || (!kbShift && kbCapslock)))
+	if (((result>= 'a') && (result <= 'z')) && ((kbShift && !kbCapslock) || (!kbShift && kbCapslock))){
 		result = result + ('A' - 'a');
-	
-	charBuffer = 0;
+	}
+	charBuffer = 0x00;
 	return result;
 }
 
@@ -233,19 +235,23 @@ ISR(INT0_vect){
 			}
 			
 			case 2: case 3: case 4: case 5: case 6: case 7: case 8: case 9:{ //Data bits
-				if (cmdValue & 0x01)
-				DATA_PORT |= (1<<DATA_PIN);
-				else
-				DATA_PORT &= ~(1<<DATA_PIN);
+				if (cmdValue & 0x01){
+					DATA_PORT |= (1<<DATA_PIN);
+				}
+				else{
+					DATA_PORT &= ~(1<<DATA_PIN);
+				}
 				cmdValue = cmdValue >> 1;
 				break;
 			}
 			
-			case 10:{
-				if (cmdParity)
-				DATA_PORT |= (1<<DATA_PIN);
-				else
-				DATA_PORT &= ~(1<<DATA_PIN);
+			case 10: {
+				if (cmdParity){
+					DATA_PORT |= (1<<DATA_PIN);
+				}
+				else{
+					DATA_PORT &= ~(1<<DATA_PIN);
+				}
 				break;
 			}
 			
@@ -256,10 +262,12 @@ ISR(INT0_vect){
 			}
 			
 			case 12:{ //ACK from KB
-				if (!(PIND & (1<<DATA_PIN)))
-				cmdACKValue = 0;
-				else
-				cmdACKValue = 1;
+				if (!(PIND & (1<<DATA_PIN))){
+					cmdACKValue = 0;
+				}
+				else{
+					cmdACKValue = 1;
+				}
 				cmdInProgress = false;
 			}
 		}
@@ -267,14 +275,17 @@ ISR(INT0_vect){
 	}
 	//Get Data
 	int value;
-	if (!(PIND & (1<<DATA_PIN)))
-	value = 0;
-	else
-	value = 1;
+	if (!(PIND & (1<<DATA_PIN))){
+		value = 0;
+	}
+	else{
+		value = 1;
+	}
 	
 	//shift data from LSB -> MSB
-	if (bufferPos > 0 && bufferPos < 11)
-	currentBuffer |= (value << (bufferPos - 1));
+	if (bufferPos > 0 && bufferPos < 11){
+		currentBuffer |= (value << (bufferPos - 1));
+	}
 	bufferPos++;
 	
 	if (bufferPos == 11){//After get all bits of buffer
@@ -326,10 +337,12 @@ ISR(INT0_vect){
 			}
 			
 			default: { //A Normal key pressed
-				if (kbRelease)
-				kbRelease	= true;
-				else
-				charBuffer	= currentBuffer;
+				if (kbRelease){
+					kbRelease	= true;
+				}
+				else{
+					charBuffer	= currentBuffer;
+				}
 			}
 		}
 		currentBuffer	= 0;
