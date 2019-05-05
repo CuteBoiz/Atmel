@@ -51,14 +51,13 @@ public:
 	KeyBoard(void);
 	void begin();		//Registering a external interrupt + set Pin modes 
 	bool available();   //Return true if there is a char to be read
-	void reset();		//Send a reset command to KB and re-initialize all the control
 	uint8_t read();		//Return the last char pressed. the buffer will be cleared when the char bhas been read
-	uint8_t extraRead();
 	void setLight(uint8_t data);
 
 private:
 	uint8_t oddParity(uint8_t data);
 	uint8_t sendCommand(uint8_t data);
+	
 	
 };
 

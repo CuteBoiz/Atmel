@@ -43,12 +43,7 @@ int main(void)
 		if (abc.available()){
 			char data = abc.read();
 			USART_Transmit(data);
-			if (data == 'f'){
-				PORTC &= ~(1<<5);
-				_delay_ms(500);
-			}
 		}
-		
     }
 }
 

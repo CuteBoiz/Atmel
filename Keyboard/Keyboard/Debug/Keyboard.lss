@@ -3,38 +3,38 @@ Keyboard.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .text         00000734  00000000  00000000  00000094  2**1
+  0 .text         000006f2  00000000  00000000  00000094  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  1 .data         00000008  00800060  00000734  000007c8  2**0
+  1 .data         00000008  00800060  000006f2  00000786  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  2 .bss          00000011  00800068  00800068  000007d0  2**0
+  2 .bss          00000011  00800068  00800068  0000078e  2**0
                   ALLOC
-  3 .comment      00000030  00000000  00000000  000007d0  2**0
+  3 .comment      00000030  00000000  00000000  0000078e  2**0
                   CONTENTS, READONLY
-  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000800  2**2
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  000007c0  2**2
                   CONTENTS, READONLY
-  5 .debug_aranges 000000a8  00000000  00000000  0000083c  2**0
+  5 .debug_aranges 00000098  00000000  00000000  000007fc  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   00000eeb  00000000  00000000  000008e4  2**0
+  6 .debug_info   00000d5f  00000000  00000000  00000894  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 0000090b  00000000  00000000  000017cf  2**0
+  7 .debug_abbrev 00000891  00000000  00000000  000015f3  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   00000984  00000000  00000000  000020da  2**0
+  8 .debug_line   00000873  00000000  00000000  00001e84  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  0000015c  00000000  00000000  00002a60  2**2
+  9 .debug_frame  0000013c  00000000  00000000  000026f8  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    000005cf  00000000  00000000  00002bbc  2**0
+ 10 .debug_str    00000591  00000000  00000000  00002834  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    000009d0  00000000  00000000  0000318b  2**0
+ 11 .debug_loc    000009b1  00000000  00000000  00002dc5  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 00000088  00000000  00000000  00003b5b  2**0
+ 12 .debug_ranges 00000078  00000000  00000000  00003776  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
 
 00000000 <__vectors>:
    0:	84 c0       	rjmp	.+264    	; 0x10a <__ctors_end>
-   2:	6f c2       	rjmp	.+1246   	; 0x4e2 <__vector_1>
+   2:	5d c2       	rjmp	.+1210   	; 0x4be <__vector_1>
    4:	a7 c0       	rjmp	.+334    	; 0x154 <__bad_interrupt>
    6:	a6 c0       	rjmp	.+332    	; 0x154 <__bad_interrupt>
    8:	a5 c0       	rjmp	.+330    	; 0x154 <__bad_interrupt>
@@ -52,122 +52,122 @@ Disassembly of section .text:
   20:	99 c0       	rjmp	.+306    	; 0x154 <__bad_interrupt>
   22:	98 c0       	rjmp	.+304    	; 0x154 <__bad_interrupt>
   24:	97 c0       	rjmp	.+302    	; 0x154 <__bad_interrupt>
-  26:	2b c2       	rjmp	.+1110   	; 0x47e <__stack+0x1f>
+  26:	14 c2       	rjmp	.+1064   	; 0x450 <__LOCK_REGION_LENGTH__+0x50>
   28:	8d c1       	rjmp	.+794    	; 0x344 <_ZN8KeyBoard4readEv+0xf2>
-  2a:	f5 c1       	rjmp	.+1002   	; 0x416 <__LOCK_REGION_LENGTH__+0x16>
-  2c:	f4 c1       	rjmp	.+1000   	; 0x416 <__LOCK_REGION_LENGTH__+0x16>
-  2e:	f3 c1       	rjmp	.+998    	; 0x416 <__LOCK_REGION_LENGTH__+0x16>
-  30:	f2 c1       	rjmp	.+996    	; 0x416 <__LOCK_REGION_LENGTH__+0x16>
-  32:	f1 c1       	rjmp	.+994    	; 0x416 <__LOCK_REGION_LENGTH__+0x16>
-  34:	f0 c1       	rjmp	.+992    	; 0x416 <__LOCK_REGION_LENGTH__+0x16>
+  2a:	f0 c1       	rjmp	.+992    	; 0x40c <__LOCK_REGION_LENGTH__+0xc>
+  2c:	ef c1       	rjmp	.+990    	; 0x40c <__LOCK_REGION_LENGTH__+0xc>
+  2e:	ee c1       	rjmp	.+988    	; 0x40c <__LOCK_REGION_LENGTH__+0xc>
+  30:	ed c1       	rjmp	.+986    	; 0x40c <__LOCK_REGION_LENGTH__+0xc>
+  32:	ec c1       	rjmp	.+984    	; 0x40c <__LOCK_REGION_LENGTH__+0xc>
+  34:	eb c1       	rjmp	.+982    	; 0x40c <__LOCK_REGION_LENGTH__+0xc>
   36:	37 c1       	rjmp	.+622    	; 0x2a6 <_ZN8KeyBoard4readEv+0x54>
   38:	50 c1       	rjmp	.+672    	; 0x2da <_ZN8KeyBoard4readEv+0x88>
-  3a:	ed c1       	rjmp	.+986    	; 0x416 <__LOCK_REGION_LENGTH__+0x16>
-  3c:	ec c1       	rjmp	.+984    	; 0x416 <__LOCK_REGION_LENGTH__+0x16>
-  3e:	eb c1       	rjmp	.+982    	; 0x416 <__LOCK_REGION_LENGTH__+0x16>
+  3a:	e8 c1       	rjmp	.+976    	; 0x40c <__LOCK_REGION_LENGTH__+0xc>
+  3c:	e7 c1       	rjmp	.+974    	; 0x40c <__LOCK_REGION_LENGTH__+0xc>
+  3e:	e6 c1       	rjmp	.+972    	; 0x40c <__LOCK_REGION_LENGTH__+0xc>
   40:	44 c1       	rjmp	.+648    	; 0x2ca <_ZN8KeyBoard4readEv+0x78>
   42:	35 c1       	rjmp	.+618    	; 0x2ae <_ZN8KeyBoard4readEv+0x5c>
-  44:	00 c2       	rjmp	.+1024   	; 0x446 <__LOCK_REGION_LENGTH__+0x46>
+  44:	ed c1       	rjmp	.+986    	; 0x420 <__LOCK_REGION_LENGTH__+0x20>
   46:	3b c1       	rjmp	.+630    	; 0x2be <_ZN8KeyBoard4readEv+0x6c>
   48:	4e c1       	rjmp	.+668    	; 0x2e6 <_ZN8KeyBoard4readEv+0x94>
-  4a:	e5 c1       	rjmp	.+970    	; 0x416 <__LOCK_REGION_LENGTH__+0x16>
-  4c:	e4 c1       	rjmp	.+968    	; 0x416 <__LOCK_REGION_LENGTH__+0x16>
+  4a:	e0 c1       	rjmp	.+960    	; 0x40c <__LOCK_REGION_LENGTH__+0xc>
+  4c:	df c1       	rjmp	.+958    	; 0x40c <__LOCK_REGION_LENGTH__+0xc>
   4e:	11 c1       	rjmp	.+546    	; 0x272 <_ZN8KeyBoard4readEv+0x20>
   50:	38 c1       	rjmp	.+624    	; 0x2c2 <_ZN8KeyBoard4readEv+0x70>
-  52:	13 c2       	rjmp	.+1062   	; 0x47a <__stack+0x1b>
+  52:	2e c2       	rjmp	.+1116   	; 0x4b0 <__stack+0x51>
   54:	10 c1       	rjmp	.+544    	; 0x276 <_ZN8KeyBoard4readEv+0x24>
   56:	53 c1       	rjmp	.+678    	; 0x2fe <_ZN8KeyBoard4readEv+0xac>
   58:	4c c1       	rjmp	.+664    	; 0x2f2 <_ZN8KeyBoard4readEv+0xa0>
-  5a:	dd c1       	rjmp	.+954    	; 0x416 <__LOCK_REGION_LENGTH__+0x16>
-  5c:	dc c1       	rjmp	.+952    	; 0x416 <__LOCK_REGION_LENGTH__+0x16>
-  5e:	db c1       	rjmp	.+950    	; 0x416 <__LOCK_REGION_LENGTH__+0x16>
+  5a:	d8 c1       	rjmp	.+944    	; 0x40c <__LOCK_REGION_LENGTH__+0xc>
+  5c:	d7 c1       	rjmp	.+942    	; 0x40c <__LOCK_REGION_LENGTH__+0xc>
+  5e:	fa c1       	rjmp	.+1012   	; 0x454 <__LOCK_REGION_LENGTH__+0x54>
   60:	2c c1       	rjmp	.+600    	; 0x2ba <_ZN8KeyBoard4readEv+0x68>
   62:	0b c1       	rjmp	.+534    	; 0x27a <_ZN8KeyBoard4readEv+0x28>
   64:	26 c1       	rjmp	.+588    	; 0x2b2 <_ZN8KeyBoard4readEv+0x60>
   66:	21 c1       	rjmp	.+578    	; 0x2aa <_ZN8KeyBoard4readEv+0x58>
   68:	50 c1       	rjmp	.+672    	; 0x30a <_ZN8KeyBoard4readEv+0xb8>
-  6a:	d5 c1       	rjmp	.+938    	; 0x416 <__LOCK_REGION_LENGTH__+0x16>
-  6c:	d4 c1       	rjmp	.+936    	; 0x416 <__LOCK_REGION_LENGTH__+0x16>
+  6a:	d0 c1       	rjmp	.+928    	; 0x40c <__LOCK_REGION_LENGTH__+0xc>
+  6c:	cf c1       	rjmp	.+926    	; 0x40c <__LOCK_REGION_LENGTH__+0xc>
   6e:	15 c1       	rjmp	.+554    	; 0x29a <_ZN8KeyBoard4readEv+0x48>
-  70:	02 c2       	rjmp	.+1028   	; 0x476 <__stack+0x17>
+  70:	1d c2       	rjmp	.+1082   	; 0x4ac <__stack+0x4d>
   72:	07 c1       	rjmp	.+526    	; 0x282 <_ZN8KeyBoard4readEv+0x30>
   74:	04 c1       	rjmp	.+520    	; 0x27e <_ZN8KeyBoard4readEv+0x2c>
   76:	27 c1       	rjmp	.+590    	; 0x2c6 <_ZN8KeyBoard4readEv+0x74>
   78:	4e c1       	rjmp	.+668    	; 0x316 <_ZN8KeyBoard4readEv+0xc4>
-  7a:	cd c1       	rjmp	.+922    	; 0x416 <__LOCK_REGION_LENGTH__+0x16>
-  7c:	cc c1       	rjmp	.+920    	; 0x416 <__LOCK_REGION_LENGTH__+0x16>
-  7e:	cb c1       	rjmp	.+918    	; 0x416 <__LOCK_REGION_LENGTH__+0x16>
+  7a:	c8 c1       	rjmp	.+912    	; 0x40c <__LOCK_REGION_LENGTH__+0xc>
+  7c:	c7 c1       	rjmp	.+910    	; 0x40c <__LOCK_REGION_LENGTH__+0xc>
+  7e:	c6 c1       	rjmp	.+908    	; 0x40c <__LOCK_REGION_LENGTH__+0xc>
   80:	0a c1       	rjmp	.+532    	; 0x296 <_ZN8KeyBoard4readEv+0x44>
   82:	03 c1       	rjmp	.+518    	; 0x28a <_ZN8KeyBoard4readEv+0x38>
   84:	18 c1       	rjmp	.+560    	; 0x2b6 <_ZN8KeyBoard4readEv+0x64>
   86:	4c c1       	rjmp	.+664    	; 0x320 <_ZN8KeyBoard4readEv+0xce>
   88:	51 c1       	rjmp	.+674    	; 0x32c <_ZN8KeyBoard4readEv+0xda>
-  8a:	c5 c1       	rjmp	.+906    	; 0x416 <__LOCK_REGION_LENGTH__+0x16>
-  8c:	c4 c1       	rjmp	.+904    	; 0x416 <__LOCK_REGION_LENGTH__+0x16>
+  8a:	c0 c1       	rjmp	.+896    	; 0x40c <__LOCK_REGION_LENGTH__+0xc>
+  8c:	bf c1       	rjmp	.+894    	; 0x40c <__LOCK_REGION_LENGTH__+0xc>
   8e:	8a c1       	rjmp	.+788    	; 0x3a4 <_ZN8KeyBoard4readEv+0x152>
   90:	fe c0       	rjmp	.+508    	; 0x28e <_ZN8KeyBoard4readEv+0x3c>
   92:	f9 c0       	rjmp	.+498    	; 0x286 <_ZN8KeyBoard4readEv+0x34>
   94:	04 c1       	rjmp	.+520    	; 0x29e <_ZN8KeyBoard4readEv+0x4c>
   96:	1b c1       	rjmp	.+566    	; 0x2ce <_ZN8KeyBoard4readEv+0x7c>
   98:	4f c1       	rjmp	.+670    	; 0x338 <_ZN8KeyBoard4readEv+0xe6>
-  9a:	bd c1       	rjmp	.+890    	; 0x416 <__LOCK_REGION_LENGTH__+0x16>
-  9c:	bc c1       	rjmp	.+888    	; 0x416 <__LOCK_REGION_LENGTH__+0x16>
+  9a:	b8 c1       	rjmp	.+880    	; 0x40c <__LOCK_REGION_LENGTH__+0xc>
+  9c:	b7 c1       	rjmp	.+878    	; 0x40c <__LOCK_REGION_LENGTH__+0xc>
   9e:	88 c1       	rjmp	.+784    	; 0x3b0 <_ZN8KeyBoard4readEv+0x15e>
   a0:	8d c1       	rjmp	.+794    	; 0x3bc <_ZN8KeyBoard4readEv+0x16a>
   a2:	f7 c0       	rjmp	.+494    	; 0x292 <_ZN8KeyBoard4readEv+0x40>
   a4:	73 c1       	rjmp	.+742    	; 0x38c <_ZN8KeyBoard4readEv+0x13a>
   a6:	fd c0       	rjmp	.+506    	; 0x2a2 <_ZN8KeyBoard4readEv+0x50>
   a8:	53 c1       	rjmp	.+678    	; 0x350 <_ZN8KeyBoard4readEv+0xfe>
-  aa:	b5 c1       	rjmp	.+874    	; 0x416 <__LOCK_REGION_LENGTH__+0x16>
-  ac:	b4 c1       	rjmp	.+872    	; 0x416 <__LOCK_REGION_LENGTH__+0x16>
-  ae:	b3 c1       	rjmp	.+870    	; 0x416 <__LOCK_REGION_LENGTH__+0x16>
+  aa:	b0 c1       	rjmp	.+864    	; 0x40c <__LOCK_REGION_LENGTH__+0xc>
+  ac:	af c1       	rjmp	.+862    	; 0x40c <__LOCK_REGION_LENGTH__+0xc>
+  ae:	ae c1       	rjmp	.+860    	; 0x40c <__LOCK_REGION_LENGTH__+0xc>
   b0:	73 c1       	rjmp	.+742    	; 0x398 <_ZN8KeyBoard4readEv+0x146>
-  b2:	b1 c1       	rjmp	.+866    	; 0x416 <__LOCK_REGION_LENGTH__+0x16>
+  b2:	ac c1       	rjmp	.+856    	; 0x40c <__LOCK_REGION_LENGTH__+0xc>
   b4:	5f c1       	rjmp	.+702    	; 0x374 <_ZN8KeyBoard4readEv+0x122>
   b6:	52 c1       	rjmp	.+676    	; 0x35c <_ZN8KeyBoard4readEv+0x10a>
-  b8:	ae c1       	rjmp	.+860    	; 0x416 <__LOCK_REGION_LENGTH__+0x16>
-  ba:	ad c1       	rjmp	.+858    	; 0x416 <__LOCK_REGION_LENGTH__+0x16>
-  bc:	9b c1       	rjmp	.+822    	; 0x3f4 <_ZN8KeyBoard4readEv+0x1a2>
-  be:	ab c1       	rjmp	.+854    	; 0x416 <__LOCK_REGION_LENGTH__+0x16>
+  b8:	a9 c1       	rjmp	.+850    	; 0x40c <__LOCK_REGION_LENGTH__+0xc>
+  ba:	a8 c1       	rjmp	.+848    	; 0x40c <__LOCK_REGION_LENGTH__+0xc>
+  bc:	9d c1       	rjmp	.+826    	; 0x3f8 <_ZN8KeyBoard4readEv+0x1a6>
+  be:	a6 c1       	rjmp	.+844    	; 0x40c <__LOCK_REGION_LENGTH__+0xc>
   c0:	d6 c0       	rjmp	.+428    	; 0x26e <_ZN8KeyBoard4readEv+0x1c>
   c2:	5e c1       	rjmp	.+700    	; 0x380 <_ZN8KeyBoard4readEv+0x12e>
-  c4:	a8 c1       	rjmp	.+848    	; 0x416 <__LOCK_REGION_LENGTH__+0x16>
+  c4:	a3 c1       	rjmp	.+838    	; 0x40c <__LOCK_REGION_LENGTH__+0xc>
   c6:	50 c1       	rjmp	.+672    	; 0x368 <_ZN8KeyBoard4readEv+0x116>
-  c8:	a6 c1       	rjmp	.+844    	; 0x416 <__LOCK_REGION_LENGTH__+0x16>
-  ca:	a5 c1       	rjmp	.+842    	; 0x416 <__LOCK_REGION_LENGTH__+0x16>
-  cc:	a4 c1       	rjmp	.+840    	; 0x416 <__LOCK_REGION_LENGTH__+0x16>
-  ce:	a3 c1       	rjmp	.+838    	; 0x416 <__LOCK_REGION_LENGTH__+0x16>
-  d0:	a2 c1       	rjmp	.+836    	; 0x416 <__LOCK_REGION_LENGTH__+0x16>
-  d2:	a1 c1       	rjmp	.+834    	; 0x416 <__LOCK_REGION_LENGTH__+0x16>
-  d4:	a0 c1       	rjmp	.+832    	; 0x416 <__LOCK_REGION_LENGTH__+0x16>
-  d6:	9f c1       	rjmp	.+830    	; 0x416 <__LOCK_REGION_LENGTH__+0x16>
-  d8:	d4 c1       	rjmp	.+936    	; 0x482 <__stack+0x23>
-  da:	9d c1       	rjmp	.+826    	; 0x416 <__LOCK_REGION_LENGTH__+0x16>
-  dc:	9c c1       	rjmp	.+824    	; 0x416 <__LOCK_REGION_LENGTH__+0x16>
-  de:	74 c1       	rjmp	.+744    	; 0x3c8 <_ZN8KeyBoard4readEv+0x176>
-  e0:	9a c1       	rjmp	.+820    	; 0x416 <__LOCK_REGION_LENGTH__+0x16>
-  e2:	74 c1       	rjmp	.+744    	; 0x3cc <_ZN8KeyBoard4readEv+0x17a>
-  e4:	75 c1       	rjmp	.+746    	; 0x3d0 <_ZN8KeyBoard4readEv+0x17e>
-  e6:	97 c1       	rjmp	.+814    	; 0x416 <__LOCK_REGION_LENGTH__+0x16>
-  e8:	96 c1       	rjmp	.+812    	; 0x416 <__LOCK_REGION_LENGTH__+0x16>
-  ea:	95 c1       	rjmp	.+810    	; 0x416 <__LOCK_REGION_LENGTH__+0x16>
-  ec:	73 c1       	rjmp	.+742    	; 0x3d4 <_ZN8KeyBoard4readEv+0x182>
-  ee:	74 c1       	rjmp	.+744    	; 0x3d8 <_ZN8KeyBoard4readEv+0x186>
-  f0:	75 c1       	rjmp	.+746    	; 0x3dc <_ZN8KeyBoard4readEv+0x18a>
-  f2:	91 c1       	rjmp	.+802    	; 0x416 <__LOCK_REGION_LENGTH__+0x16>
-  f4:	75 c1       	rjmp	.+746    	; 0x3e0 <_ZN8KeyBoard4readEv+0x18e>
-  f6:	76 c1       	rjmp	.+748    	; 0x3e4 <_ZN8KeyBoard4readEv+0x192>
-  f8:	77 c1       	rjmp	.+750    	; 0x3e8 <_ZN8KeyBoard4readEv+0x196>
-  fa:	8d c1       	rjmp	.+794    	; 0x416 <__LOCK_REGION_LENGTH__+0x16>
-  fc:	8c c1       	rjmp	.+792    	; 0x416 <__LOCK_REGION_LENGTH__+0x16>
-  fe:	8b c1       	rjmp	.+790    	; 0x416 <__LOCK_REGION_LENGTH__+0x16>
- 100:	75 c1       	rjmp	.+746    	; 0x3ec <_ZN8KeyBoard4readEv+0x19a>
- 102:	89 c1       	rjmp	.+786    	; 0x416 <__LOCK_REGION_LENGTH__+0x16>
- 104:	88 c1       	rjmp	.+784    	; 0x416 <__LOCK_REGION_LENGTH__+0x16>
- 106:	74 c1       	rjmp	.+744    	; 0x3f0 <_ZN8KeyBoard4readEv+0x19e>
+  c8:	a1 c1       	rjmp	.+834    	; 0x40c <__LOCK_REGION_LENGTH__+0xc>
+  ca:	a0 c1       	rjmp	.+832    	; 0x40c <__LOCK_REGION_LENGTH__+0xc>
+  cc:	9f c1       	rjmp	.+830    	; 0x40c <__LOCK_REGION_LENGTH__+0xc>
+  ce:	9e c1       	rjmp	.+828    	; 0x40c <__LOCK_REGION_LENGTH__+0xc>
+  d0:	9d c1       	rjmp	.+826    	; 0x40c <__LOCK_REGION_LENGTH__+0xc>
+  d2:	9c c1       	rjmp	.+824    	; 0x40c <__LOCK_REGION_LENGTH__+0xc>
+  d4:	9b c1       	rjmp	.+822    	; 0x40c <__LOCK_REGION_LENGTH__+0xc>
+  d6:	9a c1       	rjmp	.+820    	; 0x40c <__LOCK_REGION_LENGTH__+0xc>
+  d8:	77 c1       	rjmp	.+750    	; 0x3c8 <_ZN8KeyBoard4readEv+0x176>
+  da:	98 c1       	rjmp	.+816    	; 0x40c <__LOCK_REGION_LENGTH__+0xc>
+  dc:	97 c1       	rjmp	.+814    	; 0x40c <__LOCK_REGION_LENGTH__+0xc>
+  de:	76 c1       	rjmp	.+748    	; 0x3cc <_ZN8KeyBoard4readEv+0x17a>
+  e0:	95 c1       	rjmp	.+810    	; 0x40c <__LOCK_REGION_LENGTH__+0xc>
+  e2:	76 c1       	rjmp	.+748    	; 0x3d0 <_ZN8KeyBoard4readEv+0x17e>
+  e4:	77 c1       	rjmp	.+750    	; 0x3d4 <_ZN8KeyBoard4readEv+0x182>
+  e6:	92 c1       	rjmp	.+804    	; 0x40c <__LOCK_REGION_LENGTH__+0xc>
+  e8:	91 c1       	rjmp	.+802    	; 0x40c <__LOCK_REGION_LENGTH__+0xc>
+  ea:	90 c1       	rjmp	.+800    	; 0x40c <__LOCK_REGION_LENGTH__+0xc>
+  ec:	75 c1       	rjmp	.+746    	; 0x3d8 <_ZN8KeyBoard4readEv+0x186>
+  ee:	76 c1       	rjmp	.+748    	; 0x3dc <_ZN8KeyBoard4readEv+0x18a>
+  f0:	77 c1       	rjmp	.+750    	; 0x3e0 <_ZN8KeyBoard4readEv+0x18e>
+  f2:	8c c1       	rjmp	.+792    	; 0x40c <__LOCK_REGION_LENGTH__+0xc>
+  f4:	77 c1       	rjmp	.+750    	; 0x3e4 <_ZN8KeyBoard4readEv+0x192>
+  f6:	78 c1       	rjmp	.+752    	; 0x3e8 <_ZN8KeyBoard4readEv+0x196>
+  f8:	79 c1       	rjmp	.+754    	; 0x3ec <_ZN8KeyBoard4readEv+0x19a>
+  fa:	88 c1       	rjmp	.+784    	; 0x40c <__LOCK_REGION_LENGTH__+0xc>
+  fc:	87 c1       	rjmp	.+782    	; 0x40c <__LOCK_REGION_LENGTH__+0xc>
+  fe:	86 c1       	rjmp	.+780    	; 0x40c <__LOCK_REGION_LENGTH__+0xc>
+ 100:	77 c1       	rjmp	.+750    	; 0x3f0 <_ZN8KeyBoard4readEv+0x19e>
+ 102:	84 c1       	rjmp	.+776    	; 0x40c <__LOCK_REGION_LENGTH__+0xc>
+ 104:	83 c1       	rjmp	.+774    	; 0x40c <__LOCK_REGION_LENGTH__+0xc>
+ 106:	76 c1       	rjmp	.+748    	; 0x3f4 <_ZN8KeyBoard4readEv+0x1a2>
 
 00000108 <__ctors_start>:
- 108:	8e 03       	fmulsu	r16, r22
+ 108:	6d 03       	fmul	r22, r21
 
 0000010a <__ctors_end>:
  10a:	11 24       	eor	r1, r1
@@ -181,8 +181,8 @@ Disassembly of section .text:
  116:	10 e0       	ldi	r17, 0x00	; 0
  118:	a0 e6       	ldi	r26, 0x60	; 96
  11a:	b0 e0       	ldi	r27, 0x00	; 0
- 11c:	e4 e3       	ldi	r30, 0x34	; 52
- 11e:	f7 e0       	ldi	r31, 0x07	; 7
+ 11c:	e2 ef       	ldi	r30, 0xF2	; 242
+ 11e:	f6 e0       	ldi	r31, 0x06	; 6
  120:	02 c0       	rjmp	.+4      	; 0x126 <__do_copy_data+0x10>
  122:	05 90       	lpm	r0, Z+
  124:	0d 92       	st	X+, r0
@@ -211,27 +211,29 @@ Disassembly of section .text:
  142:	03 c0       	rjmp	.+6      	; 0x14a <__do_global_ctors+0xe>
  144:	21 97       	sbiw	r28, 0x01	; 1
  146:	fe 01       	movw	r30, r28
- 148:	ed d2       	rcall	.+1498   	; 0x724 <__tablejump2__>
+ 148:	cc d2       	rcall	.+1432   	; 0x6e2 <__tablejump2__>
  14a:	c4 38       	cpi	r28, 0x84	; 132
  14c:	d1 07       	cpc	r29, r17
  14e:	d1 f7       	brne	.-12     	; 0x144 <__do_global_ctors+0x8>
- 150:	c4 d2       	rcall	.+1416   	; 0x6da <main>
- 152:	ee c2       	rjmp	.+1500   	; 0x730 <_exit>
+ 150:	b0 d2       	rcall	.+1376   	; 0x6b2 <main>
+ 152:	cd c2       	rjmp	.+1434   	; 0x6ee <_exit>
 
 00000154 <__bad_interrupt>:
  154:	55 cf       	rjmp	.-342    	; 0x0 <__vectors>
 
 00000156 <_ZN8KeyBoard9oddParityEh>:
-	return (charBuffer != 0);
-}
+volatile uint8_t	cmdACKValue;
+uint8_t				cmdParity;
+volatile bool		cmdACKOk;
 
-uint8_t KeyBoard::extraRead(){
-	return (kbCapslock<<3)|(kbShift<<2)|(kbAlt<<1)|(kbCtrl<<0);
-}
+uint8_t KeyBoard::oddParity(uint8_t data){
+	int i, count = 1;
  156:	81 e0       	ldi	r24, 0x01	; 1
  158:	90 e0       	ldi	r25, 0x00	; 0
+	for(i = 0; i < 8; i++){
  15a:	20 e0       	ldi	r18, 0x00	; 0
  15c:	30 e0       	ldi	r19, 0x00	; 0
+		if ((data >> i) & 0x01)
  15e:	70 e0       	ldi	r23, 0x00	; 0
  160:	ab 01       	movw	r20, r22
  162:	02 2e       	mov	r0, r18
@@ -241,28 +243,61 @@ uint8_t KeyBoard::extraRead(){
  16a:	0a 94       	dec	r0
  16c:	e2 f7       	brpl	.-8      	; 0x166 <_ZN8KeyBoard9oddParityEh+0x10>
  16e:	40 fd       	sbrc	r20, 0
+		count++;
  170:	01 96       	adiw	r24, 0x01	; 1
+uint8_t				cmdParity;
+volatile bool		cmdACKOk;
+
+uint8_t KeyBoard::oddParity(uint8_t data){
+	int i, count = 1;
+	for(i = 0; i < 8; i++){
  172:	2f 5f       	subi	r18, 0xFF	; 255
  174:	3f 4f       	sbci	r19, 0xFF	; 255
  176:	28 30       	cpi	r18, 0x08	; 8
  178:	31 05       	cpc	r19, r1
  17a:	91 f7       	brne	.-28     	; 0x160 <_ZN8KeyBoard9oddParityEh+0xa>
+		if ((data >> i) & 0x01)
+		count++;
+	}
+	return count & 0x01;
+}
  17c:	81 70       	andi	r24, 0x01	; 1
  17e:	08 95       	ret
 
 00000180 <_ZN8KeyBoard11sendCommandEh>:
+
+uint8_t KeyBoard::sendCommand(uint8_t data){
+	cmdInProgress	= true;
  180:	21 e0       	ldi	r18, 0x01	; 1
  182:	20 93 6e 00 	sts	0x006E, r18	; 0x80006e <cmdInProgress>
+	cmdCount		= 0;
  186:	10 92 6d 00 	sts	0x006D, r1	; 0x80006d <cmdCount+0x1>
  18a:	10 92 6c 00 	sts	0x006C, r1	; 0x80006c <cmdCount>
+	
+	cmdValue		= data;
  18e:	60 93 6b 00 	sts	0x006B, r22	; 0x80006b <cmdValue>
+	cmdACKValue		= 1;
  192:	20 93 6a 00 	sts	0x006A, r18	; 0x80006a <cmdACKValue>
+	cmdParity		= oddParity(data);
  196:	df df       	rcall	.-66     	; 0x156 <_ZN8KeyBoard9oddParityEh>
  198:	80 93 69 00 	sts	0x0069, r24	; 0x800069 <cmdParity>
+	
+	//set DATA line  and CLK as OUTPUT to send data to keyboard
+	DATA_DDR	|= (1<<DATA_PIN);
  19c:	8b 9a       	sbi	0x11, 3	; 17
+	CLK_DDR		|= (1<<CLK_PIN);
  19e:	8a 9a       	sbi	0x11, 2	; 17
+	
+	DATA_PORT	|= (1<<DATA_PIN); //IDLE always 1
  1a0:	93 9a       	sbi	0x12, 3	; 18
+	CLK_PORT	&= ~(1<<CLK_PIN); //Clear INT0 to LOW to generate a Interrupt request
  1a2:	92 98       	cbi	0x12, 2	; 18
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
  1a4:	2f e7       	ldi	r18, 0x7F	; 127
  1a6:	88 e3       	ldi	r24, 0x38	; 56
  1a8:	91 e0       	ldi	r25, 0x01	; 1
@@ -272,72 +307,126 @@ uint8_t KeyBoard::extraRead(){
  1b0:	e1 f7       	brne	.-8      	; 0x1aa <_ZN8KeyBoard11sendCommandEh+0x2a>
  1b2:	00 c0       	rjmp	.+0      	; 0x1b4 <_ZN8KeyBoard11sendCommandEh+0x34>
  1b4:	00 00       	nop
+	
+	//Jump to ISR(INT0_vect) to send data
+	
+	_delay_ms(50);
+	
+	DATA_PORT	&= ~(1<<DATA_PIN);
  1b6:	93 98       	cbi	0x12, 3	; 18
+	
+	CLK_PORT	|= (1<<CLK_PIN);
  1b8:	92 9a       	sbi	0x12, 2	; 18
+	CLK_DDR		&= ~(1<<CLK_PIN);
  1ba:	8a 98       	cbi	0x11, 2	; 17
+	
+	while (cmdACKValue != 0);
  1bc:	80 91 6a 00 	lds	r24, 0x006A	; 0x80006a <cmdACKValue>
  1c0:	81 11       	cpse	r24, r1
  1c2:	fc cf       	rjmp	.-8      	; 0x1bc <_ZN8KeyBoard11sendCommandEh+0x3c>
+	
+	cmdInProgress = false;
  1c4:	10 92 6e 00 	sts	0x006E, r1	; 0x80006e <cmdInProgress>
+}
  1c8:	08 95       	ret
 
 000001ca <_ZN8KeyBoardC1Ev>:
+KeyBoard::KeyBoard(){
  1ca:	08 95       	ret
 
 000001cc <_ZN8KeyBoard5beginEv>:
+	
+}
+void KeyBoard::begin(){
+	
+	currentBuffer	= 0x00;
  1cc:	10 92 77 00 	sts	0x0077, r1	; 0x800077 <currentBuffer>
+	charBuffer		= 0x00;
  1d0:	10 92 76 00 	sts	0x0076, r1	; 0x800076 <charBuffer>
+	bufferPos		= 0x00;
  1d4:	10 92 75 00 	sts	0x0075, r1	; 0x800075 <bufferPos>
+	
+	kbShift			= false;
  1d8:	10 92 72 00 	sts	0x0072, r1	; 0x800072 <kbShift>
+	kbCtrl			= false;
  1dc:	10 92 71 00 	sts	0x0071, r1	; 0x800071 <kbCtrl>
+	kbAlt			= false;
  1e0:	10 92 70 00 	sts	0x0070, r1	; 0x800070 <kbAlt>
+	kbCapslock		= false;
  1e4:	10 92 6f 00 	sts	0x006F, r1	; 0x80006f <kbCapslock>
+	kbExtend		= false;
  1e8:	10 92 74 00 	sts	0x0074, r1	; 0x800074 <kbExtend>
+	kbRelease		= false;
  1ec:	10 92 73 00 	sts	0x0073, r1	; 0x800073 <kbRelease>
+	
+	cmdInProgress	= false;
  1f0:	10 92 6e 00 	sts	0x006E, r1	; 0x80006e <cmdInProgress>
+	cmdCount		= 0;
  1f4:	10 92 6d 00 	sts	0x006D, r1	; 0x80006d <cmdCount+0x1>
  1f8:	10 92 6c 00 	sts	0x006C, r1	; 0x80006c <cmdCount>
+	cmdValue		= 0x00;
  1fc:	10 92 6b 00 	sts	0x006B, r1	; 0x80006b <cmdValue>
+	cmdACKValue		= 1;
  200:	81 e0       	ldi	r24, 0x01	; 1
  202:	80 93 6a 00 	sts	0x006A, r24	; 0x80006a <cmdACKValue>
+	
+	CLK_DDR		&= ~(1<<CLK_PIN);	//set CLK as INPUT
  206:	8a 98       	cbi	0x11, 2	; 17
+	CLK_PORT	|= (1<<CLK_PIN);	//pull-up
  208:	92 9a       	sbi	0x12, 2	; 18
+	
+	DATA_DDR	&= ~(1<<DATA_PIN);	//set DATA as INPUT
  20a:	8b 98       	cbi	0x11, 3	; 17
+	DATA_PORT	|= (1<<DATA_PIN);	//pull-up
  20c:	93 9a       	sbi	0x12, 3	; 18
+	
+	MCUCR |= (1<<ISC01);
  20e:	85 b7       	in	r24, 0x35	; 53
  210:	82 60       	ori	r24, 0x02	; 2
  212:	85 bf       	out	0x35, r24	; 53
+	GICR	|= (1<<INT0);
  214:	8b b7       	in	r24, 0x3b	; 59
  216:	80 64       	ori	r24, 0x40	; 64
  218:	8b bf       	out	0x3b, r24	; 59
  21a:	08 95       	ret
 
 0000021c <_ZN8KeyBoard8setLightEh>:
+}
+
+void KeyBoard::setLight(uint8_t data){
  21c:	1f 93       	push	r17
  21e:	cf 93       	push	r28
  220:	df 93       	push	r29
  222:	ec 01       	movw	r28, r24
  224:	16 2f       	mov	r17, r22
+	cmdACKOk = false;
  226:	10 92 68 00 	sts	0x0068, r1	; 0x800068 <__data_end>
+	sendCommand(0xED);
  22a:	6d ee       	ldi	r22, 0xED	; 237
  22c:	a9 df       	rcall	.-174    	; 0x180 <_ZN8KeyBoard11sendCommandEh>
+	while(!cmdACKOk);
  22e:	80 91 68 00 	lds	r24, 0x0068	; 0x800068 <__data_end>
  232:	88 23       	and	r24, r24
  234:	e1 f3       	breq	.-8      	; 0x22e <_ZN8KeyBoard8setLightEh+0x12>
+	sendCommand(data);
  236:	61 2f       	mov	r22, r17
  238:	ce 01       	movw	r24, r28
  23a:	a2 df       	rcall	.-188    	; 0x180 <_ZN8KeyBoard11sendCommandEh>
+}
  23c:	df 91       	pop	r29
  23e:	cf 91       	pop	r28
  240:	1f 91       	pop	r17
  242:	08 95       	ret
 
 00000244 <_ZN8KeyBoard9availableEv>:
+bool KeyBoard::available(){
+	return (charBuffer != 0);
  244:	90 91 76 00 	lds	r25, 0x0076	; 0x800076 <charBuffer>
  248:	81 e0       	ldi	r24, 0x01	; 1
  24a:	91 11       	cpse	r25, r1
  24c:	01 c0       	rjmp	.+2      	; 0x250 <_ZN8KeyBoard9availableEv+0xc>
  24e:	80 e0       	ldi	r24, 0x00	; 0
+}
  250:	08 95       	ret
 
 00000252 <_ZN8KeyBoard4readEv>:
@@ -355,7 +444,7 @@ uint8_t KeyBoard::read(){
  260:	e1 37       	cpi	r30, 0x71	; 113
  262:	f1 05       	cpc	r31, r1
  264:	08 f0       	brcs	.+2      	; 0x268 <_ZN8KeyBoard4readEv+0x16>
- 266:	d7 c0       	rjmp	.+430    	; 0x416 <__LOCK_REGION_LENGTH__+0x16>
+ 266:	d2 c0       	rjmp	.+420    	; 0x40c <__LOCK_REGION_LENGTH__+0xc>
  268:	ed 5e       	subi	r30, 0xED	; 237
  26a:	ff 4f       	sbci	r31, 0xFF	; 255
  26c:	09 94       	ijmp
@@ -363,10 +452,10 @@ uint8_t KeyBoard::read(){
 		case 0x49: result = kbShift ? '>' : '.'; break;
 		case 0x4A: result = kbShift ? '?' : '/'; break;
 		
-		case 0x0D: result = '\t'; break;
-		case 0x5A: result = '\n'; break;
+		case 0x0D: result = '\t';		break;
+		case 0x5A: result = '\n';		break;
  26e:	ca e0       	ldi	r28, 0x0A	; 10
- 270:	33 c1       	rjmp	.+614    	; 0x4d8 <__stack+0x79>
+ 270:	21 c1       	rjmp	.+578    	; 0x4b4 <__stack+0x55>
 	uint8_t result;
 	result = charBuffer;
 	switch(result){
@@ -374,887 +463,840 @@ uint8_t KeyBoard::read(){
 		case 0x32: result = 'b'; break;
 		case 0x21: result = 'c'; break;
  272:	c3 e6       	ldi	r28, 0x63	; 99
- 274:	ee c0       	rjmp	.+476    	; 0x452 <__LOCK_REGION_LENGTH__+0x52>
+ 274:	db c0       	rjmp	.+438    	; 0x42c <__LOCK_REGION_LENGTH__+0x2c>
 		case 0x23: result = 'd'; break;
 		case 0x24: result = 'e'; break;
  276:	c5 e6       	ldi	r28, 0x65	; 101
- 278:	ec c0       	rjmp	.+472    	; 0x452 <__LOCK_REGION_LENGTH__+0x52>
+ 278:	d9 c0       	rjmp	.+434    	; 0x42c <__LOCK_REGION_LENGTH__+0x2c>
 		case 0x2B: result = 'f'; break;
  27a:	c6 e6       	ldi	r28, 0x66	; 102
- 27c:	ea c0       	rjmp	.+468    	; 0x452 <__LOCK_REGION_LENGTH__+0x52>
+ 27c:	d7 c0       	rjmp	.+430    	; 0x42c <__LOCK_REGION_LENGTH__+0x2c>
 		case 0x34: result = 'g'; break;
  27e:	c7 e6       	ldi	r28, 0x67	; 103
- 280:	e8 c0       	rjmp	.+464    	; 0x452 <__LOCK_REGION_LENGTH__+0x52>
+ 280:	d5 c0       	rjmp	.+426    	; 0x42c <__LOCK_REGION_LENGTH__+0x2c>
 		case 0x33: result = 'h'; break;
  282:	c8 e6       	ldi	r28, 0x68	; 104
- 284:	e6 c0       	rjmp	.+460    	; 0x452 <__LOCK_REGION_LENGTH__+0x52>
+ 284:	d3 c0       	rjmp	.+422    	; 0x42c <__LOCK_REGION_LENGTH__+0x2c>
 		case 0x43: result = 'i'; break;
  286:	c9 e6       	ldi	r28, 0x69	; 105
- 288:	e4 c0       	rjmp	.+456    	; 0x452 <__LOCK_REGION_LENGTH__+0x52>
+ 288:	d1 c0       	rjmp	.+418    	; 0x42c <__LOCK_REGION_LENGTH__+0x2c>
 		case 0x3B: result = 'j'; break;
  28a:	ca e6       	ldi	r28, 0x6A	; 106
- 28c:	e2 c0       	rjmp	.+452    	; 0x452 <__LOCK_REGION_LENGTH__+0x52>
+ 28c:	cf c0       	rjmp	.+414    	; 0x42c <__LOCK_REGION_LENGTH__+0x2c>
 		case 0x42: result = 'k'; break;
  28e:	cb e6       	ldi	r28, 0x6B	; 107
- 290:	e0 c0       	rjmp	.+448    	; 0x452 <__LOCK_REGION_LENGTH__+0x52>
+ 290:	cd c0       	rjmp	.+410    	; 0x42c <__LOCK_REGION_LENGTH__+0x2c>
 		case 0x4B: result = 'l'; break;
  292:	cc e6       	ldi	r28, 0x6C	; 108
- 294:	de c0       	rjmp	.+444    	; 0x452 <__LOCK_REGION_LENGTH__+0x52>
+ 294:	cb c0       	rjmp	.+406    	; 0x42c <__LOCK_REGION_LENGTH__+0x2c>
 		case 0x3A: result = 'm'; break;
  296:	cd e6       	ldi	r28, 0x6D	; 109
- 298:	dc c0       	rjmp	.+440    	; 0x452 <__LOCK_REGION_LENGTH__+0x52>
+ 298:	c9 c0       	rjmp	.+402    	; 0x42c <__LOCK_REGION_LENGTH__+0x2c>
 		case 0x31: result = 'n'; break;
  29a:	ce e6       	ldi	r28, 0x6E	; 110
- 29c:	da c0       	rjmp	.+436    	; 0x452 <__LOCK_REGION_LENGTH__+0x52>
+ 29c:	c7 c0       	rjmp	.+398    	; 0x42c <__LOCK_REGION_LENGTH__+0x2c>
 		case 0x44: result = 'o'; break;
  29e:	cf e6       	ldi	r28, 0x6F	; 111
- 2a0:	d8 c0       	rjmp	.+432    	; 0x452 <__LOCK_REGION_LENGTH__+0x52>
+ 2a0:	c5 c0       	rjmp	.+394    	; 0x42c <__LOCK_REGION_LENGTH__+0x2c>
 		case 0x4D: result = 'p'; break;
  2a2:	c0 e7       	ldi	r28, 0x70	; 112
- 2a4:	d6 c0       	rjmp	.+428    	; 0x452 <__LOCK_REGION_LENGTH__+0x52>
+ 2a4:	c3 c0       	rjmp	.+390    	; 0x42c <__LOCK_REGION_LENGTH__+0x2c>
 		case 0x15: result = 'q'; break;
  2a6:	c1 e7       	ldi	r28, 0x71	; 113
- 2a8:	d4 c0       	rjmp	.+424    	; 0x452 <__LOCK_REGION_LENGTH__+0x52>
+ 2a8:	c1 c0       	rjmp	.+386    	; 0x42c <__LOCK_REGION_LENGTH__+0x2c>
 		case 0x2D: result = 'r'; break;
  2aa:	c2 e7       	ldi	r28, 0x72	; 114
- 2ac:	d2 c0       	rjmp	.+420    	; 0x452 <__LOCK_REGION_LENGTH__+0x52>
+ 2ac:	bf c0       	rjmp	.+382    	; 0x42c <__LOCK_REGION_LENGTH__+0x2c>
 		case 0x1B: result = 's'; break;
  2ae:	c3 e7       	ldi	r28, 0x73	; 115
- 2b0:	d0 c0       	rjmp	.+416    	; 0x452 <__LOCK_REGION_LENGTH__+0x52>
+ 2b0:	bd c0       	rjmp	.+378    	; 0x42c <__LOCK_REGION_LENGTH__+0x2c>
 		case 0x2C: result = 't'; break;
  2b2:	c4 e7       	ldi	r28, 0x74	; 116
- 2b4:	ce c0       	rjmp	.+412    	; 0x452 <__LOCK_REGION_LENGTH__+0x52>
+ 2b4:	bb c0       	rjmp	.+374    	; 0x42c <__LOCK_REGION_LENGTH__+0x2c>
 		case 0x3C: result = 'u'; break;
  2b6:	c5 e7       	ldi	r28, 0x75	; 117
- 2b8:	cc c0       	rjmp	.+408    	; 0x452 <__LOCK_REGION_LENGTH__+0x52>
+ 2b8:	b9 c0       	rjmp	.+370    	; 0x42c <__LOCK_REGION_LENGTH__+0x2c>
 		case 0x2A: result = 'v'; break;
  2ba:	c6 e7       	ldi	r28, 0x76	; 118
- 2bc:	ca c0       	rjmp	.+404    	; 0x452 <__LOCK_REGION_LENGTH__+0x52>
+ 2bc:	b7 c0       	rjmp	.+366    	; 0x42c <__LOCK_REGION_LENGTH__+0x2c>
 		case 0x1D: result = 'w'; break;
  2be:	c7 e7       	ldi	r28, 0x77	; 119
- 2c0:	c8 c0       	rjmp	.+400    	; 0x452 <__LOCK_REGION_LENGTH__+0x52>
+ 2c0:	b5 c0       	rjmp	.+362    	; 0x42c <__LOCK_REGION_LENGTH__+0x2c>
 		case 0x22: result = 'x'; break;
  2c2:	c8 e7       	ldi	r28, 0x78	; 120
- 2c4:	c6 c0       	rjmp	.+396    	; 0x452 <__LOCK_REGION_LENGTH__+0x52>
+ 2c4:	b3 c0       	rjmp	.+358    	; 0x42c <__LOCK_REGION_LENGTH__+0x2c>
 		case 0x35: result = 'y'; break;
  2c6:	c9 e7       	ldi	r28, 0x79	; 121
- 2c8:	c4 c0       	rjmp	.+392    	; 0x452 <__LOCK_REGION_LENGTH__+0x52>
+ 2c8:	b1 c0       	rjmp	.+354    	; 0x42c <__LOCK_REGION_LENGTH__+0x2c>
 		case 0x1A: result = 'z'; break;
  2ca:	ca e7       	ldi	r28, 0x7A	; 122
- 2cc:	c2 c0       	rjmp	.+388    	; 0x452 <__LOCK_REGION_LENGTH__+0x52>
+ 2cc:	af c0       	rjmp	.+350    	; 0x42c <__LOCK_REGION_LENGTH__+0x2c>
 		
 		case 0x45: result = kbShift ? ')' : '0'; break;
  2ce:	80 91 72 00 	lds	r24, 0x0072	; 0x800072 <kbShift>
  2d2:	81 11       	cpse	r24, r1
- 2d4:	d8 c0       	rjmp	.+432    	; 0x486 <__stack+0x27>
+ 2d4:	c1 c0       	rjmp	.+386    	; 0x458 <__LOCK_REGION_LENGTH__+0x58>
  2d6:	c0 e3       	ldi	r28, 0x30	; 48
- 2d8:	ff c0       	rjmp	.+510    	; 0x4d8 <__stack+0x79>
+ 2d8:	ed c0       	rjmp	.+474    	; 0x4b4 <__stack+0x55>
 		case 0x16: result = kbShift ? '!' : '1'; break;
  2da:	80 91 72 00 	lds	r24, 0x0072	; 0x800072 <kbShift>
  2de:	81 11       	cpse	r24, r1
- 2e0:	d4 c0       	rjmp	.+424    	; 0x48a <__stack+0x2b>
+ 2e0:	bd c0       	rjmp	.+378    	; 0x45c <__LOCK_REGION_LENGTH__+0x5c>
  2e2:	c1 e3       	ldi	r28, 0x31	; 49
- 2e4:	f9 c0       	rjmp	.+498    	; 0x4d8 <__stack+0x79>
+ 2e4:	e7 c0       	rjmp	.+462    	; 0x4b4 <__stack+0x55>
 		case 0x1E: result = kbShift ? '@' : '2'; break;
  2e6:	80 91 72 00 	lds	r24, 0x0072	; 0x800072 <kbShift>
  2ea:	81 11       	cpse	r24, r1
- 2ec:	d0 c0       	rjmp	.+416    	; 0x48e <__stack+0x2f>
+ 2ec:	b9 c0       	rjmp	.+370    	; 0x460 <__stack+0x1>
  2ee:	c2 e3       	ldi	r28, 0x32	; 50
- 2f0:	f3 c0       	rjmp	.+486    	; 0x4d8 <__stack+0x79>
+ 2f0:	e1 c0       	rjmp	.+450    	; 0x4b4 <__stack+0x55>
 		case 0x26: result = kbShift ? '#' : '3'; break;
  2f2:	80 91 72 00 	lds	r24, 0x0072	; 0x800072 <kbShift>
  2f6:	81 11       	cpse	r24, r1
- 2f8:	cc c0       	rjmp	.+408    	; 0x492 <__stack+0x33>
+ 2f8:	b5 c0       	rjmp	.+362    	; 0x464 <__stack+0x5>
  2fa:	c3 e3       	ldi	r28, 0x33	; 51
- 2fc:	ed c0       	rjmp	.+474    	; 0x4d8 <__stack+0x79>
+ 2fc:	db c0       	rjmp	.+438    	; 0x4b4 <__stack+0x55>
 		case 0x25: result = kbShift ? '$' : '4'; break;
  2fe:	80 91 72 00 	lds	r24, 0x0072	; 0x800072 <kbShift>
  302:	81 11       	cpse	r24, r1
- 304:	c8 c0       	rjmp	.+400    	; 0x496 <__stack+0x37>
+ 304:	b1 c0       	rjmp	.+354    	; 0x468 <__stack+0x9>
  306:	c4 e3       	ldi	r28, 0x34	; 52
- 308:	e7 c0       	rjmp	.+462    	; 0x4d8 <__stack+0x79>
+ 308:	d5 c0       	rjmp	.+426    	; 0x4b4 <__stack+0x55>
 		case 0x2E: result = kbShift ? '%' : '5'; break;
  30a:	80 91 72 00 	lds	r24, 0x0072	; 0x800072 <kbShift>
  30e:	81 11       	cpse	r24, r1
- 310:	c4 c0       	rjmp	.+392    	; 0x49a <__stack+0x3b>
+ 310:	ad c0       	rjmp	.+346    	; 0x46c <__stack+0xd>
  312:	c5 e3       	ldi	r28, 0x35	; 53
- 314:	e1 c0       	rjmp	.+450    	; 0x4d8 <__stack+0x79>
+ 314:	cf c0       	rjmp	.+414    	; 0x4b4 <__stack+0x55>
 		case 0x36: result = kbShift ? '^' : '6'; break;
  316:	80 91 72 00 	lds	r24, 0x0072	; 0x800072 <kbShift>
  31a:	81 11       	cpse	r24, r1
- 31c:	c0 c0       	rjmp	.+384    	; 0x49e <__stack+0x3f>
- 31e:	dc c0       	rjmp	.+440    	; 0x4d8 <__stack+0x79>
+ 31c:	a9 c0       	rjmp	.+338    	; 0x470 <__stack+0x11>
+ 31e:	ca c0       	rjmp	.+404    	; 0x4b4 <__stack+0x55>
 		case 0x3D: result = kbShift ? '&' : '7'; break;
  320:	80 91 72 00 	lds	r24, 0x0072	; 0x800072 <kbShift>
  324:	81 11       	cpse	r24, r1
- 326:	bd c0       	rjmp	.+378    	; 0x4a2 <__stack+0x43>
+ 326:	a6 c0       	rjmp	.+332    	; 0x474 <__stack+0x15>
  328:	c7 e3       	ldi	r28, 0x37	; 55
- 32a:	d6 c0       	rjmp	.+428    	; 0x4d8 <__stack+0x79>
+ 32a:	c4 c0       	rjmp	.+392    	; 0x4b4 <__stack+0x55>
 		case 0x3E: result = kbShift ? '*' : '8'; break;
  32c:	80 91 72 00 	lds	r24, 0x0072	; 0x800072 <kbShift>
  330:	81 11       	cpse	r24, r1
- 332:	b9 c0       	rjmp	.+370    	; 0x4a6 <__stack+0x47>
+ 332:	a2 c0       	rjmp	.+324    	; 0x478 <__stack+0x19>
  334:	c8 e3       	ldi	r28, 0x38	; 56
- 336:	d0 c0       	rjmp	.+416    	; 0x4d8 <__stack+0x79>
+ 336:	be c0       	rjmp	.+380    	; 0x4b4 <__stack+0x55>
 		case 0x46: result = kbShift ? '(' : '9'; break;
  338:	80 91 72 00 	lds	r24, 0x0072	; 0x800072 <kbShift>
  33c:	81 11       	cpse	r24, r1
- 33e:	b5 c0       	rjmp	.+362    	; 0x4aa <__stack+0x4b>
+ 33e:	9e c0       	rjmp	.+316    	; 0x47c <__stack+0x1d>
  340:	c9 e3       	ldi	r28, 0x39	; 57
- 342:	ca c0       	rjmp	.+404    	; 0x4d8 <__stack+0x79>
+ 342:	b8 c0       	rjmp	.+368    	; 0x4b4 <__stack+0x55>
 		
 		case 0x0E: result = kbShift ? '~' : '`'; break;
  344:	80 91 72 00 	lds	r24, 0x0072	; 0x800072 <kbShift>
  348:	81 11       	cpse	r24, r1
- 34a:	b1 c0       	rjmp	.+354    	; 0x4ae <__stack+0x4f>
+ 34a:	9a c0       	rjmp	.+308    	; 0x480 <__stack+0x21>
  34c:	c0 e6       	ldi	r28, 0x60	; 96
- 34e:	c4 c0       	rjmp	.+392    	; 0x4d8 <__stack+0x79>
+ 34e:	b2 c0       	rjmp	.+356    	; 0x4b4 <__stack+0x55>
 		case 0x4E: result = kbShift ? '_' : '-'; break;
  350:	80 91 72 00 	lds	r24, 0x0072	; 0x800072 <kbShift>
  354:	81 11       	cpse	r24, r1
- 356:	ad c0       	rjmp	.+346    	; 0x4b2 <__stack+0x53>
+ 356:	96 c0       	rjmp	.+300    	; 0x484 <__stack+0x25>
  358:	cd e2       	ldi	r28, 0x2D	; 45
- 35a:	be c0       	rjmp	.+380    	; 0x4d8 <__stack+0x79>
+ 35a:	ac c0       	rjmp	.+344    	; 0x4b4 <__stack+0x55>
 		case 0x55: result = kbShift ? '+' : '='; break;
  35c:	80 91 72 00 	lds	r24, 0x0072	; 0x800072 <kbShift>
  360:	81 11       	cpse	r24, r1
- 362:	a9 c0       	rjmp	.+338    	; 0x4b6 <__stack+0x57>
+ 362:	92 c0       	rjmp	.+292    	; 0x488 <__stack+0x29>
  364:	cd e3       	ldi	r28, 0x3D	; 61
- 366:	b8 c0       	rjmp	.+368    	; 0x4d8 <__stack+0x79>
+ 366:	a6 c0       	rjmp	.+332    	; 0x4b4 <__stack+0x55>
 		case 0x5D: result = kbShift ? '|' : '\\'; break;
  368:	80 91 72 00 	lds	r24, 0x0072	; 0x800072 <kbShift>
  36c:	81 11       	cpse	r24, r1
- 36e:	a5 c0       	rjmp	.+330    	; 0x4ba <__stack+0x5b>
+ 36e:	8e c0       	rjmp	.+284    	; 0x48c <__stack+0x2d>
  370:	cc e5       	ldi	r28, 0x5C	; 92
- 372:	b2 c0       	rjmp	.+356    	; 0x4d8 <__stack+0x79>
+ 372:	a0 c0       	rjmp	.+320    	; 0x4b4 <__stack+0x55>
 		case 0x54: result = kbShift ? '{' : '['; break;
  374:	80 91 72 00 	lds	r24, 0x0072	; 0x800072 <kbShift>
  378:	81 11       	cpse	r24, r1
- 37a:	a1 c0       	rjmp	.+322    	; 0x4be <__stack+0x5f>
+ 37a:	8a c0       	rjmp	.+276    	; 0x490 <__stack+0x31>
  37c:	cb e5       	ldi	r28, 0x5B	; 91
- 37e:	ac c0       	rjmp	.+344    	; 0x4d8 <__stack+0x79>
+ 37e:	9a c0       	rjmp	.+308    	; 0x4b4 <__stack+0x55>
 		case 0x5B: result = kbShift ? '}' : ']'; break;
  380:	80 91 72 00 	lds	r24, 0x0072	; 0x800072 <kbShift>
  384:	81 11       	cpse	r24, r1
- 386:	9d c0       	rjmp	.+314    	; 0x4c2 <__stack+0x63>
+ 386:	86 c0       	rjmp	.+268    	; 0x494 <__stack+0x35>
  388:	cd e5       	ldi	r28, 0x5D	; 93
- 38a:	a6 c0       	rjmp	.+332    	; 0x4d8 <__stack+0x79>
+ 38a:	94 c0       	rjmp	.+296    	; 0x4b4 <__stack+0x55>
 		case 0x4C: result = kbShift ? ':' : ';'; break;
  38c:	80 91 72 00 	lds	r24, 0x0072	; 0x800072 <kbShift>
  390:	81 11       	cpse	r24, r1
- 392:	99 c0       	rjmp	.+306    	; 0x4c6 <__stack+0x67>
+ 392:	82 c0       	rjmp	.+260    	; 0x498 <__stack+0x39>
  394:	cb e3       	ldi	r28, 0x3B	; 59
- 396:	a0 c0       	rjmp	.+320    	; 0x4d8 <__stack+0x79>
+ 396:	8e c0       	rjmp	.+284    	; 0x4b4 <__stack+0x55>
 		case 0x52: result = kbShift ? '\"' : '\''; break;
  398:	80 91 72 00 	lds	r24, 0x0072	; 0x800072 <kbShift>
  39c:	81 11       	cpse	r24, r1
- 39e:	95 c0       	rjmp	.+298    	; 0x4ca <__stack+0x6b>
+ 39e:	7e c0       	rjmp	.+252    	; 0x49c <__stack+0x3d>
  3a0:	c7 e2       	ldi	r28, 0x27	; 39
- 3a2:	9a c0       	rjmp	.+308    	; 0x4d8 <__stack+0x79>
+ 3a2:	88 c0       	rjmp	.+272    	; 0x4b4 <__stack+0x55>
 		case 0x41: result = kbShift ? '<' : ','; break;
  3a4:	80 91 72 00 	lds	r24, 0x0072	; 0x800072 <kbShift>
  3a8:	81 11       	cpse	r24, r1
- 3aa:	91 c0       	rjmp	.+290    	; 0x4ce <__stack+0x6f>
+ 3aa:	7a c0       	rjmp	.+244    	; 0x4a0 <__stack+0x41>
  3ac:	cc e2       	ldi	r28, 0x2C	; 44
- 3ae:	94 c0       	rjmp	.+296    	; 0x4d8 <__stack+0x79>
+ 3ae:	82 c0       	rjmp	.+260    	; 0x4b4 <__stack+0x55>
 		case 0x49: result = kbShift ? '>' : '.'; break;
  3b0:	80 91 72 00 	lds	r24, 0x0072	; 0x800072 <kbShift>
  3b4:	81 11       	cpse	r24, r1
- 3b6:	8d c0       	rjmp	.+282    	; 0x4d2 <__stack+0x73>
+ 3b6:	76 c0       	rjmp	.+236    	; 0x4a4 <__stack+0x45>
  3b8:	ce e2       	ldi	r28, 0x2E	; 46
- 3ba:	8e c0       	rjmp	.+284    	; 0x4d8 <__stack+0x79>
+ 3ba:	7c c0       	rjmp	.+248    	; 0x4b4 <__stack+0x55>
 		case 0x4A: result = kbShift ? '?' : '/'; break;
  3bc:	80 91 72 00 	lds	r24, 0x0072	; 0x800072 <kbShift>
  3c0:	81 11       	cpse	r24, r1
- 3c2:	89 c0       	rjmp	.+274    	; 0x4d6 <__stack+0x77>
+ 3c2:	72 c0       	rjmp	.+228    	; 0x4a8 <__stack+0x49>
  3c4:	cf e2       	ldi	r28, 0x2F	; 47
- 3c6:	88 c0       	rjmp	.+272    	; 0x4d8 <__stack+0x79>
+ 3c6:	76 c0       	rjmp	.+236    	; 0x4b4 <__stack+0x55>
 		
-		case 0x0D: result = '\t'; break;
-		case 0x5A: result = '\n'; break;
-		case 0x66: result = BACKSPAGE; break;
-		case 0x69: result = END; break;
- 3c8:	c7 e8       	ldi	r28, 0x87	; 135
- 3ca:	86 c0       	rjmp	.+268    	; 0x4d8 <__stack+0x79>
-		case 0x6B: result = LEFT; break;
- 3cc:	c3 e8       	ldi	r28, 0x83	; 131
- 3ce:	84 c0       	rjmp	.+264    	; 0x4d8 <__stack+0x79>
-		case 0x6C: result = HOME; break;
- 3d0:	c8 e8       	ldi	r28, 0x88	; 136
- 3d2:	82 c0       	rjmp	.+260    	; 0x4d8 <__stack+0x79>
-		case 0x70: result = INSERT; break;
- 3d4:	c9 e8       	ldi	r28, 0x89	; 137
- 3d6:	80 c0       	rjmp	.+256    	; 0x4d8 <__stack+0x79>
-		case 0x71: result = DEL; break;
- 3d8:	ca e8       	ldi	r28, 0x8A	; 138
- 3da:	7e c0       	rjmp	.+252    	; 0x4d8 <__stack+0x79>
-		case 0x72: result = DOWN; break;
- 3dc:	c2 e8       	ldi	r28, 0x82	; 130
- 3de:	7c c0       	rjmp	.+248    	; 0x4d8 <__stack+0x79>
-		case 0x74: result = RIGHT; break;
- 3e0:	c4 e8       	ldi	r28, 0x84	; 132
- 3e2:	7a c0       	rjmp	.+244    	; 0x4d8 <__stack+0x79>
-		case 0x75: result = UP; break;
- 3e4:	c1 e8       	ldi	r28, 0x81	; 129
- 3e6:	78 c0       	rjmp	.+240    	; 0x4d8 <__stack+0x79>
-		case 0x76: result = ESC; break;
- 3e8:	cb e8       	ldi	r28, 0x8B	; 139
- 3ea:	76 c0       	rjmp	.+236    	; 0x4d8 <__stack+0x79>
-		case 0x7A: result = PAGEDOWN; break;
- 3ec:	c5 e8       	ldi	r28, 0x85	; 133
- 3ee:	74 c0       	rjmp	.+232    	; 0x4d8 <__stack+0x79>
-		case 0x7D: result = PAGEUP; break;
- 3f0:	c6 e8       	ldi	r28, 0x86	; 134
- 3f2:	72 c0       	rjmp	.+228    	; 0x4d8 <__stack+0x79>
-		
-		case 0x58: 
-			result = kbCapslock ? CAPLOCK_ON : CAPLOCK_OFF; 
- 3f4:	20 91 6f 00 	lds	r18, 0x006F	; 0x80006f <kbCapslock>
- 3f8:	21 11       	cpse	r18, r1
- 3fa:	02 c0       	rjmp	.+4      	; 0x400 <__LOCK_REGION_LENGTH__>
- 3fc:	cd e8       	ldi	r28, 0x8D	; 141
- 3fe:	01 c0       	rjmp	.+2      	; 0x402 <__LOCK_REGION_LENGTH__+0x2>
- 400:	cc e8       	ldi	r28, 0x8C	; 140
+		case 0x0D: result = '\t';		break;
+		case 0x5A: result = '\n';		break;
+		case 0x29: result = ' ';		break;
+		case 0x66: result = BACKSPAGE;	break;
+ 3c8:	c0 e8       	ldi	r28, 0x80	; 128
+ 3ca:	74 c0       	rjmp	.+232    	; 0x4b4 <__stack+0x55>
+		case 0x69: result = END;		break;
+ 3cc:	c7 e8       	ldi	r28, 0x87	; 135
+ 3ce:	72 c0       	rjmp	.+228    	; 0x4b4 <__stack+0x55>
+		case 0x6B: result = LEFT;		break;
+ 3d0:	c3 e8       	ldi	r28, 0x83	; 131
+ 3d2:	70 c0       	rjmp	.+224    	; 0x4b4 <__stack+0x55>
+		case 0x6C: result = HOME;		break;
+ 3d4:	c8 e8       	ldi	r28, 0x88	; 136
+ 3d6:	6e c0       	rjmp	.+220    	; 0x4b4 <__stack+0x55>
+		case 0x70: result = INSERT;		break;
+ 3d8:	c9 e8       	ldi	r28, 0x89	; 137
+ 3da:	6c c0       	rjmp	.+216    	; 0x4b4 <__stack+0x55>
+		case 0x71: result = DEL;		break;
+ 3dc:	ca e8       	ldi	r28, 0x8A	; 138
+ 3de:	6a c0       	rjmp	.+212    	; 0x4b4 <__stack+0x55>
+		case 0x72: result = DOWN;		break;
+ 3e0:	c2 e8       	ldi	r28, 0x82	; 130
+ 3e2:	68 c0       	rjmp	.+208    	; 0x4b4 <__stack+0x55>
+		case 0x74: result = RIGHT;		break;
+ 3e4:	c4 e8       	ldi	r28, 0x84	; 132
+ 3e6:	66 c0       	rjmp	.+204    	; 0x4b4 <__stack+0x55>
+		case 0x75: result = UP;			break;
+ 3e8:	c1 e8       	ldi	r28, 0x81	; 129
+ 3ea:	64 c0       	rjmp	.+200    	; 0x4b4 <__stack+0x55>
+		case 0x76: result = ESC;		break;
+ 3ec:	cb e8       	ldi	r28, 0x8B	; 139
+ 3ee:	62 c0       	rjmp	.+196    	; 0x4b4 <__stack+0x55>
+		case 0x7A: result = PAGEDOWN;	break;
+ 3f0:	c5 e8       	ldi	r28, 0x85	; 133
+ 3f2:	60 c0       	rjmp	.+192    	; 0x4b4 <__stack+0x55>
+		case 0x7D: result = PAGEUP;		break;
+ 3f4:	c6 e8       	ldi	r28, 0x86	; 134
+ 3f6:	5e c0       	rjmp	.+188    	; 0x4b4 <__stack+0x55>
+		case 0x58:
 			if (kbCapslock){
- 402:	20 91 6f 00 	lds	r18, 0x006F	; 0x80006f <kbCapslock>
- 406:	22 23       	and	r18, r18
- 408:	19 f0       	breq	.+6      	; 0x410 <__LOCK_REGION_LENGTH__+0x10>
+ 3f8:	20 91 6f 00 	lds	r18, 0x006F	; 0x80006f <kbCapslock>
+ 3fc:	22 23       	and	r18, r18
+ 3fe:	19 f0       	breq	.+6      	; 0x406 <__LOCK_REGION_LENGTH__+0x6>
 				setLight(0x04);
- 40a:	64 e0       	ldi	r22, 0x04	; 4
- 40c:	07 df       	rcall	.-498    	; 0x21c <_ZN8KeyBoard8setLightEh>
- 40e:	1c c0       	rjmp	.+56     	; 0x448 <__LOCK_REGION_LENGTH__+0x48>
+ 400:	64 e0       	ldi	r22, 0x04	; 4
+ 402:	0c df       	rcall	.-488    	; 0x21c <_ZN8KeyBoard8setLightEh>
+ 404:	57 c0       	rjmp	.+174    	; 0x4b4 <__stack+0x55>
 			}
 			else{
 				setLight(0x00);
- 410:	60 e0       	ldi	r22, 0x00	; 0
- 412:	04 df       	rcall	.-504    	; 0x21c <_ZN8KeyBoard8setLightEh>
- 414:	19 c0       	rjmp	.+50     	; 0x448 <__LOCK_REGION_LENGTH__+0x48>
-	#else
-		//round up by default
-		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
-	#endif
-
-	__builtin_avr_delay_cycles(__ticks_dc);
- 416:	2f ef       	ldi	r18, 0xFF	; 255
- 418:	84 e3       	ldi	r24, 0x34	; 52
- 41a:	9c e0       	ldi	r25, 0x0C	; 12
- 41c:	21 50       	subi	r18, 0x01	; 1
- 41e:	80 40       	sbci	r24, 0x00	; 0
- 420:	90 40       	sbci	r25, 0x00	; 0
- 422:	e1 f7       	brne	.-8      	; 0x41c <__LOCK_REGION_LENGTH__+0x1c>
- 424:	00 c0       	rjmp	.+0      	; 0x426 <__LOCK_REGION_LENGTH__+0x26>
- 426:	00 00       	nop
-			}
-			break;
-		
-		default:
-			_delay_ms(500);
-			bufferPos = 0;
- 428:	10 92 75 00 	sts	0x0075, r1	; 0x800075 <bufferPos>
-			kbShift = false;
- 42c:	10 92 72 00 	sts	0x0072, r1	; 0x800072 <kbShift>
-			kbCtrl = false;
- 430:	10 92 71 00 	sts	0x0071, r1	; 0x800071 <kbCtrl>
-			kbAlt = false;
- 434:	10 92 70 00 	sts	0x0070, r1	; 0x800070 <kbAlt>
-			kbExtend = false;
- 438:	10 92 74 00 	sts	0x0074, r1	; 0x800074 <kbExtend>
-			kbRelease = false;
- 43c:	10 92 73 00 	sts	0x0073, r1	; 0x800073 <kbRelease>
-			kbCapslock = false;
- 440:	10 92 6f 00 	sts	0x006F, r1	; 0x80006f <kbCapslock>
- 444:	01 c0       	rjmp	.+2      	; 0x448 <__LOCK_REGION_LENGTH__+0x48>
+ 406:	60 e0       	ldi	r22, 0x00	; 0
+ 408:	09 df       	rcall	.-494    	; 0x21c <_ZN8KeyBoard8setLightEh>
+ 40a:	54 c0       	rjmp	.+168    	; 0x4b4 <__stack+0x55>
+ 40c:	2f ef       	ldi	r18, 0xFF	; 255
+ 40e:	84 e3       	ldi	r24, 0x34	; 52
+ 410:	9c e0       	ldi	r25, 0x0C	; 12
+ 412:	21 50       	subi	r18, 0x01	; 1
+ 414:	80 40       	sbci	r24, 0x00	; 0
+ 416:	90 40       	sbci	r25, 0x00	; 0
+ 418:	e1 f7       	brne	.-8      	; 0x412 <__LOCK_REGION_LENGTH__+0x12>
+ 41a:	00 c0       	rjmp	.+0      	; 0x41c <__LOCK_REGION_LENGTH__+0x1c>
+ 41c:	00 00       	nop
+ 41e:	01 c0       	rjmp	.+2      	; 0x422 <__LOCK_REGION_LENGTH__+0x22>
 
 uint8_t KeyBoard::read(){
 	uint8_t result;
 	result = charBuffer;
 	switch(result){
 		case 0x1C: result = 'a'; break;
- 446:	c1 e6       	ldi	r28, 0x61	; 97
-			kbExtend = false;
-			kbRelease = false;
-			kbCapslock = false;
+ 420:	c1 e6       	ldi	r28, 0x61	; 97
+		
+		default:
+			_delay_ms(500);
 	}
 	
 	if (((result>= 'a') && (result <= 'z')) && ((kbShift && !kbCapslock) || (!kbShift && kbCapslock))){
- 448:	8f e9       	ldi	r24, 0x9F	; 159
- 44a:	8c 0f       	add	r24, r28
- 44c:	8a 31       	cpi	r24, 0x1A	; 26
- 44e:	08 f0       	brcs	.+2      	; 0x452 <__LOCK_REGION_LENGTH__+0x52>
- 450:	43 c0       	rjmp	.+134    	; 0x4d8 <__stack+0x79>
- 452:	80 91 72 00 	lds	r24, 0x0072	; 0x800072 <kbShift>
- 456:	88 23       	and	r24, r24
- 458:	21 f0       	breq	.+8      	; 0x462 <__stack+0x3>
- 45a:	80 91 6f 00 	lds	r24, 0x006F	; 0x80006f <kbCapslock>
- 45e:	88 23       	and	r24, r24
- 460:	41 f0       	breq	.+16     	; 0x472 <__stack+0x13>
- 462:	80 91 72 00 	lds	r24, 0x0072	; 0x800072 <kbShift>
- 466:	81 11       	cpse	r24, r1
- 468:	37 c0       	rjmp	.+110    	; 0x4d8 <__stack+0x79>
- 46a:	80 91 6f 00 	lds	r24, 0x006F	; 0x80006f <kbCapslock>
- 46e:	88 23       	and	r24, r24
- 470:	99 f1       	breq	.+102    	; 0x4d8 <__stack+0x79>
+ 422:	8f e9       	ldi	r24, 0x9F	; 159
+ 424:	8c 0f       	add	r24, r28
+ 426:	8a 31       	cpi	r24, 0x1A	; 26
+ 428:	08 f0       	brcs	.+2      	; 0x42c <__LOCK_REGION_LENGTH__+0x2c>
+ 42a:	44 c0       	rjmp	.+136    	; 0x4b4 <__stack+0x55>
+ 42c:	80 91 72 00 	lds	r24, 0x0072	; 0x800072 <kbShift>
+ 430:	88 23       	and	r24, r24
+ 432:	21 f0       	breq	.+8      	; 0x43c <__LOCK_REGION_LENGTH__+0x3c>
+ 434:	80 91 6f 00 	lds	r24, 0x006F	; 0x80006f <kbCapslock>
+ 438:	88 23       	and	r24, r24
+ 43a:	41 f0       	breq	.+16     	; 0x44c <__LOCK_REGION_LENGTH__+0x4c>
+ 43c:	80 91 72 00 	lds	r24, 0x0072	; 0x800072 <kbShift>
+ 440:	81 11       	cpse	r24, r1
+ 442:	38 c0       	rjmp	.+112    	; 0x4b4 <__stack+0x55>
+ 444:	80 91 6f 00 	lds	r24, 0x006F	; 0x80006f <kbCapslock>
+ 448:	88 23       	and	r24, r24
+ 44a:	a1 f1       	breq	.+104    	; 0x4b4 <__stack+0x55>
 		result = result + ('A' - 'a');
- 472:	c0 52       	subi	r28, 0x20	; 32
- 474:	31 c0       	rjmp	.+98     	; 0x4d8 <__stack+0x79>
+ 44c:	c0 52       	subi	r28, 0x20	; 32
+ 44e:	32 c0       	rjmp	.+100    	; 0x4b4 <__stack+0x55>
+		case 0x52: result = kbShift ? '\"' : '\''; break;
+		case 0x41: result = kbShift ? '<' : ','; break;
+		case 0x49: result = kbShift ? '>' : '.'; break;
+		case 0x4A: result = kbShift ? '?' : '/'; break;
+		
+		case 0x0D: result = '\t';		break;
+ 450:	c9 e0       	ldi	r28, 0x09	; 9
+ 452:	30 c0       	rjmp	.+96     	; 0x4b4 <__stack+0x55>
+		case 0x5A: result = '\n';		break;
+		case 0x29: result = ' ';		break;
+ 454:	c0 e2       	ldi	r28, 0x20	; 32
+ 456:	2e c0       	rjmp	.+92     	; 0x4b4 <__stack+0x55>
+		case 0x1D: result = 'w'; break;
+		case 0x22: result = 'x'; break;
+		case 0x35: result = 'y'; break;
+		case 0x1A: result = 'z'; break;
+		
+		case 0x45: result = kbShift ? ')' : '0'; break;
+ 458:	c9 e2       	ldi	r28, 0x29	; 41
+ 45a:	2c c0       	rjmp	.+88     	; 0x4b4 <__stack+0x55>
+		case 0x16: result = kbShift ? '!' : '1'; break;
+ 45c:	c1 e2       	ldi	r28, 0x21	; 33
+ 45e:	2a c0       	rjmp	.+84     	; 0x4b4 <__stack+0x55>
+		case 0x1E: result = kbShift ? '@' : '2'; break;
+ 460:	c0 e4       	ldi	r28, 0x40	; 64
+ 462:	28 c0       	rjmp	.+80     	; 0x4b4 <__stack+0x55>
+		case 0x26: result = kbShift ? '#' : '3'; break;
+ 464:	c3 e2       	ldi	r28, 0x23	; 35
+ 466:	26 c0       	rjmp	.+76     	; 0x4b4 <__stack+0x55>
+		case 0x25: result = kbShift ? '$' : '4'; break;
+ 468:	c4 e2       	ldi	r28, 0x24	; 36
+ 46a:	24 c0       	rjmp	.+72     	; 0x4b4 <__stack+0x55>
+		case 0x2E: result = kbShift ? '%' : '5'; break;
+ 46c:	c5 e2       	ldi	r28, 0x25	; 37
+ 46e:	22 c0       	rjmp	.+68     	; 0x4b4 <__stack+0x55>
+		case 0x36: result = kbShift ? '^' : '6'; break;
+ 470:	ce e5       	ldi	r28, 0x5E	; 94
+ 472:	20 c0       	rjmp	.+64     	; 0x4b4 <__stack+0x55>
+		case 0x3D: result = kbShift ? '&' : '7'; break;
+ 474:	c6 e2       	ldi	r28, 0x26	; 38
+ 476:	1e c0       	rjmp	.+60     	; 0x4b4 <__stack+0x55>
+		case 0x3E: result = kbShift ? '*' : '8'; break;
+ 478:	ca e2       	ldi	r28, 0x2A	; 42
+ 47a:	1c c0       	rjmp	.+56     	; 0x4b4 <__stack+0x55>
+		case 0x46: result = kbShift ? '(' : '9'; break;
+ 47c:	c8 e2       	ldi	r28, 0x28	; 40
+ 47e:	1a c0       	rjmp	.+52     	; 0x4b4 <__stack+0x55>
+		
+		case 0x0E: result = kbShift ? '~' : '`'; break;
+ 480:	ce e7       	ldi	r28, 0x7E	; 126
+ 482:	18 c0       	rjmp	.+48     	; 0x4b4 <__stack+0x55>
+		case 0x4E: result = kbShift ? '_' : '-'; break;
+ 484:	cf e5       	ldi	r28, 0x5F	; 95
+ 486:	16 c0       	rjmp	.+44     	; 0x4b4 <__stack+0x55>
+		case 0x55: result = kbShift ? '+' : '='; break;
+ 488:	cb e2       	ldi	r28, 0x2B	; 43
+ 48a:	14 c0       	rjmp	.+40     	; 0x4b4 <__stack+0x55>
+		case 0x5D: result = kbShift ? '|' : '\\'; break;
+ 48c:	cc e7       	ldi	r28, 0x7C	; 124
+ 48e:	12 c0       	rjmp	.+36     	; 0x4b4 <__stack+0x55>
+		case 0x54: result = kbShift ? '{' : '['; break;
+ 490:	cb e7       	ldi	r28, 0x7B	; 123
+ 492:	10 c0       	rjmp	.+32     	; 0x4b4 <__stack+0x55>
+		case 0x5B: result = kbShift ? '}' : ']'; break;
+ 494:	cd e7       	ldi	r28, 0x7D	; 125
+ 496:	0e c0       	rjmp	.+28     	; 0x4b4 <__stack+0x55>
+		case 0x4C: result = kbShift ? ':' : ';'; break;
+ 498:	ca e3       	ldi	r28, 0x3A	; 58
+ 49a:	0c c0       	rjmp	.+24     	; 0x4b4 <__stack+0x55>
+		case 0x52: result = kbShift ? '\"' : '\''; break;
+ 49c:	c2 e2       	ldi	r28, 0x22	; 34
+ 49e:	0a c0       	rjmp	.+20     	; 0x4b4 <__stack+0x55>
+		case 0x41: result = kbShift ? '<' : ','; break;
+ 4a0:	cc e3       	ldi	r28, 0x3C	; 60
+ 4a2:	08 c0       	rjmp	.+16     	; 0x4b4 <__stack+0x55>
+		case 0x49: result = kbShift ? '>' : '.'; break;
+ 4a4:	ce e3       	ldi	r28, 0x3E	; 62
+ 4a6:	06 c0       	rjmp	.+12     	; 0x4b4 <__stack+0x55>
+		case 0x4A: result = kbShift ? '?' : '/'; break;
+ 4a8:	cf e3       	ldi	r28, 0x3F	; 63
+ 4aa:	04 c0       	rjmp	.+8      	; 0x4b4 <__stack+0x55>
 uint8_t KeyBoard::read(){
 	uint8_t result;
 	result = charBuffer;
 	switch(result){
 		case 0x1C: result = 'a'; break;
 		case 0x32: result = 'b'; break;
- 476:	c2 e6       	ldi	r28, 0x62	; 98
- 478:	ec cf       	rjmp	.-40     	; 0x452 <__LOCK_REGION_LENGTH__+0x52>
+ 4ac:	c2 e6       	ldi	r28, 0x62	; 98
+ 4ae:	be cf       	rjmp	.-132    	; 0x42c <__LOCK_REGION_LENGTH__+0x2c>
 		case 0x21: result = 'c'; break;
 		case 0x23: result = 'd'; break;
- 47a:	c4 e6       	ldi	r28, 0x64	; 100
- 47c:	ea cf       	rjmp	.-44     	; 0x452 <__LOCK_REGION_LENGTH__+0x52>
-		case 0x52: result = kbShift ? '\"' : '\''; break;
-		case 0x41: result = kbShift ? '<' : ','; break;
-		case 0x49: result = kbShift ? '>' : '.'; break;
-		case 0x4A: result = kbShift ? '?' : '/'; break;
-		
-		case 0x0D: result = '\t'; break;
- 47e:	c9 e0       	ldi	r28, 0x09	; 9
- 480:	2b c0       	rjmp	.+86     	; 0x4d8 <__stack+0x79>
-		case 0x5A: result = '\n'; break;
-		case 0x66: result = BACKSPAGE; break;
- 482:	c0 e8       	ldi	r28, 0x80	; 128
- 484:	29 c0       	rjmp	.+82     	; 0x4d8 <__stack+0x79>
-		case 0x1D: result = 'w'; break;
-		case 0x22: result = 'x'; break;
-		case 0x35: result = 'y'; break;
-		case 0x1A: result = 'z'; break;
-		
-		case 0x45: result = kbShift ? ')' : '0'; break;
- 486:	c9 e2       	ldi	r28, 0x29	; 41
- 488:	27 c0       	rjmp	.+78     	; 0x4d8 <__stack+0x79>
-		case 0x16: result = kbShift ? '!' : '1'; break;
- 48a:	c1 e2       	ldi	r28, 0x21	; 33
- 48c:	25 c0       	rjmp	.+74     	; 0x4d8 <__stack+0x79>
-		case 0x1E: result = kbShift ? '@' : '2'; break;
- 48e:	c0 e4       	ldi	r28, 0x40	; 64
- 490:	23 c0       	rjmp	.+70     	; 0x4d8 <__stack+0x79>
-		case 0x26: result = kbShift ? '#' : '3'; break;
- 492:	c3 e2       	ldi	r28, 0x23	; 35
- 494:	21 c0       	rjmp	.+66     	; 0x4d8 <__stack+0x79>
-		case 0x25: result = kbShift ? '$' : '4'; break;
- 496:	c4 e2       	ldi	r28, 0x24	; 36
- 498:	1f c0       	rjmp	.+62     	; 0x4d8 <__stack+0x79>
-		case 0x2E: result = kbShift ? '%' : '5'; break;
- 49a:	c5 e2       	ldi	r28, 0x25	; 37
- 49c:	1d c0       	rjmp	.+58     	; 0x4d8 <__stack+0x79>
-		case 0x36: result = kbShift ? '^' : '6'; break;
- 49e:	ce e5       	ldi	r28, 0x5E	; 94
- 4a0:	1b c0       	rjmp	.+54     	; 0x4d8 <__stack+0x79>
-		case 0x3D: result = kbShift ? '&' : '7'; break;
- 4a2:	c6 e2       	ldi	r28, 0x26	; 38
- 4a4:	19 c0       	rjmp	.+50     	; 0x4d8 <__stack+0x79>
-		case 0x3E: result = kbShift ? '*' : '8'; break;
- 4a6:	ca e2       	ldi	r28, 0x2A	; 42
- 4a8:	17 c0       	rjmp	.+46     	; 0x4d8 <__stack+0x79>
-		case 0x46: result = kbShift ? '(' : '9'; break;
- 4aa:	c8 e2       	ldi	r28, 0x28	; 40
- 4ac:	15 c0       	rjmp	.+42     	; 0x4d8 <__stack+0x79>
-		
-		case 0x0E: result = kbShift ? '~' : '`'; break;
- 4ae:	ce e7       	ldi	r28, 0x7E	; 126
- 4b0:	13 c0       	rjmp	.+38     	; 0x4d8 <__stack+0x79>
-		case 0x4E: result = kbShift ? '_' : '-'; break;
- 4b2:	cf e5       	ldi	r28, 0x5F	; 95
- 4b4:	11 c0       	rjmp	.+34     	; 0x4d8 <__stack+0x79>
-		case 0x55: result = kbShift ? '+' : '='; break;
- 4b6:	cb e2       	ldi	r28, 0x2B	; 43
- 4b8:	0f c0       	rjmp	.+30     	; 0x4d8 <__stack+0x79>
-		case 0x5D: result = kbShift ? '|' : '\\'; break;
- 4ba:	cc e7       	ldi	r28, 0x7C	; 124
- 4bc:	0d c0       	rjmp	.+26     	; 0x4d8 <__stack+0x79>
-		case 0x54: result = kbShift ? '{' : '['; break;
- 4be:	cb e7       	ldi	r28, 0x7B	; 123
- 4c0:	0b c0       	rjmp	.+22     	; 0x4d8 <__stack+0x79>
-		case 0x5B: result = kbShift ? '}' : ']'; break;
- 4c2:	cd e7       	ldi	r28, 0x7D	; 125
- 4c4:	09 c0       	rjmp	.+18     	; 0x4d8 <__stack+0x79>
-		case 0x4C: result = kbShift ? ':' : ';'; break;
- 4c6:	ca e3       	ldi	r28, 0x3A	; 58
- 4c8:	07 c0       	rjmp	.+14     	; 0x4d8 <__stack+0x79>
-		case 0x52: result = kbShift ? '\"' : '\''; break;
- 4ca:	c2 e2       	ldi	r28, 0x22	; 34
- 4cc:	05 c0       	rjmp	.+10     	; 0x4d8 <__stack+0x79>
-		case 0x41: result = kbShift ? '<' : ','; break;
- 4ce:	cc e3       	ldi	r28, 0x3C	; 60
- 4d0:	03 c0       	rjmp	.+6      	; 0x4d8 <__stack+0x79>
-		case 0x49: result = kbShift ? '>' : '.'; break;
- 4d2:	ce e3       	ldi	r28, 0x3E	; 62
- 4d4:	01 c0       	rjmp	.+2      	; 0x4d8 <__stack+0x79>
-		case 0x4A: result = kbShift ? '?' : '/'; break;
- 4d6:	cf e3       	ldi	r28, 0x3F	; 63
+ 4b0:	c4 e6       	ldi	r28, 0x64	; 100
+ 4b2:	bc cf       	rjmp	.-136    	; 0x42c <__LOCK_REGION_LENGTH__+0x2c>
 	}
 	
 	if (((result>= 'a') && (result <= 'z')) && ((kbShift && !kbCapslock) || (!kbShift && kbCapslock))){
 		result = result + ('A' - 'a');
 	}
 	charBuffer = 0x00;
- 4d8:	10 92 76 00 	sts	0x0076, r1	; 0x800076 <charBuffer>
+ 4b4:	10 92 76 00 	sts	0x0076, r1	; 0x800076 <charBuffer>
 	return result;
 }
- 4dc:	8c 2f       	mov	r24, r28
- 4de:	cf 91       	pop	r28
- 4e0:	08 95       	ret
+ 4b8:	8c 2f       	mov	r24, r28
+ 4ba:	cf 91       	pop	r28
+ 4bc:	08 95       	ret
 
-000004e2 <__vector_1>:
+000004be <__vector_1>:
 
 
 ISR(INT0_vect){
- 4e2:	1f 92       	push	r1
- 4e4:	0f 92       	push	r0
- 4e6:	0f b6       	in	r0, 0x3f	; 63
- 4e8:	0f 92       	push	r0
- 4ea:	11 24       	eor	r1, r1
- 4ec:	2f 93       	push	r18
- 4ee:	3f 93       	push	r19
- 4f0:	8f 93       	push	r24
- 4f2:	9f 93       	push	r25
+ 4be:	1f 92       	push	r1
+ 4c0:	0f 92       	push	r0
+ 4c2:	0f b6       	in	r0, 0x3f	; 63
+ 4c4:	0f 92       	push	r0
+ 4c6:	11 24       	eor	r1, r1
+ 4c8:	2f 93       	push	r18
+ 4ca:	3f 93       	push	r19
+ 4cc:	8f 93       	push	r24
+ 4ce:	9f 93       	push	r25
 	//Send data
 	if (cmdInProgress){
- 4f4:	80 91 6e 00 	lds	r24, 0x006E	; 0x80006e <cmdInProgress>
- 4f8:	88 23       	and	r24, r24
- 4fa:	09 f4       	brne	.+2      	; 0x4fe <__vector_1+0x1c>
- 4fc:	44 c0       	rjmp	.+136    	; 0x586 <__vector_1+0xa4>
+ 4d0:	80 91 6e 00 	lds	r24, 0x006E	; 0x80006e <cmdInProgress>
+ 4d4:	88 23       	and	r24, r24
+ 4d6:	09 f4       	brne	.+2      	; 0x4da <__vector_1+0x1c>
+ 4d8:	44 c0       	rjmp	.+136    	; 0x562 <__vector_1+0xa4>
 		cmdCount++;
- 4fe:	80 91 6c 00 	lds	r24, 0x006C	; 0x80006c <cmdCount>
- 502:	90 91 6d 00 	lds	r25, 0x006D	; 0x80006d <cmdCount+0x1>
- 506:	01 96       	adiw	r24, 0x01	; 1
- 508:	90 93 6d 00 	sts	0x006D, r25	; 0x80006d <cmdCount+0x1>
- 50c:	80 93 6c 00 	sts	0x006C, r24	; 0x80006c <cmdCount>
+ 4da:	80 91 6c 00 	lds	r24, 0x006C	; 0x80006c <cmdCount>
+ 4de:	90 91 6d 00 	lds	r25, 0x006D	; 0x80006d <cmdCount+0x1>
+ 4e2:	01 96       	adiw	r24, 0x01	; 1
+ 4e4:	90 93 6d 00 	sts	0x006D, r25	; 0x80006d <cmdCount+0x1>
+ 4e8:	80 93 6c 00 	sts	0x006C, r24	; 0x80006c <cmdCount>
 		switch(cmdCount){
- 510:	80 91 6c 00 	lds	r24, 0x006C	; 0x80006c <cmdCount>
- 514:	90 91 6d 00 	lds	r25, 0x006D	; 0x80006d <cmdCount+0x1>
- 518:	8a 30       	cpi	r24, 0x0A	; 10
- 51a:	91 05       	cpc	r25, r1
- 51c:	34 f4       	brge	.+12     	; 0x52a <__vector_1+0x48>
- 51e:	82 30       	cpi	r24, 0x02	; 2
- 520:	91 05       	cpc	r25, r1
- 522:	64 f4       	brge	.+24     	; 0x53c <__vector_1+0x5a>
- 524:	01 97       	sbiw	r24, 0x01	; 1
- 526:	41 f0       	breq	.+16     	; 0x538 <__vector_1+0x56>
- 528:	b5 c0       	rjmp	.+362    	; 0x694 <__vector_1+0x1b2>
- 52a:	8b 30       	cpi	r24, 0x0B	; 11
- 52c:	91 05       	cpc	r25, r1
- 52e:	e9 f0       	breq	.+58     	; 0x56a <__vector_1+0x88>
- 530:	a4 f0       	brlt	.+40     	; 0x55a <__vector_1+0x78>
- 532:	0c 97       	sbiw	r24, 0x0c	; 12
- 534:	e9 f0       	breq	.+58     	; 0x570 <__vector_1+0x8e>
- 536:	ae c0       	rjmp	.+348    	; 0x694 <__vector_1+0x1b2>
+ 4ec:	80 91 6c 00 	lds	r24, 0x006C	; 0x80006c <cmdCount>
+ 4f0:	90 91 6d 00 	lds	r25, 0x006D	; 0x80006d <cmdCount+0x1>
+ 4f4:	8a 30       	cpi	r24, 0x0A	; 10
+ 4f6:	91 05       	cpc	r25, r1
+ 4f8:	34 f4       	brge	.+12     	; 0x506 <__vector_1+0x48>
+ 4fa:	82 30       	cpi	r24, 0x02	; 2
+ 4fc:	91 05       	cpc	r25, r1
+ 4fe:	64 f4       	brge	.+24     	; 0x518 <__vector_1+0x5a>
+ 500:	01 97       	sbiw	r24, 0x01	; 1
+ 502:	41 f0       	breq	.+16     	; 0x514 <__vector_1+0x56>
+ 504:	b3 c0       	rjmp	.+358    	; 0x66c <__vector_1+0x1ae>
+ 506:	8b 30       	cpi	r24, 0x0B	; 11
+ 508:	91 05       	cpc	r25, r1
+ 50a:	e9 f0       	breq	.+58     	; 0x546 <__vector_1+0x88>
+ 50c:	a4 f0       	brlt	.+40     	; 0x536 <__vector_1+0x78>
+ 50e:	0c 97       	sbiw	r24, 0x0c	; 12
+ 510:	e9 f0       	breq	.+58     	; 0x54c <__vector_1+0x8e>
+ 512:	ac c0       	rjmp	.+344    	; 0x66c <__vector_1+0x1ae>
 			case 1:{ //Start bit
 				DATA_PORT &= ~(1<<DATA_PIN);
- 538:	93 98       	cbi	0x12, 3	; 18
+ 514:	93 98       	cbi	0x12, 3	; 18
 				break;
- 53a:	ac c0       	rjmp	.+344    	; 0x694 <__vector_1+0x1b2>
+ 516:	aa c0       	rjmp	.+340    	; 0x66c <__vector_1+0x1ae>
 			}
 			
 			case 2: case 3: case 4: case 5: case 6: case 7: case 8: case 9:{ //Data bits
 				if (cmdValue & 0x01){
- 53c:	80 91 6b 00 	lds	r24, 0x006B	; 0x80006b <cmdValue>
- 540:	80 ff       	sbrs	r24, 0
- 542:	02 c0       	rjmp	.+4      	; 0x548 <__vector_1+0x66>
+ 518:	80 91 6b 00 	lds	r24, 0x006B	; 0x80006b <cmdValue>
+ 51c:	80 ff       	sbrs	r24, 0
+ 51e:	02 c0       	rjmp	.+4      	; 0x524 <__vector_1+0x66>
 					DATA_PORT |= (1<<DATA_PIN);
- 544:	93 9a       	sbi	0x12, 3	; 18
- 546:	01 c0       	rjmp	.+2      	; 0x54a <__vector_1+0x68>
+ 520:	93 9a       	sbi	0x12, 3	; 18
+ 522:	01 c0       	rjmp	.+2      	; 0x526 <__vector_1+0x68>
 				}
 				else{
 					DATA_PORT &= ~(1<<DATA_PIN);
- 548:	93 98       	cbi	0x12, 3	; 18
+ 524:	93 98       	cbi	0x12, 3	; 18
 				}
 				cmdValue = cmdValue >> 1;
- 54a:	80 91 6b 00 	lds	r24, 0x006B	; 0x80006b <cmdValue>
- 54e:	90 e0       	ldi	r25, 0x00	; 0
- 550:	95 95       	asr	r25
- 552:	87 95       	ror	r24
- 554:	80 93 6b 00 	sts	0x006B, r24	; 0x80006b <cmdValue>
+ 526:	80 91 6b 00 	lds	r24, 0x006B	; 0x80006b <cmdValue>
+ 52a:	90 e0       	ldi	r25, 0x00	; 0
+ 52c:	95 95       	asr	r25
+ 52e:	87 95       	ror	r24
+ 530:	80 93 6b 00 	sts	0x006B, r24	; 0x80006b <cmdValue>
 				break;
- 558:	9d c0       	rjmp	.+314    	; 0x694 <__vector_1+0x1b2>
+ 534:	9b c0       	rjmp	.+310    	; 0x66c <__vector_1+0x1ae>
 			}
 			
 			case 10: {
 				if (cmdParity){
- 55a:	80 91 69 00 	lds	r24, 0x0069	; 0x800069 <cmdParity>
- 55e:	88 23       	and	r24, r24
- 560:	11 f0       	breq	.+4      	; 0x566 <__vector_1+0x84>
+ 536:	80 91 69 00 	lds	r24, 0x0069	; 0x800069 <cmdParity>
+ 53a:	88 23       	and	r24, r24
+ 53c:	11 f0       	breq	.+4      	; 0x542 <__vector_1+0x84>
 					DATA_PORT |= (1<<DATA_PIN);
- 562:	93 9a       	sbi	0x12, 3	; 18
- 564:	97 c0       	rjmp	.+302    	; 0x694 <__vector_1+0x1b2>
+ 53e:	93 9a       	sbi	0x12, 3	; 18
+ 540:	95 c0       	rjmp	.+298    	; 0x66c <__vector_1+0x1ae>
 				}
 				else{
 					DATA_PORT &= ~(1<<DATA_PIN);
- 566:	93 98       	cbi	0x12, 3	; 18
- 568:	95 c0       	rjmp	.+298    	; 0x694 <__vector_1+0x1b2>
+ 542:	93 98       	cbi	0x12, 3	; 18
+ 544:	93 c0       	rjmp	.+294    	; 0x66c <__vector_1+0x1ae>
 				}
 				break;
 			}
 			
 			case 11:{ //Stop bit
 				DATA_PORT |= (1<<DATA_PIN);
- 56a:	93 9a       	sbi	0x12, 3	; 18
+ 546:	93 9a       	sbi	0x12, 3	; 18
 				DATA_DDR  &= ~(1<<DATA_PIN); //Ready to receive data from KB
- 56c:	8b 98       	cbi	0x11, 3	; 17
+ 548:	8b 98       	cbi	0x11, 3	; 17
 				break;
- 56e:	92 c0       	rjmp	.+292    	; 0x694 <__vector_1+0x1b2>
+ 54a:	90 c0       	rjmp	.+288    	; 0x66c <__vector_1+0x1ae>
 			}
 			
 			case 12:{ //ACK from KB
 				if (!(PIND & (1<<DATA_PIN))){
- 570:	83 99       	sbic	0x10, 3	; 16
- 572:	03 c0       	rjmp	.+6      	; 0x57a <__vector_1+0x98>
+ 54c:	83 99       	sbic	0x10, 3	; 16
+ 54e:	03 c0       	rjmp	.+6      	; 0x556 <__vector_1+0x98>
 					cmdACKValue = 0;
- 574:	10 92 6a 00 	sts	0x006A, r1	; 0x80006a <cmdACKValue>
- 578:	03 c0       	rjmp	.+6      	; 0x580 <__vector_1+0x9e>
+ 550:	10 92 6a 00 	sts	0x006A, r1	; 0x80006a <cmdACKValue>
+ 554:	03 c0       	rjmp	.+6      	; 0x55c <__vector_1+0x9e>
 				}
 				else{
 					cmdACKValue = 1;
- 57a:	81 e0       	ldi	r24, 0x01	; 1
- 57c:	80 93 6a 00 	sts	0x006A, r24	; 0x80006a <cmdACKValue>
+ 556:	81 e0       	ldi	r24, 0x01	; 1
+ 558:	80 93 6a 00 	sts	0x006A, r24	; 0x80006a <cmdACKValue>
 				}
 				cmdInProgress = false;
- 580:	10 92 6e 00 	sts	0x006E, r1	; 0x80006e <cmdInProgress>
- 584:	87 c0       	rjmp	.+270    	; 0x694 <__vector_1+0x1b2>
+ 55c:	10 92 6e 00 	sts	0x006E, r1	; 0x80006e <cmdInProgress>
+ 560:	85 c0       	rjmp	.+266    	; 0x66c <__vector_1+0x1ae>
 		}
 		return ;
 	}
 	//Get Data
 	int value;
 	if (!(PIND & (1<<DATA_PIN))){
- 586:	90 b3       	in	r25, 0x10	; 16
+ 562:	90 b3       	in	r25, 0x10	; 16
 	else{
 		value = 1;
 	}
 	
 	//shift data from LSB -> MSB
 	if (bufferPos > 0 && bufferPos < 11){
- 588:	80 91 75 00 	lds	r24, 0x0075	; 0x800075 <bufferPos>
- 58c:	88 23       	and	r24, r24
- 58e:	29 f0       	breq	.+10     	; 0x59a <__vector_1+0xb8>
- 590:	80 91 75 00 	lds	r24, 0x0075	; 0x800075 <bufferPos>
- 594:	8b 30       	cpi	r24, 0x0B	; 11
- 596:	08 f4       	brcc	.+2      	; 0x59a <__vector_1+0xb8>
- 598:	6b c0       	rjmp	.+214    	; 0x670 <__vector_1+0x18e>
+ 564:	80 91 75 00 	lds	r24, 0x0075	; 0x800075 <bufferPos>
+ 568:	88 23       	and	r24, r24
+ 56a:	29 f0       	breq	.+10     	; 0x576 <__vector_1+0xb8>
+ 56c:	80 91 75 00 	lds	r24, 0x0075	; 0x800075 <bufferPos>
+ 570:	8b 30       	cpi	r24, 0x0B	; 11
+ 572:	08 f4       	brcc	.+2      	; 0x576 <__vector_1+0xb8>
+ 574:	69 c0       	rjmp	.+210    	; 0x648 <__vector_1+0x18a>
 		currentBuffer |= (value << (bufferPos - 1));
 	}
 	bufferPos++;
- 59a:	80 91 75 00 	lds	r24, 0x0075	; 0x800075 <bufferPos>
- 59e:	8f 5f       	subi	r24, 0xFF	; 255
- 5a0:	80 93 75 00 	sts	0x0075, r24	; 0x800075 <bufferPos>
+ 576:	80 91 75 00 	lds	r24, 0x0075	; 0x800075 <bufferPos>
+ 57a:	8f 5f       	subi	r24, 0xFF	; 255
+ 57c:	80 93 75 00 	sts	0x0075, r24	; 0x800075 <bufferPos>
 	
 	if (bufferPos == 11){//After get all bits of buffer
- 5a4:	80 91 75 00 	lds	r24, 0x0075	; 0x800075 <bufferPos>
- 5a8:	8b 30       	cpi	r24, 0x0B	; 11
- 5aa:	09 f0       	breq	.+2      	; 0x5ae <__vector_1+0xcc>
- 5ac:	73 c0       	rjmp	.+230    	; 0x694 <__vector_1+0x1b2>
+ 580:	80 91 75 00 	lds	r24, 0x0075	; 0x800075 <bufferPos>
+ 584:	8b 30       	cpi	r24, 0x0B	; 11
+ 586:	09 f0       	breq	.+2      	; 0x58a <__vector_1+0xcc>
+ 588:	71 c0       	rjmp	.+226    	; 0x66c <__vector_1+0x1ae>
 		switch(currentBuffer){
- 5ae:	80 91 77 00 	lds	r24, 0x0077	; 0x800077 <currentBuffer>
- 5b2:	88 35       	cpi	r24, 0x58	; 88
- 5b4:	e9 f1       	breq	.+122    	; 0x630 <__vector_1+0x14e>
- 5b6:	40 f4       	brcc	.+16     	; 0x5c8 <__vector_1+0xe6>
- 5b8:	82 31       	cpi	r24, 0x12	; 18
- 5ba:	f9 f0       	breq	.+62     	; 0x5fa <__vector_1+0x118>
- 5bc:	84 31       	cpi	r24, 0x14	; 20
- 5be:	79 f1       	breq	.+94     	; 0x61e <__vector_1+0x13c>
- 5c0:	81 31       	cpi	r24, 0x11	; 17
- 5c2:	09 f0       	breq	.+2      	; 0x5c6 <__vector_1+0xe4>
- 5c4:	46 c0       	rjmp	.+140    	; 0x652 <__vector_1+0x170>
- 5c6:	22 c0       	rjmp	.+68     	; 0x60c <__vector_1+0x12a>
- 5c8:	80 3e       	cpi	r24, 0xE0	; 224
- 5ca:	99 f0       	breq	.+38     	; 0x5f2 <__vector_1+0x110>
- 5cc:	18 f4       	brcc	.+6      	; 0x5d4 <__vector_1+0xf2>
- 5ce:	89 35       	cpi	r24, 0x59	; 89
- 5d0:	a1 f0       	breq	.+40     	; 0x5fa <__vector_1+0x118>
- 5d2:	3f c0       	rjmp	.+126    	; 0x652 <__vector_1+0x170>
- 5d4:	80 3f       	cpi	r24, 0xF0	; 240
- 5d6:	19 f0       	breq	.+6      	; 0x5de <__vector_1+0xfc>
- 5d8:	8a 3f       	cpi	r24, 0xFA	; 250
- 5da:	39 f0       	breq	.+14     	; 0x5ea <__vector_1+0x108>
- 5dc:	3a c0       	rjmp	.+116    	; 0x652 <__vector_1+0x170>
+ 58a:	80 91 77 00 	lds	r24, 0x0077	; 0x800077 <currentBuffer>
+ 58e:	88 35       	cpi	r24, 0x58	; 88
+ 590:	e9 f1       	breq	.+122    	; 0x60c <__vector_1+0x14e>
+ 592:	40 f4       	brcc	.+16     	; 0x5a4 <__vector_1+0xe6>
+ 594:	82 31       	cpi	r24, 0x12	; 18
+ 596:	f9 f0       	breq	.+62     	; 0x5d6 <__vector_1+0x118>
+ 598:	84 31       	cpi	r24, 0x14	; 20
+ 59a:	79 f1       	breq	.+94     	; 0x5fa <__vector_1+0x13c>
+ 59c:	81 31       	cpi	r24, 0x11	; 17
+ 59e:	09 f0       	breq	.+2      	; 0x5a2 <__vector_1+0xe4>
+ 5a0:	45 c0       	rjmp	.+138    	; 0x62c <__vector_1+0x16e>
+ 5a2:	22 c0       	rjmp	.+68     	; 0x5e8 <__vector_1+0x12a>
+ 5a4:	80 3e       	cpi	r24, 0xE0	; 224
+ 5a6:	99 f0       	breq	.+38     	; 0x5ce <__vector_1+0x110>
+ 5a8:	18 f4       	brcc	.+6      	; 0x5b0 <__vector_1+0xf2>
+ 5aa:	89 35       	cpi	r24, 0x59	; 89
+ 5ac:	a1 f0       	breq	.+40     	; 0x5d6 <__vector_1+0x118>
+ 5ae:	3e c0       	rjmp	.+124    	; 0x62c <__vector_1+0x16e>
+ 5b0:	80 3f       	cpi	r24, 0xF0	; 240
+ 5b2:	19 f0       	breq	.+6      	; 0x5ba <__vector_1+0xfc>
+ 5b4:	8a 3f       	cpi	r24, 0xFA	; 250
+ 5b6:	39 f0       	breq	.+14     	; 0x5c6 <__vector_1+0x108>
+ 5b8:	39 c0       	rjmp	.+114    	; 0x62c <__vector_1+0x16e>
 			case 0xF0: { //Key release
 				kbRelease	= true;
- 5de:	81 e0       	ldi	r24, 0x01	; 1
- 5e0:	80 93 73 00 	sts	0x0073, r24	; 0x800073 <kbRelease>
+ 5ba:	81 e0       	ldi	r24, 0x01	; 1
+ 5bc:	80 93 73 00 	sts	0x0073, r24	; 0x800073 <kbRelease>
 				kbExtend	= false;
- 5e4:	10 92 74 00 	sts	0x0074, r1	; 0x800074 <kbExtend>
+ 5c0:	10 92 74 00 	sts	0x0074, r1	; 0x800074 <kbExtend>
 				break;
- 5e8:	3e c0       	rjmp	.+124    	; 0x666 <__vector_1+0x184>
+ 5c4:	3c c0       	rjmp	.+120    	; 0x63e <__vector_1+0x180>
 			}
 			
 			case 0xFA: { //ACK
 				cmdACKOk	= true;
- 5ea:	81 e0       	ldi	r24, 0x01	; 1
- 5ec:	80 93 68 00 	sts	0x0068, r24	; 0x800068 <__data_end>
+ 5c6:	81 e0       	ldi	r24, 0x01	; 1
+ 5c8:	80 93 68 00 	sts	0x0068, r24	; 0x800068 <__data_end>
 				break;
- 5f0:	3a c0       	rjmp	.+116    	; 0x666 <__vector_1+0x184>
+ 5cc:	38 c0       	rjmp	.+112    	; 0x63e <__vector_1+0x180>
 			}
 			
 			case 0xE0: { //Extended
 				kbExtend	= true;
- 5f2:	81 e0       	ldi	r24, 0x01	; 1
- 5f4:	80 93 74 00 	sts	0x0074, r24	; 0x800074 <kbExtend>
+ 5ce:	81 e0       	ldi	r24, 0x01	; 1
+ 5d0:	80 93 74 00 	sts	0x0074, r24	; 0x800074 <kbExtend>
 				break;
- 5f8:	36 c0       	rjmp	.+108    	; 0x666 <__vector_1+0x184>
+ 5d4:	34 c0       	rjmp	.+104    	; 0x63e <__vector_1+0x180>
 			}
 			
 			case 0x12:
 			case 0x59: {
 				kbShift		= kbRelease ? false : true;
- 5fa:	90 91 73 00 	lds	r25, 0x0073	; 0x800073 <kbRelease>
- 5fe:	81 e0       	ldi	r24, 0x01	; 1
- 600:	89 27       	eor	r24, r25
- 602:	80 93 72 00 	sts	0x0072, r24	; 0x800072 <kbShift>
+ 5d6:	90 91 73 00 	lds	r25, 0x0073	; 0x800073 <kbRelease>
+ 5da:	81 e0       	ldi	r24, 0x01	; 1
+ 5dc:	89 27       	eor	r24, r25
+ 5de:	80 93 72 00 	sts	0x0072, r24	; 0x800072 <kbShift>
 				kbRelease	= false;
- 606:	10 92 73 00 	sts	0x0073, r1	; 0x800073 <kbRelease>
+ 5e2:	10 92 73 00 	sts	0x0073, r1	; 0x800073 <kbRelease>
 				break;
- 60a:	2d c0       	rjmp	.+90     	; 0x666 <__vector_1+0x184>
+ 5e6:	2b c0       	rjmp	.+86     	; 0x63e <__vector_1+0x180>
 			}
 			
 			case 0x11: {
 				kbAlt		= kbRelease ? false : true;
- 60c:	90 91 73 00 	lds	r25, 0x0073	; 0x800073 <kbRelease>
- 610:	81 e0       	ldi	r24, 0x01	; 1
- 612:	89 27       	eor	r24, r25
- 614:	80 93 70 00 	sts	0x0070, r24	; 0x800070 <kbAlt>
+ 5e8:	90 91 73 00 	lds	r25, 0x0073	; 0x800073 <kbRelease>
+ 5ec:	81 e0       	ldi	r24, 0x01	; 1
+ 5ee:	89 27       	eor	r24, r25
+ 5f0:	80 93 70 00 	sts	0x0070, r24	; 0x800070 <kbAlt>
 				kbRelease	= false;
- 618:	10 92 73 00 	sts	0x0073, r1	; 0x800073 <kbRelease>
+ 5f4:	10 92 73 00 	sts	0x0073, r1	; 0x800073 <kbRelease>
 				break;
- 61c:	24 c0       	rjmp	.+72     	; 0x666 <__vector_1+0x184>
+ 5f8:	22 c0       	rjmp	.+68     	; 0x63e <__vector_1+0x180>
 			}
 			
 			case 0x14: {
 				kbCtrl		= kbRelease ? false : true;
- 61e:	90 91 73 00 	lds	r25, 0x0073	; 0x800073 <kbRelease>
- 622:	81 e0       	ldi	r24, 0x01	; 1
- 624:	89 27       	eor	r24, r25
- 626:	80 93 71 00 	sts	0x0071, r24	; 0x800071 <kbCtrl>
+ 5fa:	90 91 73 00 	lds	r25, 0x0073	; 0x800073 <kbRelease>
+ 5fe:	81 e0       	ldi	r24, 0x01	; 1
+ 600:	89 27       	eor	r24, r25
+ 602:	80 93 71 00 	sts	0x0071, r24	; 0x800071 <kbCtrl>
 				kbRelease	= false;
- 62a:	10 92 73 00 	sts	0x0073, r1	; 0x800073 <kbRelease>
+ 606:	10 92 73 00 	sts	0x0073, r1	; 0x800073 <kbRelease>
 				break;
- 62e:	1b c0       	rjmp	.+54     	; 0x666 <__vector_1+0x184>
+ 60a:	19 c0       	rjmp	.+50     	; 0x63e <__vector_1+0x180>
 			}
 			
 			case 0x58: {
-				if (!kbRelease){
- 630:	80 91 73 00 	lds	r24, 0x0073	; 0x800073 <kbRelease>
- 634:	81 11       	cpse	r24, r1
- 636:	0a c0       	rjmp	.+20     	; 0x64c <__vector_1+0x16a>
-					kbCapslock	= kbRelease ? false : true;
- 638:	90 91 73 00 	lds	r25, 0x0073	; 0x800073 <kbRelease>
- 63c:	81 e0       	ldi	r24, 0x01	; 1
- 63e:	89 27       	eor	r24, r25
- 640:	80 93 6f 00 	sts	0x006F, r24	; 0x80006f <kbCapslock>
-					charBuffer	= currentBuffer;
- 644:	88 e5       	ldi	r24, 0x58	; 88
- 646:	80 93 76 00 	sts	0x0076, r24	; 0x800076 <charBuffer>
- 64a:	0d c0       	rjmp	.+26     	; 0x666 <__vector_1+0x184>
+				if (kbRelease){
+ 60c:	90 91 73 00 	lds	r25, 0x0073	; 0x800073 <kbRelease>
+ 610:	99 23       	and	r25, r25
+ 612:	19 f0       	breq	.+6      	; 0x61a <__vector_1+0x15c>
+					kbRelease	= false;
+ 614:	10 92 73 00 	sts	0x0073, r1	; 0x800073 <kbRelease>
+ 618:	09 c0       	rjmp	.+18     	; 0x62c <__vector_1+0x16e>
 				}
 				else{
-					kbRelease	= false;
- 64c:	10 92 73 00 	sts	0x0073, r1	; 0x800073 <kbRelease>
- 650:	0a c0       	rjmp	.+20     	; 0x666 <__vector_1+0x184>
+					kbCapslock = !(kbCapslock);
+ 61a:	20 91 6f 00 	lds	r18, 0x006F	; 0x80006f <kbCapslock>
+ 61e:	91 e0       	ldi	r25, 0x01	; 1
+ 620:	92 27       	eor	r25, r18
+ 622:	90 93 6f 00 	sts	0x006F, r25	; 0x80006f <kbCapslock>
+					charBuffer	= currentBuffer;
+ 626:	98 e5       	ldi	r25, 0x58	; 88
+ 628:	90 93 76 00 	sts	0x0076, r25	; 0x800076 <charBuffer>
 				}
-				break;
 			}
 			
 			default: { //A Normal key pressed
 				if (kbRelease){
- 652:	90 91 73 00 	lds	r25, 0x0073	; 0x800073 <kbRelease>
- 656:	99 23       	and	r25, r25
- 658:	21 f0       	breq	.+8      	; 0x662 <__vector_1+0x180>
-					kbRelease	= true;
- 65a:	81 e0       	ldi	r24, 0x01	; 1
- 65c:	80 93 73 00 	sts	0x0073, r24	; 0x800073 <kbRelease>
- 660:	02 c0       	rjmp	.+4      	; 0x666 <__vector_1+0x184>
+ 62c:	90 91 73 00 	lds	r25, 0x0073	; 0x800073 <kbRelease>
+ 630:	99 23       	and	r25, r25
+ 632:	19 f0       	breq	.+6      	; 0x63a <__vector_1+0x17c>
+					kbRelease	= false;
+ 634:	10 92 73 00 	sts	0x0073, r1	; 0x800073 <kbRelease>
+ 638:	02 c0       	rjmp	.+4      	; 0x63e <__vector_1+0x180>
 				}
 				else{
 					charBuffer	= currentBuffer;
- 662:	80 93 76 00 	sts	0x0076, r24	; 0x800076 <charBuffer>
+ 63a:	80 93 76 00 	sts	0x0076, r24	; 0x800076 <charBuffer>
 				}
 			}
 		}
 		currentBuffer	= 0;
- 666:	10 92 77 00 	sts	0x0077, r1	; 0x800077 <currentBuffer>
+ 63e:	10 92 77 00 	sts	0x0077, r1	; 0x800077 <currentBuffer>
 		bufferPos		= 0;
- 66a:	10 92 75 00 	sts	0x0075, r1	; 0x800075 <bufferPos>
- 66e:	12 c0       	rjmp	.+36     	; 0x694 <__vector_1+0x1b2>
+ 642:	10 92 75 00 	sts	0x0075, r1	; 0x800075 <bufferPos>
+ 646:	12 c0       	rjmp	.+36     	; 0x66c <__vector_1+0x1ae>
 		value = 1;
 	}
 	
 	//shift data from LSB -> MSB
 	if (bufferPos > 0 && bufferPos < 11){
 		currentBuffer |= (value << (bufferPos - 1));
- 670:	80 91 75 00 	lds	r24, 0x0075	; 0x800075 <bufferPos>
- 674:	93 fb       	bst	r25, 3
- 676:	22 27       	eor	r18, r18
- 678:	20 f9       	bld	r18, 0
- 67a:	30 e0       	ldi	r19, 0x00	; 0
- 67c:	81 50       	subi	r24, 0x01	; 1
- 67e:	02 c0       	rjmp	.+4      	; 0x684 <__vector_1+0x1a2>
- 680:	22 0f       	add	r18, r18
- 682:	33 1f       	adc	r19, r19
- 684:	8a 95       	dec	r24
- 686:	e2 f7       	brpl	.-8      	; 0x680 <__vector_1+0x19e>
- 688:	80 91 77 00 	lds	r24, 0x0077	; 0x800077 <currentBuffer>
- 68c:	28 2b       	or	r18, r24
- 68e:	20 93 77 00 	sts	0x0077, r18	; 0x800077 <currentBuffer>
- 692:	83 cf       	rjmp	.-250    	; 0x59a <__vector_1+0xb8>
+ 648:	80 91 75 00 	lds	r24, 0x0075	; 0x800075 <bufferPos>
+ 64c:	93 fb       	bst	r25, 3
+ 64e:	22 27       	eor	r18, r18
+ 650:	20 f9       	bld	r18, 0
+ 652:	30 e0       	ldi	r19, 0x00	; 0
+ 654:	81 50       	subi	r24, 0x01	; 1
+ 656:	02 c0       	rjmp	.+4      	; 0x65c <__vector_1+0x19e>
+ 658:	22 0f       	add	r18, r18
+ 65a:	33 1f       	adc	r19, r19
+ 65c:	8a 95       	dec	r24
+ 65e:	e2 f7       	brpl	.-8      	; 0x658 <__vector_1+0x19a>
+ 660:	80 91 77 00 	lds	r24, 0x0077	; 0x800077 <currentBuffer>
+ 664:	28 2b       	or	r18, r24
+ 666:	20 93 77 00 	sts	0x0077, r18	; 0x800077 <currentBuffer>
+ 66a:	85 cf       	rjmp	.-246    	; 0x576 <__vector_1+0xb8>
 			}
 		}
 		currentBuffer	= 0;
 		bufferPos		= 0;
 	}
- 694:	9f 91       	pop	r25
- 696:	8f 91       	pop	r24
- 698:	3f 91       	pop	r19
- 69a:	2f 91       	pop	r18
- 69c:	0f 90       	pop	r0
- 69e:	0f be       	out	0x3f, r0	; 63
- 6a0:	0f 90       	pop	r0
- 6a2:	1f 90       	pop	r1
- 6a4:	18 95       	reti
+ 66c:	9f 91       	pop	r25
+ 66e:	8f 91       	pop	r24
+ 670:	3f 91       	pop	r19
+ 672:	2f 91       	pop	r18
+ 674:	0f 90       	pop	r0
+ 676:	0f be       	out	0x3f, r0	; 63
+ 678:	0f 90       	pop	r0
+ 67a:	1f 90       	pop	r1
+ 67c:	18 95       	reti
 
-000006a6 <_Z10USART_Initv>:
+0000067e <_Z10USART_Initv>:
  */ 
 
 #include "KeyBoard.h"
 
 void USART_Init(){
 	UBRRH = 0;
- 6a6:	10 bc       	out	0x20, r1	; 32
+ 67e:	10 bc       	out	0x20, r1	; 32
 	UBRRL = 51;
- 6a8:	83 e3       	ldi	r24, 0x33	; 51
- 6aa:	89 b9       	out	0x09, r24	; 9
+ 680:	83 e3       	ldi	r24, 0x33	; 51
+ 682:	89 b9       	out	0x09, r24	; 9
 	UCSRC |= (1<<URSEL)|(3<<UCSZ0);
- 6ac:	80 b5       	in	r24, 0x20	; 32
- 6ae:	86 68       	ori	r24, 0x86	; 134
- 6b0:	80 bd       	out	0x20, r24	; 32
+ 684:	80 b5       	in	r24, 0x20	; 32
+ 686:	86 68       	ori	r24, 0x86	; 134
+ 688:	80 bd       	out	0x20, r24	; 32
 	UCSRB |= (1<<TXEN);
- 6b2:	53 9a       	sbi	0x0a, 3	; 10
- 6b4:	08 95       	ret
+ 68a:	53 9a       	sbi	0x0a, 3	; 10
+ 68c:	08 95       	ret
 
-000006b6 <_Z14USART_Transmitc>:
+0000068e <_Z14USART_Transmitc>:
 }
 
 void USART_Transmit(char data){
 	while(!(UCSRA & (1<<UDRE)));
- 6b6:	5d 9b       	sbis	0x0b, 5	; 11
- 6b8:	fe cf       	rjmp	.-4      	; 0x6b6 <_Z14USART_Transmitc>
+ 68e:	5d 9b       	sbis	0x0b, 5	; 11
+ 690:	fe cf       	rjmp	.-4      	; 0x68e <_Z14USART_Transmitc>
 	UDR = data;
- 6ba:	8c b9       	out	0x0c, r24	; 12
- 6bc:	08 95       	ret
+ 692:	8c b9       	out	0x0c, r24	; 12
+ 694:	08 95       	ret
 
-000006be <_Z10sendStringPc>:
+00000696 <_Z10sendStringPc>:
 }
 
 void sendString(char *data){
- 6be:	cf 93       	push	r28
- 6c0:	df 93       	push	r29
- 6c2:	ec 01       	movw	r28, r24
+ 696:	cf 93       	push	r28
+ 698:	df 93       	push	r29
+ 69a:	ec 01       	movw	r28, r24
 	int i = 0;
 	while(data[i] != 0x00){
- 6c4:	88 81       	ld	r24, Y
- 6c6:	88 23       	and	r24, r24
- 6c8:	29 f0       	breq	.+10     	; 0x6d4 <_Z10sendStringPc+0x16>
- 6ca:	21 96       	adiw	r28, 0x01	; 1
+ 69c:	88 81       	ld	r24, Y
+ 69e:	88 23       	and	r24, r24
+ 6a0:	29 f0       	breq	.+10     	; 0x6ac <_Z10sendStringPc+0x16>
+ 6a2:	21 96       	adiw	r28, 0x01	; 1
 		USART_Transmit(data[i]);
- 6cc:	f4 df       	rcall	.-24     	; 0x6b6 <_Z14USART_Transmitc>
+ 6a4:	f4 df       	rcall	.-24     	; 0x68e <_Z14USART_Transmitc>
 	UDR = data;
 }
 
 void sendString(char *data){
 	int i = 0;
 	while(data[i] != 0x00){
- 6ce:	89 91       	ld	r24, Y+
- 6d0:	81 11       	cpse	r24, r1
- 6d2:	fc cf       	rjmp	.-8      	; 0x6cc <_Z10sendStringPc+0xe>
+ 6a6:	89 91       	ld	r24, Y+
+ 6a8:	81 11       	cpse	r24, r1
+ 6aa:	fc cf       	rjmp	.-8      	; 0x6a4 <_Z10sendStringPc+0xe>
 		USART_Transmit(data[i]);
 		i++;
 	}
 }
- 6d4:	df 91       	pop	r29
- 6d6:	cf 91       	pop	r28
- 6d8:	08 95       	ret
+ 6ac:	df 91       	pop	r29
+ 6ae:	cf 91       	pop	r28
+ 6b0:	08 95       	ret
 
-000006da <main>:
+000006b2 <main>:
 
 KeyBoard abc;
 
 int main(void)
 {
 	USART_Init();
- 6da:	e5 df       	rcall	.-54     	; 0x6a6 <_Z10USART_Initv>
+ 6b2:	e5 df       	rcall	.-54     	; 0x67e <_Z10USART_Initv>
     sendString("Begin!\n");
- 6dc:	80 e6       	ldi	r24, 0x60	; 96
- 6de:	90 e0       	ldi	r25, 0x00	; 0
- 6e0:	ee df       	rcall	.-36     	; 0x6be <_Z10sendStringPc>
+ 6b4:	80 e6       	ldi	r24, 0x60	; 96
+ 6b6:	90 e0       	ldi	r25, 0x00	; 0
+ 6b8:	ee df       	rcall	.-36     	; 0x696 <_Z10sendStringPc>
 	DDRC |= (1<<5);
- 6e2:	a5 9a       	sbi	0x14, 5	; 20
+ 6ba:	a5 9a       	sbi	0x14, 5	; 20
 	abc.begin();
- 6e4:	88 e7       	ldi	r24, 0x78	; 120
- 6e6:	90 e0       	ldi	r25, 0x00	; 0
- 6e8:	71 dd       	rcall	.-1310   	; 0x1cc <_ZN8KeyBoard5beginEv>
+ 6bc:	88 e7       	ldi	r24, 0x78	; 120
+ 6be:	90 e0       	ldi	r25, 0x00	; 0
+ 6c0:	85 dd       	rcall	.-1270   	; 0x1cc <_ZN8KeyBoard5beginEv>
 	
 	sei();
- 6ea:	78 94       	sei
+ 6c2:	78 94       	sei
     while (1) 
     {
 		PORTC |= (1<<5);
- 6ec:	ad 9a       	sbi	0x15, 5	; 21
+ 6c4:	ad 9a       	sbi	0x15, 5	; 21
 		if (abc.available()){
- 6ee:	88 e7       	ldi	r24, 0x78	; 120
- 6f0:	90 e0       	ldi	r25, 0x00	; 0
- 6f2:	a8 dd       	rcall	.-1200   	; 0x244 <_ZN8KeyBoard9availableEv>
- 6f4:	88 23       	and	r24, r24
- 6f6:	d1 f3       	breq	.-12     	; 0x6ec <main+0x12>
+ 6c6:	88 e7       	ldi	r24, 0x78	; 120
+ 6c8:	90 e0       	ldi	r25, 0x00	; 0
+ 6ca:	bc dd       	rcall	.-1160   	; 0x244 <_ZN8KeyBoard9availableEv>
+ 6cc:	88 23       	and	r24, r24
+ 6ce:	d1 f3       	breq	.-12     	; 0x6c4 <main+0x12>
 			char data = abc.read();
- 6f8:	88 e7       	ldi	r24, 0x78	; 120
- 6fa:	90 e0       	ldi	r25, 0x00	; 0
- 6fc:	aa dd       	rcall	.-1196   	; 0x252 <_ZN8KeyBoard4readEv>
- 6fe:	c8 2f       	mov	r28, r24
+ 6d0:	88 e7       	ldi	r24, 0x78	; 120
+ 6d2:	90 e0       	ldi	r25, 0x00	; 0
+ 6d4:	be dd       	rcall	.-1156   	; 0x252 <_ZN8KeyBoard4readEv>
 			USART_Transmit(data);
- 700:	da df       	rcall	.-76     	; 0x6b6 <_Z14USART_Transmitc>
-			if (data == 'f'){
- 702:	c6 36       	cpi	r28, 0x66	; 102
- 704:	99 f7       	brne	.-26     	; 0x6ec <main+0x12>
-				PORTC &= ~(1<<5);
- 706:	ad 98       	cbi	0x15, 5	; 21
- 708:	2f ef       	ldi	r18, 0xFF	; 255
- 70a:	84 e3       	ldi	r24, 0x34	; 52
- 70c:	9c e0       	ldi	r25, 0x0C	; 12
- 70e:	21 50       	subi	r18, 0x01	; 1
- 710:	80 40       	sbci	r24, 0x00	; 0
- 712:	90 40       	sbci	r25, 0x00	; 0
- 714:	e1 f7       	brne	.-8      	; 0x70e <main+0x34>
- 716:	00 c0       	rjmp	.+0      	; 0x718 <main+0x3e>
- 718:	00 00       	nop
- 71a:	e8 cf       	rjmp	.-48     	; 0x6ec <main+0x12>
+ 6d6:	db df       	rcall	.-74     	; 0x68e <_Z14USART_Transmitc>
+ 6d8:	f5 cf       	rjmp	.-22     	; 0x6c4 <main+0x12>
 
-0000071c <_GLOBAL__sub_I__Z10USART_Initv>:
+000006da <_GLOBAL__sub_I__Z10USART_Initv>:
 		USART_Transmit(data[i]);
 		i++;
 	}
 }
 
 KeyBoard abc;
- 71c:	88 e7       	ldi	r24, 0x78	; 120
- 71e:	90 e0       	ldi	r25, 0x00	; 0
- 720:	54 dd       	rcall	.-1368   	; 0x1ca <_ZN8KeyBoardC1Ev>
- 722:	08 95       	ret
+ 6da:	88 e7       	ldi	r24, 0x78	; 120
+ 6dc:	90 e0       	ldi	r25, 0x00	; 0
+ 6de:	75 dd       	rcall	.-1302   	; 0x1ca <_ZN8KeyBoardC1Ev>
+ 6e0:	08 95       	ret
 
-00000724 <__tablejump2__>:
- 724:	ee 0f       	add	r30, r30
- 726:	ff 1f       	adc	r31, r31
- 728:	05 90       	lpm	r0, Z+
- 72a:	f4 91       	lpm	r31, Z
- 72c:	e0 2d       	mov	r30, r0
- 72e:	09 94       	ijmp
+000006e2 <__tablejump2__>:
+ 6e2:	ee 0f       	add	r30, r30
+ 6e4:	ff 1f       	adc	r31, r31
+ 6e6:	05 90       	lpm	r0, Z+
+ 6e8:	f4 91       	lpm	r31, Z
+ 6ea:	e0 2d       	mov	r30, r0
+ 6ec:	09 94       	ijmp
 
-00000730 <_exit>:
- 730:	f8 94       	cli
+000006ee <_exit>:
+ 6ee:	f8 94       	cli
 
-00000732 <__stop_program>:
- 732:	ff cf       	rjmp	.-2      	; 0x732 <__stop_program>
+000006f0 <__stop_program>:
+ 6f0:	ff cf       	rjmp	.-2      	; 0x6f0 <__stop_program>

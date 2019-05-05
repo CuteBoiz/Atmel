@@ -18,10 +18,6 @@ Discarded input sections
  .text          0x00000000        0x0 KeyBoard.o
  .data          0x00000000        0x0 KeyBoard.o
  .bss           0x00000000        0x0 KeyBoard.o
- .text._ZN8KeyBoard5resetEv
-                0x00000000       0x40 KeyBoard.o
- .text._ZN8KeyBoard9extraReadEv
-                0x00000000       0x24 KeyBoard.o
  .avr.prop      0x00000000       0x16 KeyBoard.o
  .text          0x00000000        0x0 main.o
  .data          0x00000000        0x0 main.o
@@ -232,7 +228,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0x734
+.text           0x00000000      0x6f2
  *(.vectors)
  .vectors       0x00000000       0x26 A:/Atmel/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega8a/avr4/crtatmega8a.o
                 0x00000000                __vector_default
@@ -336,31 +332,31 @@ END GROUP
                 0x00000244        0xe KeyBoard.o
                 0x00000244                _ZN8KeyBoard9availableEv
  .text._ZN8KeyBoard4readEv
-                0x00000252      0x290 KeyBoard.o
+                0x00000252      0x26c KeyBoard.o
                 0x00000252                _ZN8KeyBoard4readEv
  .text.__vector_1
-                0x000004e2      0x1c4 KeyBoard.o
-                0x000004e2                __vector_1
+                0x000004be      0x1c0 KeyBoard.o
+                0x000004be                __vector_1
  .text._Z10USART_Initv
-                0x000006a6       0x10 main.o
-                0x000006a6                _Z10USART_Initv
+                0x0000067e       0x10 main.o
+                0x0000067e                _Z10USART_Initv
  .text._Z14USART_Transmitc
-                0x000006b6        0x8 main.o
-                0x000006b6                _Z14USART_Transmitc
+                0x0000068e        0x8 main.o
+                0x0000068e                _Z14USART_Transmitc
  .text._Z10sendStringPc
-                0x000006be       0x1c main.o
-                0x000006be                _Z10sendStringPc
- .text.main     0x000006da       0x42 main.o
-                0x000006da                main
+                0x00000696       0x1c main.o
+                0x00000696                _Z10sendStringPc
+ .text.main     0x000006b2       0x28 main.o
+                0x000006b2                main
  .text._GLOBAL__sub_I__Z10USART_Initv
-                0x0000071c        0x8 main.o
- .text.libgcc   0x00000724        0xc a:/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr4\libgcc.a(_tablejump2.o)
-                0x00000724                __tablejump2__
-                0x00000730                . = ALIGN (0x2)
+                0x000006da        0x8 main.o
+ .text.libgcc   0x000006e2        0xc a:/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr4\libgcc.a(_tablejump2.o)
+                0x000006e2                __tablejump2__
+                0x000006ee                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00000730        0x0 a:/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr4\libgcc.a(_exit.o)
-                0x00000730                _exit
-                0x00000730                exit
+ .fini9         0x000006ee        0x0 a:/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr4\libgcc.a(_exit.o)
+                0x000006ee                _exit
+                0x000006ee                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -379,11 +375,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00000730        0x4 a:/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr4\libgcc.a(_exit.o)
+ .fini0         0x000006ee        0x4 a:/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr4\libgcc.a(_exit.o)
  *(.fini0)
-                0x00000734                _etext = .
+                0x000006f2                _etext = .
 
-.data           0x00800060        0x8 load address 0x00000734
+.data           0x00800060        0x8 load address 0x000006f2
                 0x00800060                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
@@ -443,8 +439,8 @@ END GROUP
                 0x00800078                abc
  *(COMMON)
                 0x00800079                PROVIDE (__bss_end, .)
-                0x00000734                __data_load_start = LOADADDR (.data)
-                0x0000073c                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x000006f2                __data_load_start = LOADADDR (.data)
+                0x000006fa                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x00800079        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
@@ -516,51 +512,51 @@ END GROUP
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x00000000       0xa8
+.debug_aranges  0x00000000       0x98
  *(.debug_aranges)
  .debug_aranges
-                0x00000000       0x68 KeyBoard.o
+                0x00000000       0x58 KeyBoard.o
  .debug_aranges
-                0x00000068       0x40 main.o
+                0x00000058       0x40 main.o
 
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000      0xeeb
+.debug_info     0x00000000      0xd5f
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x48c A:/Atmel/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega8a/avr4/crtatmega8a.o
- .debug_info    0x0000048c      0x64a KeyBoard.o
- .debug_info    0x00000ad6      0x415 main.o
+ .debug_info    0x0000048c      0x59b KeyBoard.o
+ .debug_info    0x00000a27      0x338 main.o
 
-.debug_abbrev   0x00000000      0x90b
+.debug_abbrev   0x00000000      0x891
  *(.debug_abbrev)
  .debug_abbrev  0x00000000      0x44e A:/Atmel/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega8a/avr4/crtatmega8a.o
- .debug_abbrev  0x0000044e      0x24f KeyBoard.o
- .debug_abbrev  0x0000069d      0x26e main.o
+ .debug_abbrev  0x0000044e      0x240 KeyBoard.o
+ .debug_abbrev  0x0000068e      0x203 main.o
 
-.debug_line     0x00000000      0x984
+.debug_line     0x00000000      0x873
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x109 A:/Atmel/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega8a/avr4/crtatmega8a.o
- .debug_line    0x00000109      0x6d3 KeyBoard.o
- .debug_line    0x000007dc      0x1a8 main.o
+ .debug_line    0x00000109      0x622 KeyBoard.o
+ .debug_line    0x0000072b      0x148 main.o
 
-.debug_frame    0x00000000      0x15c
+.debug_frame    0x00000000      0x13c
  *(.debug_frame)
- .debug_frame   0x00000000       0xec KeyBoard.o
- .debug_frame   0x000000ec       0x70 main.o
+ .debug_frame   0x00000000       0xcc KeyBoard.o
+ .debug_frame   0x000000cc       0x70 main.o
 
-.debug_str      0x00000000      0x5cf
+.debug_str      0x00000000      0x591
  *(.debug_str)
  .debug_str     0x00000000      0x17a A:/Atmel/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega8a/avr4/crtatmega8a.o
- .debug_str     0x0000017a      0x395 KeyBoard.o
-                                0x3c9 (size before relaxing)
- .debug_str     0x0000050f       0xc0 main.o
-                                0x3c3 (size before relaxing)
+ .debug_str     0x0000017a      0x357 KeyBoard.o
+                                0x38b (size before relaxing)
+ .debug_str     0x000004d1       0xc0 main.o
+                                0x33a (size before relaxing)
 
-.debug_loc      0x00000000      0x9d0
+.debug_loc      0x00000000      0x9b1
  *(.debug_loc)
- .debug_loc     0x00000000      0x8db KeyBoard.o
- .debug_loc     0x000008db       0xf5 main.o
+ .debug_loc     0x00000000      0x8c7 KeyBoard.o
+ .debug_loc     0x000008c7       0xea main.o
 
 .debug_macinfo
  *(.debug_macinfo)
@@ -580,10 +576,10 @@ END GROUP
 .debug_pubtypes
  *(.debug_pubtypes)
 
-.debug_ranges   0x00000000       0x88
+.debug_ranges   0x00000000       0x78
  *(.debug_ranges)
- .debug_ranges  0x00000000       0x58 KeyBoard.o
- .debug_ranges  0x00000058       0x30 main.o
+ .debug_ranges  0x00000000       0x48 KeyBoard.o
+ .debug_ranges  0x00000048       0x30 main.o
 
 .debug_macro
  *(.debug_macro)

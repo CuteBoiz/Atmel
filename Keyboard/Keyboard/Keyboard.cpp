@@ -12,7 +12,7 @@ volatile uint8_t charBuffer;
 volatile uint8_t bufferPos;
 
 volatile bool	kbExtend;
- volatile bool	kbRelease;
+volatile bool	kbRelease;
 
 volatile bool	kbShift;
 volatile bool	kbCtrl;
@@ -67,6 +67,7 @@ KeyBoard::KeyBoard(){
 	
 }
 void KeyBoard::begin(){
+	
 	currentBuffer	= 0x00;
 	charBuffer		= 0x00;
 	bufferPos		= 0x00;
@@ -93,25 +94,6 @@ void KeyBoard::begin(){
 	GICR	|= (1<<INT0);
 }
 
-void KeyBoard::reset(){
-	sendCommand(0xFF);
-	
-	currentBuffer	= 0x00;
-	charBuffer		= 0x00;
-	bufferPos		= 0x00;
-	
-	kbShift			= false;
-	kbCtrl			= false;
-	kbAlt			= false;
-	kbCapslock		= false;
-	kbExtend		= false;
-	kbRelease		= false;
-	
-	cmdInProgress	= false;
-	cmdCount		= 0;
-	cmdValue		= 0x00;
-	cmdACKValue		= 1;
-}
 void KeyBoard::setLight(uint8_t data){
 	cmdACKOk = false;
 	sendCommand(0xED);
@@ -120,10 +102,6 @@ void KeyBoard::setLight(uint8_t data){
 }
 bool KeyBoard::available(){
 	return (charBuffer != 0);
-}
-
-uint8_t KeyBoard::extraRead(){
-	return (kbCapslock<<3)|(kbShift<<2)|(kbAlt<<1)|(kbCtrl<<0);
 }
 
 uint8_t KeyBoard::read(){
@@ -180,23 +158,22 @@ uint8_t KeyBoard::read(){
 		case 0x49: result = kbShift ? '>' : '.'; break;
 		case 0x4A: result = kbShift ? '?' : '/'; break;
 		
-		case 0x0D: result = '\t'; break;
-		case 0x5A: result = '\n'; break;
-		case 0x66: result = BACKSPAGE; break;
-		case 0x69: result = END; break;
-		case 0x6B: result = LEFT; break;
-		case 0x6C: result = HOME; break;
-		case 0x70: result = INSERT; break;
-		case 0x71: result = DEL; break;
-		case 0x72: result = DOWN; break;
-		case 0x74: result = RIGHT; break;
-		case 0x75: result = UP; break;
-		case 0x76: result = ESC; break;
-		case 0x7A: result = PAGEDOWN; break;
-		case 0x7D: result = PAGEUP; break;
-		
-		case 0x58: 
-			result = kbCapslock ? CAPLOCK_ON : CAPLOCK_OFF; 
+		case 0x0D: result = '\t';		break;
+		case 0x5A: result = '\n';		break;
+		case 0x29: result = ' ';		break;
+		case 0x66: result = BACKSPAGE;	break;
+		case 0x69: result = END;		break;
+		case 0x6B: result = LEFT;		break;
+		case 0x6C: result = HOME;		break;
+		case 0x70: result = INSERT;		break;
+		case 0x71: result = DEL;		break;
+		case 0x72: result = DOWN;		break;
+		case 0x74: result = RIGHT;		break;
+		case 0x75: result = UP;			break;
+		case 0x76: result = ESC;		break;
+		case 0x7A: result = PAGEDOWN;	break;
+		case 0x7D: result = PAGEUP;		break;
+		case 0x58:
 			if (kbCapslock){
 				setLight(0x04);
 			}
@@ -207,13 +184,6 @@ uint8_t KeyBoard::read(){
 		
 		default:
 			_delay_ms(500);
-			bufferPos = 0;
-			kbShift = false;
-			kbCtrl = false;
-			kbAlt = false;
-			kbExtend = false;
-			kbRelease = false;
-			kbCapslock = false;
 	}
 	
 	if (((result>= 'a') && (result <= 'z')) && ((kbShift && !kbCapslock) || (!kbShift && kbCapslock))){
@@ -326,19 +296,18 @@ ISR(INT0_vect){
 			}
 			
 			case 0x58: {
-				if (!kbRelease){
-					kbCapslock	= kbRelease ? false : true;
-					charBuffer	= currentBuffer;
-				}
-				else{
+				if (kbRelease){
 					kbRelease	= false;
 				}
-				break;
+				else{
+					kbCapslock = !(kbCapslock);
+					charBuffer	= currentBuffer;
+				}
 			}
 			
 			default: { //A Normal key pressed
 				if (kbRelease){
-					kbRelease	= true;
+					kbRelease	= false;
 				}
 				else{
 					charBuffer	= currentBuffer;
