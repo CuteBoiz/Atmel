@@ -18,6 +18,7 @@ volatile bool	kbShift;
 volatile bool	kbCtrl;
 volatile bool	kbAlt;
 volatile bool	kbCapslock;
+volatile bool	kbNumlock;
 
 volatile bool		cmdInProgress;
 volatile int		cmdCount;
@@ -75,7 +76,10 @@ void KeyBoard::begin(){
 	kbShift			= false;
 	kbCtrl			= false;
 	kbAlt			= false;
+	
 	kbCapslock		= false;
+	kbNumlock		= false;
+	
 	kbExtend		= false;
 	kbRelease		= false;
 	
@@ -161,18 +165,20 @@ uint8_t KeyBoard::read(){
 		case 0x0D: result = '\t';		break;
 		case 0x5A: result = '\n';		break;
 		case 0x29: result = ' ';		break;
+		
 		case 0x66: result = BACKSPAGE;	break;
-		case 0x69: result = END;		break;
-		case 0x6B: result = LEFT;		break;
-		case 0x6C: result = HOME;		break;
-		case 0x70: result = INSERT;		break;
-		case 0x71: result = DEL;		break;
-		case 0x72: result = DOWN;		break;
-		case 0x74: result = RIGHT;		break;
-		case 0x75: result = UP;			break;
-		case 0x76: result = ESC;		break;
-		case 0x7A: result = PAGEDOWN;	break;
-		case 0x7D: result = PAGEUP;		break;
+		case 0x69: result = kbExtend ? END : '1';		break;
+		case 0x6B: result = kbExtend ? LEFT : '4';		break;
+		case 0x6C: result = kbExtend ? HOME : '7';		break;
+		case 0x70: result = kbExtend ? INSERT : '0';		break;
+		case 0x71: result = kbExtend ? DEL : '';		break;
+		case 0x72: result = kbExtend ? DOWN;		break;
+		case 0x74: result = kbExtend ? RIGHT;		break;
+		case 0x75: result = kbExtend ? UP;			break;
+		case 0x76: result = kbExtend ? ESC;		break;
+		case 0x7A: result = kbExtend ? PAGEDOWN;	break;
+		case 0x7D: result = kbExtend ? PAGEUP;		break;
+		
 		case 0x58:
 			if (kbCapslock){
 				setLight(0x04);

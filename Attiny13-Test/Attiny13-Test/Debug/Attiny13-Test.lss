@@ -1,0 +1,197 @@
+
+Attiny13-Test.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         000000ae  00000000  00000000  00000054  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000000  00800060  00800060  00000102  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .comment      00000030  00000000  00000000  00000102  2**0
+                  CONTENTS, READONLY
+  3 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000134  2**2
+                  CONTENTS, READONLY
+  4 .debug_aranges 00000030  00000000  00000000  00000170  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   000004b9  00000000  00000000  000001a0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 0000041c  00000000  00000000  00000659  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   00000268  00000000  00000000  00000a75  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  00000044  00000000  00000000  00000ce0  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    000002fc  00000000  00000000  00000d24  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    00000066  00000000  00000000  00001020  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_ranges 00000020  00000000  00000000  00001086  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	09 c0       	rjmp	.+18     	; 0x14 <__ctors_end>
+   2:	0e c0       	rjmp	.+28     	; 0x20 <__bad_interrupt>
+   4:	0d c0       	rjmp	.+26     	; 0x20 <__bad_interrupt>
+   6:	0c c0       	rjmp	.+24     	; 0x20 <__bad_interrupt>
+   8:	0b c0       	rjmp	.+22     	; 0x20 <__bad_interrupt>
+   a:	0a c0       	rjmp	.+20     	; 0x20 <__bad_interrupt>
+   c:	09 c0       	rjmp	.+18     	; 0x20 <__bad_interrupt>
+   e:	08 c0       	rjmp	.+16     	; 0x20 <__bad_interrupt>
+  10:	07 c0       	rjmp	.+14     	; 0x20 <__bad_interrupt>
+  12:	06 c0       	rjmp	.+12     	; 0x20 <__bad_interrupt>
+
+00000014 <__ctors_end>:
+  14:	11 24       	eor	r1, r1
+  16:	1f be       	out	0x3f, r1	; 63
+  18:	cf e9       	ldi	r28, 0x9F	; 159
+  1a:	cd bf       	out	0x3d, r28	; 61
+  1c:	27 d0       	rcall	.+78     	; 0x6c <main>
+  1e:	45 c0       	rjmp	.+138    	; 0xaa <_exit>
+
+00000020 <__bad_interrupt>:
+  20:	ef cf       	rjmp	.-34     	; 0x0 <__vectors>
+
+00000022 <_Z10USART_Initv>:
+#define PORT_USART	PORTB
+#define USART_TX_PIN	2
+#define USART_DELAY		14 //9600
+
+void USART_Init(){
+	DDR_USART	|= (1<<USART_TX_PIN);
+  22:	ba 9a       	sbi	0x17, 2	; 23
+	PORT_USART	|= (1<<USART_TX_PIN);
+  24:	c2 9a       	sbi	0x18, 2	; 24
+  26:	08 95       	ret
+
+00000028 <_Z14USART_Transmith>:
+}
+
+void USART_Transmit(uint8_t data){
+	register int i;
+	TCNT0 = 0;
+  28:	12 be       	out	0x32, r1	; 50
+	//Send Start Bit
+	PORT_USART &= ~(1<<USART_TX_PIN);
+  2a:	c2 98       	cbi	0x18, 2	; 24
+	while (TCNT0 < USART_DELAY);
+  2c:	92 b7       	in	r25, 0x32	; 50
+  2e:	9e 30       	cpi	r25, 0x0E	; 14
+  30:	e8 f3       	brcs	.-6      	; 0x2c <_Z14USART_Transmith+0x4>
+  32:	20 e0       	ldi	r18, 0x00	; 0
+  34:	30 e0       	ldi	r19, 0x00	; 0
+	
+	//Send Data Bits
+	for (int i = 0; i < 8; i++){
+		if (data & (1 << i)){
+  36:	48 2f       	mov	r20, r24
+  38:	50 e0       	ldi	r21, 0x00	; 0
+  3a:	ca 01       	movw	r24, r20
+  3c:	02 2e       	mov	r0, r18
+  3e:	02 c0       	rjmp	.+4      	; 0x44 <__SREG__+0x5>
+  40:	95 95       	asr	r25
+  42:	87 95       	ror	r24
+  44:	0a 94       	dec	r0
+  46:	e2 f7       	brpl	.-8      	; 0x40 <__SREG__+0x1>
+  48:	80 ff       	sbrs	r24, 0
+  4a:	02 c0       	rjmp	.+4      	; 0x50 <__SREG__+0x11>
+			PORT_USART |= (1<<USART_TX_PIN);
+  4c:	c2 9a       	sbi	0x18, 2	; 24
+  4e:	01 c0       	rjmp	.+2      	; 0x52 <__SREG__+0x13>
+		}
+		else{
+			PORT_USART &= ~(1<<USART_TX_PIN);
+  50:	c2 98       	cbi	0x18, 2	; 24
+		}
+		while(TCNT0 < USART_DELAY);
+  52:	82 b7       	in	r24, 0x32	; 50
+  54:	8e 30       	cpi	r24, 0x0E	; 14
+  56:	e8 f3       	brcs	.-6      	; 0x52 <__SREG__+0x13>
+	//Send Start Bit
+	PORT_USART &= ~(1<<USART_TX_PIN);
+	while (TCNT0 < USART_DELAY);
+	
+	//Send Data Bits
+	for (int i = 0; i < 8; i++){
+  58:	2f 5f       	subi	r18, 0xFF	; 255
+  5a:	3f 4f       	sbci	r19, 0xFF	; 255
+  5c:	28 30       	cpi	r18, 0x08	; 8
+  5e:	31 05       	cpc	r19, r1
+  60:	61 f7       	brne	.-40     	; 0x3a <_Z14USART_Transmith+0x12>
+		}
+		while(TCNT0 < USART_DELAY);
+	}
+	
+	//Send Stop Bit
+	PORT_USART &= ~(1<<USART_TX_PIN);
+  62:	c2 98       	cbi	0x18, 2	; 24
+	while (TCNT0 < USART_DELAY);
+  64:	82 b7       	in	r24, 0x32	; 50
+  66:	8e 30       	cpi	r24, 0x0E	; 14
+  68:	e8 f3       	brcs	.-6      	; 0x64 <__SREG__+0x25>
+	
+}
+  6a:	08 95       	ret
+
+0000006c <main>:
+int main(void)
+{
+	
+	TCCR0A = 0x02;
+  6c:	82 e0       	ldi	r24, 0x02	; 2
+  6e:	8f bd       	out	0x2f, r24	; 47
+	TCCR0B = 0x02;
+  70:	83 bf       	out	0x33, r24	; 51
+	OCR0A = USART_DELAY; 
+  72:	8e e0       	ldi	r24, 0x0E	; 14
+  74:	86 bf       	out	0x36, r24	; 54
+	
+	USART_Init();
+  76:	d5 df       	rcall	.-86     	; 0x22 <_Z10USART_Initv>
+	
+	sei();
+  78:	78 94       	sei
+    DDRB |= (1<<4);
+  7a:	bc 9a       	sbi	0x17, 4	; 23
+    while (1) 
+    {
+		PORTB &= ~(1<<4);
+  7c:	c4 98       	cbi	0x18, 4	; 24
+		USART_Transmit(0xF1);
+  7e:	81 ef       	ldi	r24, 0xF1	; 241
+  80:	d3 df       	rcall	.-90     	; 0x28 <_Z14USART_Transmith>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+  82:	2f e7       	ldi	r18, 0x7F	; 127
+  84:	8c ef       	ldi	r24, 0xFC	; 252
+  86:	9a e0       	ldi	r25, 0x0A	; 10
+  88:	21 50       	subi	r18, 0x01	; 1
+  8a:	80 40       	sbci	r24, 0x00	; 0
+  8c:	90 40       	sbci	r25, 0x00	; 0
+  8e:	e1 f7       	brne	.-8      	; 0x88 <main+0x1c>
+  90:	00 c0       	rjmp	.+0      	; 0x92 <main+0x26>
+  92:	00 00       	nop
+		_delay_ms(300);
+		PORTB |= (1<<4);
+  94:	c4 9a       	sbi	0x18, 4	; 24
+  96:	2f e7       	ldi	r18, 0x7F	; 127
+  98:	8c ef       	ldi	r24, 0xFC	; 252
+  9a:	9a e0       	ldi	r25, 0x0A	; 10
+  9c:	21 50       	subi	r18, 0x01	; 1
+  9e:	80 40       	sbci	r24, 0x00	; 0
+  a0:	90 40       	sbci	r25, 0x00	; 0
+  a2:	e1 f7       	brne	.-8      	; 0x9c <main+0x30>
+  a4:	00 c0       	rjmp	.+0      	; 0xa6 <__stack+0x7>
+  a6:	00 00       	nop
+  a8:	e9 cf       	rjmp	.-46     	; 0x7c <main+0x10>
+
+000000aa <_exit>:
+  aa:	f8 94       	cli
+
+000000ac <__stop_program>:
+  ac:	ff cf       	rjmp	.-2      	; 0xac <__stop_program>
