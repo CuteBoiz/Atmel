@@ -379,7 +379,7 @@ void Nokia5110::begin(){
  190:	61 e2       	ldi	r22, 0x21	; 33
  192:	ce 01       	movw	r24, r28
  194:	b8 df       	rcall	.-144    	; 0x106 <_ZN9Nokia511011sendCommandEh>
-	this->sendCommand(0x80 | 0x5); //VOP[6:0] = (VLCD - 3,06) / 0.06 (Chinh do tuong phan)
+	this->sendCommand(0x80 | 0x05); //VOP[6:0] = (VLCD - 3,06) / 0.06 (Chinh do tuong phan)
  196:	65 e8       	ldi	r22, 0x85	; 133
  198:	ce 01       	movw	r24, r28
  19a:	b5 df       	rcall	.-150    	; 0x106 <_ZN9Nokia511011sendCommandEh>

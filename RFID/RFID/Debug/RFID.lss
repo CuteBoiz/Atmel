@@ -1,0 +1,687 @@
+
+RFID.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00000410  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         0000000c  00800060  00000410  000004a4  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          00000001  0080006c  0080006c  000004b0  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  000004b0  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  000004e0  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 000000b8  00000000  00000000  0000051c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   00001666  00000000  00000000  000005d4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 00000941  00000000  00000000  00001c3a  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   000006e1  00000000  00000000  0000257b  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  00000254  00000000  00000000  00002c5c  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    00000636  00000000  00000000  00002eb0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    00000d50  00000000  00000000  000034e6  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 000000c8  00000000  00000000  00004236  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	13 c0       	rjmp	.+38     	; 0x28 <__ctors_end>
+   2:	37 c0       	rjmp	.+110    	; 0x72 <__bad_interrupt>
+   4:	36 c0       	rjmp	.+108    	; 0x72 <__bad_interrupt>
+   6:	35 c0       	rjmp	.+106    	; 0x72 <__bad_interrupt>
+   8:	34 c0       	rjmp	.+104    	; 0x72 <__bad_interrupt>
+   a:	33 c0       	rjmp	.+102    	; 0x72 <__bad_interrupt>
+   c:	32 c0       	rjmp	.+100    	; 0x72 <__bad_interrupt>
+   e:	31 c0       	rjmp	.+98     	; 0x72 <__bad_interrupt>
+  10:	30 c0       	rjmp	.+96     	; 0x72 <__bad_interrupt>
+  12:	2f c0       	rjmp	.+94     	; 0x72 <__bad_interrupt>
+  14:	2e c0       	rjmp	.+92     	; 0x72 <__bad_interrupt>
+  16:	2d c0       	rjmp	.+90     	; 0x72 <__bad_interrupt>
+  18:	2c c0       	rjmp	.+88     	; 0x72 <__bad_interrupt>
+  1a:	2b c0       	rjmp	.+86     	; 0x72 <__bad_interrupt>
+  1c:	2a c0       	rjmp	.+84     	; 0x72 <__bad_interrupt>
+  1e:	29 c0       	rjmp	.+82     	; 0x72 <__bad_interrupt>
+  20:	28 c0       	rjmp	.+80     	; 0x72 <__bad_interrupt>
+  22:	27 c0       	rjmp	.+78     	; 0x72 <__bad_interrupt>
+  24:	26 c0       	rjmp	.+76     	; 0x72 <__bad_interrupt>
+
+00000026 <__ctors_start>:
+  26:	6c 00       	.word	0x006c	; ????
+
+00000028 <__ctors_end>:
+  28:	11 24       	eor	r1, r1
+  2a:	1f be       	out	0x3f, r1	; 63
+  2c:	cf e5       	ldi	r28, 0x5F	; 95
+  2e:	d4 e0       	ldi	r29, 0x04	; 4
+  30:	de bf       	out	0x3e, r29	; 62
+  32:	cd bf       	out	0x3d, r28	; 61
+
+00000034 <__do_copy_data>:
+  34:	10 e0       	ldi	r17, 0x00	; 0
+  36:	a0 e6       	ldi	r26, 0x60	; 96
+  38:	b0 e0       	ldi	r27, 0x00	; 0
+  3a:	e0 e1       	ldi	r30, 0x10	; 16
+  3c:	f4 e0       	ldi	r31, 0x04	; 4
+  3e:	02 c0       	rjmp	.+4      	; 0x44 <__SREG__+0x5>
+  40:	05 90       	lpm	r0, Z+
+  42:	0d 92       	st	X+, r0
+  44:	ac 36       	cpi	r26, 0x6C	; 108
+  46:	b1 07       	cpc	r27, r17
+  48:	d9 f7       	brne	.-10     	; 0x40 <__SREG__+0x1>
+
+0000004a <__do_clear_bss>:
+  4a:	20 e0       	ldi	r18, 0x00	; 0
+  4c:	ac e6       	ldi	r26, 0x6C	; 108
+  4e:	b0 e0       	ldi	r27, 0x00	; 0
+  50:	01 c0       	rjmp	.+2      	; 0x54 <.do_clear_bss_start>
+
+00000052 <.do_clear_bss_loop>:
+  52:	1d 92       	st	X+, r1
+
+00000054 <.do_clear_bss_start>:
+  54:	ad 36       	cpi	r26, 0x6D	; 109
+  56:	b2 07       	cpc	r27, r18
+  58:	e1 f7       	brne	.-8      	; 0x52 <.do_clear_bss_loop>
+
+0000005a <__do_global_ctors>:
+  5a:	10 e0       	ldi	r17, 0x00	; 0
+  5c:	c4 e1       	ldi	r28, 0x14	; 20
+  5e:	d0 e0       	ldi	r29, 0x00	; 0
+  60:	03 c0       	rjmp	.+6      	; 0x68 <__do_global_ctors+0xe>
+  62:	21 97       	sbiw	r28, 0x01	; 1
+  64:	fe 01       	movw	r30, r28
+  66:	cc d1       	rcall	.+920    	; 0x400 <__tablejump2__>
+  68:	c3 31       	cpi	r28, 0x13	; 19
+  6a:	d1 07       	cpc	r29, r17
+  6c:	d1 f7       	brne	.-12     	; 0x62 <__do_global_ctors+0x8>
+  6e:	11 d0       	rcall	.+34     	; 0x92 <main>
+  70:	cd c1       	rjmp	.+922    	; 0x40c <_exit>
+
+00000072 <__bad_interrupt>:
+  72:	c6 cf       	rjmp	.-116    	; 0x0 <__vectors>
+
+00000074 <_Z10USART_Initv>:
+ */ 
+
+#include "MFRC522.h"
+
+void USART_Init(){
+	UBRRL = 51;
+  74:	83 e3       	ldi	r24, 0x33	; 51
+  76:	89 b9       	out	0x09, r24	; 9
+	UCSRC |= (1<<URSEL) | (3<<UCSZ0);
+  78:	80 b5       	in	r24, 0x20	; 32
+  7a:	86 68       	ori	r24, 0x86	; 134
+  7c:	80 bd       	out	0x20, r24	; 32
+	UCSRB |= (1<<TXEN);
+  7e:	53 9a       	sbi	0x0a, 3	; 10
+  80:	08 95       	ret
+
+00000082 <_Z8SPI_Initv>:
+}
+void SPI_Init(){
+	SPCR |= (1<<SPE) | (1<<MSTR) | (1<<SPR0);
+  82:	8d b1       	in	r24, 0x0d	; 13
+  84:	81 65       	ori	r24, 0x51	; 81
+  86:	8d b9       	out	0x0d, r24	; 13
+	DDRB |= (1<<MOSI_PIN) | (1<<SS_PIN) | (1<<SCK_PIN);
+  88:	87 b3       	in	r24, 0x17	; 23
+  8a:	8c 62       	ori	r24, 0x2C	; 44
+  8c:	87 bb       	out	0x17, r24	; 23
+	PORTB |= (1<<SS_PIN);
+  8e:	c2 9a       	sbi	0x18, 2	; 24
+  90:	08 95       	ret
+
+00000092 <main>:
+}
+
+MFRC522 RFID;
+
+int main(void)
+{
+  92:	cf 93       	push	r28
+  94:	df 93       	push	r29
+  96:	cd b7       	in	r28, 0x3d	; 61
+  98:	de b7       	in	r29, 0x3e	; 62
+  9a:	60 97       	sbiw	r28, 0x10	; 16
+  9c:	0f b6       	in	r0, 0x3f	; 63
+  9e:	f8 94       	cli
+  a0:	de bf       	out	0x3e, r29	; 62
+  a2:	0f be       	out	0x3f, r0	; 63
+  a4:	cd bf       	out	0x3d, r28	; 61
+	SPI_Init();
+  a6:	ed df       	rcall	.-38     	; 0x82 <_Z8SPI_Initv>
+	USART_Init();
+  a8:	e5 df       	rcall	.-54     	; 0x74 <_Z10USART_Initv>
+    RFID.begin();
+  aa:	8c e6       	ldi	r24, 0x6C	; 108
+  ac:	90 e0       	ldi	r25, 0x00	; 0
+  ae:	83 d0       	rcall	.+262    	; 0x1b6 <_ZN7MFRC5225beginEv>
+	DDRC |= (1<<5);
+  b0:	a5 9a       	sbi	0x14, 5	; 20
+	
+	uint8_t data[MAX_LEN];
+	int status ;
+    while (1) 
+    {
+		PORTC |= (1<<5);
+  b2:	ad 9a       	sbi	0x15, 5	; 21
+		USART_Transmit('P');
+  b4:	80 e5       	ldi	r24, 0x50	; 80
+  b6:	19 d0       	rcall	.+50     	; 0xea <_Z14USART_Transmitc>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+  b8:	2f ef       	ldi	r18, 0xFF	; 255
+  ba:	84 e3       	ldi	r24, 0x34	; 52
+  bc:	9c e0       	ldi	r25, 0x0C	; 12
+  be:	21 50       	subi	r18, 0x01	; 1
+  c0:	80 40       	sbci	r24, 0x00	; 0
+  c2:	90 40       	sbci	r25, 0x00	; 0
+  c4:	e1 f7       	brne	.-8      	; 0xbe <main+0x2c>
+  c6:	00 c0       	rjmp	.+0      	; 0xc8 <main+0x36>
+  c8:	00 00       	nop
+		_delay_ms(500);
+		RFID.WUPA_TAG(data);
+  ca:	be 01       	movw	r22, r28
+  cc:	6f 5f       	subi	r22, 0xFF	; 255
+  ce:	7f 4f       	sbci	r23, 0xFF	; 255
+  d0:	8c e6       	ldi	r24, 0x6C	; 108
+  d2:	90 e0       	ldi	r25, 0x00	; 0
+  d4:	58 d1       	rcall	.+688    	; 0x386 <_ZN7MFRC5228WUPA_TAGEPh>
+  d6:	ed cf       	rjmp	.-38     	; 0xb2 <main+0x20>
+
+000000d8 <_GLOBAL__sub_I__Z10USART_Initv>:
+	SPCR |= (1<<SPE) | (1<<MSTR) | (1<<SPR0);
+	DDRB |= (1<<MOSI_PIN) | (1<<SS_PIN) | (1<<SCK_PIN);
+	PORTB |= (1<<SS_PIN);
+}
+
+MFRC522 RFID;
+  d8:	8c e6       	ldi	r24, 0x6C	; 108
+  da:	90 e0       	ldi	r25, 0x00	; 0
+  dc:	1e d0       	rcall	.+60     	; 0x11a <_ZN7MFRC522C1Ev>
+  de:	08 95       	ret
+
+000000e0 <_Z14SPI_Transceiveh>:
+	}
+	
+	result[0] = readFromRegister(CRCResultRegL);
+	result[1] = readFromRegister(CRCResultRegM);
+	return MI_OK;	
+}
+  e0:	8f b9       	out	0x0f, r24	; 15
+  e2:	77 9b       	sbis	0x0e, 7	; 14
+  e4:	fe cf       	rjmp	.-4      	; 0xe2 <_Z14SPI_Transceiveh+0x2>
+  e6:	8f b1       	in	r24, 0x0f	; 15
+  e8:	08 95       	ret
+
+000000ea <_Z14USART_Transmitc>:
+  ea:	5d 9b       	sbis	0x0b, 5	; 11
+  ec:	fe cf       	rjmp	.-4      	; 0xea <_Z14USART_Transmitc>
+  ee:	8c b9       	out	0x0c, r24	; 12
+  f0:	8f e0       	ldi	r24, 0x0F	; 15
+  f2:	97 e2       	ldi	r25, 0x27	; 39
+  f4:	01 97       	sbiw	r24, 0x01	; 1
+  f6:	f1 f7       	brne	.-4      	; 0xf4 <_Z14USART_Transmitc+0xa>
+  f8:	00 c0       	rjmp	.+0      	; 0xfa <_Z14USART_Transmitc+0x10>
+  fa:	00 00       	nop
+  fc:	08 95       	ret
+
+000000fe <_Z16USART_SendStringPc>:
+  fe:	cf 93       	push	r28
+ 100:	df 93       	push	r29
+ 102:	ec 01       	movw	r28, r24
+ 104:	88 81       	ld	r24, Y
+ 106:	88 23       	and	r24, r24
+ 108:	29 f0       	breq	.+10     	; 0x114 <_Z16USART_SendStringPc+0x16>
+ 10a:	21 96       	adiw	r28, 0x01	; 1
+ 10c:	ee df       	rcall	.-36     	; 0xea <_Z14USART_Transmitc>
+ 10e:	89 91       	ld	r24, Y+
+ 110:	81 11       	cpse	r24, r1
+ 112:	fc cf       	rjmp	.-8      	; 0x10c <_Z16USART_SendStringPc+0xe>
+ 114:	df 91       	pop	r29
+ 116:	cf 91       	pop	r28
+ 118:	08 95       	ret
+
+0000011a <_ZN7MFRC522C1Ev>:
+ 11a:	87 b3       	in	r24, 0x17	; 23
+ 11c:	86 60       	ori	r24, 0x06	; 6
+ 11e:	87 bb       	out	0x17, r24	; 23
+ 120:	88 b3       	in	r24, 0x18	; 24
+ 122:	86 60       	ori	r24, 0x06	; 6
+ 124:	88 bb       	out	0x18, r24	; 24
+ 126:	08 95       	ret
+
+00000128 <_ZN7MFRC52216readFromRegisterEh>:
+ 128:	c2 98       	cbi	0x18, 2	; 24
+ 12a:	86 2f       	mov	r24, r22
+ 12c:	88 0f       	add	r24, r24
+ 12e:	86 77       	andi	r24, 0x76	; 118
+ 130:	80 68       	ori	r24, 0x80	; 128
+ 132:	d6 df       	rcall	.-84     	; 0xe0 <_Z14SPI_Transceiveh>
+ 134:	80 e0       	ldi	r24, 0x00	; 0
+ 136:	d4 df       	rcall	.-88     	; 0xe0 <_Z14SPI_Transceiveh>
+ 138:	c2 9a       	sbi	0x18, 2	; 24
+ 13a:	08 95       	ret
+
+0000013c <_ZN7MFRC52215writeToRegisterEhh>:
+ 13c:	cf 93       	push	r28
+ 13e:	c4 2f       	mov	r28, r20
+ 140:	c2 98       	cbi	0x18, 2	; 24
+ 142:	86 2f       	mov	r24, r22
+ 144:	88 0f       	add	r24, r24
+ 146:	86 77       	andi	r24, 0x76	; 118
+ 148:	cb df       	rcall	.-106    	; 0xe0 <_Z14SPI_Transceiveh>
+ 14a:	8c 2f       	mov	r24, r28
+ 14c:	c9 df       	rcall	.-110    	; 0xe0 <_Z14SPI_Transceiveh>
+ 14e:	c2 9a       	sbi	0x18, 2	; 24
+ 150:	cf 91       	pop	r28
+ 152:	08 95       	ret
+
+00000154 <_ZN7MFRC5229setRegBitEhh>:
+ 154:	0f 93       	push	r16
+ 156:	1f 93       	push	r17
+ 158:	cf 93       	push	r28
+ 15a:	df 93       	push	r29
+ 15c:	ec 01       	movw	r28, r24
+ 15e:	16 2f       	mov	r17, r22
+ 160:	04 2f       	mov	r16, r20
+ 162:	e2 df       	rcall	.-60     	; 0x128 <_ZN7MFRC52216readFromRegisterEh>
+ 164:	41 e0       	ldi	r20, 0x01	; 1
+ 166:	50 e0       	ldi	r21, 0x00	; 0
+ 168:	02 c0       	rjmp	.+4      	; 0x16e <_ZN7MFRC5229setRegBitEhh+0x1a>
+ 16a:	44 0f       	add	r20, r20
+ 16c:	55 1f       	adc	r21, r21
+ 16e:	0a 95       	dec	r16
+ 170:	e2 f7       	brpl	.-8      	; 0x16a <_ZN7MFRC5229setRegBitEhh+0x16>
+ 172:	48 2b       	or	r20, r24
+ 174:	61 2f       	mov	r22, r17
+ 176:	ce 01       	movw	r24, r28
+ 178:	e1 df       	rcall	.-62     	; 0x13c <_ZN7MFRC52215writeToRegisterEhh>
+ 17a:	df 91       	pop	r29
+ 17c:	cf 91       	pop	r28
+ 17e:	1f 91       	pop	r17
+ 180:	0f 91       	pop	r16
+ 182:	08 95       	ret
+
+00000184 <_ZN7MFRC52211clearRegBitEhh>:
+ 184:	0f 93       	push	r16
+ 186:	1f 93       	push	r17
+ 188:	cf 93       	push	r28
+ 18a:	df 93       	push	r29
+ 18c:	ec 01       	movw	r28, r24
+ 18e:	16 2f       	mov	r17, r22
+ 190:	04 2f       	mov	r16, r20
+ 192:	ca df       	rcall	.-108    	; 0x128 <_ZN7MFRC52216readFromRegisterEh>
+ 194:	41 e0       	ldi	r20, 0x01	; 1
+ 196:	50 e0       	ldi	r21, 0x00	; 0
+ 198:	02 c0       	rjmp	.+4      	; 0x19e <_ZN7MFRC52211clearRegBitEhh+0x1a>
+ 19a:	44 0f       	add	r20, r20
+ 19c:	55 1f       	adc	r21, r21
+ 19e:	0a 95       	dec	r16
+ 1a0:	e2 f7       	brpl	.-8      	; 0x19a <_ZN7MFRC52211clearRegBitEhh+0x16>
+ 1a2:	40 95       	com	r20
+ 1a4:	48 23       	and	r20, r24
+ 1a6:	61 2f       	mov	r22, r17
+ 1a8:	ce 01       	movw	r24, r28
+ 1aa:	c8 df       	rcall	.-112    	; 0x13c <_ZN7MFRC52215writeToRegisterEhh>
+ 1ac:	df 91       	pop	r29
+ 1ae:	cf 91       	pop	r28
+ 1b0:	1f 91       	pop	r17
+ 1b2:	0f 91       	pop	r16
+ 1b4:	08 95       	ret
+
+000001b6 <_ZN7MFRC5225beginEv>:
+ 1b6:	cf 93       	push	r28
+ 1b8:	df 93       	push	r29
+ 1ba:	ec 01       	movw	r28, r24
+ 1bc:	c2 9a       	sbi	0x18, 2	; 24
+ 1be:	4f e0       	ldi	r20, 0x0F	; 15
+ 1c0:	61 e0       	ldi	r22, 0x01	; 1
+ 1c2:	bc df       	rcall	.-136    	; 0x13c <_ZN7MFRC52215writeToRegisterEhh>
+ 1c4:	4d e8       	ldi	r20, 0x8D	; 141
+ 1c6:	6a e2       	ldi	r22, 0x2A	; 42
+ 1c8:	ce 01       	movw	r24, r28
+ 1ca:	b8 df       	rcall	.-144    	; 0x13c <_ZN7MFRC52215writeToRegisterEhh>
+ 1cc:	4e e3       	ldi	r20, 0x3E	; 62
+ 1ce:	6b e2       	ldi	r22, 0x2B	; 43
+ 1d0:	ce 01       	movw	r24, r28
+ 1d2:	b4 df       	rcall	.-152    	; 0x13c <_ZN7MFRC52215writeToRegisterEhh>
+ 1d4:	40 e3       	ldi	r20, 0x30	; 48
+ 1d6:	6d e2       	ldi	r22, 0x2D	; 45
+ 1d8:	ce 01       	movw	r24, r28
+ 1da:	b0 df       	rcall	.-160    	; 0x13c <_ZN7MFRC52215writeToRegisterEhh>
+ 1dc:	46 e0       	ldi	r20, 0x06	; 6
+ 1de:	65 e1       	ldi	r22, 0x15	; 21
+ 1e0:	ce 01       	movw	r24, r28
+ 1e2:	b8 df       	rcall	.-144    	; 0x154 <_ZN7MFRC5229setRegBitEhh>
+ 1e4:	49 e2       	ldi	r20, 0x29	; 41
+ 1e6:	61 e1       	ldi	r22, 0x11	; 17
+ 1e8:	ce 01       	movw	r24, r28
+ 1ea:	a8 df       	rcall	.-176    	; 0x13c <_ZN7MFRC52215writeToRegisterEhh>
+ 1ec:	40 e0       	ldi	r20, 0x00	; 0
+ 1ee:	64 e1       	ldi	r22, 0x14	; 20
+ 1f0:	ce 01       	movw	r24, r28
+ 1f2:	b0 df       	rcall	.-160    	; 0x154 <_ZN7MFRC5229setRegBitEhh>
+ 1f4:	41 e0       	ldi	r20, 0x01	; 1
+ 1f6:	64 e1       	ldi	r22, 0x14	; 20
+ 1f8:	ce 01       	movw	r24, r28
+ 1fa:	ac df       	rcall	.-168    	; 0x154 <_ZN7MFRC5229setRegBitEhh>
+ 1fc:	df 91       	pop	r29
+ 1fe:	cf 91       	pop	r28
+ 200:	08 95       	ret
+
+00000202 <_ZN7MFRC5229sendToTagEPhiS0_Pi>:
+ 202:	8f 92       	push	r8
+ 204:	9f 92       	push	r9
+ 206:	af 92       	push	r10
+ 208:	bf 92       	push	r11
+ 20a:	cf 92       	push	r12
+ 20c:	df 92       	push	r13
+ 20e:	ef 92       	push	r14
+ 210:	ff 92       	push	r15
+ 212:	0f 93       	push	r16
+ 214:	1f 93       	push	r17
+ 216:	cf 93       	push	r28
+ 218:	df 93       	push	r29
+ 21a:	7c 01       	movw	r14, r24
+ 21c:	5b 01       	movw	r10, r22
+ 21e:	6a 01       	movw	r12, r20
+ 220:	92 2e       	mov	r9, r18
+ 222:	83 2e       	mov	r8, r19
+ 224:	47 ef       	ldi	r20, 0xF7	; 247
+ 226:	62 e0       	ldi	r22, 0x02	; 2
+ 228:	89 df       	rcall	.-238    	; 0x13c <_ZN7MFRC52215writeToRegisterEhh>
+ 22a:	47 e0       	ldi	r20, 0x07	; 7
+ 22c:	64 e0       	ldi	r22, 0x04	; 4
+ 22e:	c7 01       	movw	r24, r14
+ 230:	a9 df       	rcall	.-174    	; 0x184 <_ZN7MFRC52211clearRegBitEhh>
+ 232:	47 e0       	ldi	r20, 0x07	; 7
+ 234:	6a e0       	ldi	r22, 0x0A	; 10
+ 236:	c7 01       	movw	r24, r14
+ 238:	8d df       	rcall	.-230    	; 0x154 <_ZN7MFRC5229setRegBitEhh>
+ 23a:	40 e0       	ldi	r20, 0x00	; 0
+ 23c:	61 e0       	ldi	r22, 0x01	; 1
+ 23e:	c7 01       	movw	r24, r14
+ 240:	7d df       	rcall	.-262    	; 0x13c <_ZN7MFRC52215writeToRegisterEhh>
+ 242:	1c 14       	cp	r1, r12
+ 244:	1d 04       	cpc	r1, r13
+ 246:	54 f4       	brge	.+20     	; 0x25c <_ZN7MFRC5229sendToTagEPhiS0_Pi+0x5a>
+ 248:	e5 01       	movw	r28, r10
+ 24a:	ca 0c       	add	r12, r10
+ 24c:	db 1c       	adc	r13, r11
+ 24e:	49 91       	ld	r20, Y+
+ 250:	69 e0       	ldi	r22, 0x09	; 9
+ 252:	c7 01       	movw	r24, r14
+ 254:	73 df       	rcall	.-282    	; 0x13c <_ZN7MFRC52215writeToRegisterEhh>
+ 256:	cc 15       	cp	r28, r12
+ 258:	dd 05       	cpc	r29, r13
+ 25a:	c9 f7       	brne	.-14     	; 0x24e <_ZN7MFRC5229sendToTagEPhiS0_Pi+0x4c>
+ 25c:	4c e0       	ldi	r20, 0x0C	; 12
+ 25e:	61 e0       	ldi	r22, 0x01	; 1
+ 260:	c7 01       	movw	r24, r14
+ 262:	6c df       	rcall	.-296    	; 0x13c <_ZN7MFRC52215writeToRegisterEhh>
+ 264:	47 e0       	ldi	r20, 0x07	; 7
+ 266:	6d e0       	ldi	r22, 0x0D	; 13
+ 268:	c7 01       	movw	r24, r14
+ 26a:	74 df       	rcall	.-280    	; 0x154 <_ZN7MFRC5229setRegBitEhh>
+ 26c:	64 e0       	ldi	r22, 0x04	; 4
+ 26e:	c7 01       	movw	r24, r14
+ 270:	5b df       	rcall	.-330    	; 0x128 <_ZN7MFRC52216readFromRegisterEh>
+ 272:	ef e0       	ldi	r30, 0x0F	; 15
+ 274:	f7 e2       	ldi	r31, 0x27	; 39
+ 276:	31 97       	sbiw	r30, 0x01	; 1
+ 278:	f1 f7       	brne	.-4      	; 0x276 <_ZN7MFRC5229sendToTagEPhiS0_Pi+0x74>
+ 27a:	00 c0       	rjmp	.+0      	; 0x27c <_ZN7MFRC5229sendToTagEPhiS0_Pi+0x7a>
+ 27c:	00 00       	nop
+ 27e:	c8 e1       	ldi	r28, 0x18	; 24
+ 280:	d0 e0       	ldi	r29, 0x00	; 0
+ 282:	0c c0       	rjmp	.+24     	; 0x29c <_ZN7MFRC5229sendToTagEPhiS0_Pi+0x9a>
+ 284:	64 e0       	ldi	r22, 0x04	; 4
+ 286:	c7 01       	movw	r24, r14
+ 288:	4f df       	rcall	.-354    	; 0x128 <_ZN7MFRC52216readFromRegisterEh>
+ 28a:	ef e0       	ldi	r30, 0x0F	; 15
+ 28c:	f7 e2       	ldi	r31, 0x27	; 39
+ 28e:	31 97       	sbiw	r30, 0x01	; 1
+ 290:	f1 f7       	brne	.-4      	; 0x28e <_ZN7MFRC5229sendToTagEPhiS0_Pi+0x8c>
+ 292:	00 c0       	rjmp	.+0      	; 0x294 <_ZN7MFRC5229sendToTagEPhiS0_Pi+0x92>
+ 294:	00 00       	nop
+ 296:	21 97       	sbiw	r28, 0x01	; 1
+ 298:	09 f4       	brne	.+2      	; 0x29c <_ZN7MFRC5229sendToTagEPhiS0_Pi+0x9a>
+ 29a:	62 c0       	rjmp	.+196    	; 0x360 <_ZN7MFRC5229sendToTagEPhiS0_Pi+0x15e>
+ 29c:	81 73       	andi	r24, 0x31	; 49
+ 29e:	91 f3       	breq	.-28     	; 0x284 <_ZN7MFRC5229sendToTagEPhiS0_Pi+0x82>
+ 2a0:	55 c0       	rjmp	.+170    	; 0x34c <_ZN7MFRC5229sendToTagEPhiS0_Pi+0x14a>
+ 2a2:	64 e0       	ldi	r22, 0x04	; 4
+ 2a4:	c7 01       	movw	r24, r14
+ 2a6:	40 df       	rcall	.-384    	; 0x128 <_ZN7MFRC52216readFromRegisterEh>
+ 2a8:	80 fd       	sbrc	r24, 0
+ 2aa:	4a c0       	rjmp	.+148    	; 0x340 <_ZN7MFRC5229sendToTagEPhiS0_Pi+0x13e>
+ 2ac:	6a e0       	ldi	r22, 0x0A	; 10
+ 2ae:	c7 01       	movw	r24, r14
+ 2b0:	3b df       	rcall	.-394    	; 0x128 <_ZN7MFRC52216readFromRegisterEh>
+ 2b2:	c8 2e       	mov	r12, r24
+ 2b4:	6c e0       	ldi	r22, 0x0C	; 12
+ 2b6:	c7 01       	movw	r24, r14
+ 2b8:	37 df       	rcall	.-402    	; 0x128 <_ZN7MFRC52216readFromRegisterEh>
+ 2ba:	87 70       	andi	r24, 0x07	; 7
+ 2bc:	90 e0       	ldi	r25, 0x00	; 0
+ 2be:	00 97       	sbiw	r24, 0x00	; 0
+ 2c0:	81 f0       	breq	.+32     	; 0x2e2 <_ZN7MFRC5229sendToTagEPhiS0_Pi+0xe0>
+ 2c2:	2c 2d       	mov	r18, r12
+ 2c4:	30 e0       	ldi	r19, 0x00	; 0
+ 2c6:	21 50       	subi	r18, 0x01	; 1
+ 2c8:	31 09       	sbc	r19, r1
+ 2ca:	22 0f       	add	r18, r18
+ 2cc:	33 1f       	adc	r19, r19
+ 2ce:	22 0f       	add	r18, r18
+ 2d0:	33 1f       	adc	r19, r19
+ 2d2:	22 0f       	add	r18, r18
+ 2d4:	33 1f       	adc	r19, r19
+ 2d6:	82 0f       	add	r24, r18
+ 2d8:	93 1f       	adc	r25, r19
+ 2da:	f8 01       	movw	r30, r16
+ 2dc:	91 83       	std	Z+1, r25	; 0x01
+ 2de:	80 83       	st	Z, r24
+ 2e0:	0b c0       	rjmp	.+22     	; 0x2f8 <_ZN7MFRC5229sendToTagEPhiS0_Pi+0xf6>
+ 2e2:	8c 2d       	mov	r24, r12
+ 2e4:	90 e0       	ldi	r25, 0x00	; 0
+ 2e6:	88 0f       	add	r24, r24
+ 2e8:	99 1f       	adc	r25, r25
+ 2ea:	88 0f       	add	r24, r24
+ 2ec:	99 1f       	adc	r25, r25
+ 2ee:	88 0f       	add	r24, r24
+ 2f0:	99 1f       	adc	r25, r25
+ 2f2:	f8 01       	movw	r30, r16
+ 2f4:	91 83       	std	Z+1, r25	; 0x01
+ 2f6:	80 83       	st	Z, r24
+ 2f8:	8c 2d       	mov	r24, r12
+ 2fa:	81 31       	cpi	r24, 0x11	; 17
+ 2fc:	08 f0       	brcs	.+2      	; 0x300 <_ZN7MFRC5229sendToTagEPhiS0_Pi+0xfe>
+ 2fe:	80 e1       	ldi	r24, 0x10	; 16
+ 300:	88 23       	and	r24, r24
+ 302:	31 f0       	breq	.+12     	; 0x310 <_ZN7MFRC5229sendToTagEPhiS0_Pi+0x10e>
+ 304:	c8 2e       	mov	r12, r24
+ 306:	d1 2c       	mov	r13, r1
+ 308:	1c 14       	cp	r1, r12
+ 30a:	1d 04       	cpc	r1, r13
+ 30c:	24 f0       	brlt	.+8      	; 0x316 <_ZN7MFRC5229sendToTagEPhiS0_Pi+0x114>
+ 30e:	11 c0       	rjmp	.+34     	; 0x332 <_ZN7MFRC5229sendToTagEPhiS0_Pi+0x130>
+ 310:	cc 24       	eor	r12, r12
+ 312:	c3 94       	inc	r12
+ 314:	d1 2c       	mov	r13, r1
+ 316:	09 2d       	mov	r16, r9
+ 318:	18 2d       	mov	r17, r8
+ 31a:	c0 e0       	ldi	r28, 0x00	; 0
+ 31c:	d0 e0       	ldi	r29, 0x00	; 0
+ 31e:	69 e0       	ldi	r22, 0x09	; 9
+ 320:	c7 01       	movw	r24, r14
+ 322:	02 df       	rcall	.-508    	; 0x128 <_ZN7MFRC52216readFromRegisterEh>
+ 324:	f8 01       	movw	r30, r16
+ 326:	81 93       	st	Z+, r24
+ 328:	8f 01       	movw	r16, r30
+ 32a:	21 96       	adiw	r28, 0x01	; 1
+ 32c:	cc 15       	cp	r28, r12
+ 32e:	dd 05       	cpc	r29, r13
+ 330:	b4 f3       	brlt	.-20     	; 0x31e <_ZN7MFRC5229sendToTagEPhiS0_Pi+0x11c>
+ 332:	40 e0       	ldi	r20, 0x00	; 0
+ 334:	61 e0       	ldi	r22, 0x01	; 1
+ 336:	c7 01       	movw	r24, r14
+ 338:	01 df       	rcall	.-510    	; 0x13c <_ZN7MFRC52215writeToRegisterEhh>
+ 33a:	81 e0       	ldi	r24, 0x01	; 1
+ 33c:	90 e0       	ldi	r25, 0x00	; 0
+ 33e:	16 c0       	rjmp	.+44     	; 0x36c <_ZN7MFRC5229sendToTagEPhiS0_Pi+0x16a>
+ 340:	80 e0       	ldi	r24, 0x00	; 0
+ 342:	90 e0       	ldi	r25, 0x00	; 0
+ 344:	13 c0       	rjmp	.+38     	; 0x36c <_ZN7MFRC5229sendToTagEPhiS0_Pi+0x16a>
+ 346:	80 e0       	ldi	r24, 0x00	; 0
+ 348:	90 e0       	ldi	r25, 0x00	; 0
+ 34a:	10 c0       	rjmp	.+32     	; 0x36c <_ZN7MFRC5229sendToTagEPhiS0_Pi+0x16a>
+ 34c:	47 e0       	ldi	r20, 0x07	; 7
+ 34e:	6d e0       	ldi	r22, 0x0D	; 13
+ 350:	c7 01       	movw	r24, r14
+ 352:	18 df       	rcall	.-464    	; 0x184 <_ZN7MFRC52211clearRegBitEhh>
+ 354:	66 e0       	ldi	r22, 0x06	; 6
+ 356:	c7 01       	movw	r24, r14
+ 358:	e7 de       	rcall	.-562    	; 0x128 <_ZN7MFRC52216readFromRegisterEh>
+ 35a:	8d 71       	andi	r24, 0x1D	; 29
+ 35c:	a1 f7       	brne	.-24     	; 0x346 <_ZN7MFRC5229sendToTagEPhiS0_Pi+0x144>
+ 35e:	a1 cf       	rjmp	.-190    	; 0x2a2 <_ZN7MFRC5229sendToTagEPhiS0_Pi+0xa0>
+ 360:	47 e0       	ldi	r20, 0x07	; 7
+ 362:	6d e0       	ldi	r22, 0x0D	; 13
+ 364:	c7 01       	movw	r24, r14
+ 366:	0e df       	rcall	.-484    	; 0x184 <_ZN7MFRC52211clearRegBitEhh>
+ 368:	80 e0       	ldi	r24, 0x00	; 0
+ 36a:	90 e0       	ldi	r25, 0x00	; 0
+ 36c:	df 91       	pop	r29
+ 36e:	cf 91       	pop	r28
+ 370:	1f 91       	pop	r17
+ 372:	0f 91       	pop	r16
+ 374:	ff 90       	pop	r15
+ 376:	ef 90       	pop	r14
+ 378:	df 90       	pop	r13
+ 37a:	cf 90       	pop	r12
+ 37c:	bf 90       	pop	r11
+ 37e:	af 90       	pop	r10
+ 380:	9f 90       	pop	r9
+ 382:	8f 90       	pop	r8
+ 384:	08 95       	ret
+
+00000386 <_ZN7MFRC5228WUPA_TAGEPh>:
+
+int MFRC522::WUPA_TAG(uint8_t *ATQA){
+ 386:	cf 92       	push	r12
+ 388:	df 92       	push	r13
+ 38a:	ef 92       	push	r14
+ 38c:	ff 92       	push	r15
+ 38e:	0f 93       	push	r16
+ 390:	1f 93       	push	r17
+ 392:	cf 93       	push	r28
+ 394:	df 93       	push	r29
+ 396:	00 d0       	rcall	.+0      	; 0x398 <_ZN7MFRC5228WUPA_TAGEPh+0x12>
+ 398:	1f 92       	push	r1
+ 39a:	cd b7       	in	r28, 0x3d	; 61
+ 39c:	de b7       	in	r29, 0x3e	; 62
+ 39e:	7c 01       	movw	r14, r24
+ 3a0:	6b 01       	movw	r12, r22
+	register uint8_t buffer[1];
+	register int rlen, status;
+	buffer[0] = MF_WUPA;
+ 3a2:	82 e5       	ldi	r24, 0x52	; 82
+ 3a4:	89 83       	std	Y+1, r24	; 0x01
+	writeToRegister(BitFramingReg, 0x07);
+ 3a6:	47 e0       	ldi	r20, 0x07	; 7
+ 3a8:	6d e0       	ldi	r22, 0x0D	; 13
+ 3aa:	c7 01       	movw	r24, r14
+ 3ac:	c7 de       	rcall	.-626    	; 0x13c <_ZN7MFRC52215writeToRegisterEhh>
+	
+	status = this->sendToTag(buffer, 1, ATQA, &rlen);
+ 3ae:	8e 01       	movw	r16, r28
+ 3b0:	0e 5f       	subi	r16, 0xFE	; 254
+ 3b2:	1f 4f       	sbci	r17, 0xFF	; 255
+ 3b4:	96 01       	movw	r18, r12
+ 3b6:	41 e0       	ldi	r20, 0x01	; 1
+ 3b8:	50 e0       	ldi	r21, 0x00	; 0
+ 3ba:	be 01       	movw	r22, r28
+ 3bc:	6f 5f       	subi	r22, 0xFF	; 255
+ 3be:	7f 4f       	sbci	r23, 0xFF	; 255
+ 3c0:	c7 01       	movw	r24, r14
+ 3c2:	1f df       	rcall	.-450    	; 0x202 <_ZN7MFRC5229sendToTagEPhiS0_Pi>
+	
+	if (!status){
+ 3c4:	89 2b       	or	r24, r25
+ 3c6:	71 f0       	breq	.+28     	; 0x3e4 <_ZN7MFRC5228WUPA_TAGEPh+0x5e>
+		return MI_ERR;
+	}
+	if (rlen != 16){
+ 3c8:	8a 81       	ldd	r24, Y+2	; 0x02
+ 3ca:	9b 81       	ldd	r25, Y+3	; 0x03
+ 3cc:	40 97       	sbiw	r24, 0x10	; 16
+ 3ce:	19 f0       	breq	.+6      	; 0x3d6 <_ZN7MFRC5228WUPA_TAGEPh+0x50>
+		USART_SendString("DO DAI SAI!");
+ 3d0:	80 e6       	ldi	r24, 0x60	; 96
+ 3d2:	90 e0       	ldi	r25, 0x00	; 0
+ 3d4:	94 de       	rcall	.-728    	; 0xfe <_Z16USART_SendStringPc>
+	}
+	
+	writeToRegister(BitFramingReg, 0x00);
+ 3d6:	40 e0       	ldi	r20, 0x00	; 0
+ 3d8:	6d e0       	ldi	r22, 0x0D	; 13
+ 3da:	c7 01       	movw	r24, r14
+ 3dc:	af de       	rcall	.-674    	; 0x13c <_ZN7MFRC52215writeToRegisterEhh>
+	return MI_OK;
+ 3de:	81 e0       	ldi	r24, 0x01	; 1
+ 3e0:	90 e0       	ldi	r25, 0x00	; 0
+ 3e2:	02 c0       	rjmp	.+4      	; 0x3e8 <_ZN7MFRC5228WUPA_TAGEPh+0x62>
+	writeToRegister(BitFramingReg, 0x07);
+	
+	status = this->sendToTag(buffer, 1, ATQA, &rlen);
+	
+	if (!status){
+		return MI_ERR;
+ 3e4:	80 e0       	ldi	r24, 0x00	; 0
+ 3e6:	90 e0       	ldi	r25, 0x00	; 0
+		USART_SendString("DO DAI SAI!");
+	}
+	
+	writeToRegister(BitFramingReg, 0x00);
+	return MI_OK;
+}
+ 3e8:	0f 90       	pop	r0
+ 3ea:	0f 90       	pop	r0
+ 3ec:	0f 90       	pop	r0
+ 3ee:	df 91       	pop	r29
+ 3f0:	cf 91       	pop	r28
+ 3f2:	1f 91       	pop	r17
+ 3f4:	0f 91       	pop	r16
+ 3f6:	ff 90       	pop	r15
+ 3f8:	ef 90       	pop	r14
+ 3fa:	df 90       	pop	r13
+ 3fc:	cf 90       	pop	r12
+ 3fe:	08 95       	ret
+
+00000400 <__tablejump2__>:
+ 400:	ee 0f       	add	r30, r30
+ 402:	ff 1f       	adc	r31, r31
+ 404:	05 90       	lpm	r0, Z+
+ 406:	f4 91       	lpm	r31, Z
+ 408:	e0 2d       	mov	r30, r0
+ 40a:	09 94       	ijmp
+
+0000040c <_exit>:
+ 40c:	f8 94       	cli
+
+0000040e <__stop_program>:
+ 40e:	ff cf       	rjmp	.-2      	; 0x40e <__stop_program>
