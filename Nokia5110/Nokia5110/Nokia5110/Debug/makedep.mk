@@ -4,5 +4,5 @@
 
 main.cpp
 
-N5510.cpp
+Nokia5110.cpp
 
