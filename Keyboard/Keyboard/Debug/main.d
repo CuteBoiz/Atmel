@@ -1,4 +1,4 @@
-main.d main.o: .././main.cpp .././KeyBoard.h \
+main.d main.o: .././main.cpp \
  a:\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h \
  a:\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\sfr_defs.h \
  a:\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\inttypes.h \
@@ -10,12 +10,10 @@ main.d main.o: .././main.cpp .././KeyBoard.h \
  a:\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\version.h \
  a:\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\fuse.h \
  a:\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\lock.h \
+ a:\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\interrupt.h \
  a:\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay.h \
  a:\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h \
- a:\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h \
- a:\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\interrupt.h
-
-.././KeyBoard.h:
+ a:\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h
 
 a:\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h:
 
@@ -39,10 +37,10 @@ a:\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\fuse.h:
 
 a:\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\lock.h:
 
+a:\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\interrupt.h:
+
 a:\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay.h:
 
 a:\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h:
 
 a:\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h:
-
-a:\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\interrupt.h:

@@ -12,9 +12,9 @@
     <OutputFileName>$(MSBuildProjectName)</OutputFileName>
     <OutputFileExtension>.elf</OutputFileExtension>
     <OutputDirectory>$(MSBuildProjectDirectory)\$(Configuration)</OutputDirectory>
-    <AssemblyName>Keyboard</AssemblyName>
-    <Name>Keyboard</Name>
-    <RootNamespace>Keyboard</RootNamespace>
+    <AssemblyName>KeyBoard</AssemblyName>
+    <Name>KeyBoard</Name>
+    <RootNamespace>KeyBoard</RootNamespace>
     <ToolchainFlavour>Native</ToolchainFlavour>
     <KeepTimersRunning>true</KeepTimersRunning>
     <OverrideVtor>false</OverrideVtor>
@@ -30,15 +30,15 @@
     <EraseKey />
     <AsfFrameworkConfig>
       <framework-data xmlns="">
-  <options />
-  <configurations />
-  <files />
-  <documentation help="" />
-  <offline-documentation help="" />
-  <dependencies>
-    <content-extension eid="atmel.asf" uuidref="Atmel.ASF" version="3.40.0" />
-  </dependencies>
-</framework-data>
+        <options />
+        <configurations />
+        <files />
+        <documentation help="" />
+        <offline-documentation help="" />
+        <dependencies>
+          <content-extension eid="atmel.asf" uuidref="Atmel.ASF" version="3.40.0" />
+        </dependencies>
+      </framework-data>
     </AsfFrameworkConfig>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
@@ -153,16 +153,7 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="KeyBoard.cpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="KeyBoard.h">
-      <SubType>compile</SubType>
-    </Compile>
     <Compile Include="main.cpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="ScanCode.h">
       <SubType>compile</SubType>
     </Compile>
   </ItemGroup>
