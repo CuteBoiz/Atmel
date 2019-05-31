@@ -1,26 +1,5 @@
 #include "PS2.h"
 
-void USART_Init();
-void USART_Transmit(char data);
-void USART_SendString(char *data);
-
-
-PS2 kb;
-
-int main(void){
-	USART_Init();
-	USART_SendString("Begin!\n");
-	kb.init();
-	DDRC |= (1<<5);
-	sei();
-	while (1)
-	{
-		if (kb.available()){
-			USART_Transmit(kb.gerChar());
-		}
-	}
-}
-
 void USART_Init(){
 	UBRRH = 0;
 	UBRRL = 51;
@@ -41,5 +20,17 @@ void USART_SendString(char *data){
 	}
 }
 
+PS2 kb;
 
-
+int main(void){
+	USART_Init();
+	kb.begin();
+	USART_SendString("Begin!\n");
+	sei();
+	while (1)
+	{
+		if (kb.available()){
+			USART_Transmit(kb.getChar());
+		}
+	}
+}

@@ -12,9 +12,9 @@
     <OutputFileName>$(MSBuildProjectName)</OutputFileName>
     <OutputFileExtension>.elf</OutputFileExtension>
     <OutputDirectory>$(MSBuildProjectDirectory)\$(Configuration)</OutputDirectory>
-    <AssemblyName>KeyBoard</AssemblyName>
-    <Name>KeyBoard</Name>
-    <RootNamespace>KeyBoard</RootNamespace>
+    <AssemblyName>GetHexCode</AssemblyName>
+    <Name>GetHexCode</Name>
+    <RootNamespace>GetHexCode</RootNamespace>
     <ToolchainFlavour>Native</ToolchainFlavour>
     <KeepTimersRunning>true</KeepTimersRunning>
     <OverrideVtor>false</OverrideVtor>
@@ -153,13 +153,13 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Ps2.cpp">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="main.cpp">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="PS2.cpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="PS2.h">
+    <Compile Include="Ps2.h">
       <SubType>compile</SubType>
     </Compile>
   </ItemGroup>

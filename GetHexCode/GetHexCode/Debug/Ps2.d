@@ -1,4 +1,4 @@
-main.d main.o: .././main.cpp .././PS2.h \
+Ps2.d Ps2.o: .././Ps2.cpp .././PS2.h \
  a:\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h \
  a:\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\sfr_defs.h \
  a:\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\inttypes.h \
