@@ -16,7 +16,6 @@
 
 #define DDR_KB		DDRD
 #define PORT_KB		PORTD
-#define PIN_KB		PIND
 #define CLK_PIN		2
 #define DATA_PIN	3
 
@@ -25,13 +24,13 @@ ISR(INT0_vect);
 class PS2{
 public:
 	PS2();
-	void init();
+	void begin();
 	bool available();
-	uint8_t gerChar();
+	uint8_t getChar();
 private:
 	void sendCommand(uint8_t data);
 	uint8_t oddParity(uint8_t data);
-	void setLight(uint8_t data);
+	void setLight();
 	uint8_t Lights;//bit 0 -> Scroll; bit 1 -> Num; bit2 -> Cap
 };
 

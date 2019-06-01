@@ -12,9 +12,9 @@
     <OutputFileName>$(MSBuildProjectName)</OutputFileName>
     <OutputFileExtension>.elf</OutputFileExtension>
     <OutputDirectory>$(MSBuildProjectDirectory)\$(Configuration)</OutputDirectory>
-    <AssemblyName>KeyBoard</AssemblyName>
-    <Name>KeyBoard</Name>
-    <RootNamespace>KeyBoard</RootNamespace>
+    <AssemblyName>Roll-Call System</AssemblyName>
+    <Name>Roll-Call System</Name>
+    <RootNamespace>Roll-Call System</RootNamespace>
     <ToolchainFlavour>Native</ToolchainFlavour>
     <KeepTimersRunning>true</KeepTimersRunning>
     <OverrideVtor>false</OverrideVtor>
@@ -153,13 +153,22 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Charset.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="main.cpp">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="PS2.cpp">
+    <Compile Include="Nokia5110.cpp">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="PS2.h">
+    <Compile Include="Nokia5110.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Ps2.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Ps2.h">
       <SubType>compile</SubType>
     </Compile>
   </ItemGroup>

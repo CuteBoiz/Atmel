@@ -38,7 +38,8 @@ SUBDIRS :=
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
 ../main.cpp \
-../PS2.cpp
+../Nokia5110.cpp \
+../Ps2.cpp
 
 
 PREPROCESSING_SRCS += 
@@ -49,23 +50,27 @@ ASM_SRCS +=
 
 OBJS +=  \
 main.o \
-PS2.o
+Nokia5110.o \
+Ps2.o
 
 OBJS_AS_ARGS +=  \
 main.o \
-PS2.o
+Nokia5110.o \
+Ps2.o
 
 C_DEPS +=  \
 main.d \
-PS2.d
+Nokia5110.d \
+Ps2.d
 
 C_DEPS_AS_ARGS +=  \
 main.d \
-PS2.d
+Nokia5110.d \
+Ps2.d
 
-OUTPUT_FILE_PATH +=KeyBoard.elf
+OUTPUT_FILE_PATH +=Roll-Call\ System.elf
 
-OUTPUT_FILE_PATH_AS_ARGS +=KeyBoard.elf
+OUTPUT_FILE_PATH_AS_ARGS +="Roll-Call System.elf"
 
 ADDITIONAL_DEPENDENCIES:=
 
@@ -84,7 +89,14 @@ LINKER_SCRIPT_DEP+=
 	@echo Finished building: $<
 	
 
-./PS2.o: .././PS2.cpp
+./Nokia5110.o: .././Nokia5110.cpp
+	@echo Building file: $<
+	@echo Invoking: AVR8/GNU C Compiler : 5.4.0
+	$(QUOTE)A:\Atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -DDEBUG  -I"A:\Atmel\7.0\Packs\atmel\ATmega_DFP\1.2.209\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega8a -B "A:\Atmel\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega8a" -c -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+./Ps2.o: .././Ps2.cpp
 	@echo Building file: $<
 	@echo Invoking: AVR8/GNU C Compiler : 5.4.0
 	$(QUOTE)A:\Atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -DDEBUG  -I"A:\Atmel\7.0\Packs\atmel\ATmega_DFP\1.2.209\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega8a -B "A:\Atmel\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega8a" -c -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
@@ -117,13 +129,13 @@ all: $(OUTPUT_FILE_PATH) $(ADDITIONAL_DEPENDENCIES)
 $(OUTPUT_FILE_PATH): $(OBJS) $(USER_OBJS) $(OUTPUT_FILE_DEP) $(LIB_DEP) $(LINKER_SCRIPT_DEP)
 	@echo Building target: $@
 	@echo Invoking: AVR8/GNU Linker : 5.4.0
-	$(QUOTE)A:\Atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-g++.exe$(QUOTE) -o$(OUTPUT_FILE_PATH_AS_ARGS) $(OBJS_AS_ARGS) $(USER_OBJS) $(LIBS) -Wl,-Map="KeyBoard.map" -Wl,--start-group -Wl,-lm  -Wl,--end-group -Wl,--gc-sections -mmcu=atmega8a -B "A:\Atmel\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega8a"  
+	$(QUOTE)A:\Atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-g++.exe$(QUOTE) -o$(OUTPUT_FILE_PATH_AS_ARGS) $(OBJS_AS_ARGS) $(USER_OBJS) $(LIBS) -Wl,-Map="Roll-Call System.map" -Wl,--start-group -Wl,-lm  -Wl,--end-group -Wl,--gc-sections -mmcu=atmega8a -B "A:\Atmel\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega8a"  
 	@echo Finished building target: $@
-	"A:\Atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-objcopy.exe" -O ihex -R .eeprom -R .fuse -R .lock -R .signature -R .user_signatures  "KeyBoard.elf" "KeyBoard.hex"
-	"A:\Atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-objcopy.exe" -j .eeprom  --set-section-flags=.eeprom=alloc,load --change-section-lma .eeprom=0  --no-change-warnings -O ihex "KeyBoard.elf" "KeyBoard.eep" || exit 0
-	"A:\Atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-objdump.exe" -h -S "KeyBoard.elf" > "KeyBoard.lss"
-	"A:\Atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-objcopy.exe" -O srec -R .eeprom -R .fuse -R .lock -R .signature -R .user_signatures "KeyBoard.elf" "KeyBoard.srec"
-	"A:\Atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-size.exe" "KeyBoard.elf"
+	"A:\Atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-objcopy.exe" -O ihex -R .eeprom -R .fuse -R .lock -R .signature -R .user_signatures  "Roll-Call System.elf" "Roll-Call System.hex"
+	"A:\Atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-objcopy.exe" -j .eeprom  --set-section-flags=.eeprom=alloc,load --change-section-lma .eeprom=0  --no-change-warnings -O ihex "Roll-Call System.elf" "Roll-Call System.eep" || exit 0
+	"A:\Atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-objdump.exe" -h -S "Roll-Call System.elf" > "Roll-Call System.lss"
+	"A:\Atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-objcopy.exe" -O srec -R .eeprom -R .fuse -R .lock -R .signature -R .user_signatures "Roll-Call System.elf" "Roll-Call System.srec"
+	"A:\Atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-size.exe" "Roll-Call System.elf"
 	
 	
 
@@ -135,5 +147,5 @@ $(OUTPUT_FILE_PATH): $(OBJS) $(USER_OBJS) $(OUTPUT_FILE_DEP) $(LIB_DEP) $(LINKER
 clean:
 	-$(RM) $(OBJS_AS_ARGS) $(EXECUTABLES)  
 	-$(RM) $(C_DEPS_AS_ARGS)   
-	rm -rf "KeyBoard.elf" "KeyBoard.a" "KeyBoard.hex" "KeyBoard.lss" "KeyBoard.eep" "KeyBoard.map" "KeyBoard.srec" "KeyBoard.usersignatures"
+	rm -rf "Roll-Call System.elf" "Roll-Call System.a" "Roll-Call System.hex" "Roll-Call System.lss" "Roll-Call System.eep" "Roll-Call System.map" "Roll-Call System.srec" "Roll-Call System.usersignatures"
 	

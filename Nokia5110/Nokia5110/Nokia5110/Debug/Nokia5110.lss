@@ -3,31 +3,31 @@ Nokia5110.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .text         00000676  00000000  00000000  00000094  2**1
+  0 .text         00000718  00000000  00000000  00000094  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  1 .data         0000021e  00800060  00000676  0000070a  2**0
+  1 .data         00000220  00800060  00000718  000007ac  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  2 .bss          0000001e  0080027e  0080027e  00000928  2**0
+  2 .bss          0000001e  00800280  00800280  000009cc  2**0
                   ALLOC
-  3 .comment      00000030  00000000  00000000  00000928  2**0
+  3 .comment      00000030  00000000  00000000  000009cc  2**0
                   CONTENTS, READONLY
-  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000958  2**2
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  000009fc  2**2
                   CONTENTS, READONLY
-  5 .debug_aranges 000000b0  00000000  00000000  00000994  2**0
+  5 .debug_aranges 000000b0  00000000  00000000  00000a38  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   00001744  00000000  00000000  00000a44  2**0
+  6 .debug_info   000017e0  00000000  00000000  00000ae8  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 00000856  00000000  00000000  00002188  2**0
+  7 .debug_abbrev 00000856  00000000  00000000  000022c8  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   000006ac  00000000  00000000  000029de  2**0
+  8 .debug_line   00000704  00000000  00000000  00002b1e  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  00000220  00000000  00000000  0000308c  2**2
+  9 .debug_frame  00000228  00000000  00000000  00003224  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    0000063c  00000000  00000000  000032ac  2**0
+ 10 .debug_str    00000644  00000000  00000000  0000344c  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    00000bae  00000000  00000000  000038e8  2**0
+ 11 .debug_loc    00000bf8  00000000  00000000  00003a90  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 000000f8  00000000  00000000  00004496  2**0
+ 12 .debug_ranges 000000f8  00000000  00000000  00004688  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -68,18 +68,18 @@ Disassembly of section .text:
   34:	12 e0       	ldi	r17, 0x02	; 2
   36:	a0 e6       	ldi	r26, 0x60	; 96
   38:	b0 e0       	ldi	r27, 0x00	; 0
-  3a:	e6 e7       	ldi	r30, 0x76	; 118
-  3c:	f6 e0       	ldi	r31, 0x06	; 6
+  3a:	e8 e1       	ldi	r30, 0x18	; 24
+  3c:	f7 e0       	ldi	r31, 0x07	; 7
   3e:	02 c0       	rjmp	.+4      	; 0x44 <__SREG__+0x5>
   40:	05 90       	lpm	r0, Z+
   42:	0d 92       	st	X+, r0
-  44:	ae 37       	cpi	r26, 0x7E	; 126
+  44:	a0 38       	cpi	r26, 0x80	; 128
   46:	b1 07       	cpc	r27, r17
   48:	d9 f7       	brne	.-10     	; 0x40 <__SREG__+0x1>
 
 0000004a <__do_clear_bss>:
   4a:	22 e0       	ldi	r18, 0x02	; 2
-  4c:	ae e7       	ldi	r26, 0x7E	; 126
+  4c:	a0 e8       	ldi	r26, 0x80	; 128
   4e:	b2 e0       	ldi	r27, 0x02	; 2
   50:	01 c0       	rjmp	.+2      	; 0x54 <.do_clear_bss_start>
 
@@ -87,7 +87,7 @@ Disassembly of section .text:
   52:	1d 92       	st	X+, r1
 
 00000054 <.do_clear_bss_start>:
-  54:	ac 39       	cpi	r26, 0x9C	; 156
+  54:	ae 39       	cpi	r26, 0x9E	; 158
   56:	b2 07       	cpc	r27, r18
   58:	e1 f7       	brne	.-8      	; 0x52 <.do_clear_bss_loop>
 
@@ -98,12 +98,12 @@ Disassembly of section .text:
   60:	03 c0       	rjmp	.+6      	; 0x68 <__do_global_ctors+0xe>
   62:	21 97       	sbiw	r28, 0x01	; 1
   64:	fe 01       	movw	r30, r28
-  66:	ff d2       	rcall	.+1534   	; 0x666 <__tablejump2__>
+  66:	50 d3       	rcall	.+1696   	; 0x708 <__tablejump2__>
   68:	c3 31       	cpi	r28, 0x13	; 19
   6a:	d1 07       	cpc	r29, r17
   6c:	d1 f7       	brne	.-12     	; 0x62 <__do_global_ctors+0x8>
   6e:	02 d0       	rcall	.+4      	; 0x74 <main>
-  70:	00 c3       	rjmp	.+1536   	; 0x672 <_exit>
+  70:	51 c3       	rjmp	.+1698   	; 0x714 <_exit>
 
 00000072 <__bad_interrupt>:
   72:	c6 cf       	rjmp	.-116    	; 0x0 <__vectors>
@@ -123,7 +123,7 @@ int main(void)
   7c:	83 60       	ori	r24, 0x03	; 3
   7e:	82 bb       	out	0x12, r24	; 18
     LCD.begin();
-  80:	8e e7       	ldi	r24, 0x7E	; 126
+  80:	80 e8       	ldi	r24, 0x80	; 128
   82:	92 e0       	ldi	r25, 0x02	; 2
   84:	6b d1       	rcall	.+726    	; 0x35c <_ZN7PCD85445beginEv>
 	LCD.createMenu("RFID", Menu, 4);
@@ -133,37 +133,38 @@ int main(void)
   8c:	50 e0       	ldi	r21, 0x00	; 0
   8e:	68 e9       	ldi	r22, 0x98	; 152
   90:	70 e0       	ldi	r23, 0x00	; 0
-  92:	8e e7       	ldi	r24, 0x7E	; 126
+  92:	80 e8       	ldi	r24, 0x80	; 128
   94:	92 e0       	ldi	r25, 0x02	; 2
   96:	0e d2       	rcall	.+1052   	; 0x4b4 <_ZN7PCD854410createMenuEPcPA14_ci>
-	LCD.displayMenu();
-  98:	8e e7       	ldi	r24, 0x7E	; 126
+	
+    while (1) 
+    {	
+		LCD.displayMenu();
+  98:	80 e8       	ldi	r24, 0x80	; 128
   9a:	92 e0       	ldi	r25, 0x02	; 2
   9c:	53 d2       	rcall	.+1190   	; 0x544 <_ZN7PCD854411displayMenuEv>
-    while (1) 
-    {
 		if (!(PIND & (1<<0))){
   9e:	80 99       	sbic	0x10, 0	; 16
   a0:	05 c0       	rjmp	.+10     	; 0xac <main+0x38>
 			LCD.increasePointer();
-  a2:	8e e7       	ldi	r24, 0x7E	; 126
+  a2:	80 e8       	ldi	r24, 0x80	; 128
   a4:	92 e0       	ldi	r25, 0x02	; 2
-  a6:	a5 d2       	rcall	.+1354   	; 0x5f2 <_ZN7PCD854415increasePointerEv>
+  a6:	f6 d2       	rcall	.+1516   	; 0x694 <_ZN7PCD854415increasePointerEv>
 			while(!(PIND & (1<<0)));
   a8:	80 9b       	sbis	0x10, 0	; 16
   aa:	fe cf       	rjmp	.-4      	; 0xa8 <main+0x34>
 		}
 		if(!(PIND & (1<<1))){
   ac:	81 99       	sbic	0x10, 1	; 16
-  ae:	f7 cf       	rjmp	.-18     	; 0x9e <main+0x2a>
+  ae:	f4 cf       	rjmp	.-24     	; 0x98 <main+0x24>
 			LCD.decreasePointer();
-  b0:	8e e7       	ldi	r24, 0x7E	; 126
+  b0:	80 e8       	ldi	r24, 0x80	; 128
   b2:	92 e0       	ldi	r25, 0x02	; 2
-  b4:	bc d2       	rcall	.+1400   	; 0x62e <_ZN7PCD854415decreasePointerEv>
+  b4:	0d d3       	rcall	.+1562   	; 0x6d0 <_ZN7PCD854415decreasePointerEv>
 			while(!(PIND & (1<<1)));
   b6:	81 9b       	sbis	0x10, 1	; 16
   b8:	fe cf       	rjmp	.-4      	; 0xb6 <main+0x42>
-  ba:	f1 cf       	rjmp	.-30     	; 0x9e <main+0x2a>
+  ba:	ee cf       	rjmp	.-36     	; 0x98 <main+0x24>
 
 000000bc <_GLOBAL__sub_I_Menu>:
 		}
@@ -190,7 +191,7 @@ PCD8544 LCD(4, 3, 2, 1, 0);
   d2:	50 e0       	ldi	r21, 0x00	; 0
   d4:	64 e0       	ldi	r22, 0x04	; 4
   d6:	70 e0       	ldi	r23, 0x00	; 0
-  d8:	8e e7       	ldi	r24, 0x7E	; 126
+  d8:	80 e8       	ldi	r24, 0x80	; 128
   da:	92 e0       	ldi	r25, 0x02	; 2
   dc:	05 d0       	rcall	.+10     	; 0xe8 <_ZN7PCD8544C1Eiiiii>
 			LCD.decreasePointer();
@@ -658,11 +659,11 @@ void PCD8544::begin(){
  36a:	63 e0       	ldi	r22, 0x03	; 3
  36c:	ce 01       	movw	r24, r28
  36e:	8d df       	rcall	.-230    	; 0x28a <_ZN7PCD854411sendCommandEh>
-	this->sendCommand(0x80 | 0x20); //Set contrast
- 370:	60 ea       	ldi	r22, 0xA0	; 160
+	this->sendCommand(0x80 | 0xC5); //Set contrast
+ 370:	65 ec       	ldi	r22, 0xC5	; 197
  372:	ce 01       	movw	r24, r28
  374:	8a df       	rcall	.-236    	; 0x28a <_ZN7PCD854411sendCommandEh>
-	this->sendCommand(0x04 | 0x00);
+	this->sendCommand(0x04 | 0x00); //Temp C
  376:	64 e0       	ldi	r22, 0x04	; 4
  378:	ce 01       	movw	r24, r28
  37a:	87 df       	rcall	.-242    	; 0x28a <_ZN7PCD854411sendCommandEh>
@@ -721,7 +722,7 @@ void PCD8544::charDisplay(int isReverse, char data){
  3c6:	4c 0f       	add	r20, r28
  3c8:	5d 1f       	adc	r21, r29
  3ca:	ea 01       	movw	r28, r20
- 3cc:	c3 50       	subi	r28, 0x03	; 3
+ 3cc:	c1 50       	subi	r28, 0x01	; 1
  3ce:	d0 40       	sbci	r29, 0x00	; 0
 	}
 	else{
@@ -1057,204 +1058,321 @@ void PCD8544::createMenu(char *name, char data[][14], int length){
 00000544 <_ZN7PCD854411displayMenuEv>:
 
 void PCD8544::displayMenu(){
- 544:	ff 92       	push	r15
- 546:	0f 93       	push	r16
- 548:	1f 93       	push	r17
- 54a:	cf 93       	push	r28
- 54c:	df 93       	push	r29
- 54e:	ec 01       	movw	r28, r24
+ 544:	cf 92       	push	r12
+ 546:	df 92       	push	r13
+ 548:	ff 92       	push	r15
+ 54a:	0f 93       	push	r16
+ 54c:	1f 93       	push	r17
+ 54e:	cf 93       	push	r28
+ 550:	df 93       	push	r29
+ 552:	ec 01       	movw	r28, r24
 	this->setCursor(0, 0);
- 550:	40 e0       	ldi	r20, 0x00	; 0
- 552:	60 e0       	ldi	r22, 0x00	; 0
- 554:	a4 de       	rcall	.-696    	; 0x29e <_ZN7PCD85449setCursorEhh>
+ 554:	40 e0       	ldi	r20, 0x00	; 0
+ 556:	60 e0       	ldi	r22, 0x00	; 0
+ 558:	a2 de       	rcall	.-700    	; 0x29e <_ZN7PCD85449setCursorEhh>
 	this->lineDisplay(NON_REVERSE, title);
- 556:	ae 01       	movw	r20, r28
- 558:	40 5f       	subi	r20, 0xF0	; 240
- 55a:	5f 4f       	sbci	r21, 0xFF	; 255
- 55c:	60 e0       	ldi	r22, 0x00	; 0
- 55e:	70 e0       	ldi	r23, 0x00	; 0
- 560:	ce 01       	movw	r24, r28
- 562:	4e df       	rcall	.-356    	; 0x400 <_ZN7PCD854411lineDisplayEiPc>
- 564:	ff 24       	eor	r15, r15
- 566:	f3 94       	inc	r15
+ 55a:	ae 01       	movw	r20, r28
+ 55c:	40 5f       	subi	r20, 0xF0	; 240
+ 55e:	5f 4f       	sbci	r21, 0xFF	; 255
+ 560:	60 e0       	ldi	r22, 0x00	; 0
+ 562:	70 e0       	ldi	r23, 0x00	; 0
+ 564:	ce 01       	movw	r24, r28
+ 566:	4c df       	rcall	.-360    	; 0x400 <_ZN7PCD854411lineDisplayEiPc>
 	
 	register int i;
-	for (i = 0; i < 5; i++){
- 568:	00 e0       	ldi	r16, 0x00	; 0
- 56a:	10 e0       	ldi	r17, 0x00	; 0
-		this->setCursor(0, i + 1);
- 56c:	4f 2d       	mov	r20, r15
- 56e:	60 e0       	ldi	r22, 0x00	; 0
- 570:	ce 01       	movw	r24, r28
- 572:	95 de       	rcall	.-726    	; 0x29e <_ZN7PCD85449setCursorEhh>
-		this->lineDisplay(NON_REVERSE, Menu[current + i]);
- 574:	8c 85       	ldd	r24, Y+12	; 0x0c
- 576:	9d 85       	ldd	r25, Y+13	; 0x0d
- 578:	80 0f       	add	r24, r16
- 57a:	91 1f       	adc	r25, r17
- 57c:	88 0f       	add	r24, r24
- 57e:	99 1f       	adc	r25, r25
- 580:	ac 01       	movw	r20, r24
- 582:	44 0f       	add	r20, r20
- 584:	55 1f       	adc	r21, r21
- 586:	44 0f       	add	r20, r20
- 588:	55 1f       	adc	r21, r21
- 58a:	44 0f       	add	r20, r20
- 58c:	55 1f       	adc	r21, r21
- 58e:	48 1b       	sub	r20, r24
- 590:	59 0b       	sbc	r21, r25
- 592:	42 5e       	subi	r20, 0xE2	; 226
- 594:	5f 4f       	sbci	r21, 0xFF	; 255
- 596:	4c 0f       	add	r20, r28
- 598:	5d 1f       	adc	r21, r29
- 59a:	60 e0       	ldi	r22, 0x00	; 0
- 59c:	70 e0       	ldi	r23, 0x00	; 0
- 59e:	ce 01       	movw	r24, r28
- 5a0:	2f df       	rcall	.-418    	; 0x400 <_ZN7PCD854411lineDisplayEiPc>
-void PCD8544::displayMenu(){
-	this->setCursor(0, 0);
+	if (lenOfMenu < 5){
+ 568:	ce 84       	ldd	r12, Y+14	; 0x0e
+ 56a:	df 84       	ldd	r13, Y+15	; 0x0f
+ 56c:	85 e0       	ldi	r24, 0x05	; 5
+ 56e:	c8 16       	cp	r12, r24
+ 570:	d1 04       	cpc	r13, r1
+ 572:	0c f0       	brlt	.+2      	; 0x576 <_ZN7PCD854411displayMenuEv+0x32>
+ 574:	46 c0       	rjmp	.+140    	; 0x602 <_ZN7PCD854411displayMenuEv+0xbe>
+		for (i = 0; i < lenOfMenu; i++){
+ 576:	1c 14       	cp	r1, r12
+ 578:	1d 04       	cpc	r1, r13
+ 57a:	74 f5       	brge	.+92     	; 0x5d8 <_ZN7PCD854411displayMenuEv+0x94>
+ 57c:	ff 24       	eor	r15, r15
+ 57e:	f3 94       	inc	r15
+ 580:	00 e0       	ldi	r16, 0x00	; 0
+ 582:	10 e0       	ldi	r17, 0x00	; 0
+ 584:	05 c0       	rjmp	.+10     	; 0x590 <_ZN7PCD854411displayMenuEv+0x4c>
+			this->setCursor(0, i + 1);
+			this->lineDisplay(NON_REVERSE, Menu[current + i]);
+		}
+		for(i = lenOfMenu; i < 5; i++){
+ 586:	85 e0       	ldi	r24, 0x05	; 5
+ 588:	c8 16       	cp	r12, r24
+ 58a:	d1 04       	cpc	r13, r1
+ 58c:	2c f1       	brlt	.+74     	; 0x5d8 <_ZN7PCD854411displayMenuEv+0x94>
+ 58e:	5e c0       	rjmp	.+188    	; 0x64c <_ZN7PCD854411displayMenuEv+0x108>
 	this->lineDisplay(NON_REVERSE, title);
 	
 	register int i;
-	for (i = 0; i < 5; i++){
- 5a2:	0f 5f       	subi	r16, 0xFF	; 255
- 5a4:	1f 4f       	sbci	r17, 0xFF	; 255
- 5a6:	f3 94       	inc	r15
- 5a8:	86 e0       	ldi	r24, 0x06	; 6
- 5aa:	f8 12       	cpse	r15, r24
- 5ac:	df cf       	rjmp	.-66     	; 0x56c <_ZN7PCD854411displayMenuEv+0x28>
-		this->setCursor(0, i + 1);
-		this->lineDisplay(NON_REVERSE, Menu[current + i]);
+	if (lenOfMenu < 5){
+		for (i = 0; i < lenOfMenu; i++){
+			this->setCursor(0, i + 1);
+ 590:	4f 2d       	mov	r20, r15
+ 592:	60 e0       	ldi	r22, 0x00	; 0
+ 594:	ce 01       	movw	r24, r28
+ 596:	83 de       	rcall	.-762    	; 0x29e <_ZN7PCD85449setCursorEhh>
+			this->lineDisplay(NON_REVERSE, Menu[current + i]);
+ 598:	8c 85       	ldd	r24, Y+12	; 0x0c
+ 59a:	9d 85       	ldd	r25, Y+13	; 0x0d
+ 59c:	80 0f       	add	r24, r16
+ 59e:	91 1f       	adc	r25, r17
+ 5a0:	88 0f       	add	r24, r24
+ 5a2:	99 1f       	adc	r25, r25
+ 5a4:	ac 01       	movw	r20, r24
+ 5a6:	44 0f       	add	r20, r20
+ 5a8:	55 1f       	adc	r21, r21
+ 5aa:	44 0f       	add	r20, r20
+ 5ac:	55 1f       	adc	r21, r21
+ 5ae:	44 0f       	add	r20, r20
+ 5b0:	55 1f       	adc	r21, r21
+ 5b2:	48 1b       	sub	r20, r24
+ 5b4:	59 0b       	sbc	r21, r25
+ 5b6:	42 5e       	subi	r20, 0xE2	; 226
+ 5b8:	5f 4f       	sbci	r21, 0xFF	; 255
+ 5ba:	4c 0f       	add	r20, r28
+ 5bc:	5d 1f       	adc	r21, r29
+ 5be:	60 e0       	ldi	r22, 0x00	; 0
+ 5c0:	70 e0       	ldi	r23, 0x00	; 0
+ 5c2:	ce 01       	movw	r24, r28
+ 5c4:	1d df       	rcall	.-454    	; 0x400 <_ZN7PCD854411lineDisplayEiPc>
+	this->setCursor(0, 0);
+	this->lineDisplay(NON_REVERSE, title);
+	
+	register int i;
+	if (lenOfMenu < 5){
+		for (i = 0; i < lenOfMenu; i++){
+ 5c6:	0f 5f       	subi	r16, 0xFF	; 255
+ 5c8:	1f 4f       	sbci	r17, 0xFF	; 255
+ 5ca:	ce 84       	ldd	r12, Y+14	; 0x0e
+ 5cc:	df 84       	ldd	r13, Y+15	; 0x0f
+ 5ce:	f3 94       	inc	r15
+ 5d0:	0c 15       	cp	r16, r12
+ 5d2:	1d 05       	cpc	r17, r13
+ 5d4:	ec f2       	brlt	.-70     	; 0x590 <_ZN7PCD854411displayMenuEv+0x4c>
+ 5d6:	d7 cf       	rjmp	.-82     	; 0x586 <_ZN7PCD854411displayMenuEv+0x42>
+ 5d8:	11 e0       	ldi	r17, 0x01	; 1
+ 5da:	1c 0d       	add	r17, r12
+			this->setCursor(0, i + 1);
+			this->lineDisplay(NON_REVERSE, Menu[current + i]);
+		}
+		for(i = lenOfMenu; i < 5; i++){
+			this->setCursor(0, i + 1);
+ 5dc:	41 2f       	mov	r20, r17
+ 5de:	60 e0       	ldi	r22, 0x00	; 0
+ 5e0:	ce 01       	movw	r24, r28
+ 5e2:	5d de       	rcall	.-838    	; 0x29e <_ZN7PCD85449setCursorEhh>
+			this->lineDisplay(NON_REVERSE, " ");
+ 5e4:	4d e9       	ldi	r20, 0x9D	; 157
+ 5e6:	50 e0       	ldi	r21, 0x00	; 0
+ 5e8:	60 e0       	ldi	r22, 0x00	; 0
+ 5ea:	70 e0       	ldi	r23, 0x00	; 0
+ 5ec:	ce 01       	movw	r24, r28
+ 5ee:	08 df       	rcall	.-496    	; 0x400 <_ZN7PCD854411lineDisplayEiPc>
+	if (lenOfMenu < 5){
+		for (i = 0; i < lenOfMenu; i++){
+			this->setCursor(0, i + 1);
+			this->lineDisplay(NON_REVERSE, Menu[current + i]);
+		}
+		for(i = lenOfMenu; i < 5; i++){
+ 5f0:	8f ef       	ldi	r24, 0xFF	; 255
+ 5f2:	c8 1a       	sub	r12, r24
+ 5f4:	d8 0a       	sbc	r13, r24
+ 5f6:	1f 5f       	subi	r17, 0xFF	; 255
+ 5f8:	85 e0       	ldi	r24, 0x05	; 5
+ 5fa:	c8 16       	cp	r12, r24
+ 5fc:	d1 04       	cpc	r13, r1
+ 5fe:	74 f3       	brlt	.-36     	; 0x5dc <_ZN7PCD854411displayMenuEv+0x98>
+ 600:	25 c0       	rjmp	.+74     	; 0x64c <_ZN7PCD854411displayMenuEv+0x108>
+ 602:	ff 24       	eor	r15, r15
+ 604:	f3 94       	inc	r15
+ 606:	00 e0       	ldi	r16, 0x00	; 0
+ 608:	10 e0       	ldi	r17, 0x00	; 0
+			this->lineDisplay(NON_REVERSE, " ");
+		}
+	}
+	else{
+		for (i = 0; i < 5; i++){
+			this->setCursor(0, i + 1);
+ 60a:	4f 2d       	mov	r20, r15
+ 60c:	60 e0       	ldi	r22, 0x00	; 0
+ 60e:	ce 01       	movw	r24, r28
+ 610:	46 de       	rcall	.-884    	; 0x29e <_ZN7PCD85449setCursorEhh>
+			this->lineDisplay(NON_REVERSE, Menu[current + i]);
+ 612:	8c 85       	ldd	r24, Y+12	; 0x0c
+ 614:	9d 85       	ldd	r25, Y+13	; 0x0d
+ 616:	80 0f       	add	r24, r16
+ 618:	91 1f       	adc	r25, r17
+ 61a:	88 0f       	add	r24, r24
+ 61c:	99 1f       	adc	r25, r25
+ 61e:	ac 01       	movw	r20, r24
+ 620:	44 0f       	add	r20, r20
+ 622:	55 1f       	adc	r21, r21
+ 624:	44 0f       	add	r20, r20
+ 626:	55 1f       	adc	r21, r21
+ 628:	44 0f       	add	r20, r20
+ 62a:	55 1f       	adc	r21, r21
+ 62c:	48 1b       	sub	r20, r24
+ 62e:	59 0b       	sbc	r21, r25
+ 630:	42 5e       	subi	r20, 0xE2	; 226
+ 632:	5f 4f       	sbci	r21, 0xFF	; 255
+ 634:	4c 0f       	add	r20, r28
+ 636:	5d 1f       	adc	r21, r29
+ 638:	60 e0       	ldi	r22, 0x00	; 0
+ 63a:	70 e0       	ldi	r23, 0x00	; 0
+ 63c:	ce 01       	movw	r24, r28
+ 63e:	e0 de       	rcall	.-576    	; 0x400 <_ZN7PCD854411lineDisplayEiPc>
+			this->setCursor(0, i + 1);
+			this->lineDisplay(NON_REVERSE, " ");
+		}
+	}
+	else{
+		for (i = 0; i < 5; i++){
+ 640:	0f 5f       	subi	r16, 0xFF	; 255
+ 642:	1f 4f       	sbci	r17, 0xFF	; 255
+ 644:	f3 94       	inc	r15
+ 646:	86 e0       	ldi	r24, 0x06	; 6
+ 648:	f8 12       	cpse	r15, r24
+ 64a:	df cf       	rjmp	.-66     	; 0x60a <_ZN7PCD854411displayMenuEv+0xc6>
+			this->setCursor(0, i + 1);
+			this->lineDisplay(NON_REVERSE, Menu[current + i]);
+		}
 	}
 	this->setCursor(0, (pointer - current) + 1);
- 5ae:	4a 85       	ldd	r20, Y+10	; 0x0a
- 5b0:	4f 5f       	subi	r20, 0xFF	; 255
- 5b2:	8c 85       	ldd	r24, Y+12	; 0x0c
- 5b4:	48 1b       	sub	r20, r24
- 5b6:	60 e0       	ldi	r22, 0x00	; 0
- 5b8:	ce 01       	movw	r24, r28
- 5ba:	71 de       	rcall	.-798    	; 0x29e <_ZN7PCD85449setCursorEhh>
+ 64c:	4a 85       	ldd	r20, Y+10	; 0x0a
+ 64e:	4f 5f       	subi	r20, 0xFF	; 255
+ 650:	8c 85       	ldd	r24, Y+12	; 0x0c
+ 652:	48 1b       	sub	r20, r24
+ 654:	60 e0       	ldi	r22, 0x00	; 0
+ 656:	ce 01       	movw	r24, r28
+ 658:	22 de       	rcall	.-956    	; 0x29e <_ZN7PCD85449setCursorEhh>
 	lineDisplay(REVERSE, Menu[pointer]);
- 5bc:	8a 85       	ldd	r24, Y+10	; 0x0a
- 5be:	9b 85       	ldd	r25, Y+11	; 0x0b
- 5c0:	88 0f       	add	r24, r24
- 5c2:	99 1f       	adc	r25, r25
- 5c4:	ac 01       	movw	r20, r24
- 5c6:	44 0f       	add	r20, r20
- 5c8:	55 1f       	adc	r21, r21
- 5ca:	44 0f       	add	r20, r20
- 5cc:	55 1f       	adc	r21, r21
- 5ce:	44 0f       	add	r20, r20
- 5d0:	55 1f       	adc	r21, r21
- 5d2:	48 1b       	sub	r20, r24
- 5d4:	59 0b       	sbc	r21, r25
- 5d6:	42 5e       	subi	r20, 0xE2	; 226
- 5d8:	5f 4f       	sbci	r21, 0xFF	; 255
- 5da:	4c 0f       	add	r20, r28
- 5dc:	5d 1f       	adc	r21, r29
- 5de:	61 e0       	ldi	r22, 0x01	; 1
- 5e0:	70 e0       	ldi	r23, 0x00	; 0
- 5e2:	ce 01       	movw	r24, r28
- 5e4:	0d df       	rcall	.-486    	; 0x400 <_ZN7PCD854411lineDisplayEiPc>
+ 65a:	8a 85       	ldd	r24, Y+10	; 0x0a
+ 65c:	9b 85       	ldd	r25, Y+11	; 0x0b
+ 65e:	88 0f       	add	r24, r24
+ 660:	99 1f       	adc	r25, r25
+ 662:	ac 01       	movw	r20, r24
+ 664:	44 0f       	add	r20, r20
+ 666:	55 1f       	adc	r21, r21
+ 668:	44 0f       	add	r20, r20
+ 66a:	55 1f       	adc	r21, r21
+ 66c:	44 0f       	add	r20, r20
+ 66e:	55 1f       	adc	r21, r21
+ 670:	48 1b       	sub	r20, r24
+ 672:	59 0b       	sbc	r21, r25
+ 674:	42 5e       	subi	r20, 0xE2	; 226
+ 676:	5f 4f       	sbci	r21, 0xFF	; 255
+ 678:	4c 0f       	add	r20, r28
+ 67a:	5d 1f       	adc	r21, r29
+ 67c:	61 e0       	ldi	r22, 0x01	; 1
+ 67e:	70 e0       	ldi	r23, 0x00	; 0
+ 680:	ce 01       	movw	r24, r28
+ 682:	be de       	rcall	.-644    	; 0x400 <_ZN7PCD854411lineDisplayEiPc>
 }
- 5e6:	df 91       	pop	r29
- 5e8:	cf 91       	pop	r28
- 5ea:	1f 91       	pop	r17
- 5ec:	0f 91       	pop	r16
- 5ee:	ff 90       	pop	r15
- 5f0:	08 95       	ret
+ 684:	df 91       	pop	r29
+ 686:	cf 91       	pop	r28
+ 688:	1f 91       	pop	r17
+ 68a:	0f 91       	pop	r16
+ 68c:	ff 90       	pop	r15
+ 68e:	df 90       	pop	r13
+ 690:	cf 90       	pop	r12
+ 692:	08 95       	ret
 
-000005f2 <_ZN7PCD854415increasePointerEv>:
+00000694 <_ZN7PCD854415increasePointerEv>:
 
 void PCD8544::increasePointer(){
 	if ((pointer + 1) < lenOfMenu){
- 5f2:	fc 01       	movw	r30, r24
- 5f4:	22 85       	ldd	r18, Z+10	; 0x0a
- 5f6:	33 85       	ldd	r19, Z+11	; 0x0b
- 5f8:	2f 5f       	subi	r18, 0xFF	; 255
- 5fa:	3f 4f       	sbci	r19, 0xFF	; 255
- 5fc:	46 85       	ldd	r20, Z+14	; 0x0e
- 5fe:	57 85       	ldd	r21, Z+15	; 0x0f
- 600:	24 17       	cp	r18, r20
- 602:	35 07       	cpc	r19, r21
- 604:	94 f4       	brge	.+36     	; 0x62a <_ZN7PCD854415increasePointerEv+0x38>
+ 694:	fc 01       	movw	r30, r24
+ 696:	22 85       	ldd	r18, Z+10	; 0x0a
+ 698:	33 85       	ldd	r19, Z+11	; 0x0b
+ 69a:	2f 5f       	subi	r18, 0xFF	; 255
+ 69c:	3f 4f       	sbci	r19, 0xFF	; 255
+ 69e:	46 85       	ldd	r20, Z+14	; 0x0e
+ 6a0:	57 85       	ldd	r21, Z+15	; 0x0f
+ 6a2:	24 17       	cp	r18, r20
+ 6a4:	35 07       	cpc	r19, r21
+ 6a6:	94 f4       	brge	.+36     	; 0x6cc <_ZN7PCD854415increasePointerEv+0x38>
 		pointer++;
- 606:	33 87       	std	Z+11, r19	; 0x0b
- 608:	22 87       	std	Z+10, r18	; 0x0a
+ 6a8:	33 87       	std	Z+11, r19	; 0x0b
+ 6aa:	22 87       	std	Z+10, r18	; 0x0a
 		if (((lenOfMenu - current ) > 5) && ((pointer - current) == 5)){
- 60a:	64 85       	ldd	r22, Z+12	; 0x0c
- 60c:	75 85       	ldd	r23, Z+13	; 0x0d
- 60e:	46 1b       	sub	r20, r22
- 610:	57 0b       	sbc	r21, r23
- 612:	46 30       	cpi	r20, 0x06	; 6
- 614:	51 05       	cpc	r21, r1
- 616:	4c f0       	brlt	.+18     	; 0x62a <_ZN7PCD854415increasePointerEv+0x38>
- 618:	26 1b       	sub	r18, r22
- 61a:	37 0b       	sbc	r19, r23
- 61c:	25 30       	cpi	r18, 0x05	; 5
- 61e:	31 05       	cpc	r19, r1
- 620:	21 f4       	brne	.+8      	; 0x62a <_ZN7PCD854415increasePointerEv+0x38>
+ 6ac:	64 85       	ldd	r22, Z+12	; 0x0c
+ 6ae:	75 85       	ldd	r23, Z+13	; 0x0d
+ 6b0:	46 1b       	sub	r20, r22
+ 6b2:	57 0b       	sbc	r21, r23
+ 6b4:	46 30       	cpi	r20, 0x06	; 6
+ 6b6:	51 05       	cpc	r21, r1
+ 6b8:	4c f0       	brlt	.+18     	; 0x6cc <_ZN7PCD854415increasePointerEv+0x38>
+ 6ba:	26 1b       	sub	r18, r22
+ 6bc:	37 0b       	sbc	r19, r23
+ 6be:	25 30       	cpi	r18, 0x05	; 5
+ 6c0:	31 05       	cpc	r19, r1
+ 6c2:	21 f4       	brne	.+8      	; 0x6cc <_ZN7PCD854415increasePointerEv+0x38>
 			current++;
- 622:	6f 5f       	subi	r22, 0xFF	; 255
- 624:	7f 4f       	sbci	r23, 0xFF	; 255
- 626:	75 87       	std	Z+13, r23	; 0x0d
- 628:	64 87       	std	Z+12, r22	; 0x0c
+ 6c4:	6f 5f       	subi	r22, 0xFF	; 255
+ 6c6:	7f 4f       	sbci	r23, 0xFF	; 255
+ 6c8:	75 87       	std	Z+13, r23	; 0x0d
+ 6ca:	64 87       	std	Z+12, r22	; 0x0c
 		}
 	}
 	displayMenu();
- 62a:	8c df       	rcall	.-232    	; 0x544 <_ZN7PCD854411displayMenuEv>
- 62c:	08 95       	ret
+ 6cc:	3b df       	rcall	.-394    	; 0x544 <_ZN7PCD854411displayMenuEv>
+ 6ce:	08 95       	ret
 
-0000062e <_ZN7PCD854415decreasePointerEv>:
+000006d0 <_ZN7PCD854415decreasePointerEv>:
 }
 
 void PCD8544::decreasePointer(){
 	if (pointer > 0){
- 62e:	fc 01       	movw	r30, r24
- 630:	22 85       	ldd	r18, Z+10	; 0x0a
- 632:	33 85       	ldd	r19, Z+11	; 0x0b
- 634:	12 16       	cp	r1, r18
- 636:	13 06       	cpc	r1, r19
- 638:	a4 f4       	brge	.+40     	; 0x662 <_ZN7PCD854415decreasePointerEv+0x34>
+ 6d0:	fc 01       	movw	r30, r24
+ 6d2:	22 85       	ldd	r18, Z+10	; 0x0a
+ 6d4:	33 85       	ldd	r19, Z+11	; 0x0b
+ 6d6:	12 16       	cp	r1, r18
+ 6d8:	13 06       	cpc	r1, r19
+ 6da:	a4 f4       	brge	.+40     	; 0x704 <_ZN7PCD854415decreasePointerEv+0x34>
 		pointer--;
- 63a:	21 50       	subi	r18, 0x01	; 1
- 63c:	31 09       	sbc	r19, r1
- 63e:	33 87       	std	Z+11, r19	; 0x0b
- 640:	22 87       	std	Z+10, r18	; 0x0a
+ 6dc:	21 50       	subi	r18, 0x01	; 1
+ 6de:	31 09       	sbc	r19, r1
+ 6e0:	33 87       	std	Z+11, r19	; 0x0b
+ 6e2:	22 87       	std	Z+10, r18	; 0x0a
 		if (((lenOfMenu - pointer) > 4) && (pointer < current)){
- 642:	46 85       	ldd	r20, Z+14	; 0x0e
- 644:	57 85       	ldd	r21, Z+15	; 0x0f
- 646:	42 1b       	sub	r20, r18
- 648:	53 0b       	sbc	r21, r19
- 64a:	45 30       	cpi	r20, 0x05	; 5
- 64c:	51 05       	cpc	r21, r1
- 64e:	4c f0       	brlt	.+18     	; 0x662 <_ZN7PCD854415decreasePointerEv+0x34>
- 650:	44 85       	ldd	r20, Z+12	; 0x0c
- 652:	55 85       	ldd	r21, Z+13	; 0x0d
- 654:	24 17       	cp	r18, r20
- 656:	35 07       	cpc	r19, r21
- 658:	24 f4       	brge	.+8      	; 0x662 <_ZN7PCD854415decreasePointerEv+0x34>
+ 6e4:	46 85       	ldd	r20, Z+14	; 0x0e
+ 6e6:	57 85       	ldd	r21, Z+15	; 0x0f
+ 6e8:	42 1b       	sub	r20, r18
+ 6ea:	53 0b       	sbc	r21, r19
+ 6ec:	45 30       	cpi	r20, 0x05	; 5
+ 6ee:	51 05       	cpc	r21, r1
+ 6f0:	4c f0       	brlt	.+18     	; 0x704 <_ZN7PCD854415decreasePointerEv+0x34>
+ 6f2:	44 85       	ldd	r20, Z+12	; 0x0c
+ 6f4:	55 85       	ldd	r21, Z+13	; 0x0d
+ 6f6:	24 17       	cp	r18, r20
+ 6f8:	35 07       	cpc	r19, r21
+ 6fa:	24 f4       	brge	.+8      	; 0x704 <_ZN7PCD854415decreasePointerEv+0x34>
 			current--;
- 65a:	41 50       	subi	r20, 0x01	; 1
- 65c:	51 09       	sbc	r21, r1
- 65e:	55 87       	std	Z+13, r21	; 0x0d
- 660:	44 87       	std	Z+12, r20	; 0x0c
+ 6fc:	41 50       	subi	r20, 0x01	; 1
+ 6fe:	51 09       	sbc	r21, r1
+ 700:	55 87       	std	Z+13, r21	; 0x0d
+ 702:	44 87       	std	Z+12, r20	; 0x0c
 		}
 	}
 	displayMenu();
- 662:	70 df       	rcall	.-288    	; 0x544 <_ZN7PCD854411displayMenuEv>
- 664:	08 95       	ret
+ 704:	1f df       	rcall	.-450    	; 0x544 <_ZN7PCD854411displayMenuEv>
+ 706:	08 95       	ret
 
-00000666 <__tablejump2__>:
- 666:	ee 0f       	add	r30, r30
- 668:	ff 1f       	adc	r31, r31
- 66a:	05 90       	lpm	r0, Z+
- 66c:	f4 91       	lpm	r31, Z
- 66e:	e0 2d       	mov	r30, r0
- 670:	09 94       	ijmp
+00000708 <__tablejump2__>:
+ 708:	ee 0f       	add	r30, r30
+ 70a:	ff 1f       	adc	r31, r31
+ 70c:	05 90       	lpm	r0, Z+
+ 70e:	f4 91       	lpm	r31, Z
+ 710:	e0 2d       	mov	r30, r0
+ 712:	09 94       	ijmp
 
-00000672 <_exit>:
- 672:	f8 94       	cli
+00000714 <_exit>:
+ 714:	f8 94       	cli
 
-00000674 <__stop_program>:
- 674:	ff cf       	rjmp	.-2      	; 0x674 <__stop_program>
+00000716 <__stop_program>:
+ 716:	ff cf       	rjmp	.-2      	; 0x716 <__stop_program>

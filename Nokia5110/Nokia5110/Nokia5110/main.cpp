@@ -17,9 +17,10 @@ int main(void)
 	PORTD |= (1<<0) | (1<<1);
     LCD.begin();
 	LCD.createMenu("RFID", Menu, 4);
-	LCD.displayMenu();
+	
     while (1) 
     {	
+		LCD.displayMenu();
 		if (!(PIND & (1<<0))){
 			LCD.increasePointer();
 			while(!(PIND & (1<<0)));

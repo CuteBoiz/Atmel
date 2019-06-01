@@ -18,12 +18,13 @@ Discarded input sections
  .text          0x00000000        0x0 main.o
  .data          0x00000000        0x0 main.o
  .bss           0x00000000        0x0 main.o
- .text          0x00000000        0x0 PS2.o
- .data          0x00000000        0x0 PS2.o
- .bss           0x00000000        0x0 PS2.o
- .text._Z11checkExtendv
-                0x00000000        0x2 PS2.o
- .avr.prop      0x00000000       0x16 PS2.o
+ .text          0x00000000        0x0 Nokia5110.o
+ .data          0x00000000        0x0 Nokia5110.o
+ .bss           0x00000000        0x0 Nokia5110.o
+ .text          0x00000000        0x0 Ps2.o
+ .data          0x00000000        0x0 Ps2.o
+ .bss           0x00000000        0x0 Ps2.o
+ .avr.prop      0x00000000       0x16 Ps2.o
  .text          0x00000000        0x0 a:/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr4\libgcc.a(_exit.o)
  .data          0x00000000        0x0 a:/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr4\libgcc.a(_exit.o)
  .bss           0x00000000        0x0 a:/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr4\libgcc.a(_exit.o)
@@ -120,7 +121,8 @@ Linker script and memory map
 
 LOAD A:/Atmel/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega8a/avr4/crtatmega8a.o
 LOAD main.o
-LOAD PS2.o
+LOAD Nokia5110.o
+LOAD Ps2.o
 START GROUP
 LOAD a:/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr4\libm.a
 END GROUP
@@ -230,135 +232,178 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0x824
+.text           0x00000000      0xe68
  *(.vectors)
  .vectors       0x00000000       0x26 A:/Atmel/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega8a/avr4/crtatmega8a.o
                 0x00000000                __vector_default
                 0x00000000                __vectors
  *(.vectors)
  *(.progmem.gcc*)
- .progmem.gcc_sw_table._ZN3PS27gerCharEv
-                0x00000026       0xe2 PS2.o
-                0x00000108                . = ALIGN (0x2)
-                0x00000108                __trampolines_start = .
+ .progmem.gcc_sw_table._ZN3PS27getCharEv
+                0x00000026       0xe4 Ps2.o
+                0x0000010a                . = ALIGN (0x2)
+                0x0000010a                __trampolines_start = .
  *(.trampolines)
- .trampolines   0x00000108        0x0 linker stubs
+ .trampolines   0x0000010a        0x0 linker stubs
  *(.trampolines*)
-                0x00000108                __trampolines_end = .
+                0x0000010a                __trampolines_end = .
  *libprintf_flt.a:*(.progmem.data)
  *libc.a:*(.progmem.data)
  *(.progmem*)
-                0x00000108                . = ALIGN (0x2)
+                0x0000010a                . = ALIGN (0x2)
  *(.jumptables)
  *(.jumptables*)
  *(.lowtext)
  *(.lowtext*)
-                0x00000108                __ctors_start = .
+                0x0000010a                __ctors_start = .
  *(.ctors)
- .ctors         0x00000108        0x2 main.o
-                0x0000010a                __ctors_end = .
-                0x0000010a                __dtors_start = .
+ .ctors         0x0000010a        0x2 main.o
+                0x0000010c                __ctors_end = .
+                0x0000010c                __dtors_start = .
  *(.dtors)
-                0x0000010a                __dtors_end = .
+                0x0000010c                __dtors_end = .
  SORT(*)(.ctors)
  SORT(*)(.dtors)
  *(.init0)
- .init0         0x0000010a        0x0 A:/Atmel/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega8a/avr4/crtatmega8a.o
-                0x0000010a                __init
+ .init0         0x0000010c        0x0 A:/Atmel/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega8a/avr4/crtatmega8a.o
+                0x0000010c                __init
  *(.init0)
  *(.init1)
  *(.init1)
  *(.init2)
- .init2         0x0000010a        0xc A:/Atmel/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega8a/avr4/crtatmega8a.o
+ .init2         0x0000010c        0xc A:/Atmel/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega8a/avr4/crtatmega8a.o
  *(.init2)
  *(.init3)
  *(.init3)
  *(.init4)
- .init4         0x00000116       0x16 a:/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr4\libgcc.a(_copy_data.o)
-                0x00000116                __do_copy_data
- .init4         0x0000012c       0x10 a:/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr4\libgcc.a(_clear_bss.o)
-                0x0000012c                __do_clear_bss
+ .init4         0x00000118       0x16 a:/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr4\libgcc.a(_copy_data.o)
+                0x00000118                __do_copy_data
+ .init4         0x0000012e       0x10 a:/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr4\libgcc.a(_clear_bss.o)
+                0x0000012e                __do_clear_bss
  *(.init4)
  *(.init5)
  *(.init5)
  *(.init6)
- .init6         0x0000013c       0x14 a:/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr4\libgcc.a(_ctors.o)
-                0x0000013c                __do_global_ctors
+ .init6         0x0000013e       0x14 a:/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr4\libgcc.a(_ctors.o)
+                0x0000013e                __do_global_ctors
  *(.init6)
  *(.init7)
  *(.init7)
  *(.init8)
  *(.init8)
  *(.init9)
- .init9         0x00000150        0x4 A:/Atmel/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega8a/avr4/crtatmega8a.o
+ .init9         0x00000152        0x4 A:/Atmel/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega8a/avr4/crtatmega8a.o
  *(.init9)
  *(.text)
- .text          0x00000154        0x2 A:/Atmel/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega8a/avr4/crtatmega8a.o
-                0x00000154                __vector_12
-                0x00000154                __bad_interrupt
-                0x00000154                __vector_6
-                0x00000154                __vector_3
-                0x00000154                __vector_11
-                0x00000154                __vector_13
-                0x00000154                __vector_17
-                0x00000154                __vector_7
-                0x00000154                __vector_5
-                0x00000154                __vector_4
-                0x00000154                __vector_9
-                0x00000154                __vector_2
-                0x00000154                __vector_15
-                0x00000154                __vector_8
-                0x00000154                __vector_14
-                0x00000154                __vector_10
-                0x00000154                __vector_16
-                0x00000154                __vector_18
-                0x00000156                . = ALIGN (0x2)
+ .text          0x00000156        0x2 A:/Atmel/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega8a/avr4/crtatmega8a.o
+                0x00000156                __vector_12
+                0x00000156                __bad_interrupt
+                0x00000156                __vector_6
+                0x00000156                __vector_3
+                0x00000156                __vector_11
+                0x00000156                __vector_13
+                0x00000156                __vector_17
+                0x00000156                __vector_7
+                0x00000156                __vector_5
+                0x00000156                __vector_4
+                0x00000156                __vector_9
+                0x00000156                __vector_2
+                0x00000156                __vector_15
+                0x00000156                __vector_8
+                0x00000156                __vector_14
+                0x00000156                __vector_10
+                0x00000156                __vector_16
+                0x00000156                __vector_18
+                0x00000158                . = ALIGN (0x2)
  *(.text.*)
  .text._Z10USART_Initv
-                0x00000156       0x10 main.o
-                0x00000156                _Z10USART_Initv
+                0x00000158       0x10 main.o
+                0x00000158                _Z10USART_Initv
  .text._Z14USART_Transmitc
-                0x00000166        0x8 main.o
-                0x00000166                _Z14USART_Transmitc
+                0x00000168        0x8 main.o
+                0x00000168                _Z14USART_Transmitc
  .text._Z16USART_SendStringPc
-                0x0000016e       0x1c main.o
-                0x0000016e                _Z16USART_SendStringPc
- .text.main     0x0000018a       0x26 main.o
-                0x0000018a                main
- .text._GLOBAL__sub_I_kb
-                0x000001b0        0x8 main.o
+                0x00000170       0x1c main.o
+                0x00000170                _Z16USART_SendStringPc
+ .text.main     0x0000018c       0xa4 main.o
+                0x0000018c                main
+ .text._GLOBAL__sub_I_lcd
+                0x00000230       0x32 main.o
+ .text._ZN7PCD8544C2Eiiiii
+                0x00000262       0xae Nokia5110.o
+                0x00000262                _ZN7PCD8544C2Eiiiii
+                0x00000262                _ZN7PCD8544C1Eiiiii
+ .text._ZN7PCD85449sendToPCDEih
+                0x00000310       0xf4 Nokia5110.o
+                0x00000310                _ZN7PCD85449sendToPCDEih
+ .text._ZN7PCD854411sendCommandEh
+                0x00000404        0xa Nokia5110.o
+                0x00000404                _ZN7PCD854411sendCommandEh
+ .text._ZN7PCD85448sendDataEh
+                0x0000040e        0xa Nokia5110.o
+                0x0000040e                _ZN7PCD85448sendDataEh
+ .text._ZN7PCD85449setCursorEhh
+                0x00000418       0x2c Nokia5110.o
+                0x00000418                _ZN7PCD85449setCursorEhh
+ .text._ZN7PCD85445resetEv
+                0x00000444       0x64 Nokia5110.o
+                0x00000444                _ZN7PCD85445resetEv
+ .text._ZN7PCD854410clearSreenEv
+                0x000004a8       0x28 Nokia5110.o
+                0x000004a8                _ZN7PCD854410clearSreenEv
+ .text._ZN7PCD85445beginEv
+                0x000004d0       0x42 Nokia5110.o
+                0x000004d0                _ZN7PCD85445beginEv
+ .text._ZN7PCD854411charDisplayEic
+                0x00000512       0x62 Nokia5110.o
+                0x00000512                _ZN7PCD854411charDisplayEic
+ .text._ZN7PCD854411lineDisplayEiPc
+                0x00000574       0xb4 Nokia5110.o
+                0x00000574                _ZN7PCD854411lineDisplayEiPc
+ .text._ZN7PCD85448MenuInitEv
+                0x00000628        0xc Nokia5110.o
+                0x00000628                _ZN7PCD85448MenuInitEv
+ .text._ZN7PCD854411displayMenuEPcPS0_i
+                0x00000634      0x126 Nokia5110.o
+                0x00000634                _ZN7PCD854411displayMenuEPcPS0_i
+ .text._ZN7PCD854415increasePointerEv
+                0x0000075a       0x38 Nokia5110.o
+                0x0000075a                _ZN7PCD854415increasePointerEv
+ .text._ZN7PCD854415decreasePointerEv
+                0x00000792       0x32 Nokia5110.o
+                0x00000792                _ZN7PCD854415decreasePointerEv
  .text._ZN3PS2C2Ev
-                0x000001b8        0x2 PS2.o
-                0x000001b8                _ZN3PS2C1Ev
-                0x000001b8                _ZN3PS2C2Ev
- .text._ZN3PS24initEv
-                0x000001ba       0x48 PS2.o
-                0x000001ba                _ZN3PS24initEv
- .text._ZN3PS29availableEv
-                0x00000202        0xe PS2.o
-                0x00000202                _ZN3PS29availableEv
- .text.__vector_1
-                0x00000210      0x1b8 PS2.o
-                0x00000210                __vector_1
+                0x000007c4        0x6 Ps2.o
+                0x000007c4                _ZN3PS2C1Ev
+                0x000007c4                _ZN3PS2C2Ev
  .text._ZN3PS29oddParityEh
-                0x000003c8       0x2a PS2.o
-                0x000003c8                _ZN3PS29oddParityEh
+                0x000007ca       0x2a Ps2.o
+                0x000007ca                _ZN3PS29oddParityEh
  .text._ZN3PS211sendCommandEh
-                0x000003f2       0x50 PS2.o
-                0x000003f2                _ZN3PS211sendCommandEh
- .text._ZN3PS28setLightEh
-                0x00000442       0x28 PS2.o
-                0x00000442                _ZN3PS28setLightEh
- .text._ZN3PS27gerCharEv
-                0x0000046a      0x3aa PS2.o
-                0x0000046a                _ZN3PS27gerCharEv
- .text.libgcc   0x00000814        0xc a:/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr4\libgcc.a(_tablejump2.o)
-                0x00000814                __tablejump2__
-                0x00000820                . = ALIGN (0x2)
+                0x000007f4       0x4a Ps2.o
+                0x000007f4                _ZN3PS211sendCommandEh
+ .text._ZN3PS25beginEv
+                0x0000083e       0x4a Ps2.o
+                0x0000083e                _ZN3PS25beginEv
+ .text._ZN3PS28setLightEv
+                0x00000888       0x22 Ps2.o
+                0x00000888                _ZN3PS28setLightEv
+ .text._ZN3PS29availableEv
+                0x000008aa        0xe Ps2.o
+                0x000008aa                _ZN3PS29availableEv
+ .text._ZN3PS27getCharEv
+                0x000008b8      0x3b4 Ps2.o
+                0x000008b8                _ZN3PS27getCharEv
+ .text.__vector_1
+                0x00000c6c      0x1ec Ps2.o
+                0x00000c6c                __vector_1
+ .text.libgcc   0x00000e58        0xc a:/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr4\libgcc.a(_tablejump2.o)
+                0x00000e58                __tablejump2__
+                0x00000e64                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00000820        0x0 a:/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr4\libgcc.a(_exit.o)
-                0x00000820                _exit
-                0x00000820                exit
+ .fini9         0x00000e64        0x0 a:/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr4\libgcc.a(_exit.o)
+                0x00000e64                _exit
+                0x00000e64                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -377,81 +422,92 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00000820        0x4 a:/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr4\libgcc.a(_exit.o)
+ .fini0         0x00000e64        0x4 a:/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr4\libgcc.a(_exit.o)
  *(.fini0)
-                0x00000824                _etext = .
+                0x00000e68                _etext = .
 
-.data           0x00800060        0x8 load address 0x00000824
+.data           0x00800060      0x214 load address 0x00000e68
                 0x00800060                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
  *(.gnu.linkonce.d*)
  *(.rodata)
+ .rodata        0x00800060        0x6 main.o
  *(.rodata*)
  .rodata.str1.1
-                0x00800060        0x8 main.o
+                0x00800066       0x2b main.o
+ .rodata.str1.1
+                0x00800091        0x2 Nokia5110.o
+ .rodata._ZL7CHARSET
+                0x00800093      0x1e0 Nokia5110.o
  *(.gnu.linkonce.r*)
-                0x00800068                . = ALIGN (0x2)
-                0x00800068                _edata = .
-                0x00800068                PROVIDE (__data_end, .)
+                0x00800274                . = ALIGN (0x2)
+ *fill*         0x00800273        0x1 
+                0x00800274                _edata = .
+                0x00800274                PROVIDE (__data_end, .)
 
-.bss            0x00800068       0x10
-                0x00800068                PROVIDE (__bss_start, .)
+.bss            0x00800274       0x21
+                0x00800274                PROVIDE (__bss_start, .)
  *(.bss)
  *(.bss*)
- .bss.kb        0x00800068        0x1 main.o
-                0x00800068                kb
+ .bss.kb        0x00800274        0x1 main.o
+                0x00800274                kb
+ .bss.lcd       0x00800275       0x10 main.o
+                0x00800275                lcd
  .bss.cmd_ACKOk
-                0x00800069        0x1 PS2.o
-                0x00800069                cmd_ACKOk
- .bss.cmd_ACKValue
-                0x0080006a        0x1 PS2.o
-                0x0080006a                cmd_ACKValue
+                0x00800285        0x1 Ps2.o
+                0x00800285                cmd_ACKOk
  .bss.cmd_Parity
-                0x0080006b        0x1 PS2.o
-                0x0080006b                cmd_Parity
+                0x00800286        0x1 Ps2.o
+                0x00800286                cmd_Parity
+ .bss.cmd_ACKValue
+                0x00800287        0x1 Ps2.o
+                0x00800287                cmd_ACKValue
  .bss.cmd_Value
-                0x0080006c        0x1 PS2.o
-                0x0080006c                cmd_Value
+                0x00800288        0x1 Ps2.o
+                0x00800288                cmd_Value
  .bss.cmd_Count
-                0x0080006d        0x2 PS2.o
-                0x0080006d                cmd_Count
+                0x00800289        0x2 Ps2.o
+                0x00800289                cmd_Count
  .bss.cmd_InProgress
-                0x0080006f        0x1 PS2.o
-                0x0080006f                cmd_InProgress
- .bss.kb_Extend
-                0x00800070        0x1 PS2.o
-                0x00800070                kb_Extend
- .bss.kb_NumLock
-                0x00800071        0x1 PS2.o
-                0x00800071                kb_NumLock
- .bss.kb_Release
-                0x00800072        0x1 PS2.o
-                0x00800072                kb_Release
+                0x0080028b        0x1 Ps2.o
+                0x0080028b                cmd_InProgress
+ .bss.kb_ScrollLock
+                0x0080028c        0x1 Ps2.o
+                0x0080028c                kb_ScrollLock
+ .bss.kb_Numlock
+                0x0080028d        0x1 Ps2.o
+                0x0080028d                kb_Numlock
  .bss.kb_Capslock
-                0x00800073        0x1 PS2.o
-                0x00800073                kb_Capslock
- .bss.kb_Shift  0x00800074        0x1 PS2.o
-                0x00800074                kb_Shift
- .bss.char_Received
-                0x00800075        0x1 PS2.o
-                0x00800075                char_Received
- .bss.char_Current
-                0x00800076        0x1 PS2.o
-                0x00800076                char_Current
+                0x0080028e        0x1 Ps2.o
+                0x0080028e                kb_Capslock
+ .bss.kb_Shift  0x0080028f        0x1 Ps2.o
+                0x0080028f                kb_Shift
+ .bss.kb_Release
+                0x00800290        0x1 Ps2.o
+                0x00800290                kb_Release
+ .bss.kb_Extend
+                0x00800291        0x1 Ps2.o
+                0x00800291                kb_Extend
  .bss.char_Count
-                0x00800077        0x1 PS2.o
-                0x00800077                char_Count
+                0x00800292        0x1 Ps2.o
+                0x00800292                char_Count
+ .bss.char_Received
+                0x00800293        0x1 Ps2.o
+                0x00800293                char_Received
+ .bss.char_Current
+                0x00800294        0x1 Ps2.o
+                0x00800294                char_Current
  *(COMMON)
-                0x00800078                PROVIDE (__bss_end, .)
-                0x00000824                __data_load_start = LOADADDR (.data)
-                0x0000082c                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x00800295                PROVIDE (__bss_end, .)
+                0x00000e68                __data_load_start = LOADADDR (.data)
+                0x0000107c                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x00800078        0x0
+.noinit         0x00800295        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
  *(.noinit*)
                 [!provide]                PROVIDE (__noinit_end, .)
-                0x00800078                _end = .
+                0x00800295                _end = .
                 [!provide]                PROVIDE (__heap_start, .)
 
 .eeprom         0x00810000        0x0
@@ -495,7 +551,8 @@ END GROUP
  *(.comment)
  .comment       0x00000000       0x30 main.o
                                  0x31 (size before relaxing)
- .comment       0x00000030       0x31 PS2.o
+ .comment       0x00000030       0x31 Nokia5110.o
+ .comment       0x00000030       0x31 Ps2.o
 
 .note.gnu.avr.deviceinfo
                 0x00000000       0x3c
@@ -517,51 +574,60 @@ END GROUP
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x00000000       0xa0
+.debug_aranges  0x00000000      0x120
  *(.debug_aranges)
  .debug_aranges
                 0x00000000       0x40 main.o
  .debug_aranges
-                0x00000040       0x60 PS2.o
+                0x00000040       0x88 Nokia5110.o
+ .debug_aranges
+                0x000000c8       0x58 Ps2.o
 
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000      0xd94
+.debug_info     0x00000000     0x1f85
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x48c A:/Atmel/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega8a/avr4/crtatmega8a.o
- .debug_info    0x0000048c      0x32a main.o
- .debug_info    0x000007b6      0x5de PS2.o
+ .debug_info    0x0000048c      0x972 main.o
+ .debug_info    0x00000dfe      0xbd0 Nokia5110.o
+ .debug_info    0x000019ce      0x5b7 Ps2.o
 
-.debug_abbrev   0x00000000      0x93e
+.debug_abbrev   0x00000000      0xbac
  *(.debug_abbrev)
  .debug_abbrev  0x00000000      0x44e A:/Atmel/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega8a/avr4/crtatmega8a.o
- .debug_abbrev  0x0000044e      0x21b main.o
- .debug_abbrev  0x00000669      0x2d5 PS2.o
+ .debug_abbrev  0x0000044e      0x282 main.o
+ .debug_abbrev  0x000006d0      0x250 Nokia5110.o
+ .debug_abbrev  0x00000920      0x28c Ps2.o
 
-.debug_line     0x00000000      0x932
+.debug_line     0x00000000      0xe69
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x109 A:/Atmel/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega8a/avr4/crtatmega8a.o
- .debug_line    0x00000109      0x137 main.o
- .debug_line    0x00000240      0x6f2 PS2.o
+ .debug_line    0x00000109      0x19b main.o
+ .debug_line    0x000002a4      0x48b Nokia5110.o
+ .debug_line    0x0000072f      0x73a Ps2.o
 
-.debug_frame    0x00000000      0x150
+.debug_frame    0x00000000      0x334
  *(.debug_frame)
- .debug_frame   0x00000000       0x70 main.o
- .debug_frame   0x00000070       0xe0 PS2.o
+ .debug_frame   0x00000000       0x94 main.o
+ .debug_frame   0x00000094      0x1e0 Nokia5110.o
+ .debug_frame   0x00000274       0xc0 Ps2.o
 
-.debug_str      0x00000000      0x59d
+.debug_str      0x00000000      0x837
  *(.debug_str)
  .debug_str     0x00000000      0x17a A:/Atmel/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega8a/avr4/crtatmega8a.o
- .debug_str     0x0000017a      0x2df main.o
-                                0x318 (size before relaxing)
- .debug_str     0x00000459      0x144 PS2.o
-                                0x388 (size before relaxing)
+ .debug_str     0x0000017a      0x532 main.o
+                                0x570 (size before relaxing)
+ .debug_str     0x000006ac       0xa6 Nokia5110.o
+                                0x49a (size before relaxing)
+ .debug_str     0x00000752       0xe5 Ps2.o
+                                0x38b (size before relaxing)
 
-.debug_loc      0x00000000      0xab1
+.debug_loc      0x00000000     0x121b
  *(.debug_loc)
- .debug_loc     0x00000000       0xd7 main.o
- .debug_loc     0x000000d7      0x9da PS2.o
+ .debug_loc     0x00000000      0x168 main.o
+ .debug_loc     0x00000168      0xae2 Nokia5110.o
+ .debug_loc     0x00000c4a      0x5d1 Ps2.o
 
 .debug_macinfo
  *(.debug_macinfo)
@@ -581,12 +647,13 @@ END GROUP
 .debug_pubtypes
  *(.debug_pubtypes)
 
-.debug_ranges   0x00000000       0x80
+.debug_ranges   0x00000000      0x108
  *(.debug_ranges)
  .debug_ranges  0x00000000       0x30 main.o
- .debug_ranges  0x00000030       0x50 PS2.o
+ .debug_ranges  0x00000030       0x90 Nokia5110.o
+ .debug_ranges  0x000000c0       0x48 Ps2.o
 
 .debug_macro
  *(.debug_macro)
-OUTPUT(KeyBoard.elf elf32-avr)
+OUTPUT(Roll-Call System.elf elf32-avr)
 LOAD linker stubs

@@ -84,7 +84,7 @@ void PCD8544::begin(){
 	this->sendCommand(0x20 | 0x01); //H = 1
 	this->sendCommand(0x01 | 0x03); //Bias 1:48
 	this->sendCommand(0x80 | 0xC5); //Set contrast
-	this->sendCommand(0x04 | 0x00); //Temp C
+	this->sendCommand(0x04 | 0x00); //Set TC0
 	
 	this->sendCommand(0x20 | 0x00); //H = 0
 	this->sendCommand(0x08 | 0x04); //Normal Mode
@@ -138,33 +138,13 @@ void PCD8544::lineDisplay(int isReverse, char *data){
 	}
 }
 
-void PCD8544::createMenu(char *name, char data[][14], int length){
+void PCD8544::MenuInit(){
 	this->pointer = 0;
 	this->current = 0;
-	this->lenOfMenu = length;
-	
-	for (int i = 0; i < 14; i++){
-		if (name[i]){
-			title[i] = name[i];
-		}
-		else{
-			title[i] = ' ';
-		}
-	}
-	
-	for (int i = 0; i < lenOfMenu; i++){
-		for (int j = 0; j < 14; j++){
-			if (data[i][j]){
-				Menu[i][j] = data[i][j];
-			}
-			else{
-				Menu[i][j] = ' ';
-			}
-		}
-	}
 }
 
-void PCD8544::displayMenu(){
+void PCD8544::displayMenu(char *title, char *Menu[], int length){
+	this->lenOfMenu = length;
 	this->setCursor(0, 0);
 	this->lineDisplay(NON_REVERSE, title);
 	
@@ -196,7 +176,6 @@ void PCD8544::increasePointer(){
 			current++;
 		}
 	}
-	displayMenu();
 }
 
 void PCD8544::decreasePointer(){
@@ -206,5 +185,4 @@ void PCD8544::decreasePointer(){
 			current--;
 		}
 	}
-	displayMenu();
 }
