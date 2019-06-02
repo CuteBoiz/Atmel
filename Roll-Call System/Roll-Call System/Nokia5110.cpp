@@ -138,13 +138,18 @@ void PCD8544::lineDisplay(int isReverse, char *data){
 	}
 }
 
-void PCD8544::MenuInit(){
+void PCD8544::createMenu(char *name, char *data[], int length){
 	this->pointer = 0;
 	this->current = 0;
+	this->lenOfMenu = length;
+	this->title = name;
+	for (int i = 0; i < length; i++){
+		this->Menu[i] = data[i]; 
+	}
 }
 
-void PCD8544::displayMenu(char *title, char *Menu[], int length){
-	this->lenOfMenu = length;
+void PCD8544::displayMenu(){
+	
 	this->setCursor(0, 0);
 	this->lineDisplay(NON_REVERSE, title);
 	
@@ -168,6 +173,9 @@ void PCD8544::displayMenu(char *title, char *Menu[], int length){
 	this->setCursor(0, (pointer - current) + 1);
 	lineDisplay(REVERSE, Menu[pointer]);
 }
+int PCD8544::getPointer(){
+	return pointer;
+};
 
 void PCD8544::increasePointer(){
 	if ((pointer + 1) < lenOfMenu){
@@ -176,6 +184,8 @@ void PCD8544::increasePointer(){
 			current++;
 		}
 	}
+	this->displayMenu();
+	_delay_ms(200);
 }
 
 void PCD8544::decreasePointer(){
@@ -185,4 +195,6 @@ void PCD8544::decreasePointer(){
 			current--;
 		}
 	}
+	this->displayMenu();
+	_delay_ms(200);
 }

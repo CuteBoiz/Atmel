@@ -227,7 +227,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0x718
+.text           0x00000000      0x806
  *(.vectors)
  .vectors       0x00000000       0x26 A:/Atmel/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega8a/avr4/crtatmega8a.o
                 0x00000000                __vector_default
@@ -310,60 +310,72 @@ END GROUP
                 0x00000072                __vector_18
                 0x00000074                . = ALIGN (0x2)
  *(.text.*)
- .text.main     0x00000074       0x48 main.o
-                0x00000074                main
+ .text._Z8PrevMenuv
+                0x00000074       0x6c main.o
+                0x00000074                _Z8PrevMenuv
+ .text._Z8NextMenuv
+                0x000000e0       0xa0 main.o
+                0x000000e0                _Z8NextMenuv
+ .text.main     0x00000180       0x90 main.o
+                0x00000180                main
  .text._GLOBAL__sub_I_Menu
-                0x000000bc       0x2c main.o
+                0x00000210       0x2c main.o
  .text._ZN7PCD8544C2Eiiiii
-                0x000000e8       0xae Nokia5110.o
-                0x000000e8                _ZN7PCD8544C2Eiiiii
-                0x000000e8                _ZN7PCD8544C1Eiiiii
+                0x0000023c       0xae Nokia5110.o
+                0x0000023c                _ZN7PCD8544C2Eiiiii
+                0x0000023c                _ZN7PCD8544C1Eiiiii
  .text._ZN7PCD85449sendToPCDEih
-                0x00000196       0xf4 Nokia5110.o
-                0x00000196                _ZN7PCD85449sendToPCDEih
+                0x000002ea       0xf4 Nokia5110.o
+                0x000002ea                _ZN7PCD85449sendToPCDEih
  .text._ZN7PCD854411sendCommandEh
-                0x0000028a        0xa Nokia5110.o
-                0x0000028a                _ZN7PCD854411sendCommandEh
+                0x000003de        0xa Nokia5110.o
+                0x000003de                _ZN7PCD854411sendCommandEh
  .text._ZN7PCD85448sendDataEh
-                0x00000294        0xa Nokia5110.o
-                0x00000294                _ZN7PCD85448sendDataEh
+                0x000003e8        0xa Nokia5110.o
+                0x000003e8                _ZN7PCD85448sendDataEh
  .text._ZN7PCD85449setCursorEhh
-                0x0000029e       0x2c Nokia5110.o
-                0x0000029e                _ZN7PCD85449setCursorEhh
+                0x000003f2       0x2c Nokia5110.o
+                0x000003f2                _ZN7PCD85449setCursorEhh
  .text._ZN7PCD85445resetEv
-                0x000002ca       0x6a Nokia5110.o
-                0x000002ca                _ZN7PCD85445resetEv
+                0x0000041e       0x6a Nokia5110.o
+                0x0000041e                _ZN7PCD85445resetEv
  .text._ZN7PCD854410clearSreenEv
-                0x00000334       0x28 Nokia5110.o
-                0x00000334                _ZN7PCD854410clearSreenEv
+                0x00000488       0x28 Nokia5110.o
+                0x00000488                _ZN7PCD854410clearSreenEv
  .text._ZN7PCD85445beginEv
-                0x0000035c       0x42 Nokia5110.o
-                0x0000035c                _ZN7PCD85445beginEv
+                0x000004b0       0x42 Nokia5110.o
+                0x000004b0                _ZN7PCD85445beginEv
  .text._ZN7PCD854411charDisplayEic
-                0x0000039e       0x62 Nokia5110.o
-                0x0000039e                _ZN7PCD854411charDisplayEic
+                0x000004f2       0x62 Nokia5110.o
+                0x000004f2                _ZN7PCD854411charDisplayEic
  .text._ZN7PCD854411lineDisplayEiPc
-                0x00000400       0xb4 Nokia5110.o
-                0x00000400                _ZN7PCD854411lineDisplayEiPc
- .text._ZN7PCD854410createMenuEPcPA14_ci
-                0x000004b4       0x90 Nokia5110.o
-                0x000004b4                _ZN7PCD854410createMenuEPcPA14_ci
+                0x00000554       0xb4 Nokia5110.o
+                0x00000554                _ZN7PCD854411lineDisplayEiPc
+ .text._ZN7PCD854410createMenuEiiiPcPS0_
+                0x00000608       0x54 Nokia5110.o
+                0x00000608                _ZN7PCD854410createMenuEiiiPcPS0_
  .text._ZN7PCD854411displayMenuEv
-                0x00000544      0x150 Nokia5110.o
-                0x00000544                _ZN7PCD854411displayMenuEv
+                0x0000065c      0x120 Nokia5110.o
+                0x0000065c                _ZN7PCD854411displayMenuEv
  .text._ZN7PCD854415increasePointerEv
-                0x00000694       0x3c Nokia5110.o
-                0x00000694                _ZN7PCD854415increasePointerEv
+                0x0000077c       0x38 Nokia5110.o
+                0x0000077c                _ZN7PCD854415increasePointerEv
  .text._ZN7PCD854415decreasePointerEv
-                0x000006d0       0x38 Nokia5110.o
-                0x000006d0                _ZN7PCD854415decreasePointerEv
- .text.libgcc   0x00000708        0xc a:/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr4\libgcc.a(_tablejump2.o)
-                0x00000708                __tablejump2__
-                0x00000714                . = ALIGN (0x2)
+                0x000007b4       0x32 Nokia5110.o
+                0x000007b4                _ZN7PCD854415decreasePointerEv
+ .text._ZN7PCD854410getPointerEv
+                0x000007e6        0x8 Nokia5110.o
+                0x000007e6                _ZN7PCD854410getPointerEv
+ .text._ZN7PCD85448getTitleEv
+                0x000007ee        0x8 Nokia5110.o
+                0x000007ee                _ZN7PCD85448getTitleEv
+ .text.libgcc   0x000007f6        0xc a:/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr4\libgcc.a(_tablejump2.o)
+                0x000007f6                __tablejump2__
+                0x00000802                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00000714        0x0 a:/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr4\libgcc.a(_exit.o)
-                0x00000714                _exit
-                0x00000714                exit
+ .fini9         0x00000802        0x0 a:/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr4\libgcc.a(_exit.o)
+                0x00000802                _exit
+                0x00000802                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -382,47 +394,52 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00000714        0x4 a:/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr4\libgcc.a(_exit.o)
+ .fini0         0x00000802        0x4 a:/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr4\libgcc.a(_exit.o)
  *(.fini0)
-                0x00000718                _etext = .
+                0x00000806                _etext = .
 
-.data           0x00800060      0x220 load address 0x00000718
+.data           0x00800060      0x258 load address 0x00000806
                 0x00800060                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
- .data.Menu     0x00800060       0x38 main.o
-                0x00800060                Menu
+ .data.Setting  0x00800060        0x6 main.o
+                0x00800060                Setting
+ .data.RFID     0x00800066        0xa main.o
+                0x00800066                RFID
+ .data.Menu     0x00800070        0x4 main.o
+                0x00800070                Menu
  *(.gnu.linkonce.d*)
  *(.rodata)
  *(.rodata*)
  .rodata.str1.1
-                0x00800098        0x5 main.o
+                0x00800074       0x61 main.o
+                                 0x6e (size before relaxing)
  .rodata.str1.1
-                0x0080009d        0x2 Nokia5110.o
+                0x008000d5        0x2 Nokia5110.o
  .rodata._ZL7CHARSET
-                0x0080009f      0x1e0 Nokia5110.o
+                0x008000d7      0x1e0 Nokia5110.o
  *(.gnu.linkonce.r*)
-                0x00800280                . = ALIGN (0x2)
- *fill*         0x0080027f        0x1 
-                0x00800280                _edata = .
-                0x00800280                PROVIDE (__data_end, .)
+                0x008002b8                . = ALIGN (0x2)
+ *fill*         0x008002b7        0x1 
+                0x008002b8                _edata = .
+                0x008002b8                PROVIDE (__data_end, .)
 
-.bss            0x00800280       0x1e
-                0x00800280                PROVIDE (__bss_start, .)
+.bss            0x008002b8       0x12
+                0x008002b8                PROVIDE (__bss_start, .)
  *(.bss)
  *(.bss*)
- .bss.LCD       0x00800280       0x1e main.o
-                0x00800280                LCD
+ .bss.LCD       0x008002b8       0x12 main.o
+                0x008002b8                LCD
  *(COMMON)
-                0x0080029e                PROVIDE (__bss_end, .)
-                0x00000718                __data_load_start = LOADADDR (.data)
-                0x00000938                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x008002ca                PROVIDE (__bss_end, .)
+                0x00000806                __data_load_start = LOADADDR (.data)
+                0x00000a5e                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x0080029e        0x0
+.noinit         0x008002ca        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
  *(.noinit*)
                 [!provide]                PROVIDE (__noinit_end, .)
-                0x0080029e                _end = .
+                0x008002ca                _end = .
                 [!provide]                PROVIDE (__heap_start, .)
 
 .eeprom         0x00810000        0x0
@@ -488,51 +505,51 @@ END GROUP
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x00000000       0xb0
+.debug_aranges  0x00000000       0xd0
  *(.debug_aranges)
  .debug_aranges
-                0x00000000       0x28 main.o
+                0x00000000       0x38 main.o
  .debug_aranges
-                0x00000028       0x88 Nokia5110.o
+                0x00000038       0x98 Nokia5110.o
 
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x17e0
+.debug_info     0x00000000     0x1bb8
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x48c A:/Atmel/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega8a/avr4/crtatmega8a.o
- .debug_info    0x0000048c      0x6f0 main.o
- .debug_info    0x00000b7c      0xc64 Nokia5110.o
+ .debug_info    0x0000048c      0xa4b main.o
+ .debug_info    0x00000ed7      0xce1 Nokia5110.o
 
-.debug_abbrev   0x00000000      0x856
+.debug_abbrev   0x00000000      0x912
  *(.debug_abbrev)
  .debug_abbrev  0x00000000      0x44e A:/Atmel/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega8a/avr4/crtatmega8a.o
- .debug_abbrev  0x0000044e      0x199 main.o
- .debug_abbrev  0x000005e7      0x26f Nokia5110.o
+ .debug_abbrev  0x0000044e      0x251 main.o
+ .debug_abbrev  0x0000069f      0x273 Nokia5110.o
 
-.debug_line     0x00000000      0x704
+.debug_line     0x00000000      0x815
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x109 A:/Atmel/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega8a/avr4/crtatmega8a.o
- .debug_line    0x00000109       0xfc main.o
- .debug_line    0x00000205      0x4ff Nokia5110.o
+ .debug_line    0x00000109      0x227 main.o
+ .debug_line    0x00000330      0x4e5 Nokia5110.o
 
-.debug_frame    0x00000000      0x228
+.debug_frame    0x00000000      0x298
  *(.debug_frame)
- .debug_frame   0x00000000       0x48 main.o
- .debug_frame   0x00000048      0x1e0 Nokia5110.o
+ .debug_frame   0x00000000       0x90 main.o
+ .debug_frame   0x00000090      0x208 Nokia5110.o
 
-.debug_str      0x00000000      0x644
+.debug_str      0x00000000      0x6c2
  *(.debug_str)
  .debug_str     0x00000000      0x17a A:/Atmel/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega8a/avr4/crtatmega8a.o
- .debug_str     0x0000017a      0x420 main.o
-                                0x45e (size before relaxing)
- .debug_str     0x0000059a       0xaa Nokia5110.o
-                                0x4a2 (size before relaxing)
+ .debug_str     0x0000017a      0x4ee main.o
+                                0x52c (size before relaxing)
+ .debug_str     0x00000668       0x5a Nokia5110.o
+                                0x4e7 (size before relaxing)
 
-.debug_loc      0x00000000      0xbf8
+.debug_loc      0x00000000      0xccf
  *(.debug_loc)
- .debug_loc     0x00000000       0x72 main.o
- .debug_loc     0x00000072      0xb86 Nokia5110.o
+ .debug_loc     0x00000000      0x164 main.o
+ .debug_loc     0x00000164      0xb6b Nokia5110.o
 
 .debug_macinfo
  *(.debug_macinfo)
@@ -552,10 +569,10 @@ END GROUP
 .debug_pubtypes
  *(.debug_pubtypes)
 
-.debug_ranges   0x00000000       0xf8
+.debug_ranges   0x00000000       0xc8
  *(.debug_ranges)
- .debug_ranges  0x00000000       0x18 main.o
- .debug_ranges  0x00000018       0xe0 Nokia5110.o
+ .debug_ranges  0x00000000       0x28 main.o
+ .debug_ranges  0x00000028       0xa0 Nokia5110.o
 
 .debug_macro
  *(.debug_macro)

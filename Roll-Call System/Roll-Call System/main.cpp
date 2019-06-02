@@ -1,7 +1,8 @@
 #include "PS2.h"
-
 #include "Nokia5110.h"
 
+char *mySystem[] = {"1.RFID", "2.Setting"};
+char *RFID[] = {"1.List","2.Add","3.Delete","4.Edit"};
 	
 void USART_Init();
 void USART_Transmit(char data);
@@ -13,6 +14,7 @@ PS2 kb;
 
 int main(void)
 {
+	
 	USART_Init();
 	USART_SendString("Begin!\n");
 	
@@ -20,21 +22,18 @@ int main(void)
 	sei();
 	
     lcd.begin();
-	char *Menu[] = {"1.RFID", "2.Setting", "3.About"};
-	lcd.MenuInit();
-	lcd.displayMenu("My system", Menu, 3);	
+	lcd.createMenu("My System:", mySystem, 2);	
+	lcd.displayMenu();
     while (1) 
     {
 		if (kb.available()){
-			uint8_t data = kb.getChar();
-			USART_Transmit(data);
-			if (data == KB_UP){
+			uint8_t key = kb.getChar();
+			USART_Transmit(key);
+			if (key == KB_UP){
 				lcd.decreasePointer();
-				lcd.displayMenu("My system", Menu, 3);	
 			}
-			else if (data == KB_DOWN){
-				lcd.increasePointer();
-				lcd.displayMenu("My system", Menu, 3);	
+			else if (key == KB_DOWN){
+				lcd.increasePointer();	
 			}
 		}
     }

@@ -24,6 +24,9 @@
 #define DDR_PCD		DDRC
 #define PORT_PCD	PORTC
 
+
+
+
 class PCD8544{
 public:
 	PCD8544(int RST, int SCE, int DC, int SDIN, int SCLK);
@@ -34,19 +37,25 @@ public:
 	void charDisplay(int isReverse, char data);
 	void lineDisplay(int isReverse, char *data);
 	
-	void createMenu(char *name, char data[][14], int length);
+	
+	void createMenu(int pointer, int current, int length, char *title, char *data[]);
 	void displayMenu();
+	
+	
+	int getPointer();
+	char* getTitle();
 	void increasePointer();
 	void decreasePointer();
+	
+	
 private:
 	int RST_PIN, SCE_PIN, DC_PIN, SDIN_PIN, SCLK_PIN;
 	
 	int pointer;
 	int current;
 	int lenOfMenu;
-	
-	char title[14];
-	char Menu[][14];
+	char *title;
+	char *Menu[];
 	
 	void sendToPCD(int mode, uint8_t data);
 	void sendCommand(uint8_t data);

@@ -37,17 +37,22 @@ public:
 	void charDisplay(int isReverse, char data);
 	void lineDisplay(int isReverse, char *data);
 	
-	void MenuInit();
-	void displayMenu(char *name, char *Menu[], int length);
+	void createMenu(char *name, char *Menu[], int length);
+	void displayMenu();
+	
+	int getPointer();
 	
 	void increasePointer();
 	void decreasePointer();
 private:
 	int RST_PIN, SCE_PIN, DC_PIN, SDIN_PIN, SCLK_PIN;
 	
+	
 	int pointer;
 	int current;
 	int lenOfMenu;
+	char *title;
+	char *Menu[];
 	
 	void sendToPCD(int mode, uint8_t data);
 	void sendCommand(uint8_t data);

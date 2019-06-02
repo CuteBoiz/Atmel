@@ -3,31 +3,31 @@ Nokia5110.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .text         00000718  00000000  00000000  00000094  2**1
+  0 .text         00000806  00000000  00000000  00000094  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  1 .data         00000220  00800060  00000718  000007ac  2**0
+  1 .data         00000258  00800060  00000806  0000089a  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  2 .bss          0000001e  00800280  00800280  000009cc  2**0
+  2 .bss          00000012  008002b8  008002b8  00000af2  2**0
                   ALLOC
-  3 .comment      00000030  00000000  00000000  000009cc  2**0
+  3 .comment      00000030  00000000  00000000  00000af2  2**0
                   CONTENTS, READONLY
-  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  000009fc  2**2
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000b24  2**2
                   CONTENTS, READONLY
-  5 .debug_aranges 000000b0  00000000  00000000  00000a38  2**0
+  5 .debug_aranges 000000d0  00000000  00000000  00000b60  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   000017e0  00000000  00000000  00000ae8  2**0
+  6 .debug_info   00001bb8  00000000  00000000  00000c30  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 00000856  00000000  00000000  000022c8  2**0
+  7 .debug_abbrev 00000912  00000000  00000000  000027e8  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   00000704  00000000  00000000  00002b1e  2**0
+  8 .debug_line   00000815  00000000  00000000  000030fa  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  00000228  00000000  00000000  00003224  2**2
+  9 .debug_frame  00000298  00000000  00000000  00003910  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    00000644  00000000  00000000  0000344c  2**0
+ 10 .debug_str    000006c2  00000000  00000000  00003ba8  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    00000bf8  00000000  00000000  00003a90  2**0
+ 11 .debug_loc    00000ccf  00000000  00000000  0000426a  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 000000f8  00000000  00000000  00004688  2**0
+ 12 .debug_ranges 000000c8  00000000  00000000  00004f39  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -54,7 +54,7 @@ Disassembly of section .text:
   24:	26 c0       	rjmp	.+76     	; 0x72 <__bad_interrupt>
 
 00000026 <__ctors_start>:
-  26:	5e 00       	.word	0x005e	; ????
+  26:	08 01       	movw	r0, r16
 
 00000028 <__ctors_end>:
   28:	11 24       	eor	r1, r1
@@ -68,18 +68,18 @@ Disassembly of section .text:
   34:	12 e0       	ldi	r17, 0x02	; 2
   36:	a0 e6       	ldi	r26, 0x60	; 96
   38:	b0 e0       	ldi	r27, 0x00	; 0
-  3a:	e8 e1       	ldi	r30, 0x18	; 24
-  3c:	f7 e0       	ldi	r31, 0x07	; 7
+  3a:	e6 e0       	ldi	r30, 0x06	; 6
+  3c:	f8 e0       	ldi	r31, 0x08	; 8
   3e:	02 c0       	rjmp	.+4      	; 0x44 <__SREG__+0x5>
   40:	05 90       	lpm	r0, Z+
   42:	0d 92       	st	X+, r0
-  44:	a0 38       	cpi	r26, 0x80	; 128
+  44:	a8 3b       	cpi	r26, 0xB8	; 184
   46:	b1 07       	cpc	r27, r17
   48:	d9 f7       	brne	.-10     	; 0x40 <__SREG__+0x1>
 
 0000004a <__do_clear_bss>:
   4a:	22 e0       	ldi	r18, 0x02	; 2
-  4c:	a0 e8       	ldi	r26, 0x80	; 128
+  4c:	a8 eb       	ldi	r26, 0xB8	; 184
   4e:	b2 e0       	ldi	r27, 0x02	; 2
   50:	01 c0       	rjmp	.+2      	; 0x54 <.do_clear_bss_start>
 
@@ -87,7 +87,7 @@ Disassembly of section .text:
   52:	1d 92       	st	X+, r1
 
 00000054 <.do_clear_bss_start>:
-  54:	ae 39       	cpi	r26, 0x9E	; 158
+  54:	aa 3c       	cpi	r26, 0xCA	; 202
   56:	b2 07       	cpc	r27, r18
   58:	e1 f7       	brne	.-8      	; 0x52 <.do_clear_bss_loop>
 
@@ -98,1281 +98,1421 @@ Disassembly of section .text:
   60:	03 c0       	rjmp	.+6      	; 0x68 <__do_global_ctors+0xe>
   62:	21 97       	sbiw	r28, 0x01	; 1
   64:	fe 01       	movw	r30, r28
-  66:	50 d3       	rcall	.+1696   	; 0x708 <__tablejump2__>
+  66:	c7 d3       	rcall	.+1934   	; 0x7f6 <__tablejump2__>
   68:	c3 31       	cpi	r28, 0x13	; 19
   6a:	d1 07       	cpc	r29, r17
   6c:	d1 f7       	brne	.-12     	; 0x62 <__do_global_ctors+0x8>
-  6e:	02 d0       	rcall	.+4      	; 0x74 <main>
-  70:	51 c3       	rjmp	.+1698   	; 0x714 <_exit>
+  6e:	88 d0       	rcall	.+272    	; 0x180 <main>
+  70:	c8 c3       	rjmp	.+1936   	; 0x802 <_exit>
 
 00000072 <__bad_interrupt>:
   72:	c6 cf       	rjmp	.-116    	; 0x0 <__vectors>
 
-00000074 <main>:
-PCD8544 LCD(4, 3, 2, 1, 0);
+00000074 <_Z8PrevMenuv>:
+			case 2: PrevMenu(); break;
+		}
+	}
+}
 
+void PrevMenu(){
+  74:	ef 92       	push	r14
+  76:	ff 92       	push	r15
+  78:	0f 93       	push	r16
+  7a:	1f 93       	push	r17
+	char *name  = LCD.getTitle();
+  7c:	88 eb       	ldi	r24, 0xB8	; 184
+  7e:	92 e0       	ldi	r25, 0x02	; 2
+  80:	b6 d3       	rcall	.+1900   	; 0x7ee <_ZN7PCD85448getTitleEv>
+	if (name == "RFID"){
+  82:	20 e0       	ldi	r18, 0x00	; 0
+  84:	86 3c       	cpi	r24, 0xC6	; 198
+  86:	92 07       	cpc	r25, r18
+  88:	91 f4       	brne	.+36     	; 0xae <_Z8PrevMenuv+0x3a>
+		LCD.createMenu(0, 0, 2, "My System", Menu);
+  8a:	0f 2e       	mov	r0, r31
+  8c:	f0 e7       	ldi	r31, 0x70	; 112
+  8e:	ef 2e       	mov	r14, r31
+  90:	f0 e0       	ldi	r31, 0x00	; 0
+  92:	ff 2e       	mov	r15, r31
+  94:	f0 2d       	mov	r31, r0
+  96:	04 e7       	ldi	r16, 0x74	; 116
+  98:	10 e0       	ldi	r17, 0x00	; 0
+  9a:	22 e0       	ldi	r18, 0x02	; 2
+  9c:	30 e0       	ldi	r19, 0x00	; 0
+  9e:	40 e0       	ldi	r20, 0x00	; 0
+  a0:	50 e0       	ldi	r21, 0x00	; 0
+  a2:	60 e0       	ldi	r22, 0x00	; 0
+  a4:	70 e0       	ldi	r23, 0x00	; 0
+  a6:	88 eb       	ldi	r24, 0xB8	; 184
+  a8:	92 e0       	ldi	r25, 0x02	; 2
+  aa:	ae d2       	rcall	.+1372   	; 0x608 <_ZN7PCD854410createMenuEiiiPcPS0_>
+  ac:	14 c0       	rjmp	.+40     	; 0xd6 <_Z8PrevMenuv+0x62>
+	}
+	else if (name == "Setting"){
+  ae:	8d 5c       	subi	r24, 0xCD	; 205
+  b0:	90 40       	sbci	r25, 0x00	; 0
+  b2:	89 f4       	brne	.+34     	; 0xd6 <_Z8PrevMenuv+0x62>
+		LCD.createMenu(1, 0, 2, "My System", Menu);
+  b4:	0f 2e       	mov	r0, r31
+  b6:	f0 e7       	ldi	r31, 0x70	; 112
+  b8:	ef 2e       	mov	r14, r31
+  ba:	f0 e0       	ldi	r31, 0x00	; 0
+  bc:	ff 2e       	mov	r15, r31
+  be:	f0 2d       	mov	r31, r0
+  c0:	04 e7       	ldi	r16, 0x74	; 116
+  c2:	10 e0       	ldi	r17, 0x00	; 0
+  c4:	22 e0       	ldi	r18, 0x02	; 2
+  c6:	30 e0       	ldi	r19, 0x00	; 0
+  c8:	40 e0       	ldi	r20, 0x00	; 0
+  ca:	50 e0       	ldi	r21, 0x00	; 0
+  cc:	61 e0       	ldi	r22, 0x01	; 1
+  ce:	70 e0       	ldi	r23, 0x00	; 0
+  d0:	88 eb       	ldi	r24, 0xB8	; 184
+  d2:	92 e0       	ldi	r25, 0x02	; 2
+  d4:	99 d2       	rcall	.+1330   	; 0x608 <_ZN7PCD854410createMenuEiiiPcPS0_>
+	}
+  d6:	1f 91       	pop	r17
+  d8:	0f 91       	pop	r16
+  da:	ff 90       	pop	r15
+  dc:	ef 90       	pop	r14
+  de:	08 95       	ret
+
+000000e0 <_Z8NextMenuv>:
+			while(!(PIND & (1<<3)));
+		}
+    }
+}
+
+void NextMenu(){
+  e0:	ef 92       	push	r14
+  e2:	ff 92       	push	r15
+  e4:	0f 93       	push	r16
+  e6:	1f 93       	push	r17
+	char *name  = LCD.getTitle();
+  e8:	88 eb       	ldi	r24, 0xB8	; 184
+  ea:	92 e0       	ldi	r25, 0x02	; 2
+  ec:	80 d3       	rcall	.+1792   	; 0x7ee <_ZN7PCD85448getTitleEv>
+	if (name == "My System"){
+  ee:	20 e0       	ldi	r18, 0x00	; 0
+  f0:	84 37       	cpi	r24, 0x74	; 116
+  f2:	92 07       	cpc	r25, r18
+  f4:	61 f5       	brne	.+88     	; 0x14e <_Z8NextMenuv+0x6e>
+		switch (LCD.getPointer()){
+  f6:	88 eb       	ldi	r24, 0xB8	; 184
+  f8:	92 e0       	ldi	r25, 0x02	; 2
+  fa:	75 d3       	rcall	.+1770   	; 0x7e6 <_ZN7PCD854410getPointerEv>
+  fc:	00 97       	sbiw	r24, 0x00	; 0
+  fe:	19 f0       	breq	.+6      	; 0x106 <_Z8NextMenuv+0x26>
+ 100:	01 97       	sbiw	r24, 0x01	; 1
+ 102:	99 f0       	breq	.+38     	; 0x12a <_Z8NextMenuv+0x4a>
+ 104:	38 c0       	rjmp	.+112    	; 0x176 <_Z8NextMenuv+0x96>
+			case 0: LCD.createMenu(0, 0, 5,"RFID", RFID); break;
+ 106:	0f 2e       	mov	r0, r31
+ 108:	f6 e6       	ldi	r31, 0x66	; 102
+ 10a:	ef 2e       	mov	r14, r31
+ 10c:	f0 e0       	ldi	r31, 0x00	; 0
+ 10e:	ff 2e       	mov	r15, r31
+ 110:	f0 2d       	mov	r31, r0
+ 112:	06 ec       	ldi	r16, 0xC6	; 198
+ 114:	10 e0       	ldi	r17, 0x00	; 0
+ 116:	25 e0       	ldi	r18, 0x05	; 5
+ 118:	30 e0       	ldi	r19, 0x00	; 0
+ 11a:	40 e0       	ldi	r20, 0x00	; 0
+ 11c:	50 e0       	ldi	r21, 0x00	; 0
+ 11e:	60 e0       	ldi	r22, 0x00	; 0
+ 120:	70 e0       	ldi	r23, 0x00	; 0
+ 122:	88 eb       	ldi	r24, 0xB8	; 184
+ 124:	92 e0       	ldi	r25, 0x02	; 2
+ 126:	70 d2       	rcall	.+1248   	; 0x608 <_ZN7PCD854410createMenuEiiiPcPS0_>
+ 128:	26 c0       	rjmp	.+76     	; 0x176 <_Z8NextMenuv+0x96>
+			case 1: LCD.createMenu(0, 0, 3, "Setting", Setting); break;
+ 12a:	0f 2e       	mov	r0, r31
+ 12c:	f0 e6       	ldi	r31, 0x60	; 96
+ 12e:	ef 2e       	mov	r14, r31
+ 130:	f0 e0       	ldi	r31, 0x00	; 0
+ 132:	ff 2e       	mov	r15, r31
+ 134:	f0 2d       	mov	r31, r0
+ 136:	0d ec       	ldi	r16, 0xCD	; 205
+ 138:	10 e0       	ldi	r17, 0x00	; 0
+ 13a:	23 e0       	ldi	r18, 0x03	; 3
+ 13c:	30 e0       	ldi	r19, 0x00	; 0
+ 13e:	40 e0       	ldi	r20, 0x00	; 0
+ 140:	50 e0       	ldi	r21, 0x00	; 0
+ 142:	60 e0       	ldi	r22, 0x00	; 0
+ 144:	70 e0       	ldi	r23, 0x00	; 0
+ 146:	88 eb       	ldi	r24, 0xB8	; 184
+ 148:	92 e0       	ldi	r25, 0x02	; 2
+ 14a:	5e d2       	rcall	.+1212   	; 0x608 <_ZN7PCD854410createMenuEiiiPcPS0_>
+ 14c:	14 c0       	rjmp	.+40     	; 0x176 <_Z8NextMenuv+0x96>
+		}
+	}
+	else if (name == "RFID"){
+ 14e:	20 e0       	ldi	r18, 0x00	; 0
+ 150:	86 3c       	cpi	r24, 0xC6	; 198
+ 152:	92 07       	cpc	r25, r18
+ 154:	39 f4       	brne	.+14     	; 0x164 <_Z8NextMenuv+0x84>
+		switch (LCD.getPointer()){
+ 156:	88 eb       	ldi	r24, 0xB8	; 184
+ 158:	92 e0       	ldi	r25, 0x02	; 2
+ 15a:	45 d3       	rcall	.+1674   	; 0x7e6 <_ZN7PCD854410getPointerEv>
+ 15c:	04 97       	sbiw	r24, 0x04	; 4
+ 15e:	59 f4       	brne	.+22     	; 0x176 <_Z8NextMenuv+0x96>
+			case 0: break;
+			case 1: break;
+			case 2: break;
+			case 3: break;
+			case 4: PrevMenu(); break;
+ 160:	89 df       	rcall	.-238    	; 0x74 <_Z8PrevMenuv>
+ 162:	09 c0       	rjmp	.+18     	; 0x176 <_Z8NextMenuv+0x96>
+		}
+	}
+	else if (name == "Setting"){
+ 164:	8d 5c       	subi	r24, 0xCD	; 205
+ 166:	90 40       	sbci	r25, 0x00	; 0
+ 168:	31 f4       	brne	.+12     	; 0x176 <_Z8NextMenuv+0x96>
+		switch(LCD.getPointer()){
+ 16a:	88 eb       	ldi	r24, 0xB8	; 184
+ 16c:	92 e0       	ldi	r25, 0x02	; 2
+ 16e:	3b d3       	rcall	.+1654   	; 0x7e6 <_ZN7PCD854410getPointerEv>
+ 170:	02 97       	sbiw	r24, 0x02	; 2
+ 172:	09 f4       	brne	.+2      	; 0x176 <_Z8NextMenuv+0x96>
+			case 0: break;
+			case 1: break;
+			case 2: PrevMenu(); break;
+ 174:	7f df       	rcall	.-258    	; 0x74 <_Z8PrevMenuv>
+		}
+	}
+}
+ 176:	1f 91       	pop	r17
+ 178:	0f 91       	pop	r16
+ 17a:	ff 90       	pop	r15
+ 17c:	ef 90       	pop	r14
+ 17e:	08 95       	ret
+
+00000180 <main>:
+void NextMenu();
+void PrevMenu();
 
 int main(void)
 {
 	DDRD &= ~((1<<0) | (1<<1));
-  74:	81 b3       	in	r24, 0x11	; 17
-  76:	8c 7f       	andi	r24, 0xFC	; 252
-  78:	81 bb       	out	0x11, r24	; 17
+ 180:	81 b3       	in	r24, 0x11	; 17
+ 182:	8c 7f       	andi	r24, 0xFC	; 252
+ 184:	81 bb       	out	0x11, r24	; 17
 	PORTD |= (1<<0) | (1<<1);
-  7a:	82 b3       	in	r24, 0x12	; 18
-  7c:	83 60       	ori	r24, 0x03	; 3
-  7e:	82 bb       	out	0x12, r24	; 18
+ 186:	82 b3       	in	r24, 0x12	; 18
+ 188:	83 60       	ori	r24, 0x03	; 3
+ 18a:	82 bb       	out	0x12, r24	; 18
     LCD.begin();
-  80:	80 e8       	ldi	r24, 0x80	; 128
-  82:	92 e0       	ldi	r25, 0x02	; 2
-  84:	6b d1       	rcall	.+726    	; 0x35c <_ZN7PCD85445beginEv>
-	LCD.createMenu("RFID", Menu, 4);
-  86:	24 e0       	ldi	r18, 0x04	; 4
-  88:	30 e0       	ldi	r19, 0x00	; 0
-  8a:	40 e6       	ldi	r20, 0x60	; 96
-  8c:	50 e0       	ldi	r21, 0x00	; 0
-  8e:	68 e9       	ldi	r22, 0x98	; 152
-  90:	70 e0       	ldi	r23, 0x00	; 0
-  92:	80 e8       	ldi	r24, 0x80	; 128
-  94:	92 e0       	ldi	r25, 0x02	; 2
-  96:	0e d2       	rcall	.+1052   	; 0x4b4 <_ZN7PCD854410createMenuEPcPA14_ci>
+ 18c:	88 eb       	ldi	r24, 0xB8	; 184
+ 18e:	92 e0       	ldi	r25, 0x02	; 2
+ 190:	8f d1       	rcall	.+798    	; 0x4b0 <_ZN7PCD85445beginEv>
+	LCD.createMenu(0, 0, 2, "My System", Menu);
+ 192:	0f 2e       	mov	r0, r31
+ 194:	f0 e7       	ldi	r31, 0x70	; 112
+ 196:	ef 2e       	mov	r14, r31
+ 198:	f0 e0       	ldi	r31, 0x00	; 0
+ 19a:	ff 2e       	mov	r15, r31
+ 19c:	f0 2d       	mov	r31, r0
+ 19e:	04 e7       	ldi	r16, 0x74	; 116
+ 1a0:	10 e0       	ldi	r17, 0x00	; 0
+ 1a2:	22 e0       	ldi	r18, 0x02	; 2
+ 1a4:	30 e0       	ldi	r19, 0x00	; 0
+ 1a6:	40 e0       	ldi	r20, 0x00	; 0
+ 1a8:	50 e0       	ldi	r21, 0x00	; 0
+ 1aa:	60 e0       	ldi	r22, 0x00	; 0
+ 1ac:	70 e0       	ldi	r23, 0x00	; 0
+ 1ae:	88 eb       	ldi	r24, 0xB8	; 184
+ 1b0:	92 e0       	ldi	r25, 0x02	; 2
+ 1b2:	2a d2       	rcall	.+1108   	; 0x608 <_ZN7PCD854410createMenuEiiiPcPS0_>
 	
     while (1) 
     {	
 		LCD.displayMenu();
-  98:	80 e8       	ldi	r24, 0x80	; 128
-  9a:	92 e0       	ldi	r25, 0x02	; 2
-  9c:	53 d2       	rcall	.+1190   	; 0x544 <_ZN7PCD854411displayMenuEv>
-		if (!(PIND & (1<<0))){
-  9e:	80 99       	sbic	0x10, 0	; 16
-  a0:	05 c0       	rjmp	.+10     	; 0xac <main+0x38>
-			LCD.increasePointer();
-  a2:	80 e8       	ldi	r24, 0x80	; 128
-  a4:	92 e0       	ldi	r25, 0x02	; 2
-  a6:	f6 d2       	rcall	.+1516   	; 0x694 <_ZN7PCD854415increasePointerEv>
-			while(!(PIND & (1<<0)));
-  a8:	80 9b       	sbis	0x10, 0	; 16
-  aa:	fe cf       	rjmp	.-4      	; 0xa8 <main+0x34>
-		}
-		if(!(PIND & (1<<1))){
-  ac:	81 99       	sbic	0x10, 1	; 16
-  ae:	f4 cf       	rjmp	.-24     	; 0x98 <main+0x24>
-			LCD.decreasePointer();
-  b0:	80 e8       	ldi	r24, 0x80	; 128
-  b2:	92 e0       	ldi	r25, 0x02	; 2
-  b4:	0d d3       	rcall	.+1562   	; 0x6d0 <_ZN7PCD854415decreasePointerEv>
-			while(!(PIND & (1<<1)));
-  b6:	81 9b       	sbis	0x10, 1	; 16
-  b8:	fe cf       	rjmp	.-4      	; 0xb6 <main+0x42>
-  ba:	ee cf       	rjmp	.-36     	; 0x98 <main+0x24>
-
-000000bc <_GLOBAL__sub_I_Menu>:
-		}
-		
-    }
-}
-  bc:	ef 92       	push	r14
-  be:	ff 92       	push	r15
-  c0:	0f 93       	push	r16
-  c2:	1f 93       	push	r17
- */ 
-
-#include "Nokia5110.h"
-
-char Menu[][14] = {"1.Phat","2.Vinh", "3.Linh", "4.Tuan"};
-PCD8544 LCD(4, 3, 2, 1, 0);
-  c4:	e1 2c       	mov	r14, r1
-  c6:	f1 2c       	mov	r15, r1
-  c8:	01 e0       	ldi	r16, 0x01	; 1
-  ca:	10 e0       	ldi	r17, 0x00	; 0
-  cc:	22 e0       	ldi	r18, 0x02	; 2
-  ce:	30 e0       	ldi	r19, 0x00	; 0
-  d0:	43 e0       	ldi	r20, 0x03	; 3
-  d2:	50 e0       	ldi	r21, 0x00	; 0
-  d4:	64 e0       	ldi	r22, 0x04	; 4
-  d6:	70 e0       	ldi	r23, 0x00	; 0
-  d8:	80 e8       	ldi	r24, 0x80	; 128
-  da:	92 e0       	ldi	r25, 0x02	; 2
-  dc:	05 d0       	rcall	.+10     	; 0xe8 <_ZN7PCD8544C1Eiiiii>
-			LCD.decreasePointer();
-			while(!(PIND & (1<<1)));
-		}
-		
-    }
-}
-  de:	1f 91       	pop	r17
-  e0:	0f 91       	pop	r16
-  e2:	ff 90       	pop	r15
-  e4:	ef 90       	pop	r14
-  e6:	08 95       	ret
-
-000000e8 <_ZN7PCD8544C1Eiiiii>:
- *  Author: tanph
- */ 
-
-#include "Nokia5110.h"
-
-PCD8544::PCD8544(int RST, int SCE, int DC, int SDIN, int SCLK){
-  e8:	ef 92       	push	r14
-  ea:	ff 92       	push	r15
-  ec:	0f 93       	push	r16
-  ee:	1f 93       	push	r17
-  f0:	cf 93       	push	r28
-  f2:	df 93       	push	r29
-  f4:	fc 01       	movw	r30, r24
-	RST_PIN = RST;
-  f6:	60 83       	st	Z, r22
-  f8:	71 83       	std	Z+1, r23	; 0x01
-	SCE_PIN = SCE;
-  fa:	42 83       	std	Z+2, r20	; 0x02
-  fc:	53 83       	std	Z+3, r21	; 0x03
-	DC_PIN = DC;
-  fe:	24 83       	std	Z+4, r18	; 0x04
- 100:	35 83       	std	Z+5, r19	; 0x05
-	SDIN_PIN = SDIN;
- 102:	06 83       	std	Z+6, r16	; 0x06
- 104:	17 83       	std	Z+7, r17	; 0x07
-	SCLK_PIN = SCLK;
- 106:	e0 86       	std	Z+8, r14	; 0x08
- 108:	f1 86       	std	Z+9, r15	; 0x09
-	DDR_PCD |= (1<<RST_PIN) | (1<<SCE_PIN) | (1<<DC_PIN) | (1<<SDIN_PIN) | (1<<SCLK_PIN);
- 10a:	c4 b3       	in	r28, 0x14	; 20
- 10c:	81 e0       	ldi	r24, 0x01	; 1
- 10e:	90 e0       	ldi	r25, 0x00	; 0
- 110:	dc 01       	movw	r26, r24
- 112:	02 c0       	rjmp	.+4      	; 0x118 <_ZN7PCD8544C1Eiiiii+0x30>
- 114:	aa 0f       	add	r26, r26
- 116:	bb 1f       	adc	r27, r27
- 118:	ea 94       	dec	r14
- 11a:	e2 f7       	brpl	.-8      	; 0x114 <_ZN7PCD8544C1Eiiiii+0x2c>
- 11c:	7c 01       	movw	r14, r24
- 11e:	02 c0       	rjmp	.+4      	; 0x124 <_ZN7PCD8544C1Eiiiii+0x3c>
- 120:	ee 0c       	add	r14, r14
- 122:	ff 1c       	adc	r15, r15
- 124:	0a 95       	dec	r16
- 126:	e2 f7       	brpl	.-8      	; 0x120 <_ZN7PCD8544C1Eiiiii+0x38>
- 128:	87 01       	movw	r16, r14
- 12a:	ca 2b       	or	r28, r26
- 12c:	0c 2b       	or	r16, r28
- 12e:	ec 01       	movw	r28, r24
- 130:	02 c0       	rjmp	.+4      	; 0x136 <_ZN7PCD8544C1Eiiiii+0x4e>
- 132:	cc 0f       	add	r28, r28
- 134:	dd 1f       	adc	r29, r29
- 136:	2a 95       	dec	r18
- 138:	e2 f7       	brpl	.-8      	; 0x132 <_ZN7PCD8544C1Eiiiii+0x4a>
- 13a:	2c 2f       	mov	r18, r28
- 13c:	20 2b       	or	r18, r16
- 13e:	ec 01       	movw	r28, r24
- 140:	02 c0       	rjmp	.+4      	; 0x146 <_ZN7PCD8544C1Eiiiii+0x5e>
- 142:	cc 0f       	add	r28, r28
- 144:	dd 1f       	adc	r29, r29
- 146:	4a 95       	dec	r20
- 148:	e2 f7       	brpl	.-8      	; 0x142 <_ZN7PCD8544C1Eiiiii+0x5a>
- 14a:	ae 01       	movw	r20, r28
- 14c:	42 2b       	or	r20, r18
- 14e:	9c 01       	movw	r18, r24
- 150:	02 c0       	rjmp	.+4      	; 0x156 <_ZN7PCD8544C1Eiiiii+0x6e>
- 152:	22 0f       	add	r18, r18
- 154:	33 1f       	adc	r19, r19
- 156:	6a 95       	dec	r22
- 158:	e2 f7       	brpl	.-8      	; 0x152 <_ZN7PCD8544C1Eiiiii+0x6a>
- 15a:	24 2b       	or	r18, r20
- 15c:	24 bb       	out	0x14, r18	; 20
-	PORT_PCD |= (1<<SCE_PIN) | (1<<RST_PIN);
- 15e:	25 b3       	in	r18, 0x15	; 21
- 160:	ac 01       	movw	r20, r24
- 162:	02 80       	ldd	r0, Z+2	; 0x02
- 164:	02 c0       	rjmp	.+4      	; 0x16a <_ZN7PCD8544C1Eiiiii+0x82>
- 166:	44 0f       	add	r20, r20
- 168:	55 1f       	adc	r21, r21
- 16a:	0a 94       	dec	r0
- 16c:	e2 f7       	brpl	.-8      	; 0x166 <_ZN7PCD8544C1Eiiiii+0x7e>
- 16e:	00 80       	ld	r0, Z
- 170:	02 c0       	rjmp	.+4      	; 0x176 <_ZN7PCD8544C1Eiiiii+0x8e>
- 172:	88 0f       	add	r24, r24
- 174:	99 1f       	adc	r25, r25
- 176:	0a 94       	dec	r0
- 178:	e2 f7       	brpl	.-8      	; 0x172 <_ZN7PCD8544C1Eiiiii+0x8a>
- 17a:	84 2b       	or	r24, r20
- 17c:	82 2b       	or	r24, r18
- 17e:	85 bb       	out	0x15, r24	; 21
-	PORT_PCD &= ~(1<<SCLK);
- 180:	85 b3       	in	r24, 0x15	; 21
- 182:	a0 95       	com	r26
- 184:	a8 23       	and	r26, r24
- 186:	a5 bb       	out	0x15, r26	; 21
-}
- 188:	df 91       	pop	r29
- 18a:	cf 91       	pop	r28
- 18c:	1f 91       	pop	r17
- 18e:	0f 91       	pop	r16
- 190:	ff 90       	pop	r15
- 192:	ef 90       	pop	r14
- 194:	08 95       	ret
-
-00000196 <_ZN7PCD85449sendToPCDEih>:
-
-//Send data or command to PCD8544
-void PCD8544::sendToPCD(int type, uint8_t data){
- 196:	cf 93       	push	r28
- 198:	df 93       	push	r29
- 19a:	fc 01       	movw	r30, r24
-	PORT_PCD &= ~(1<<SCE_PIN);
- 19c:	25 b3       	in	r18, 0x15	; 21
- 19e:	81 e0       	ldi	r24, 0x01	; 1
- 1a0:	90 e0       	ldi	r25, 0x00	; 0
- 1a2:	02 80       	ldd	r0, Z+2	; 0x02
- 1a4:	02 c0       	rjmp	.+4      	; 0x1aa <_ZN7PCD85449sendToPCDEih+0x14>
- 1a6:	88 0f       	add	r24, r24
- 1a8:	99 1f       	adc	r25, r25
- 1aa:	0a 94       	dec	r0
- 1ac:	e2 f7       	brpl	.-8      	; 0x1a6 <_ZN7PCD85449sendToPCDEih+0x10>
- 1ae:	80 95       	com	r24
- 1b0:	82 23       	and	r24, r18
- 1b2:	85 bb       	out	0x15, r24	; 21
-	
-	if (type == PCD8544_DATA){
- 1b4:	61 30       	cpi	r22, 0x01	; 1
- 1b6:	71 05       	cpc	r23, r1
- 1b8:	61 f4       	brne	.+24     	; 0x1d2 <_ZN7PCD85449sendToPCDEih+0x3c>
-		PORT_PCD |= (1<<DC_PIN);
- 1ba:	25 b3       	in	r18, 0x15	; 21
- 1bc:	81 e0       	ldi	r24, 0x01	; 1
- 1be:	90 e0       	ldi	r25, 0x00	; 0
- 1c0:	04 80       	ldd	r0, Z+4	; 0x04
- 1c2:	02 c0       	rjmp	.+4      	; 0x1c8 <_ZN7PCD85449sendToPCDEih+0x32>
- 1c4:	88 0f       	add	r24, r24
- 1c6:	99 1f       	adc	r25, r25
- 1c8:	0a 94       	dec	r0
- 1ca:	e2 f7       	brpl	.-8      	; 0x1c4 <_ZN7PCD85449sendToPCDEih+0x2e>
- 1cc:	82 2b       	or	r24, r18
- 1ce:	85 bb       	out	0x15, r24	; 21
- 1d0:	52 c0       	rjmp	.+164    	; 0x276 <_ZN7PCD85449sendToPCDEih+0xe0>
-	}
-	else{
-		PORT_PCD &= ~(1<<DC_PIN);
- 1d2:	25 b3       	in	r18, 0x15	; 21
- 1d4:	81 e0       	ldi	r24, 0x01	; 1
- 1d6:	90 e0       	ldi	r25, 0x00	; 0
- 1d8:	04 80       	ldd	r0, Z+4	; 0x04
- 1da:	02 c0       	rjmp	.+4      	; 0x1e0 <_ZN7PCD85449sendToPCDEih+0x4a>
- 1dc:	88 0f       	add	r24, r24
- 1de:	99 1f       	adc	r25, r25
- 1e0:	0a 94       	dec	r0
- 1e2:	e2 f7       	brpl	.-8      	; 0x1dc <_ZN7PCD85449sendToPCDEih+0x46>
- 1e4:	80 95       	com	r24
- 1e6:	82 23       	and	r24, r18
- 1e8:	85 bb       	out	0x15, r24	; 21
- 1ea:	45 c0       	rjmp	.+138    	; 0x276 <_ZN7PCD85449sendToPCDEih+0xe0>
-	}
-	
-	for (int i = 0; i < 8; i++){
-		if ((data >> (7-i)) & 0x01){
- 1ec:	ce 01       	movw	r24, r28
- 1ee:	02 2e       	mov	r0, r18
- 1f0:	02 c0       	rjmp	.+4      	; 0x1f6 <_ZN7PCD85449sendToPCDEih+0x60>
- 1f2:	95 95       	asr	r25
- 1f4:	87 95       	ror	r24
- 1f6:	0a 94       	dec	r0
- 1f8:	e2 f7       	brpl	.-8      	; 0x1f2 <_ZN7PCD85449sendToPCDEih+0x5c>
- 1fa:	80 ff       	sbrs	r24, 0
- 1fc:	0b c0       	rjmp	.+22     	; 0x214 <_ZN7PCD85449sendToPCDEih+0x7e>
-			PORT_PCD |= (1<<SDIN_PIN);
- 1fe:	45 b3       	in	r20, 0x15	; 21
- 200:	cd 01       	movw	r24, r26
- 202:	06 80       	ldd	r0, Z+6	; 0x06
- 204:	02 c0       	rjmp	.+4      	; 0x20a <_ZN7PCD85449sendToPCDEih+0x74>
- 206:	88 0f       	add	r24, r24
- 208:	99 1f       	adc	r25, r25
- 20a:	0a 94       	dec	r0
- 20c:	e2 f7       	brpl	.-8      	; 0x206 <_ZN7PCD85449sendToPCDEih+0x70>
- 20e:	84 2b       	or	r24, r20
- 210:	85 bb       	out	0x15, r24	; 21
- 212:	0c c0       	rjmp	.+24     	; 0x22c <_ZN7PCD85449sendToPCDEih+0x96>
-		}
-		else{
-			PORT_PCD &= ~(1<<SDIN_PIN);
- 214:	95 b3       	in	r25, 0x15	; 21
- 216:	ad 01       	movw	r20, r26
- 218:	06 80       	ldd	r0, Z+6	; 0x06
- 21a:	02 c0       	rjmp	.+4      	; 0x220 <_ZN7PCD85449sendToPCDEih+0x8a>
- 21c:	44 0f       	add	r20, r20
- 21e:	55 1f       	adc	r21, r21
- 220:	0a 94       	dec	r0
- 222:	e2 f7       	brpl	.-8      	; 0x21c <_ZN7PCD85449sendToPCDEih+0x86>
- 224:	84 2f       	mov	r24, r20
- 226:	80 95       	com	r24
- 228:	89 23       	and	r24, r25
- 22a:	85 bb       	out	0x15, r24	; 21
-		}
-		
-		PORT_PCD |= (1<<SCLK_PIN);
- 22c:	85 b3       	in	r24, 0x15	; 21
- 22e:	bd 01       	movw	r22, r26
- 230:	00 84       	ldd	r0, Z+8	; 0x08
- 232:	02 c0       	rjmp	.+4      	; 0x238 <_ZN7PCD85449sendToPCDEih+0xa2>
- 234:	66 0f       	add	r22, r22
- 236:	77 1f       	adc	r23, r23
- 238:	0a 94       	dec	r0
- 23a:	e2 f7       	brpl	.-8      	; 0x234 <_ZN7PCD85449sendToPCDEih+0x9e>
- 23c:	68 2b       	or	r22, r24
- 23e:	65 bb       	out	0x15, r22	; 21
-		PORT_PCD &= ~(1<<SCLK_PIN);
- 240:	55 b3       	in	r21, 0x15	; 21
- 242:	bd 01       	movw	r22, r26
- 244:	00 84       	ldd	r0, Z+8	; 0x08
- 246:	02 c0       	rjmp	.+4      	; 0x24c <_ZN7PCD85449sendToPCDEih+0xb6>
- 248:	66 0f       	add	r22, r22
- 24a:	77 1f       	adc	r23, r23
- 24c:	0a 94       	dec	r0
- 24e:	e2 f7       	brpl	.-8      	; 0x248 <_ZN7PCD85449sendToPCDEih+0xb2>
- 250:	96 2f       	mov	r25, r22
- 252:	90 95       	com	r25
- 254:	95 23       	and	r25, r21
- 256:	95 bb       	out	0x15, r25	; 21
- 258:	21 50       	subi	r18, 0x01	; 1
- 25a:	31 09       	sbc	r19, r1
- 25c:	38 f6       	brcc	.-114    	; 0x1ec <_ZN7PCD85449sendToPCDEih+0x56>
-	}
-	PORT_PCD |= (1<<SCE_PIN);
- 25e:	25 b3       	in	r18, 0x15	; 21
- 260:	81 e0       	ldi	r24, 0x01	; 1
- 262:	90 e0       	ldi	r25, 0x00	; 0
- 264:	02 80       	ldd	r0, Z+2	; 0x02
- 266:	02 c0       	rjmp	.+4      	; 0x26c <_ZN7PCD85449sendToPCDEih+0xd6>
- 268:	88 0f       	add	r24, r24
- 26a:	99 1f       	adc	r25, r25
- 26c:	0a 94       	dec	r0
- 26e:	e2 f7       	brpl	.-8      	; 0x268 <_ZN7PCD85449sendToPCDEih+0xd2>
- 270:	82 2b       	or	r24, r18
- 272:	85 bb       	out	0x15, r24	; 21
-	return ;
- 274:	07 c0       	rjmp	.+14     	; 0x284 <_ZN7PCD85449sendToPCDEih+0xee>
-	PORT_PCD |= (1<<SCE_PIN) | (1<<RST_PIN);
-	PORT_PCD &= ~(1<<SCLK);
-}
-
-//Send data or command to PCD8544
-void PCD8544::sendToPCD(int type, uint8_t data){
- 276:	27 e0       	ldi	r18, 0x07	; 7
- 278:	30 e0       	ldi	r19, 0x00	; 0
-	else{
-		PORT_PCD &= ~(1<<DC_PIN);
-	}
-	
-	for (int i = 0; i < 8; i++){
-		if ((data >> (7-i)) & 0x01){
- 27a:	c4 2f       	mov	r28, r20
- 27c:	d0 e0       	ldi	r29, 0x00	; 0
-			PORT_PCD |= (1<<SDIN_PIN);
-		}
-		else{
-			PORT_PCD &= ~(1<<SDIN_PIN);
- 27e:	a1 e0       	ldi	r26, 0x01	; 1
- 280:	b0 e0       	ldi	r27, 0x00	; 0
- 282:	b4 cf       	rjmp	.-152    	; 0x1ec <_ZN7PCD85449sendToPCDEih+0x56>
-		PORT_PCD |= (1<<SCLK_PIN);
-		PORT_PCD &= ~(1<<SCLK_PIN);
-	}
-	PORT_PCD |= (1<<SCE_PIN);
-	return ;
-}
- 284:	df 91       	pop	r29
- 286:	cf 91       	pop	r28
- 288:	08 95       	ret
-
-0000028a <_ZN7PCD854411sendCommandEh>:
-
-void PCD8544::sendCommand(uint8_t data){
- 28a:	46 2f       	mov	r20, r22
-	sendToPCD(PCD8544_CMD, data);
- 28c:	60 e0       	ldi	r22, 0x00	; 0
- 28e:	70 e0       	ldi	r23, 0x00	; 0
- 290:	82 df       	rcall	.-252    	; 0x196 <_ZN7PCD85449sendToPCDEih>
- 292:	08 95       	ret
-
-00000294 <_ZN7PCD85448sendDataEh>:
-	return ;
-}
-
-void PCD8544::sendData(uint8_t data){
- 294:	46 2f       	mov	r20, r22
-	sendToPCD(PCD8544_DATA, data);
- 296:	61 e0       	ldi	r22, 0x01	; 1
- 298:	70 e0       	ldi	r23, 0x00	; 0
- 29a:	7d df       	rcall	.-262    	; 0x196 <_ZN7PCD85449sendToPCDEih>
- 29c:	08 95       	ret
-
-0000029e <_ZN7PCD85449setCursorEhh>:
-}
-
-
-
-// 0 <= x < 84; 0 <= y < 6
-void PCD8544::setCursor(uint8_t x, uint8_t y){
- 29e:	0f 93       	push	r16
- 2a0:	1f 93       	push	r17
- 2a2:	cf 93       	push	r28
- 2a4:	df 93       	push	r29
- 2a6:	ec 01       	movw	r28, r24
- 2a8:	06 2f       	mov	r16, r22
- 2aa:	14 2f       	mov	r17, r20
-	this->sendCommand(0x20);
- 2ac:	60 e2       	ldi	r22, 0x20	; 32
- 2ae:	ed df       	rcall	.-38     	; 0x28a <_ZN7PCD854411sendCommandEh>
-	this->sendCommand((0x80 | x));
- 2b0:	60 2f       	mov	r22, r16
- 2b2:	60 68       	ori	r22, 0x80	; 128
- 2b4:	ce 01       	movw	r24, r28
- 2b6:	e9 df       	rcall	.-46     	; 0x28a <_ZN7PCD854411sendCommandEh>
-	this->sendCommand((0x40 | y));	
- 2b8:	61 2f       	mov	r22, r17
- 2ba:	60 64       	ori	r22, 0x40	; 64
- 2bc:	ce 01       	movw	r24, r28
- 2be:	e5 df       	rcall	.-54     	; 0x28a <_ZN7PCD854411sendCommandEh>
-}
- 2c0:	df 91       	pop	r29
- 2c2:	cf 91       	pop	r28
- 2c4:	1f 91       	pop	r17
- 2c6:	0f 91       	pop	r16
- 2c8:	08 95       	ret
-
-000002ca <_ZN7PCD85445resetEv>:
-
-void PCD8544::reset(){
- 2ca:	fc 01       	movw	r30, r24
-	PORT_PCD |= (1<<RST_PIN) | (1<<SCE_PIN);
- 2cc:	95 b3       	in	r25, 0x15	; 21
- 2ce:	21 e0       	ldi	r18, 0x01	; 1
- 2d0:	30 e0       	ldi	r19, 0x00	; 0
- 2d2:	b9 01       	movw	r22, r18
- 2d4:	00 80       	ld	r0, Z
- 2d6:	02 c0       	rjmp	.+4      	; 0x2dc <_ZN7PCD85445resetEv+0x12>
- 2d8:	66 0f       	add	r22, r22
- 2da:	77 1f       	adc	r23, r23
- 2dc:	0a 94       	dec	r0
- 2de:	e2 f7       	brpl	.-8      	; 0x2d8 <_ZN7PCD85445resetEv+0xe>
- 2e0:	a9 01       	movw	r20, r18
- 2e2:	02 80       	ldd	r0, Z+2	; 0x02
- 2e4:	02 c0       	rjmp	.+4      	; 0x2ea <_ZN7PCD85445resetEv+0x20>
- 2e6:	44 0f       	add	r20, r20
- 2e8:	55 1f       	adc	r21, r21
- 2ea:	0a 94       	dec	r0
- 2ec:	e2 f7       	brpl	.-8      	; 0x2e6 <_ZN7PCD85445resetEv+0x1c>
- 2ee:	86 2f       	mov	r24, r22
- 2f0:	84 2b       	or	r24, r20
- 2f2:	89 2b       	or	r24, r25
- 2f4:	85 bb       	out	0x15, r24	; 21
-	PORT_PCD &= ~(1<<RST_PIN);
- 2f6:	95 b3       	in	r25, 0x15	; 21
- 2f8:	a9 01       	movw	r20, r18
- 2fa:	00 80       	ld	r0, Z
- 2fc:	02 c0       	rjmp	.+4      	; 0x302 <_ZN7PCD85445resetEv+0x38>
- 2fe:	44 0f       	add	r20, r20
- 300:	55 1f       	adc	r21, r21
- 302:	0a 94       	dec	r0
- 304:	e2 f7       	brpl	.-8      	; 0x2fe <_ZN7PCD85445resetEv+0x34>
- 306:	84 2f       	mov	r24, r20
- 308:	80 95       	com	r24
- 30a:	89 23       	and	r24, r25
- 30c:	85 bb       	out	0x15, r24	; 21
+ 1b4:	88 eb       	ldi	r24, 0xB8	; 184
+ 1b6:	92 e0       	ldi	r25, 0x02	; 2
+ 1b8:	51 d2       	rcall	.+1186   	; 0x65c <_ZN7PCD854411displayMenuEv>
 	#else
 		//round up by default
 		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
 	#endif
 
 	__builtin_avr_delay_cycles(__ticks_dc);
- 30e:	4f e7       	ldi	r20, 0x7F	; 127
- 310:	88 e3       	ldi	r24, 0x38	; 56
- 312:	91 e0       	ldi	r25, 0x01	; 1
- 314:	41 50       	subi	r20, 0x01	; 1
- 316:	80 40       	sbci	r24, 0x00	; 0
- 318:	90 40       	sbci	r25, 0x00	; 0
- 31a:	e1 f7       	brne	.-8      	; 0x314 <_ZN7PCD85445resetEv+0x4a>
- 31c:	00 c0       	rjmp	.+0      	; 0x31e <_ZN7PCD85445resetEv+0x54>
- 31e:	00 00       	nop
+ 1ba:	2f ef       	ldi	r18, 0xFF	; 255
+ 1bc:	84 e3       	ldi	r24, 0x34	; 52
+ 1be:	9c e0       	ldi	r25, 0x0C	; 12
+ 1c0:	21 50       	subi	r18, 0x01	; 1
+ 1c2:	80 40       	sbci	r24, 0x00	; 0
+ 1c4:	90 40       	sbci	r25, 0x00	; 0
+ 1c6:	e1 f7       	brne	.-8      	; 0x1c0 <main+0x40>
+ 1c8:	00 c0       	rjmp	.+0      	; 0x1ca <main+0x4a>
+ 1ca:	00 00       	nop
+		_delay_ms(500);
+		while ((PIND & (1<<0)) && (PIND & (1<<1)) && (PIND & (1<<2)) && (PIND & (1<<3)));
+ 1cc:	80 9b       	sbis	0x10, 0	; 16
+ 1ce:	1d c0       	rjmp	.+58     	; 0x20a <main+0x8a>
+ 1d0:	81 9b       	sbis	0x10, 1	; 16
+ 1d2:	1b c0       	rjmp	.+54     	; 0x20a <main+0x8a>
+ 1d4:	82 9b       	sbis	0x10, 2	; 16
+ 1d6:	19 c0       	rjmp	.+50     	; 0x20a <main+0x8a>
+ 1d8:	83 99       	sbic	0x10, 3	; 16
+ 1da:	f8 cf       	rjmp	.-16     	; 0x1cc <main+0x4c>
+ 1dc:	16 c0       	rjmp	.+44     	; 0x20a <main+0x8a>
+		if (!(PIND & (1<<0))){
+			LCD.increasePointer();
+ 1de:	88 eb       	ldi	r24, 0xB8	; 184
+ 1e0:	92 e0       	ldi	r25, 0x02	; 2
+ 1e2:	cc d2       	rcall	.+1432   	; 0x77c <_ZN7PCD854415increasePointerEv>
+			while(!(PIND & (1<<0)));
+ 1e4:	80 9b       	sbis	0x10, 0	; 16
+ 1e6:	fe cf       	rjmp	.-4      	; 0x1e4 <main+0x64>
+		}
+		if(!(PIND & (1<<1))){
+ 1e8:	81 99       	sbic	0x10, 1	; 16
+ 1ea:	05 c0       	rjmp	.+10     	; 0x1f6 <main+0x76>
+			LCD.decreasePointer();
+ 1ec:	88 eb       	ldi	r24, 0xB8	; 184
+ 1ee:	92 e0       	ldi	r25, 0x02	; 2
+ 1f0:	e1 d2       	rcall	.+1474   	; 0x7b4 <_ZN7PCD854415decreasePointerEv>
+			while(!(PIND & (1<<1)));
+ 1f2:	81 9b       	sbis	0x10, 1	; 16
+ 1f4:	fe cf       	rjmp	.-4      	; 0x1f2 <main+0x72>
+		}
+		if (!(PIND & (1<<2))){
+ 1f6:	82 99       	sbic	0x10, 2	; 16
+ 1f8:	03 c0       	rjmp	.+6      	; 0x200 <main+0x80>
+			NextMenu();
+ 1fa:	72 df       	rcall	.-284    	; 0xe0 <_Z8NextMenuv>
+			while(!(PIND & (1<<2)));
+ 1fc:	82 9b       	sbis	0x10, 2	; 16
+ 1fe:	fe cf       	rjmp	.-4      	; 0x1fc <main+0x7c>
+		}
+		if (!(PIND & (1<<3))){
+ 200:	83 99       	sbic	0x10, 3	; 16
+ 202:	d8 cf       	rjmp	.-80     	; 0x1b4 <main+0x34>
+			
+			while(!(PIND & (1<<3)));
+ 204:	83 9b       	sbis	0x10, 3	; 16
+ 206:	fe cf       	rjmp	.-4      	; 0x204 <main+0x84>
+ 208:	d5 cf       	rjmp	.-86     	; 0x1b4 <main+0x34>
+    while (1) 
+    {	
+		LCD.displayMenu();
+		_delay_ms(500);
+		while ((PIND & (1<<0)) && (PIND & (1<<1)) && (PIND & (1<<2)) && (PIND & (1<<3)));
+		if (!(PIND & (1<<0))){
+ 20a:	80 99       	sbic	0x10, 0	; 16
+ 20c:	ed cf       	rjmp	.-38     	; 0x1e8 <main+0x68>
+ 20e:	e7 cf       	rjmp	.-50     	; 0x1de <main+0x5e>
+
+00000210 <_GLOBAL__sub_I_Menu>:
+		LCD.createMenu(0, 0, 2, "My System", Menu);
+	}
+	else if (name == "Setting"){
+		LCD.createMenu(1, 0, 2, "My System", Menu);
+	}
+ 210:	ef 92       	push	r14
+ 212:	ff 92       	push	r15
+ 214:	0f 93       	push	r16
+ 216:	1f 93       	push	r17
+#include "Nokia5110.h"
+
+char *Menu[] = {"1.RFID","2.Setting"};
+char *RFID[] = {"1.List","2.Add Tag","3.Remove Tag","4.Edit Info","    Back"};
+char *Setting[] = {"1.Light", "2.Contrast", "    Back"};
+PCD8544 LCD(4, 3, 2, 1, 0);
+ 218:	e1 2c       	mov	r14, r1
+ 21a:	f1 2c       	mov	r15, r1
+ 21c:	01 e0       	ldi	r16, 0x01	; 1
+ 21e:	10 e0       	ldi	r17, 0x00	; 0
+ 220:	22 e0       	ldi	r18, 0x02	; 2
+ 222:	30 e0       	ldi	r19, 0x00	; 0
+ 224:	43 e0       	ldi	r20, 0x03	; 3
+ 226:	50 e0       	ldi	r21, 0x00	; 0
+ 228:	64 e0       	ldi	r22, 0x04	; 4
+ 22a:	70 e0       	ldi	r23, 0x00	; 0
+ 22c:	88 eb       	ldi	r24, 0xB8	; 184
+ 22e:	92 e0       	ldi	r25, 0x02	; 2
+ 230:	05 d0       	rcall	.+10     	; 0x23c <_ZN7PCD8544C1Eiiiii>
+		LCD.createMenu(0, 0, 2, "My System", Menu);
+	}
+	else if (name == "Setting"){
+		LCD.createMenu(1, 0, 2, "My System", Menu);
+	}
+ 232:	1f 91       	pop	r17
+ 234:	0f 91       	pop	r16
+ 236:	ff 90       	pop	r15
+ 238:	ef 90       	pop	r14
+ 23a:	08 95       	ret
+
+0000023c <_ZN7PCD8544C1Eiiiii>:
+ *  Author: tanph
+ */ 
+
+#include "Nokia5110.h"
+
+PCD8544::PCD8544(int RST, int SCE, int DC, int SDIN, int SCLK){
+ 23c:	ef 92       	push	r14
+ 23e:	ff 92       	push	r15
+ 240:	0f 93       	push	r16
+ 242:	1f 93       	push	r17
+ 244:	cf 93       	push	r28
+ 246:	df 93       	push	r29
+ 248:	fc 01       	movw	r30, r24
+	RST_PIN = RST;
+ 24a:	60 83       	st	Z, r22
+ 24c:	71 83       	std	Z+1, r23	; 0x01
+	SCE_PIN = SCE;
+ 24e:	42 83       	std	Z+2, r20	; 0x02
+ 250:	53 83       	std	Z+3, r21	; 0x03
+	DC_PIN = DC;
+ 252:	24 83       	std	Z+4, r18	; 0x04
+ 254:	35 83       	std	Z+5, r19	; 0x05
+	SDIN_PIN = SDIN;
+ 256:	06 83       	std	Z+6, r16	; 0x06
+ 258:	17 83       	std	Z+7, r17	; 0x07
+	SCLK_PIN = SCLK;
+ 25a:	e0 86       	std	Z+8, r14	; 0x08
+ 25c:	f1 86       	std	Z+9, r15	; 0x09
+	DDR_PCD |= (1<<RST_PIN) | (1<<SCE_PIN) | (1<<DC_PIN) | (1<<SDIN_PIN) | (1<<SCLK_PIN);
+ 25e:	c4 b3       	in	r28, 0x14	; 20
+ 260:	81 e0       	ldi	r24, 0x01	; 1
+ 262:	90 e0       	ldi	r25, 0x00	; 0
+ 264:	dc 01       	movw	r26, r24
+ 266:	02 c0       	rjmp	.+4      	; 0x26c <_ZN7PCD8544C1Eiiiii+0x30>
+ 268:	aa 0f       	add	r26, r26
+ 26a:	bb 1f       	adc	r27, r27
+ 26c:	ea 94       	dec	r14
+ 26e:	e2 f7       	brpl	.-8      	; 0x268 <_ZN7PCD8544C1Eiiiii+0x2c>
+ 270:	7c 01       	movw	r14, r24
+ 272:	02 c0       	rjmp	.+4      	; 0x278 <_ZN7PCD8544C1Eiiiii+0x3c>
+ 274:	ee 0c       	add	r14, r14
+ 276:	ff 1c       	adc	r15, r15
+ 278:	0a 95       	dec	r16
+ 27a:	e2 f7       	brpl	.-8      	; 0x274 <_ZN7PCD8544C1Eiiiii+0x38>
+ 27c:	87 01       	movw	r16, r14
+ 27e:	ca 2b       	or	r28, r26
+ 280:	0c 2b       	or	r16, r28
+ 282:	ec 01       	movw	r28, r24
+ 284:	02 c0       	rjmp	.+4      	; 0x28a <_ZN7PCD8544C1Eiiiii+0x4e>
+ 286:	cc 0f       	add	r28, r28
+ 288:	dd 1f       	adc	r29, r29
+ 28a:	2a 95       	dec	r18
+ 28c:	e2 f7       	brpl	.-8      	; 0x286 <_ZN7PCD8544C1Eiiiii+0x4a>
+ 28e:	2c 2f       	mov	r18, r28
+ 290:	20 2b       	or	r18, r16
+ 292:	ec 01       	movw	r28, r24
+ 294:	02 c0       	rjmp	.+4      	; 0x29a <_ZN7PCD8544C1Eiiiii+0x5e>
+ 296:	cc 0f       	add	r28, r28
+ 298:	dd 1f       	adc	r29, r29
+ 29a:	4a 95       	dec	r20
+ 29c:	e2 f7       	brpl	.-8      	; 0x296 <_ZN7PCD8544C1Eiiiii+0x5a>
+ 29e:	ae 01       	movw	r20, r28
+ 2a0:	42 2b       	or	r20, r18
+ 2a2:	9c 01       	movw	r18, r24
+ 2a4:	02 c0       	rjmp	.+4      	; 0x2aa <_ZN7PCD8544C1Eiiiii+0x6e>
+ 2a6:	22 0f       	add	r18, r18
+ 2a8:	33 1f       	adc	r19, r19
+ 2aa:	6a 95       	dec	r22
+ 2ac:	e2 f7       	brpl	.-8      	; 0x2a6 <_ZN7PCD8544C1Eiiiii+0x6a>
+ 2ae:	24 2b       	or	r18, r20
+ 2b0:	24 bb       	out	0x14, r18	; 20
+	PORT_PCD |= (1<<SCE_PIN) | (1<<RST_PIN);
+ 2b2:	25 b3       	in	r18, 0x15	; 21
+ 2b4:	ac 01       	movw	r20, r24
+ 2b6:	02 80       	ldd	r0, Z+2	; 0x02
+ 2b8:	02 c0       	rjmp	.+4      	; 0x2be <_ZN7PCD8544C1Eiiiii+0x82>
+ 2ba:	44 0f       	add	r20, r20
+ 2bc:	55 1f       	adc	r21, r21
+ 2be:	0a 94       	dec	r0
+ 2c0:	e2 f7       	brpl	.-8      	; 0x2ba <_ZN7PCD8544C1Eiiiii+0x7e>
+ 2c2:	00 80       	ld	r0, Z
+ 2c4:	02 c0       	rjmp	.+4      	; 0x2ca <_ZN7PCD8544C1Eiiiii+0x8e>
+ 2c6:	88 0f       	add	r24, r24
+ 2c8:	99 1f       	adc	r25, r25
+ 2ca:	0a 94       	dec	r0
+ 2cc:	e2 f7       	brpl	.-8      	; 0x2c6 <_ZN7PCD8544C1Eiiiii+0x8a>
+ 2ce:	84 2b       	or	r24, r20
+ 2d0:	82 2b       	or	r24, r18
+ 2d2:	85 bb       	out	0x15, r24	; 21
+	PORT_PCD &= ~(1<<SCLK);
+ 2d4:	85 b3       	in	r24, 0x15	; 21
+ 2d6:	a0 95       	com	r26
+ 2d8:	a8 23       	and	r26, r24
+ 2da:	a5 bb       	out	0x15, r26	; 21
+}
+ 2dc:	df 91       	pop	r29
+ 2de:	cf 91       	pop	r28
+ 2e0:	1f 91       	pop	r17
+ 2e2:	0f 91       	pop	r16
+ 2e4:	ff 90       	pop	r15
+ 2e6:	ef 90       	pop	r14
+ 2e8:	08 95       	ret
+
+000002ea <_ZN7PCD85449sendToPCDEih>:
+
+//Send data or command to PCD8544
+void PCD8544::sendToPCD(int type, uint8_t data){
+ 2ea:	cf 93       	push	r28
+ 2ec:	df 93       	push	r29
+ 2ee:	fc 01       	movw	r30, r24
+	PORT_PCD &= ~(1<<SCE_PIN);
+ 2f0:	25 b3       	in	r18, 0x15	; 21
+ 2f2:	81 e0       	ldi	r24, 0x01	; 1
+ 2f4:	90 e0       	ldi	r25, 0x00	; 0
+ 2f6:	02 80       	ldd	r0, Z+2	; 0x02
+ 2f8:	02 c0       	rjmp	.+4      	; 0x2fe <_ZN7PCD85449sendToPCDEih+0x14>
+ 2fa:	88 0f       	add	r24, r24
+ 2fc:	99 1f       	adc	r25, r25
+ 2fe:	0a 94       	dec	r0
+ 300:	e2 f7       	brpl	.-8      	; 0x2fa <_ZN7PCD85449sendToPCDEih+0x10>
+ 302:	80 95       	com	r24
+ 304:	82 23       	and	r24, r18
+ 306:	85 bb       	out	0x15, r24	; 21
+	
+	if (type == PCD8544_DATA){
+ 308:	61 30       	cpi	r22, 0x01	; 1
+ 30a:	71 05       	cpc	r23, r1
+ 30c:	61 f4       	brne	.+24     	; 0x326 <_ZN7PCD85449sendToPCDEih+0x3c>
+		PORT_PCD |= (1<<DC_PIN);
+ 30e:	25 b3       	in	r18, 0x15	; 21
+ 310:	81 e0       	ldi	r24, 0x01	; 1
+ 312:	90 e0       	ldi	r25, 0x00	; 0
+ 314:	04 80       	ldd	r0, Z+4	; 0x04
+ 316:	02 c0       	rjmp	.+4      	; 0x31c <_ZN7PCD85449sendToPCDEih+0x32>
+ 318:	88 0f       	add	r24, r24
+ 31a:	99 1f       	adc	r25, r25
+ 31c:	0a 94       	dec	r0
+ 31e:	e2 f7       	brpl	.-8      	; 0x318 <_ZN7PCD85449sendToPCDEih+0x2e>
+ 320:	82 2b       	or	r24, r18
+ 322:	85 bb       	out	0x15, r24	; 21
+ 324:	52 c0       	rjmp	.+164    	; 0x3ca <_ZN7PCD85449sendToPCDEih+0xe0>
+	}
+	else{
+		PORT_PCD &= ~(1<<DC_PIN);
+ 326:	25 b3       	in	r18, 0x15	; 21
+ 328:	81 e0       	ldi	r24, 0x01	; 1
+ 32a:	90 e0       	ldi	r25, 0x00	; 0
+ 32c:	04 80       	ldd	r0, Z+4	; 0x04
+ 32e:	02 c0       	rjmp	.+4      	; 0x334 <_ZN7PCD85449sendToPCDEih+0x4a>
+ 330:	88 0f       	add	r24, r24
+ 332:	99 1f       	adc	r25, r25
+ 334:	0a 94       	dec	r0
+ 336:	e2 f7       	brpl	.-8      	; 0x330 <_ZN7PCD85449sendToPCDEih+0x46>
+ 338:	80 95       	com	r24
+ 33a:	82 23       	and	r24, r18
+ 33c:	85 bb       	out	0x15, r24	; 21
+ 33e:	45 c0       	rjmp	.+138    	; 0x3ca <_ZN7PCD85449sendToPCDEih+0xe0>
+	}
+	
+	for (int i = 0; i < 8; i++){
+		if ((data >> (7-i)) & 0x01){
+ 340:	ce 01       	movw	r24, r28
+ 342:	02 2e       	mov	r0, r18
+ 344:	02 c0       	rjmp	.+4      	; 0x34a <_ZN7PCD85449sendToPCDEih+0x60>
+ 346:	95 95       	asr	r25
+ 348:	87 95       	ror	r24
+ 34a:	0a 94       	dec	r0
+ 34c:	e2 f7       	brpl	.-8      	; 0x346 <_ZN7PCD85449sendToPCDEih+0x5c>
+ 34e:	80 ff       	sbrs	r24, 0
+ 350:	0b c0       	rjmp	.+22     	; 0x368 <_ZN7PCD85449sendToPCDEih+0x7e>
+			PORT_PCD |= (1<<SDIN_PIN);
+ 352:	45 b3       	in	r20, 0x15	; 21
+ 354:	cd 01       	movw	r24, r26
+ 356:	06 80       	ldd	r0, Z+6	; 0x06
+ 358:	02 c0       	rjmp	.+4      	; 0x35e <_ZN7PCD85449sendToPCDEih+0x74>
+ 35a:	88 0f       	add	r24, r24
+ 35c:	99 1f       	adc	r25, r25
+ 35e:	0a 94       	dec	r0
+ 360:	e2 f7       	brpl	.-8      	; 0x35a <_ZN7PCD85449sendToPCDEih+0x70>
+ 362:	84 2b       	or	r24, r20
+ 364:	85 bb       	out	0x15, r24	; 21
+ 366:	0c c0       	rjmp	.+24     	; 0x380 <_ZN7PCD85449sendToPCDEih+0x96>
+		}
+		else{
+			PORT_PCD &= ~(1<<SDIN_PIN);
+ 368:	95 b3       	in	r25, 0x15	; 21
+ 36a:	ad 01       	movw	r20, r26
+ 36c:	06 80       	ldd	r0, Z+6	; 0x06
+ 36e:	02 c0       	rjmp	.+4      	; 0x374 <_ZN7PCD85449sendToPCDEih+0x8a>
+ 370:	44 0f       	add	r20, r20
+ 372:	55 1f       	adc	r21, r21
+ 374:	0a 94       	dec	r0
+ 376:	e2 f7       	brpl	.-8      	; 0x370 <_ZN7PCD85449sendToPCDEih+0x86>
+ 378:	84 2f       	mov	r24, r20
+ 37a:	80 95       	com	r24
+ 37c:	89 23       	and	r24, r25
+ 37e:	85 bb       	out	0x15, r24	; 21
+		}
+		
+		PORT_PCD |= (1<<SCLK_PIN);
+ 380:	85 b3       	in	r24, 0x15	; 21
+ 382:	bd 01       	movw	r22, r26
+ 384:	00 84       	ldd	r0, Z+8	; 0x08
+ 386:	02 c0       	rjmp	.+4      	; 0x38c <_ZN7PCD85449sendToPCDEih+0xa2>
+ 388:	66 0f       	add	r22, r22
+ 38a:	77 1f       	adc	r23, r23
+ 38c:	0a 94       	dec	r0
+ 38e:	e2 f7       	brpl	.-8      	; 0x388 <_ZN7PCD85449sendToPCDEih+0x9e>
+ 390:	68 2b       	or	r22, r24
+ 392:	65 bb       	out	0x15, r22	; 21
+		PORT_PCD &= ~(1<<SCLK_PIN);
+ 394:	55 b3       	in	r21, 0x15	; 21
+ 396:	bd 01       	movw	r22, r26
+ 398:	00 84       	ldd	r0, Z+8	; 0x08
+ 39a:	02 c0       	rjmp	.+4      	; 0x3a0 <_ZN7PCD85449sendToPCDEih+0xb6>
+ 39c:	66 0f       	add	r22, r22
+ 39e:	77 1f       	adc	r23, r23
+ 3a0:	0a 94       	dec	r0
+ 3a2:	e2 f7       	brpl	.-8      	; 0x39c <_ZN7PCD85449sendToPCDEih+0xb2>
+ 3a4:	96 2f       	mov	r25, r22
+ 3a6:	90 95       	com	r25
+ 3a8:	95 23       	and	r25, r21
+ 3aa:	95 bb       	out	0x15, r25	; 21
+ 3ac:	21 50       	subi	r18, 0x01	; 1
+ 3ae:	31 09       	sbc	r19, r1
+ 3b0:	38 f6       	brcc	.-114    	; 0x340 <_ZN7PCD85449sendToPCDEih+0x56>
+	}
+	PORT_PCD |= (1<<SCE_PIN);
+ 3b2:	25 b3       	in	r18, 0x15	; 21
+ 3b4:	81 e0       	ldi	r24, 0x01	; 1
+ 3b6:	90 e0       	ldi	r25, 0x00	; 0
+ 3b8:	02 80       	ldd	r0, Z+2	; 0x02
+ 3ba:	02 c0       	rjmp	.+4      	; 0x3c0 <_ZN7PCD85449sendToPCDEih+0xd6>
+ 3bc:	88 0f       	add	r24, r24
+ 3be:	99 1f       	adc	r25, r25
+ 3c0:	0a 94       	dec	r0
+ 3c2:	e2 f7       	brpl	.-8      	; 0x3bc <_ZN7PCD85449sendToPCDEih+0xd2>
+ 3c4:	82 2b       	or	r24, r18
+ 3c6:	85 bb       	out	0x15, r24	; 21
+	return ;
+ 3c8:	07 c0       	rjmp	.+14     	; 0x3d8 <_ZN7PCD85449sendToPCDEih+0xee>
+	PORT_PCD |= (1<<SCE_PIN) | (1<<RST_PIN);
+	PORT_PCD &= ~(1<<SCLK);
+}
+
+//Send data or command to PCD8544
+void PCD8544::sendToPCD(int type, uint8_t data){
+ 3ca:	27 e0       	ldi	r18, 0x07	; 7
+ 3cc:	30 e0       	ldi	r19, 0x00	; 0
+	else{
+		PORT_PCD &= ~(1<<DC_PIN);
+	}
+	
+	for (int i = 0; i < 8; i++){
+		if ((data >> (7-i)) & 0x01){
+ 3ce:	c4 2f       	mov	r28, r20
+ 3d0:	d0 e0       	ldi	r29, 0x00	; 0
+			PORT_PCD |= (1<<SDIN_PIN);
+		}
+		else{
+			PORT_PCD &= ~(1<<SDIN_PIN);
+ 3d2:	a1 e0       	ldi	r26, 0x01	; 1
+ 3d4:	b0 e0       	ldi	r27, 0x00	; 0
+ 3d6:	b4 cf       	rjmp	.-152    	; 0x340 <_ZN7PCD85449sendToPCDEih+0x56>
+		PORT_PCD |= (1<<SCLK_PIN);
+		PORT_PCD &= ~(1<<SCLK_PIN);
+	}
+	PORT_PCD |= (1<<SCE_PIN);
+	return ;
+}
+ 3d8:	df 91       	pop	r29
+ 3da:	cf 91       	pop	r28
+ 3dc:	08 95       	ret
+
+000003de <_ZN7PCD854411sendCommandEh>:
+
+void PCD8544::sendCommand(uint8_t data){
+ 3de:	46 2f       	mov	r20, r22
+	sendToPCD(PCD8544_CMD, data);
+ 3e0:	60 e0       	ldi	r22, 0x00	; 0
+ 3e2:	70 e0       	ldi	r23, 0x00	; 0
+ 3e4:	82 df       	rcall	.-252    	; 0x2ea <_ZN7PCD85449sendToPCDEih>
+ 3e6:	08 95       	ret
+
+000003e8 <_ZN7PCD85448sendDataEh>:
+	return ;
+}
+
+void PCD8544::sendData(uint8_t data){
+ 3e8:	46 2f       	mov	r20, r22
+	sendToPCD(PCD8544_DATA, data);
+ 3ea:	61 e0       	ldi	r22, 0x01	; 1
+ 3ec:	70 e0       	ldi	r23, 0x00	; 0
+ 3ee:	7d df       	rcall	.-262    	; 0x2ea <_ZN7PCD85449sendToPCDEih>
+ 3f0:	08 95       	ret
+
+000003f2 <_ZN7PCD85449setCursorEhh>:
+}
+
+
+
+// 0 <= x < 84; 0 <= y < 6
+void PCD8544::setCursor(uint8_t x, uint8_t y){
+ 3f2:	0f 93       	push	r16
+ 3f4:	1f 93       	push	r17
+ 3f6:	cf 93       	push	r28
+ 3f8:	df 93       	push	r29
+ 3fa:	ec 01       	movw	r28, r24
+ 3fc:	06 2f       	mov	r16, r22
+ 3fe:	14 2f       	mov	r17, r20
+	this->sendCommand(0x20);
+ 400:	60 e2       	ldi	r22, 0x20	; 32
+ 402:	ed df       	rcall	.-38     	; 0x3de <_ZN7PCD854411sendCommandEh>
+	this->sendCommand((0x80 | x));
+ 404:	60 2f       	mov	r22, r16
+ 406:	60 68       	ori	r22, 0x80	; 128
+ 408:	ce 01       	movw	r24, r28
+ 40a:	e9 df       	rcall	.-46     	; 0x3de <_ZN7PCD854411sendCommandEh>
+	this->sendCommand((0x40 | y));	
+ 40c:	61 2f       	mov	r22, r17
+ 40e:	60 64       	ori	r22, 0x40	; 64
+ 410:	ce 01       	movw	r24, r28
+ 412:	e5 df       	rcall	.-54     	; 0x3de <_ZN7PCD854411sendCommandEh>
+}
+ 414:	df 91       	pop	r29
+ 416:	cf 91       	pop	r28
+ 418:	1f 91       	pop	r17
+ 41a:	0f 91       	pop	r16
+ 41c:	08 95       	ret
+
+0000041e <_ZN7PCD85445resetEv>:
+
+void PCD8544::reset(){
+ 41e:	fc 01       	movw	r30, r24
+	PORT_PCD |= (1<<RST_PIN) | (1<<SCE_PIN);
+ 420:	95 b3       	in	r25, 0x15	; 21
+ 422:	21 e0       	ldi	r18, 0x01	; 1
+ 424:	30 e0       	ldi	r19, 0x00	; 0
+ 426:	b9 01       	movw	r22, r18
+ 428:	00 80       	ld	r0, Z
+ 42a:	02 c0       	rjmp	.+4      	; 0x430 <_ZN7PCD85445resetEv+0x12>
+ 42c:	66 0f       	add	r22, r22
+ 42e:	77 1f       	adc	r23, r23
+ 430:	0a 94       	dec	r0
+ 432:	e2 f7       	brpl	.-8      	; 0x42c <_ZN7PCD85445resetEv+0xe>
+ 434:	a9 01       	movw	r20, r18
+ 436:	02 80       	ldd	r0, Z+2	; 0x02
+ 438:	02 c0       	rjmp	.+4      	; 0x43e <_ZN7PCD85445resetEv+0x20>
+ 43a:	44 0f       	add	r20, r20
+ 43c:	55 1f       	adc	r21, r21
+ 43e:	0a 94       	dec	r0
+ 440:	e2 f7       	brpl	.-8      	; 0x43a <_ZN7PCD85445resetEv+0x1c>
+ 442:	86 2f       	mov	r24, r22
+ 444:	84 2b       	or	r24, r20
+ 446:	89 2b       	or	r24, r25
+ 448:	85 bb       	out	0x15, r24	; 21
+	PORT_PCD &= ~(1<<RST_PIN);
+ 44a:	95 b3       	in	r25, 0x15	; 21
+ 44c:	a9 01       	movw	r20, r18
+ 44e:	00 80       	ld	r0, Z
+ 450:	02 c0       	rjmp	.+4      	; 0x456 <_ZN7PCD85445resetEv+0x38>
+ 452:	44 0f       	add	r20, r20
+ 454:	55 1f       	adc	r21, r21
+ 456:	0a 94       	dec	r0
+ 458:	e2 f7       	brpl	.-8      	; 0x452 <_ZN7PCD85445resetEv+0x34>
+ 45a:	84 2f       	mov	r24, r20
+ 45c:	80 95       	com	r24
+ 45e:	89 23       	and	r24, r25
+ 460:	85 bb       	out	0x15, r24	; 21
+ 462:	4f e7       	ldi	r20, 0x7F	; 127
+ 464:	88 e3       	ldi	r24, 0x38	; 56
+ 466:	91 e0       	ldi	r25, 0x01	; 1
+ 468:	41 50       	subi	r20, 0x01	; 1
+ 46a:	80 40       	sbci	r24, 0x00	; 0
+ 46c:	90 40       	sbci	r25, 0x00	; 0
+ 46e:	e1 f7       	brne	.-8      	; 0x468 <__stack+0x9>
+ 470:	00 c0       	rjmp	.+0      	; 0x472 <__stack+0x13>
+ 472:	00 00       	nop
 	_delay_ms(50);
 	PORT_PCD |= (1<<RST_PIN);
- 320:	85 b3       	in	r24, 0x15	; 21
- 322:	00 80       	ld	r0, Z
- 324:	02 c0       	rjmp	.+4      	; 0x32a <_ZN7PCD85445resetEv+0x60>
- 326:	22 0f       	add	r18, r18
- 328:	33 1f       	adc	r19, r19
- 32a:	0a 94       	dec	r0
- 32c:	e2 f7       	brpl	.-8      	; 0x326 <_ZN7PCD85445resetEv+0x5c>
- 32e:	28 2b       	or	r18, r24
- 330:	25 bb       	out	0x15, r18	; 21
- 332:	08 95       	ret
+ 474:	85 b3       	in	r24, 0x15	; 21
+ 476:	00 80       	ld	r0, Z
+ 478:	02 c0       	rjmp	.+4      	; 0x47e <__stack+0x1f>
+ 47a:	22 0f       	add	r18, r18
+ 47c:	33 1f       	adc	r19, r19
+ 47e:	0a 94       	dec	r0
+ 480:	e2 f7       	brpl	.-8      	; 0x47a <__stack+0x1b>
+ 482:	28 2b       	or	r18, r24
+ 484:	25 bb       	out	0x15, r18	; 21
+ 486:	08 95       	ret
 
-00000334 <_ZN7PCD854410clearSreenEv>:
+00000488 <_ZN7PCD854410clearSreenEv>:
 }
 
 void PCD8544::clearSreen(){
- 334:	0f 93       	push	r16
- 336:	1f 93       	push	r17
- 338:	cf 93       	push	r28
- 33a:	df 93       	push	r29
- 33c:	8c 01       	movw	r16, r24
+ 488:	0f 93       	push	r16
+ 48a:	1f 93       	push	r17
+ 48c:	cf 93       	push	r28
+ 48e:	df 93       	push	r29
+ 490:	8c 01       	movw	r16, r24
 	this->setCursor(0x00, 0x00);
- 33e:	40 e0       	ldi	r20, 0x00	; 0
- 340:	60 e0       	ldi	r22, 0x00	; 0
- 342:	ad df       	rcall	.-166    	; 0x29e <_ZN7PCD85449setCursorEhh>
- 344:	c8 ef       	ldi	r28, 0xF8	; 248
- 346:	d1 e0       	ldi	r29, 0x01	; 1
+ 492:	40 e0       	ldi	r20, 0x00	; 0
+ 494:	60 e0       	ldi	r22, 0x00	; 0
+ 496:	ad df       	rcall	.-166    	; 0x3f2 <_ZN7PCD85449setCursorEhh>
+ 498:	c8 ef       	ldi	r28, 0xF8	; 248
+ 49a:	d1 e0       	ldi	r29, 0x01	; 1
 	for (int i = 0; i < 504; i++){
 		this->sendData(0x00);
- 348:	60 e0       	ldi	r22, 0x00	; 0
- 34a:	c8 01       	movw	r24, r16
- 34c:	a3 df       	rcall	.-186    	; 0x294 <_ZN7PCD85448sendDataEh>
- 34e:	21 97       	sbiw	r28, 0x01	; 1
+ 49c:	60 e0       	ldi	r22, 0x00	; 0
+ 49e:	c8 01       	movw	r24, r16
+ 4a0:	a3 df       	rcall	.-186    	; 0x3e8 <_ZN7PCD85448sendDataEh>
+ 4a2:	21 97       	sbiw	r28, 0x01	; 1
 	PORT_PCD |= (1<<RST_PIN);
 }
 
 void PCD8544::clearSreen(){
 	this->setCursor(0x00, 0x00);
 	for (int i = 0; i < 504; i++){
- 350:	d9 f7       	brne	.-10     	; 0x348 <_ZN7PCD854410clearSreenEv+0x14>
+ 4a4:	d9 f7       	brne	.-10     	; 0x49c <_ZN7PCD854410clearSreenEv+0x14>
 		this->sendData(0x00);
 	}
 }
- 352:	df 91       	pop	r29
- 354:	cf 91       	pop	r28
- 356:	1f 91       	pop	r17
- 358:	0f 91       	pop	r16
- 35a:	08 95       	ret
+ 4a6:	df 91       	pop	r29
+ 4a8:	cf 91       	pop	r28
+ 4aa:	1f 91       	pop	r17
+ 4ac:	0f 91       	pop	r16
+ 4ae:	08 95       	ret
 
-0000035c <_ZN7PCD85445beginEv>:
+000004b0 <_ZN7PCD85445beginEv>:
 
 //Initial for display in LCD
 void PCD8544::begin(){
- 35c:	cf 93       	push	r28
- 35e:	df 93       	push	r29
- 360:	ec 01       	movw	r28, r24
+ 4b0:	cf 93       	push	r28
+ 4b2:	df 93       	push	r29
+ 4b4:	ec 01       	movw	r28, r24
 	this->reset();
- 362:	b3 df       	rcall	.-154    	; 0x2ca <_ZN7PCD85445resetEv>
+ 4b6:	b3 df       	rcall	.-154    	; 0x41e <_ZN7PCD85445resetEv>
 	
 	this->sendCommand(0x20 | 0x01); //H = 1
- 364:	61 e2       	ldi	r22, 0x21	; 33
- 366:	ce 01       	movw	r24, r28
- 368:	90 df       	rcall	.-224    	; 0x28a <_ZN7PCD854411sendCommandEh>
+ 4b8:	61 e2       	ldi	r22, 0x21	; 33
+ 4ba:	ce 01       	movw	r24, r28
+ 4bc:	90 df       	rcall	.-224    	; 0x3de <_ZN7PCD854411sendCommandEh>
 	this->sendCommand(0x01 | 0x03); //Bias 1:48
- 36a:	63 e0       	ldi	r22, 0x03	; 3
- 36c:	ce 01       	movw	r24, r28
- 36e:	8d df       	rcall	.-230    	; 0x28a <_ZN7PCD854411sendCommandEh>
+ 4be:	63 e0       	ldi	r22, 0x03	; 3
+ 4c0:	ce 01       	movw	r24, r28
+ 4c2:	8d df       	rcall	.-230    	; 0x3de <_ZN7PCD854411sendCommandEh>
 	this->sendCommand(0x80 | 0xC5); //Set contrast
- 370:	65 ec       	ldi	r22, 0xC5	; 197
- 372:	ce 01       	movw	r24, r28
- 374:	8a df       	rcall	.-236    	; 0x28a <_ZN7PCD854411sendCommandEh>
+ 4c4:	65 ec       	ldi	r22, 0xC5	; 197
+ 4c6:	ce 01       	movw	r24, r28
+ 4c8:	8a df       	rcall	.-236    	; 0x3de <_ZN7PCD854411sendCommandEh>
 	this->sendCommand(0x04 | 0x00); //Temp C
- 376:	64 e0       	ldi	r22, 0x04	; 4
- 378:	ce 01       	movw	r24, r28
- 37a:	87 df       	rcall	.-242    	; 0x28a <_ZN7PCD854411sendCommandEh>
+ 4ca:	64 e0       	ldi	r22, 0x04	; 4
+ 4cc:	ce 01       	movw	r24, r28
+ 4ce:	87 df       	rcall	.-242    	; 0x3de <_ZN7PCD854411sendCommandEh>
 	
 	this->sendCommand(0x20 | 0x00); //H = 0
- 37c:	60 e2       	ldi	r22, 0x20	; 32
- 37e:	ce 01       	movw	r24, r28
- 380:	84 df       	rcall	.-248    	; 0x28a <_ZN7PCD854411sendCommandEh>
+ 4d0:	60 e2       	ldi	r22, 0x20	; 32
+ 4d2:	ce 01       	movw	r24, r28
+ 4d4:	84 df       	rcall	.-248    	; 0x3de <_ZN7PCD854411sendCommandEh>
 	this->sendCommand(0x08 | 0x04); //Normal Mode
- 382:	6c e0       	ldi	r22, 0x0C	; 12
- 384:	ce 01       	movw	r24, r28
- 386:	81 df       	rcall	.-254    	; 0x28a <_ZN7PCD854411sendCommandEh>
+ 4d6:	6c e0       	ldi	r22, 0x0C	; 12
+ 4d8:	ce 01       	movw	r24, r28
+ 4da:	81 df       	rcall	.-254    	; 0x3de <_ZN7PCD854411sendCommandEh>
 	this->sendCommand(0x80 | 0x00); //x-address = 0
- 388:	60 e8       	ldi	r22, 0x80	; 128
- 38a:	ce 01       	movw	r24, r28
- 38c:	7e df       	rcall	.-260    	; 0x28a <_ZN7PCD854411sendCommandEh>
+ 4dc:	60 e8       	ldi	r22, 0x80	; 128
+ 4de:	ce 01       	movw	r24, r28
+ 4e0:	7e df       	rcall	.-260    	; 0x3de <_ZN7PCD854411sendCommandEh>
 	this->sendCommand(0x40 | 0x00); //y-address = 0
- 38e:	60 e4       	ldi	r22, 0x40	; 64
- 390:	ce 01       	movw	r24, r28
- 392:	7b df       	rcall	.-266    	; 0x28a <_ZN7PCD854411sendCommandEh>
+ 4e2:	60 e4       	ldi	r22, 0x40	; 64
+ 4e4:	ce 01       	movw	r24, r28
+ 4e6:	7b df       	rcall	.-266    	; 0x3de <_ZN7PCD854411sendCommandEh>
 	
 	this->clearSreen();
- 394:	ce 01       	movw	r24, r28
- 396:	ce df       	rcall	.-100    	; 0x334 <_ZN7PCD854410clearSreenEv>
+ 4e8:	ce 01       	movw	r24, r28
+ 4ea:	ce df       	rcall	.-100    	; 0x488 <_ZN7PCD854410clearSreenEv>
 }
- 398:	df 91       	pop	r29
- 39a:	cf 91       	pop	r28
- 39c:	08 95       	ret
+ 4ec:	df 91       	pop	r29
+ 4ee:	cf 91       	pop	r28
+ 4f0:	08 95       	ret
 
-0000039e <_ZN7PCD854411charDisplayEic>:
+000004f2 <_ZN7PCD854411charDisplayEic>:
 
 //Display a single character
 void PCD8544::charDisplay(int isReverse, char data){
- 39e:	df 92       	push	r13
- 3a0:	ef 92       	push	r14
- 3a2:	ff 92       	push	r15
- 3a4:	0f 93       	push	r16
- 3a6:	1f 93       	push	r17
- 3a8:	cf 93       	push	r28
- 3aa:	df 93       	push	r29
- 3ac:	8c 01       	movw	r16, r24
+ 4f2:	df 92       	push	r13
+ 4f4:	ef 92       	push	r14
+ 4f6:	ff 92       	push	r15
+ 4f8:	0f 93       	push	r16
+ 4fa:	1f 93       	push	r17
+ 4fc:	cf 93       	push	r28
+ 4fe:	df 93       	push	r29
+ 500:	8c 01       	movw	r16, r24
 	register uint8_t reverse;
 	if (isReverse){
- 3ae:	81 e0       	ldi	r24, 0x01	; 1
- 3b0:	67 2b       	or	r22, r23
- 3b2:	09 f4       	brne	.+2      	; 0x3b6 <_ZN7PCD854411charDisplayEic+0x18>
- 3b4:	80 e0       	ldi	r24, 0x00	; 0
- 3b6:	d8 2e       	mov	r13, r24
- 3b8:	d1 94       	neg	r13
- 3ba:	50 e0       	ldi	r21, 0x00	; 0
- 3bc:	ea 01       	movw	r28, r20
- 3be:	cc 0f       	add	r28, r28
- 3c0:	dd 1f       	adc	r29, r29
- 3c2:	cc 0f       	add	r28, r28
- 3c4:	dd 1f       	adc	r29, r29
- 3c6:	4c 0f       	add	r20, r28
- 3c8:	5d 1f       	adc	r21, r29
- 3ca:	ea 01       	movw	r28, r20
- 3cc:	c1 50       	subi	r28, 0x01	; 1
- 3ce:	d0 40       	sbci	r29, 0x00	; 0
+ 502:	81 e0       	ldi	r24, 0x01	; 1
+ 504:	67 2b       	or	r22, r23
+ 506:	09 f4       	brne	.+2      	; 0x50a <_ZN7PCD854411charDisplayEic+0x18>
+ 508:	80 e0       	ldi	r24, 0x00	; 0
+ 50a:	d8 2e       	mov	r13, r24
+ 50c:	d1 94       	neg	r13
+ 50e:	50 e0       	ldi	r21, 0x00	; 0
+ 510:	ea 01       	movw	r28, r20
+ 512:	cc 0f       	add	r28, r28
+ 514:	dd 1f       	adc	r29, r29
+ 516:	cc 0f       	add	r28, r28
+ 518:	dd 1f       	adc	r29, r29
+ 51a:	4c 0f       	add	r20, r28
+ 51c:	5d 1f       	adc	r21, r29
+ 51e:	ea 01       	movw	r28, r20
+ 520:	c9 5c       	subi	r28, 0xC9	; 201
+ 522:	df 4f       	sbci	r29, 0xFF	; 255
 	}
 	else{
 		reverse = 0x00;
 	}
 	
 	for (int i = 0; i < 5; i++){
- 3d0:	e1 2c       	mov	r14, r1
- 3d2:	f1 2c       	mov	r15, r1
+ 524:	e1 2c       	mov	r14, r1
+ 526:	f1 2c       	mov	r15, r1
 		this->sendData((CHARSET[int(data) - 0x20][i]) ^ reverse);
- 3d4:	69 91       	ld	r22, Y+
- 3d6:	6d 25       	eor	r22, r13
- 3d8:	c8 01       	movw	r24, r16
- 3da:	5c df       	rcall	.-328    	; 0x294 <_ZN7PCD85448sendDataEh>
+ 528:	69 91       	ld	r22, Y+
+ 52a:	6d 25       	eor	r22, r13
+ 52c:	c8 01       	movw	r24, r16
+ 52e:	5c df       	rcall	.-328    	; 0x3e8 <_ZN7PCD85448sendDataEh>
 	}
 	else{
 		reverse = 0x00;
 	}
 	
 	for (int i = 0; i < 5; i++){
- 3dc:	8f ef       	ldi	r24, 0xFF	; 255
- 3de:	e8 1a       	sub	r14, r24
- 3e0:	f8 0a       	sbc	r15, r24
- 3e2:	85 e0       	ldi	r24, 0x05	; 5
- 3e4:	e8 16       	cp	r14, r24
- 3e6:	f1 04       	cpc	r15, r1
- 3e8:	a9 f7       	brne	.-22     	; 0x3d4 <_ZN7PCD854411charDisplayEic+0x36>
+ 530:	8f ef       	ldi	r24, 0xFF	; 255
+ 532:	e8 1a       	sub	r14, r24
+ 534:	f8 0a       	sbc	r15, r24
+ 536:	85 e0       	ldi	r24, 0x05	; 5
+ 538:	e8 16       	cp	r14, r24
+ 53a:	f1 04       	cpc	r15, r1
+ 53c:	a9 f7       	brne	.-22     	; 0x528 <_ZN7PCD854411charDisplayEic+0x36>
 		this->sendData((CHARSET[int(data) - 0x20][i]) ^ reverse);
 	}
 	this->sendData(reverse);
- 3ea:	6d 2d       	mov	r22, r13
- 3ec:	c8 01       	movw	r24, r16
- 3ee:	52 df       	rcall	.-348    	; 0x294 <_ZN7PCD85448sendDataEh>
+ 53e:	6d 2d       	mov	r22, r13
+ 540:	c8 01       	movw	r24, r16
+ 542:	52 df       	rcall	.-348    	; 0x3e8 <_ZN7PCD85448sendDataEh>
 }
- 3f0:	df 91       	pop	r29
- 3f2:	cf 91       	pop	r28
- 3f4:	1f 91       	pop	r17
- 3f6:	0f 91       	pop	r16
- 3f8:	ff 90       	pop	r15
- 3fa:	ef 90       	pop	r14
- 3fc:	df 90       	pop	r13
- 3fe:	08 95       	ret
+ 544:	df 91       	pop	r29
+ 546:	cf 91       	pop	r28
+ 548:	1f 91       	pop	r17
+ 54a:	0f 91       	pop	r16
+ 54c:	ff 90       	pop	r15
+ 54e:	ef 90       	pop	r14
+ 550:	df 90       	pop	r13
+ 552:	08 95       	ret
 
-00000400 <_ZN7PCD854411lineDisplayEiPc>:
+00000554 <_ZN7PCD854411lineDisplayEiPc>:
 
 //Display a line of LCD
 void PCD8544::lineDisplay(int isReverse, char *data){
- 400:	9f 92       	push	r9
- 402:	af 92       	push	r10
- 404:	bf 92       	push	r11
- 406:	cf 92       	push	r12
- 408:	df 92       	push	r13
- 40a:	ef 92       	push	r14
- 40c:	ff 92       	push	r15
- 40e:	0f 93       	push	r16
- 410:	1f 93       	push	r17
- 412:	cf 93       	push	r28
- 414:	df 93       	push	r29
- 416:	7c 01       	movw	r14, r24
- 418:	6b 01       	movw	r12, r22
+ 554:	9f 92       	push	r9
+ 556:	af 92       	push	r10
+ 558:	bf 92       	push	r11
+ 55a:	cf 92       	push	r12
+ 55c:	df 92       	push	r13
+ 55e:	ef 92       	push	r14
+ 560:	ff 92       	push	r15
+ 562:	0f 93       	push	r16
+ 564:	1f 93       	push	r17
+ 566:	cf 93       	push	r28
+ 568:	df 93       	push	r29
+ 56a:	7c 01       	movw	r14, r24
+ 56c:	6b 01       	movw	r12, r22
 	register uint8_t space;
 	if (isReverse){
- 41a:	81 e0       	ldi	r24, 0x01	; 1
- 41c:	67 2b       	or	r22, r23
- 41e:	09 f4       	brne	.+2      	; 0x422 <_ZN7PCD854411lineDisplayEiPc+0x22>
- 420:	80 e0       	ldi	r24, 0x00	; 0
- 422:	98 2e       	mov	r9, r24
- 424:	91 94       	neg	r9
+ 56e:	81 e0       	ldi	r24, 0x01	; 1
+ 570:	67 2b       	or	r22, r23
+ 572:	09 f4       	brne	.+2      	; 0x576 <_ZN7PCD854411lineDisplayEiPc+0x22>
+ 574:	80 e0       	ldi	r24, 0x00	; 0
+ 576:	98 2e       	mov	r9, r24
+ 578:	91 94       	neg	r9
 	}
 	
 	//Get string's length
 	register int i = 0;
 	register int length = 0;
 	while (data[i]){
- 426:	fa 01       	movw	r30, r20
- 428:	80 81       	ld	r24, Z
- 42a:	88 23       	and	r24, r24
- 42c:	61 f1       	breq	.+88     	; 0x486 <__stack+0x27>
- 42e:	31 96       	adiw	r30, 0x01	; 1
- 430:	80 e0       	ldi	r24, 0x00	; 0
- 432:	90 e0       	ldi	r25, 0x00	; 0
+ 57a:	fa 01       	movw	r30, r20
+ 57c:	80 81       	ld	r24, Z
+ 57e:	88 23       	and	r24, r24
+ 580:	61 f1       	breq	.+88     	; 0x5da <_ZN7PCD854411lineDisplayEiPc+0x86>
+ 582:	31 96       	adiw	r30, 0x01	; 1
+ 584:	80 e0       	ldi	r24, 0x00	; 0
+ 586:	90 e0       	ldi	r25, 0x00	; 0
 		length++;
- 434:	01 96       	adiw	r24, 0x01	; 1
+ 588:	01 96       	adiw	r24, 0x01	; 1
 	}
 	
 	//Get string's length
 	register int i = 0;
 	register int length = 0;
 	while (data[i]){
- 436:	21 91       	ld	r18, Z+
- 438:	21 11       	cpse	r18, r1
- 43a:	fc cf       	rjmp	.-8      	; 0x434 <_ZN7PCD854411lineDisplayEiPc+0x34>
- 43c:	8c 01       	movw	r16, r24
- 43e:	0f 97       	sbiw	r24, 0x0f	; 15
- 440:	14 f0       	brlt	.+4      	; 0x446 <_ZN7PCD854411lineDisplayEiPc+0x46>
- 442:	0e e0       	ldi	r16, 0x0E	; 14
- 444:	10 e0       	ldi	r17, 0x00	; 0
+ 58a:	21 91       	ld	r18, Z+
+ 58c:	21 11       	cpse	r18, r1
+ 58e:	fc cf       	rjmp	.-8      	; 0x588 <_ZN7PCD854411lineDisplayEiPc+0x34>
+ 590:	8c 01       	movw	r16, r24
+ 592:	0f 97       	sbiw	r24, 0x0f	; 15
+ 594:	14 f0       	brlt	.+4      	; 0x59a <_ZN7PCD854411lineDisplayEiPc+0x46>
+ 596:	0e e0       	ldi	r16, 0x0E	; 14
+ 598:	10 e0       	ldi	r17, 0x00	; 0
 		i++;
 	}
 	if (length > 14){
 		length = 14;
 	}
 	for (i = 0; i < length; i++){
- 446:	10 16       	cp	r1, r16
- 448:	11 06       	cpc	r1, r17
- 44a:	8c f0       	brlt	.+34     	; 0x46e <__stack+0xf>
+ 59a:	10 16       	cp	r1, r16
+ 59c:	11 06       	cpc	r1, r17
+ 59e:	8c f0       	brlt	.+34     	; 0x5c2 <_ZN7PCD854411lineDisplayEiPc+0x6e>
 		this->charDisplay(isReverse, data[i]);
 	}
 	for (i = 0; i < (14 - length)*6 ; i++){
- 44c:	8e e0       	ldi	r24, 0x0E	; 14
- 44e:	90 e0       	ldi	r25, 0x00	; 0
- 450:	9c 01       	movw	r18, r24
- 452:	20 1b       	sub	r18, r16
- 454:	31 0b       	sbc	r19, r17
- 456:	89 01       	movw	r16, r18
- 458:	c9 01       	movw	r24, r18
- 45a:	88 0f       	add	r24, r24
- 45c:	99 1f       	adc	r25, r25
- 45e:	08 0f       	add	r16, r24
- 460:	19 1f       	adc	r17, r25
- 462:	00 0f       	add	r16, r16
- 464:	11 1f       	adc	r17, r17
- 466:	10 16       	cp	r1, r16
- 468:	11 06       	cpc	r1, r17
- 46a:	7c f0       	brlt	.+30     	; 0x48a <__stack+0x2b>
- 46c:	17 c0       	rjmp	.+46     	; 0x49c <__stack+0x3d>
- 46e:	ea 01       	movw	r28, r20
- 470:	5a 01       	movw	r10, r20
- 472:	a0 0e       	add	r10, r16
- 474:	b1 1e       	adc	r11, r17
+ 5a0:	8e e0       	ldi	r24, 0x0E	; 14
+ 5a2:	90 e0       	ldi	r25, 0x00	; 0
+ 5a4:	9c 01       	movw	r18, r24
+ 5a6:	20 1b       	sub	r18, r16
+ 5a8:	31 0b       	sbc	r19, r17
+ 5aa:	89 01       	movw	r16, r18
+ 5ac:	c9 01       	movw	r24, r18
+ 5ae:	88 0f       	add	r24, r24
+ 5b0:	99 1f       	adc	r25, r25
+ 5b2:	08 0f       	add	r16, r24
+ 5b4:	19 1f       	adc	r17, r25
+ 5b6:	00 0f       	add	r16, r16
+ 5b8:	11 1f       	adc	r17, r17
+ 5ba:	10 16       	cp	r1, r16
+ 5bc:	11 06       	cpc	r1, r17
+ 5be:	7c f0       	brlt	.+30     	; 0x5de <_ZN7PCD854411lineDisplayEiPc+0x8a>
+ 5c0:	17 c0       	rjmp	.+46     	; 0x5f0 <_ZN7PCD854411lineDisplayEiPc+0x9c>
+ 5c2:	ea 01       	movw	r28, r20
+ 5c4:	5a 01       	movw	r10, r20
+ 5c6:	a0 0e       	add	r10, r16
+ 5c8:	b1 1e       	adc	r11, r17
 	}
 	if (length > 14){
 		length = 14;
 	}
 	for (i = 0; i < length; i++){
 		this->charDisplay(isReverse, data[i]);
- 476:	49 91       	ld	r20, Y+
- 478:	b6 01       	movw	r22, r12
- 47a:	c7 01       	movw	r24, r14
- 47c:	90 df       	rcall	.-224    	; 0x39e <_ZN7PCD854411charDisplayEic>
+ 5ca:	49 91       	ld	r20, Y+
+ 5cc:	b6 01       	movw	r22, r12
+ 5ce:	c7 01       	movw	r24, r14
+ 5d0:	90 df       	rcall	.-224    	; 0x4f2 <_ZN7PCD854411charDisplayEic>
 		i++;
 	}
 	if (length > 14){
 		length = 14;
 	}
 	for (i = 0; i < length; i++){
- 47e:	ca 15       	cp	r28, r10
- 480:	db 05       	cpc	r29, r11
- 482:	c9 f7       	brne	.-14     	; 0x476 <__stack+0x17>
- 484:	e3 cf       	rjmp	.-58     	; 0x44c <_ZN7PCD854411lineDisplayEiPc+0x4c>
+ 5d2:	ca 15       	cp	r28, r10
+ 5d4:	db 05       	cpc	r29, r11
+ 5d6:	c9 f7       	brne	.-14     	; 0x5ca <_ZN7PCD854411lineDisplayEiPc+0x76>
+ 5d8:	e3 cf       	rjmp	.-58     	; 0x5a0 <_ZN7PCD854411lineDisplayEiPc+0x4c>
 		this->charDisplay(isReverse, data[i]);
 	}
 	for (i = 0; i < (14 - length)*6 ; i++){
- 486:	04 e5       	ldi	r16, 0x54	; 84
- 488:	10 e0       	ldi	r17, 0x00	; 0
- 48a:	c0 e0       	ldi	r28, 0x00	; 0
- 48c:	d0 e0       	ldi	r29, 0x00	; 0
+ 5da:	04 e5       	ldi	r16, 0x54	; 84
+ 5dc:	10 e0       	ldi	r17, 0x00	; 0
+ 5de:	c0 e0       	ldi	r28, 0x00	; 0
+ 5e0:	d0 e0       	ldi	r29, 0x00	; 0
 		this->sendData(space);
- 48e:	69 2d       	mov	r22, r9
- 490:	c7 01       	movw	r24, r14
- 492:	00 df       	rcall	.-512    	; 0x294 <_ZN7PCD85448sendDataEh>
+ 5e2:	69 2d       	mov	r22, r9
+ 5e4:	c7 01       	movw	r24, r14
+ 5e6:	00 df       	rcall	.-512    	; 0x3e8 <_ZN7PCD85448sendDataEh>
 		length = 14;
 	}
 	for (i = 0; i < length; i++){
 		this->charDisplay(isReverse, data[i]);
 	}
 	for (i = 0; i < (14 - length)*6 ; i++){
- 494:	21 96       	adiw	r28, 0x01	; 1
- 496:	0c 17       	cp	r16, r28
- 498:	1d 07       	cpc	r17, r29
- 49a:	c9 f7       	brne	.-14     	; 0x48e <__stack+0x2f>
+ 5e8:	21 96       	adiw	r28, 0x01	; 1
+ 5ea:	0c 17       	cp	r16, r28
+ 5ec:	1d 07       	cpc	r17, r29
+ 5ee:	c9 f7       	brne	.-14     	; 0x5e2 <_ZN7PCD854411lineDisplayEiPc+0x8e>
 		this->sendData(space);
 	}
 }
- 49c:	df 91       	pop	r29
- 49e:	cf 91       	pop	r28
- 4a0:	1f 91       	pop	r17
- 4a2:	0f 91       	pop	r16
- 4a4:	ff 90       	pop	r15
- 4a6:	ef 90       	pop	r14
- 4a8:	df 90       	pop	r13
- 4aa:	cf 90       	pop	r12
- 4ac:	bf 90       	pop	r11
- 4ae:	af 90       	pop	r10
- 4b0:	9f 90       	pop	r9
- 4b2:	08 95       	ret
+ 5f0:	df 91       	pop	r29
+ 5f2:	cf 91       	pop	r28
+ 5f4:	1f 91       	pop	r17
+ 5f6:	0f 91       	pop	r16
+ 5f8:	ff 90       	pop	r15
+ 5fa:	ef 90       	pop	r14
+ 5fc:	df 90       	pop	r13
+ 5fe:	cf 90       	pop	r12
+ 600:	bf 90       	pop	r11
+ 602:	af 90       	pop	r10
+ 604:	9f 90       	pop	r9
+ 606:	08 95       	ret
 
-000004b4 <_ZN7PCD854410createMenuEPcPA14_ci>:
+00000608 <_ZN7PCD854410createMenuEiiiPcPS0_>:
 
-void PCD8544::createMenu(char *name, char data[][14], int length){
- 4b4:	cf 93       	push	r28
- 4b6:	df 93       	push	r29
- 4b8:	ec 01       	movw	r28, r24
-	this->pointer = 0;
- 4ba:	1b 86       	std	Y+11, r1	; 0x0b
- 4bc:	1a 86       	std	Y+10, r1	; 0x0a
-	this->current = 0;
- 4be:	1d 86       	std	Y+13, r1	; 0x0d
- 4c0:	1c 86       	std	Y+12, r1	; 0x0c
+
+
+void PCD8544::createMenu(int x, int y, int length, char *name, char *data[]){
+ 608:	ef 92       	push	r14
+ 60a:	ff 92       	push	r15
+ 60c:	0f 93       	push	r16
+ 60e:	1f 93       	push	r17
+ 610:	dc 01       	movw	r26, r24
+	this->pointer = x;
+ 612:	1b 96       	adiw	r26, 0x0b	; 11
+ 614:	7c 93       	st	X, r23
+ 616:	6e 93       	st	-X, r22
+ 618:	1a 97       	sbiw	r26, 0x0a	; 10
+	this->current = y;
+ 61a:	1d 96       	adiw	r26, 0x0d	; 13
+ 61c:	5c 93       	st	X, r21
+ 61e:	4e 93       	st	-X, r20
+ 620:	1c 97       	sbiw	r26, 0x0c	; 12
 	this->lenOfMenu = length;
- 4c2:	3f 87       	std	Y+15, r19	; 0x0f
- 4c4:	2e 87       	std	Y+14, r18	; 0x0e
- 4c6:	a6 2f       	mov	r26, r22
- 4c8:	b7 2f       	mov	r27, r23
- 4ca:	fc 01       	movw	r30, r24
- 4cc:	70 96       	adiw	r30, 0x10	; 16
- 4ce:	bc 01       	movw	r22, r24
- 4d0:	62 5e       	subi	r22, 0xE2	; 226
- 4d2:	7f 4f       	sbci	r23, 0xFF	; 255
-	for (int i = 0; i < 14; i++){
-		if (name[i]){
-			title[i] = name[i];
-		}
-		else{
-			title[i] = ' ';
- 4d4:	90 e2       	ldi	r25, 0x20	; 32
- 4d6:	04 c0       	rjmp	.+8      	; 0x4e0 <_ZN7PCD854410createMenuEPcPA14_ci+0x2c>
-		}
-	}
-	
-	for (int i = 0; i < lenOfMenu; i++){
- 4d8:	12 16       	cp	r1, r18
- 4da:	13 06       	cpc	r1, r19
- 4dc:	64 f0       	brlt	.+24     	; 0x4f6 <_ZN7PCD854410createMenuEPcPA14_ci+0x42>
- 4de:	2f c0       	rjmp	.+94     	; 0x53e <_ZN7PCD854410createMenuEPcPA14_ci+0x8a>
-	this->pointer = 0;
-	this->current = 0;
+ 622:	1f 96       	adiw	r26, 0x0f	; 15
+ 624:	3c 93       	st	X, r19
+ 626:	2e 93       	st	-X, r18
+ 628:	1e 97       	sbiw	r26, 0x0e	; 14
+	this->title = name;
+ 62a:	51 96       	adiw	r26, 0x11	; 17
+ 62c:	1c 93       	st	X, r17
+ 62e:	0e 93       	st	-X, r16
+ 630:	50 97       	sbiw	r26, 0x10	; 16
+	for (int i= 0; i < length; i++){
+ 632:	12 16       	cp	r1, r18
+ 634:	13 06       	cpc	r1, r19
+ 636:	6c f4       	brge	.+26     	; 0x652 <_ZN7PCD854410createMenuEiiiPcPS0_+0x4a>
+ 638:	f7 01       	movw	r30, r14
+ 63a:	52 96       	adiw	r26, 0x12	; 18
+ 63c:	22 0f       	add	r18, r18
+ 63e:	33 1f       	adc	r19, r19
+ 640:	e2 0e       	add	r14, r18
+ 642:	f3 1e       	adc	r15, r19
+		this->Menu[i] = data[i];
+ 644:	81 91       	ld	r24, Z+
+ 646:	91 91       	ld	r25, Z+
+ 648:	8d 93       	st	X+, r24
+ 64a:	9d 93       	st	X+, r25
+void PCD8544::createMenu(int x, int y, int length, char *name, char *data[]){
+	this->pointer = x;
+	this->current = y;
 	this->lenOfMenu = length;
-	
-	for (int i = 0; i < 14; i++){
-		if (name[i]){
- 4e0:	8d 91       	ld	r24, X+
- 4e2:	88 23       	and	r24, r24
- 4e4:	11 f0       	breq	.+4      	; 0x4ea <_ZN7PCD854410createMenuEPcPA14_ci+0x36>
-			title[i] = name[i];
- 4e6:	80 83       	st	Z, r24
- 4e8:	01 c0       	rjmp	.+2      	; 0x4ec <_ZN7PCD854410createMenuEPcPA14_ci+0x38>
-		}
-		else{
-			title[i] = ' ';
- 4ea:	90 83       	st	Z, r25
- 4ec:	31 96       	adiw	r30, 0x01	; 1
-void PCD8544::createMenu(char *name, char data[][14], int length){
-	this->pointer = 0;
-	this->current = 0;
-	this->lenOfMenu = length;
-	
-	for (int i = 0; i < 14; i++){
- 4ee:	6e 17       	cp	r22, r30
- 4f0:	7f 07       	cpc	r23, r31
- 4f2:	b1 f7       	brne	.-20     	; 0x4e0 <_ZN7PCD854410createMenuEPcPA14_ci+0x2c>
- 4f4:	f1 cf       	rjmp	.-30     	; 0x4d8 <_ZN7PCD854410createMenuEPcPA14_ci+0x24>
- 4f6:	fa 01       	movw	r30, r20
- 4f8:	22 0f       	add	r18, r18
- 4fa:	33 1f       	adc	r19, r19
- 4fc:	c9 01       	movw	r24, r18
- 4fe:	88 0f       	add	r24, r24
- 500:	99 1f       	adc	r25, r25
- 502:	88 0f       	add	r24, r24
- 504:	99 1f       	adc	r25, r25
- 506:	88 0f       	add	r24, r24
- 508:	99 1f       	adc	r25, r25
- 50a:	82 1b       	sub	r24, r18
- 50c:	93 0b       	sbc	r25, r19
- 50e:	ea 01       	movw	r28, r20
- 510:	c8 0f       	add	r28, r24
- 512:	d9 1f       	adc	r29, r25
-		for (int j = 0; j < 14; j++){
-			if (data[i][j]){
-				Menu[i][j] = data[i][j];
-			}
-			else{
-				Menu[i][j] = ' ';
- 514:	50 e2       	ldi	r21, 0x20	; 32
- 516:	9f 01       	movw	r18, r30
- 518:	22 5f       	subi	r18, 0xF2	; 242
- 51a:	3f 4f       	sbci	r19, 0xFF	; 255
-	for (i = 0; i < (14 - length)*6 ; i++){
-		this->sendData(space);
+	this->title = name;
+	for (int i= 0; i < length; i++){
+ 64c:	ee 15       	cp	r30, r14
+ 64e:	ff 05       	cpc	r31, r15
+ 650:	c9 f7       	brne	.-14     	; 0x644 <_ZN7PCD854410createMenuEiiiPcPS0_+0x3c>
+		this->Menu[i] = data[i];
 	}
 }
+ 652:	1f 91       	pop	r17
+ 654:	0f 91       	pop	r16
+ 656:	ff 90       	pop	r15
+ 658:	ef 90       	pop	r14
+ 65a:	08 95       	ret
 
-void PCD8544::createMenu(char *name, char data[][14], int length){
- 51c:	db 01       	movw	r26, r22
-		}
-	}
-	
-	for (int i = 0; i < lenOfMenu; i++){
-		for (int j = 0; j < 14; j++){
-			if (data[i][j]){
- 51e:	91 91       	ld	r25, Z+
- 520:	99 23       	and	r25, r25
- 522:	11 f0       	breq	.+4      	; 0x528 <_ZN7PCD854410createMenuEPcPA14_ci+0x74>
-				Menu[i][j] = data[i][j];
- 524:	9c 93       	st	X, r25
- 526:	01 c0       	rjmp	.+2      	; 0x52a <_ZN7PCD854410createMenuEPcPA14_ci+0x76>
-			}
-			else{
-				Menu[i][j] = ' ';
- 528:	5c 93       	st	X, r21
- 52a:	11 96       	adiw	r26, 0x01	; 1
-			title[i] = ' ';
-		}
-	}
-	
-	for (int i = 0; i < lenOfMenu; i++){
-		for (int j = 0; j < 14; j++){
- 52c:	e2 17       	cp	r30, r18
- 52e:	f3 07       	cpc	r31, r19
- 530:	b1 f7       	brne	.-20     	; 0x51e <_ZN7PCD854410createMenuEPcPA14_ci+0x6a>
- 532:	62 5f       	subi	r22, 0xF2	; 242
- 534:	7f 4f       	sbci	r23, 0xFF	; 255
- 536:	f9 01       	movw	r30, r18
-		else{
-			title[i] = ' ';
-		}
-	}
-	
-	for (int i = 0; i < lenOfMenu; i++){
- 538:	c2 17       	cp	r28, r18
- 53a:	d3 07       	cpc	r29, r19
- 53c:	61 f7       	brne	.-40     	; 0x516 <_ZN7PCD854410createMenuEPcPA14_ci+0x62>
-			else{
-				Menu[i][j] = ' ';
-			}
-		}
-	}
-}
- 53e:	df 91       	pop	r29
- 540:	cf 91       	pop	r28
- 542:	08 95       	ret
-
-00000544 <_ZN7PCD854411displayMenuEv>:
+0000065c <_ZN7PCD854411displayMenuEv>:
 
 void PCD8544::displayMenu(){
- 544:	cf 92       	push	r12
- 546:	df 92       	push	r13
- 548:	ff 92       	push	r15
- 54a:	0f 93       	push	r16
- 54c:	1f 93       	push	r17
- 54e:	cf 93       	push	r28
- 550:	df 93       	push	r29
- 552:	ec 01       	movw	r28, r24
+ 65c:	df 92       	push	r13
+ 65e:	ef 92       	push	r14
+ 660:	ff 92       	push	r15
+ 662:	0f 93       	push	r16
+ 664:	1f 93       	push	r17
+ 666:	cf 93       	push	r28
+ 668:	df 93       	push	r29
+ 66a:	ec 01       	movw	r28, r24
+	this->clearSreen();
+ 66c:	0d df       	rcall	.-486    	; 0x488 <_ZN7PCD854410clearSreenEv>
 	this->setCursor(0, 0);
- 554:	40 e0       	ldi	r20, 0x00	; 0
- 556:	60 e0       	ldi	r22, 0x00	; 0
- 558:	a2 de       	rcall	.-700    	; 0x29e <_ZN7PCD85449setCursorEhh>
+ 66e:	40 e0       	ldi	r20, 0x00	; 0
+ 670:	60 e0       	ldi	r22, 0x00	; 0
+ 672:	ce 01       	movw	r24, r28
+ 674:	be de       	rcall	.-644    	; 0x3f2 <_ZN7PCD85449setCursorEhh>
 	this->lineDisplay(NON_REVERSE, title);
- 55a:	ae 01       	movw	r20, r28
- 55c:	40 5f       	subi	r20, 0xF0	; 240
- 55e:	5f 4f       	sbci	r21, 0xFF	; 255
- 560:	60 e0       	ldi	r22, 0x00	; 0
- 562:	70 e0       	ldi	r23, 0x00	; 0
- 564:	ce 01       	movw	r24, r28
- 566:	4c df       	rcall	.-360    	; 0x400 <_ZN7PCD854411lineDisplayEiPc>
+ 676:	48 89       	ldd	r20, Y+16	; 0x10
+ 678:	59 89       	ldd	r21, Y+17	; 0x11
+ 67a:	60 e0       	ldi	r22, 0x00	; 0
+ 67c:	70 e0       	ldi	r23, 0x00	; 0
+ 67e:	ce 01       	movw	r24, r28
+ 680:	69 df       	rcall	.-302    	; 0x554 <_ZN7PCD854411lineDisplayEiPc>
 	
 	register int i;
 	if (lenOfMenu < 5){
- 568:	ce 84       	ldd	r12, Y+14	; 0x0e
- 56a:	df 84       	ldd	r13, Y+15	; 0x0f
- 56c:	85 e0       	ldi	r24, 0x05	; 5
- 56e:	c8 16       	cp	r12, r24
- 570:	d1 04       	cpc	r13, r1
- 572:	0c f0       	brlt	.+2      	; 0x576 <_ZN7PCD854411displayMenuEv+0x32>
- 574:	46 c0       	rjmp	.+140    	; 0x602 <_ZN7PCD854411displayMenuEv+0xbe>
+ 682:	ee 84       	ldd	r14, Y+14	; 0x0e
+ 684:	ff 84       	ldd	r15, Y+15	; 0x0f
+ 686:	85 e0       	ldi	r24, 0x05	; 5
+ 688:	e8 16       	cp	r14, r24
+ 68a:	f1 04       	cpc	r15, r1
+ 68c:	f4 f5       	brge	.+124    	; 0x70a <_ZN7PCD854411displayMenuEv+0xae>
 		for (i = 0; i < lenOfMenu; i++){
- 576:	1c 14       	cp	r1, r12
- 578:	1d 04       	cpc	r1, r13
- 57a:	74 f5       	brge	.+92     	; 0x5d8 <_ZN7PCD854411displayMenuEv+0x94>
- 57c:	ff 24       	eor	r15, r15
- 57e:	f3 94       	inc	r15
- 580:	00 e0       	ldi	r16, 0x00	; 0
- 582:	10 e0       	ldi	r17, 0x00	; 0
- 584:	05 c0       	rjmp	.+10     	; 0x590 <_ZN7PCD854411displayMenuEv+0x4c>
+ 68e:	1e 14       	cp	r1, r14
+ 690:	1f 04       	cpc	r1, r15
+ 692:	34 f5       	brge	.+76     	; 0x6e0 <_ZN7PCD854411displayMenuEv+0x84>
+ 694:	dd 24       	eor	r13, r13
+ 696:	d3 94       	inc	r13
+ 698:	00 e0       	ldi	r16, 0x00	; 0
+ 69a:	10 e0       	ldi	r17, 0x00	; 0
+ 69c:	05 c0       	rjmp	.+10     	; 0x6a8 <_ZN7PCD854411displayMenuEv+0x4c>
 			this->setCursor(0, i + 1);
 			this->lineDisplay(NON_REVERSE, Menu[current + i]);
 		}
 		for(i = lenOfMenu; i < 5; i++){
- 586:	85 e0       	ldi	r24, 0x05	; 5
- 588:	c8 16       	cp	r12, r24
- 58a:	d1 04       	cpc	r13, r1
- 58c:	2c f1       	brlt	.+74     	; 0x5d8 <_ZN7PCD854411displayMenuEv+0x94>
- 58e:	5e c0       	rjmp	.+188    	; 0x64c <_ZN7PCD854411displayMenuEv+0x108>
+ 69e:	85 e0       	ldi	r24, 0x05	; 5
+ 6a0:	e8 16       	cp	r14, r24
+ 6a2:	f1 04       	cpc	r15, r1
+ 6a4:	ec f0       	brlt	.+58     	; 0x6e0 <_ZN7PCD854411displayMenuEv+0x84>
+ 6a6:	4e c0       	rjmp	.+156    	; 0x744 <_ZN7PCD854411displayMenuEv+0xe8>
 	this->lineDisplay(NON_REVERSE, title);
 	
 	register int i;
 	if (lenOfMenu < 5){
 		for (i = 0; i < lenOfMenu; i++){
 			this->setCursor(0, i + 1);
- 590:	4f 2d       	mov	r20, r15
- 592:	60 e0       	ldi	r22, 0x00	; 0
- 594:	ce 01       	movw	r24, r28
- 596:	83 de       	rcall	.-762    	; 0x29e <_ZN7PCD85449setCursorEhh>
+ 6a8:	4d 2d       	mov	r20, r13
+ 6aa:	60 e0       	ldi	r22, 0x00	; 0
+ 6ac:	ce 01       	movw	r24, r28
+ 6ae:	a1 de       	rcall	.-702    	; 0x3f2 <_ZN7PCD85449setCursorEhh>
 			this->lineDisplay(NON_REVERSE, Menu[current + i]);
- 598:	8c 85       	ldd	r24, Y+12	; 0x0c
- 59a:	9d 85       	ldd	r25, Y+13	; 0x0d
- 59c:	80 0f       	add	r24, r16
- 59e:	91 1f       	adc	r25, r17
- 5a0:	88 0f       	add	r24, r24
- 5a2:	99 1f       	adc	r25, r25
- 5a4:	ac 01       	movw	r20, r24
- 5a6:	44 0f       	add	r20, r20
- 5a8:	55 1f       	adc	r21, r21
- 5aa:	44 0f       	add	r20, r20
- 5ac:	55 1f       	adc	r21, r21
- 5ae:	44 0f       	add	r20, r20
- 5b0:	55 1f       	adc	r21, r21
- 5b2:	48 1b       	sub	r20, r24
- 5b4:	59 0b       	sbc	r21, r25
- 5b6:	42 5e       	subi	r20, 0xE2	; 226
- 5b8:	5f 4f       	sbci	r21, 0xFF	; 255
- 5ba:	4c 0f       	add	r20, r28
- 5bc:	5d 1f       	adc	r21, r29
- 5be:	60 e0       	ldi	r22, 0x00	; 0
- 5c0:	70 e0       	ldi	r23, 0x00	; 0
- 5c2:	ce 01       	movw	r24, r28
- 5c4:	1d df       	rcall	.-454    	; 0x400 <_ZN7PCD854411lineDisplayEiPc>
+ 6b0:	ec 85       	ldd	r30, Y+12	; 0x0c
+ 6b2:	fd 85       	ldd	r31, Y+13	; 0x0d
+ 6b4:	e0 0f       	add	r30, r16
+ 6b6:	f1 1f       	adc	r31, r17
+ 6b8:	39 96       	adiw	r30, 0x09	; 9
+ 6ba:	ee 0f       	add	r30, r30
+ 6bc:	ff 1f       	adc	r31, r31
+ 6be:	ec 0f       	add	r30, r28
+ 6c0:	fd 1f       	adc	r31, r29
+ 6c2:	40 81       	ld	r20, Z
+ 6c4:	51 81       	ldd	r21, Z+1	; 0x01
+ 6c6:	60 e0       	ldi	r22, 0x00	; 0
+ 6c8:	70 e0       	ldi	r23, 0x00	; 0
+ 6ca:	ce 01       	movw	r24, r28
+ 6cc:	43 df       	rcall	.-378    	; 0x554 <_ZN7PCD854411lineDisplayEiPc>
 	this->setCursor(0, 0);
 	this->lineDisplay(NON_REVERSE, title);
 	
 	register int i;
 	if (lenOfMenu < 5){
 		for (i = 0; i < lenOfMenu; i++){
- 5c6:	0f 5f       	subi	r16, 0xFF	; 255
- 5c8:	1f 4f       	sbci	r17, 0xFF	; 255
- 5ca:	ce 84       	ldd	r12, Y+14	; 0x0e
- 5cc:	df 84       	ldd	r13, Y+15	; 0x0f
- 5ce:	f3 94       	inc	r15
- 5d0:	0c 15       	cp	r16, r12
- 5d2:	1d 05       	cpc	r17, r13
- 5d4:	ec f2       	brlt	.-70     	; 0x590 <_ZN7PCD854411displayMenuEv+0x4c>
- 5d6:	d7 cf       	rjmp	.-82     	; 0x586 <_ZN7PCD854411displayMenuEv+0x42>
- 5d8:	11 e0       	ldi	r17, 0x01	; 1
- 5da:	1c 0d       	add	r17, r12
+ 6ce:	0f 5f       	subi	r16, 0xFF	; 255
+ 6d0:	1f 4f       	sbci	r17, 0xFF	; 255
+ 6d2:	ee 84       	ldd	r14, Y+14	; 0x0e
+ 6d4:	ff 84       	ldd	r15, Y+15	; 0x0f
+ 6d6:	d3 94       	inc	r13
+ 6d8:	0e 15       	cp	r16, r14
+ 6da:	1f 05       	cpc	r17, r15
+ 6dc:	2c f3       	brlt	.-54     	; 0x6a8 <_ZN7PCD854411displayMenuEv+0x4c>
+ 6de:	df cf       	rjmp	.-66     	; 0x69e <_ZN7PCD854411displayMenuEv+0x42>
+ 6e0:	11 e0       	ldi	r17, 0x01	; 1
+ 6e2:	1e 0d       	add	r17, r14
 			this->setCursor(0, i + 1);
 			this->lineDisplay(NON_REVERSE, Menu[current + i]);
 		}
 		for(i = lenOfMenu; i < 5; i++){
 			this->setCursor(0, i + 1);
- 5dc:	41 2f       	mov	r20, r17
- 5de:	60 e0       	ldi	r22, 0x00	; 0
- 5e0:	ce 01       	movw	r24, r28
- 5e2:	5d de       	rcall	.-838    	; 0x29e <_ZN7PCD85449setCursorEhh>
+ 6e4:	41 2f       	mov	r20, r17
+ 6e6:	60 e0       	ldi	r22, 0x00	; 0
+ 6e8:	ce 01       	movw	r24, r28
+ 6ea:	83 de       	rcall	.-762    	; 0x3f2 <_ZN7PCD85449setCursorEhh>
 			this->lineDisplay(NON_REVERSE, " ");
- 5e4:	4d e9       	ldi	r20, 0x9D	; 157
- 5e6:	50 e0       	ldi	r21, 0x00	; 0
- 5e8:	60 e0       	ldi	r22, 0x00	; 0
- 5ea:	70 e0       	ldi	r23, 0x00	; 0
- 5ec:	ce 01       	movw	r24, r28
- 5ee:	08 df       	rcall	.-496    	; 0x400 <_ZN7PCD854411lineDisplayEiPc>
+ 6ec:	45 ed       	ldi	r20, 0xD5	; 213
+ 6ee:	50 e0       	ldi	r21, 0x00	; 0
+ 6f0:	60 e0       	ldi	r22, 0x00	; 0
+ 6f2:	70 e0       	ldi	r23, 0x00	; 0
+ 6f4:	ce 01       	movw	r24, r28
+ 6f6:	2e df       	rcall	.-420    	; 0x554 <_ZN7PCD854411lineDisplayEiPc>
 	if (lenOfMenu < 5){
 		for (i = 0; i < lenOfMenu; i++){
 			this->setCursor(0, i + 1);
 			this->lineDisplay(NON_REVERSE, Menu[current + i]);
 		}
 		for(i = lenOfMenu; i < 5; i++){
- 5f0:	8f ef       	ldi	r24, 0xFF	; 255
- 5f2:	c8 1a       	sub	r12, r24
- 5f4:	d8 0a       	sbc	r13, r24
- 5f6:	1f 5f       	subi	r17, 0xFF	; 255
- 5f8:	85 e0       	ldi	r24, 0x05	; 5
- 5fa:	c8 16       	cp	r12, r24
- 5fc:	d1 04       	cpc	r13, r1
- 5fe:	74 f3       	brlt	.-36     	; 0x5dc <_ZN7PCD854411displayMenuEv+0x98>
- 600:	25 c0       	rjmp	.+74     	; 0x64c <_ZN7PCD854411displayMenuEv+0x108>
- 602:	ff 24       	eor	r15, r15
- 604:	f3 94       	inc	r15
- 606:	00 e0       	ldi	r16, 0x00	; 0
- 608:	10 e0       	ldi	r17, 0x00	; 0
+ 6f8:	8f ef       	ldi	r24, 0xFF	; 255
+ 6fa:	e8 1a       	sub	r14, r24
+ 6fc:	f8 0a       	sbc	r15, r24
+ 6fe:	1f 5f       	subi	r17, 0xFF	; 255
+ 700:	85 e0       	ldi	r24, 0x05	; 5
+ 702:	e8 16       	cp	r14, r24
+ 704:	f1 04       	cpc	r15, r1
+ 706:	74 f3       	brlt	.-36     	; 0x6e4 <_ZN7PCD854411displayMenuEv+0x88>
+ 708:	1d c0       	rjmp	.+58     	; 0x744 <_ZN7PCD854411displayMenuEv+0xe8>
+ 70a:	ff 24       	eor	r15, r15
+ 70c:	f3 94       	inc	r15
+ 70e:	00 e0       	ldi	r16, 0x00	; 0
+ 710:	10 e0       	ldi	r17, 0x00	; 0
 			this->lineDisplay(NON_REVERSE, " ");
 		}
 	}
 	else{
 		for (i = 0; i < 5; i++){
 			this->setCursor(0, i + 1);
- 60a:	4f 2d       	mov	r20, r15
- 60c:	60 e0       	ldi	r22, 0x00	; 0
- 60e:	ce 01       	movw	r24, r28
- 610:	46 de       	rcall	.-884    	; 0x29e <_ZN7PCD85449setCursorEhh>
+ 712:	4f 2d       	mov	r20, r15
+ 714:	60 e0       	ldi	r22, 0x00	; 0
+ 716:	ce 01       	movw	r24, r28
+ 718:	6c de       	rcall	.-808    	; 0x3f2 <_ZN7PCD85449setCursorEhh>
 			this->lineDisplay(NON_REVERSE, Menu[current + i]);
- 612:	8c 85       	ldd	r24, Y+12	; 0x0c
- 614:	9d 85       	ldd	r25, Y+13	; 0x0d
- 616:	80 0f       	add	r24, r16
- 618:	91 1f       	adc	r25, r17
- 61a:	88 0f       	add	r24, r24
- 61c:	99 1f       	adc	r25, r25
- 61e:	ac 01       	movw	r20, r24
- 620:	44 0f       	add	r20, r20
- 622:	55 1f       	adc	r21, r21
- 624:	44 0f       	add	r20, r20
- 626:	55 1f       	adc	r21, r21
- 628:	44 0f       	add	r20, r20
- 62a:	55 1f       	adc	r21, r21
- 62c:	48 1b       	sub	r20, r24
- 62e:	59 0b       	sbc	r21, r25
- 630:	42 5e       	subi	r20, 0xE2	; 226
- 632:	5f 4f       	sbci	r21, 0xFF	; 255
- 634:	4c 0f       	add	r20, r28
- 636:	5d 1f       	adc	r21, r29
- 638:	60 e0       	ldi	r22, 0x00	; 0
- 63a:	70 e0       	ldi	r23, 0x00	; 0
- 63c:	ce 01       	movw	r24, r28
- 63e:	e0 de       	rcall	.-576    	; 0x400 <_ZN7PCD854411lineDisplayEiPc>
+ 71a:	ec 85       	ldd	r30, Y+12	; 0x0c
+ 71c:	fd 85       	ldd	r31, Y+13	; 0x0d
+ 71e:	e0 0f       	add	r30, r16
+ 720:	f1 1f       	adc	r31, r17
+ 722:	39 96       	adiw	r30, 0x09	; 9
+ 724:	ee 0f       	add	r30, r30
+ 726:	ff 1f       	adc	r31, r31
+ 728:	ec 0f       	add	r30, r28
+ 72a:	fd 1f       	adc	r31, r29
+ 72c:	40 81       	ld	r20, Z
+ 72e:	51 81       	ldd	r21, Z+1	; 0x01
+ 730:	60 e0       	ldi	r22, 0x00	; 0
+ 732:	70 e0       	ldi	r23, 0x00	; 0
+ 734:	ce 01       	movw	r24, r28
+ 736:	0e df       	rcall	.-484    	; 0x554 <_ZN7PCD854411lineDisplayEiPc>
 			this->setCursor(0, i + 1);
 			this->lineDisplay(NON_REVERSE, " ");
 		}
 	}
 	else{
 		for (i = 0; i < 5; i++){
- 640:	0f 5f       	subi	r16, 0xFF	; 255
- 642:	1f 4f       	sbci	r17, 0xFF	; 255
- 644:	f3 94       	inc	r15
- 646:	86 e0       	ldi	r24, 0x06	; 6
- 648:	f8 12       	cpse	r15, r24
- 64a:	df cf       	rjmp	.-66     	; 0x60a <_ZN7PCD854411displayMenuEv+0xc6>
+ 738:	0f 5f       	subi	r16, 0xFF	; 255
+ 73a:	1f 4f       	sbci	r17, 0xFF	; 255
+ 73c:	f3 94       	inc	r15
+ 73e:	86 e0       	ldi	r24, 0x06	; 6
+ 740:	f8 12       	cpse	r15, r24
+ 742:	e7 cf       	rjmp	.-50     	; 0x712 <_ZN7PCD854411displayMenuEv+0xb6>
 			this->setCursor(0, i + 1);
 			this->lineDisplay(NON_REVERSE, Menu[current + i]);
 		}
 	}
 	this->setCursor(0, (pointer - current) + 1);
- 64c:	4a 85       	ldd	r20, Y+10	; 0x0a
- 64e:	4f 5f       	subi	r20, 0xFF	; 255
- 650:	8c 85       	ldd	r24, Y+12	; 0x0c
- 652:	48 1b       	sub	r20, r24
- 654:	60 e0       	ldi	r22, 0x00	; 0
- 656:	ce 01       	movw	r24, r28
- 658:	22 de       	rcall	.-956    	; 0x29e <_ZN7PCD85449setCursorEhh>
+ 744:	4a 85       	ldd	r20, Y+10	; 0x0a
+ 746:	4f 5f       	subi	r20, 0xFF	; 255
+ 748:	8c 85       	ldd	r24, Y+12	; 0x0c
+ 74a:	48 1b       	sub	r20, r24
+ 74c:	60 e0       	ldi	r22, 0x00	; 0
+ 74e:	ce 01       	movw	r24, r28
+ 750:	50 de       	rcall	.-864    	; 0x3f2 <_ZN7PCD85449setCursorEhh>
 	lineDisplay(REVERSE, Menu[pointer]);
- 65a:	8a 85       	ldd	r24, Y+10	; 0x0a
- 65c:	9b 85       	ldd	r25, Y+11	; 0x0b
- 65e:	88 0f       	add	r24, r24
- 660:	99 1f       	adc	r25, r25
- 662:	ac 01       	movw	r20, r24
- 664:	44 0f       	add	r20, r20
- 666:	55 1f       	adc	r21, r21
- 668:	44 0f       	add	r20, r20
- 66a:	55 1f       	adc	r21, r21
- 66c:	44 0f       	add	r20, r20
- 66e:	55 1f       	adc	r21, r21
- 670:	48 1b       	sub	r20, r24
- 672:	59 0b       	sbc	r21, r25
- 674:	42 5e       	subi	r20, 0xE2	; 226
- 676:	5f 4f       	sbci	r21, 0xFF	; 255
- 678:	4c 0f       	add	r20, r28
- 67a:	5d 1f       	adc	r21, r29
- 67c:	61 e0       	ldi	r22, 0x01	; 1
- 67e:	70 e0       	ldi	r23, 0x00	; 0
- 680:	ce 01       	movw	r24, r28
- 682:	be de       	rcall	.-644    	; 0x400 <_ZN7PCD854411lineDisplayEiPc>
+ 752:	ea 85       	ldd	r30, Y+10	; 0x0a
+ 754:	fb 85       	ldd	r31, Y+11	; 0x0b
+ 756:	39 96       	adiw	r30, 0x09	; 9
+ 758:	ee 0f       	add	r30, r30
+ 75a:	ff 1f       	adc	r31, r31
+ 75c:	ec 0f       	add	r30, r28
+ 75e:	fd 1f       	adc	r31, r29
+ 760:	40 81       	ld	r20, Z
+ 762:	51 81       	ldd	r21, Z+1	; 0x01
+ 764:	61 e0       	ldi	r22, 0x01	; 1
+ 766:	70 e0       	ldi	r23, 0x00	; 0
+ 768:	ce 01       	movw	r24, r28
+ 76a:	f4 de       	rcall	.-536    	; 0x554 <_ZN7PCD854411lineDisplayEiPc>
 }
- 684:	df 91       	pop	r29
- 686:	cf 91       	pop	r28
- 688:	1f 91       	pop	r17
- 68a:	0f 91       	pop	r16
- 68c:	ff 90       	pop	r15
- 68e:	df 90       	pop	r13
- 690:	cf 90       	pop	r12
- 692:	08 95       	ret
+ 76c:	df 91       	pop	r29
+ 76e:	cf 91       	pop	r28
+ 770:	1f 91       	pop	r17
+ 772:	0f 91       	pop	r16
+ 774:	ff 90       	pop	r15
+ 776:	ef 90       	pop	r14
+ 778:	df 90       	pop	r13
+ 77a:	08 95       	ret
 
-00000694 <_ZN7PCD854415increasePointerEv>:
+0000077c <_ZN7PCD854415increasePointerEv>:
 
 void PCD8544::increasePointer(){
+ 77c:	fc 01       	movw	r30, r24
 	if ((pointer + 1) < lenOfMenu){
- 694:	fc 01       	movw	r30, r24
- 696:	22 85       	ldd	r18, Z+10	; 0x0a
- 698:	33 85       	ldd	r19, Z+11	; 0x0b
- 69a:	2f 5f       	subi	r18, 0xFF	; 255
- 69c:	3f 4f       	sbci	r19, 0xFF	; 255
- 69e:	46 85       	ldd	r20, Z+14	; 0x0e
- 6a0:	57 85       	ldd	r21, Z+15	; 0x0f
- 6a2:	24 17       	cp	r18, r20
- 6a4:	35 07       	cpc	r19, r21
- 6a6:	94 f4       	brge	.+36     	; 0x6cc <_ZN7PCD854415increasePointerEv+0x38>
+ 77e:	22 85       	ldd	r18, Z+10	; 0x0a
+ 780:	33 85       	ldd	r19, Z+11	; 0x0b
+ 782:	2f 5f       	subi	r18, 0xFF	; 255
+ 784:	3f 4f       	sbci	r19, 0xFF	; 255
+ 786:	86 85       	ldd	r24, Z+14	; 0x0e
+ 788:	97 85       	ldd	r25, Z+15	; 0x0f
+ 78a:	28 17       	cp	r18, r24
+ 78c:	39 07       	cpc	r19, r25
+ 78e:	8c f4       	brge	.+34     	; 0x7b2 <_ZN7PCD854415increasePointerEv+0x36>
 		pointer++;
- 6a8:	33 87       	std	Z+11, r19	; 0x0b
- 6aa:	22 87       	std	Z+10, r18	; 0x0a
+ 790:	33 87       	std	Z+11, r19	; 0x0b
+ 792:	22 87       	std	Z+10, r18	; 0x0a
 		if (((lenOfMenu - current ) > 5) && ((pointer - current) == 5)){
- 6ac:	64 85       	ldd	r22, Z+12	; 0x0c
- 6ae:	75 85       	ldd	r23, Z+13	; 0x0d
- 6b0:	46 1b       	sub	r20, r22
- 6b2:	57 0b       	sbc	r21, r23
- 6b4:	46 30       	cpi	r20, 0x06	; 6
- 6b6:	51 05       	cpc	r21, r1
- 6b8:	4c f0       	brlt	.+18     	; 0x6cc <_ZN7PCD854415increasePointerEv+0x38>
- 6ba:	26 1b       	sub	r18, r22
- 6bc:	37 0b       	sbc	r19, r23
- 6be:	25 30       	cpi	r18, 0x05	; 5
- 6c0:	31 05       	cpc	r19, r1
- 6c2:	21 f4       	brne	.+8      	; 0x6cc <_ZN7PCD854415increasePointerEv+0x38>
+ 794:	44 85       	ldd	r20, Z+12	; 0x0c
+ 796:	55 85       	ldd	r21, Z+13	; 0x0d
+ 798:	84 1b       	sub	r24, r20
+ 79a:	95 0b       	sbc	r25, r21
+ 79c:	06 97       	sbiw	r24, 0x06	; 6
+ 79e:	4c f0       	brlt	.+18     	; 0x7b2 <_ZN7PCD854415increasePointerEv+0x36>
+ 7a0:	24 1b       	sub	r18, r20
+ 7a2:	35 0b       	sbc	r19, r21
+ 7a4:	25 30       	cpi	r18, 0x05	; 5
+ 7a6:	31 05       	cpc	r19, r1
+ 7a8:	21 f4       	brne	.+8      	; 0x7b2 <_ZN7PCD854415increasePointerEv+0x36>
 			current++;
- 6c4:	6f 5f       	subi	r22, 0xFF	; 255
- 6c6:	7f 4f       	sbci	r23, 0xFF	; 255
- 6c8:	75 87       	std	Z+13, r23	; 0x0d
- 6ca:	64 87       	std	Z+12, r22	; 0x0c
+ 7aa:	4f 5f       	subi	r20, 0xFF	; 255
+ 7ac:	5f 4f       	sbci	r21, 0xFF	; 255
+ 7ae:	55 87       	std	Z+13, r21	; 0x0d
+ 7b0:	44 87       	std	Z+12, r20	; 0x0c
+ 7b2:	08 95       	ret
+
+000007b4 <_ZN7PCD854415decreasePointerEv>:
 		}
 	}
-	displayMenu();
- 6cc:	3b df       	rcall	.-394    	; 0x544 <_ZN7PCD854411displayMenuEv>
- 6ce:	08 95       	ret
-
-000006d0 <_ZN7PCD854415decreasePointerEv>:
 }
 
 void PCD8544::decreasePointer(){
+ 7b4:	fc 01       	movw	r30, r24
 	if (pointer > 0){
- 6d0:	fc 01       	movw	r30, r24
- 6d2:	22 85       	ldd	r18, Z+10	; 0x0a
- 6d4:	33 85       	ldd	r19, Z+11	; 0x0b
- 6d6:	12 16       	cp	r1, r18
- 6d8:	13 06       	cpc	r1, r19
- 6da:	a4 f4       	brge	.+40     	; 0x704 <_ZN7PCD854415decreasePointerEv+0x34>
+ 7b6:	22 85       	ldd	r18, Z+10	; 0x0a
+ 7b8:	33 85       	ldd	r19, Z+11	; 0x0b
+ 7ba:	12 16       	cp	r1, r18
+ 7bc:	13 06       	cpc	r1, r19
+ 7be:	94 f4       	brge	.+36     	; 0x7e4 <_ZN7PCD854415decreasePointerEv+0x30>
 		pointer--;
- 6dc:	21 50       	subi	r18, 0x01	; 1
- 6de:	31 09       	sbc	r19, r1
- 6e0:	33 87       	std	Z+11, r19	; 0x0b
- 6e2:	22 87       	std	Z+10, r18	; 0x0a
+ 7c0:	21 50       	subi	r18, 0x01	; 1
+ 7c2:	31 09       	sbc	r19, r1
+ 7c4:	33 87       	std	Z+11, r19	; 0x0b
+ 7c6:	22 87       	std	Z+10, r18	; 0x0a
 		if (((lenOfMenu - pointer) > 4) && (pointer < current)){
- 6e4:	46 85       	ldd	r20, Z+14	; 0x0e
- 6e6:	57 85       	ldd	r21, Z+15	; 0x0f
- 6e8:	42 1b       	sub	r20, r18
- 6ea:	53 0b       	sbc	r21, r19
- 6ec:	45 30       	cpi	r20, 0x05	; 5
- 6ee:	51 05       	cpc	r21, r1
- 6f0:	4c f0       	brlt	.+18     	; 0x704 <_ZN7PCD854415decreasePointerEv+0x34>
- 6f2:	44 85       	ldd	r20, Z+12	; 0x0c
- 6f4:	55 85       	ldd	r21, Z+13	; 0x0d
- 6f6:	24 17       	cp	r18, r20
- 6f8:	35 07       	cpc	r19, r21
- 6fa:	24 f4       	brge	.+8      	; 0x704 <_ZN7PCD854415decreasePointerEv+0x34>
+ 7c8:	86 85       	ldd	r24, Z+14	; 0x0e
+ 7ca:	97 85       	ldd	r25, Z+15	; 0x0f
+ 7cc:	82 1b       	sub	r24, r18
+ 7ce:	93 0b       	sbc	r25, r19
+ 7d0:	05 97       	sbiw	r24, 0x05	; 5
+ 7d2:	44 f0       	brlt	.+16     	; 0x7e4 <_ZN7PCD854415decreasePointerEv+0x30>
+ 7d4:	84 85       	ldd	r24, Z+12	; 0x0c
+ 7d6:	95 85       	ldd	r25, Z+13	; 0x0d
+ 7d8:	28 17       	cp	r18, r24
+ 7da:	39 07       	cpc	r19, r25
+ 7dc:	1c f4       	brge	.+6      	; 0x7e4 <_ZN7PCD854415decreasePointerEv+0x30>
 			current--;
- 6fc:	41 50       	subi	r20, 0x01	; 1
- 6fe:	51 09       	sbc	r21, r1
- 700:	55 87       	std	Z+13, r21	; 0x0d
- 702:	44 87       	std	Z+12, r20	; 0x0c
-		}
+ 7de:	01 97       	sbiw	r24, 0x01	; 1
+ 7e0:	95 87       	std	Z+13, r25	; 0x0d
+ 7e2:	84 87       	std	Z+12, r24	; 0x0c
+ 7e4:	08 95       	ret
+
+000007e6 <_ZN7PCD854410getPointerEv>:
 	}
-	displayMenu();
- 704:	1f df       	rcall	.-450    	; 0x544 <_ZN7PCD854411displayMenuEv>
- 706:	08 95       	ret
+}
 
-00000708 <__tablejump2__>:
- 708:	ee 0f       	add	r30, r30
- 70a:	ff 1f       	adc	r31, r31
- 70c:	05 90       	lpm	r0, Z+
- 70e:	f4 91       	lpm	r31, Z
- 710:	e0 2d       	mov	r30, r0
- 712:	09 94       	ijmp
+int PCD8544::getPointer(){
+	return this->pointer;
+}
+ 7e6:	fc 01       	movw	r30, r24
+ 7e8:	82 85       	ldd	r24, Z+10	; 0x0a
+ 7ea:	93 85       	ldd	r25, Z+11	; 0x0b
+ 7ec:	08 95       	ret
 
-00000714 <_exit>:
- 714:	f8 94       	cli
+000007ee <_ZN7PCD85448getTitleEv>:
 
-00000716 <__stop_program>:
- 716:	ff cf       	rjmp	.-2      	; 0x716 <__stop_program>
+char* PCD8544::getTitle(){
+	return this->title;
+ 7ee:	fc 01       	movw	r30, r24
+ 7f0:	80 89       	ldd	r24, Z+16	; 0x10
+ 7f2:	91 89       	ldd	r25, Z+17	; 0x11
+ 7f4:	08 95       	ret
+
+000007f6 <__tablejump2__>:
+ 7f6:	ee 0f       	add	r30, r30
+ 7f8:	ff 1f       	adc	r31, r31
+ 7fa:	05 90       	lpm	r0, Z+
+ 7fc:	f4 91       	lpm	r31, Z
+ 7fe:	e0 2d       	mov	r30, r0
+ 800:	09 94       	ijmp
+
+00000802 <_exit>:
+ 802:	f8 94       	cli
+
+00000804 <__stop_program>:
+ 804:	ff cf       	rjmp	.-2      	; 0x804 <__stop_program>
