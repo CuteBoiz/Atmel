@@ -13,8 +13,10 @@ PCD8544::PCD8544(int RST, int SCE, int DC, int SDIN, int SCLK){
 	DC_PIN = DC;
 	SDIN_PIN = SDIN;
 	SCLK_PIN = SCLK;
-	DDR_PCD |= (1<<RST_PIN) | (1<<SCE_PIN) | (1<<DC_PIN) | (1<<SDIN_PIN) | (1<<SCLK_PIN);
-	PORT_PCD |= (1<<SCE_PIN) | (1<<RST_PIN);
+	DDR_RST |= (1<<RST_PIN);
+	DDR_PCD |= (1<<SCE_PIN) | (1<<DC_PIN) | (1<<SDIN_PIN) | (1<<SCLK_PIN);
+	PORT_PCD |= (1<<SCE_PIN);
+	PORT_RST |= (1<<RST_PIN);
 	PORT_PCD &= ~(1<<SCLK);
 }
 
@@ -64,10 +66,11 @@ void PCD8544::setCursor(uint8_t x, uint8_t y){
 }
 
 void PCD8544::reset(){
-	PORT_PCD |= (1<<RST_PIN) | (1<<SCE_PIN);
-	PORT_PCD &= ~(1<<RST_PIN);
+	PORT_PCD |= (1<<SCE_PIN);
+	PORT_RST |= (1<<RST_PIN);
+	PORT_RST &= ~(1<<RST_PIN);
 	_delay_ms(50);
-	PORT_PCD |= (1<<RST_PIN);
+	PORT_RST |= (1<<RST_PIN);
 }
 
 void PCD8544::clearSreen(){
@@ -138,12 +141,12 @@ void PCD8544::lineDisplay(int isReverse, char *data){
 	}
 }
 
-void PCD8544::createMenu(char *name, char *data[], int length){
-	this->pointer = 0;
-	this->current = 0;
+void PCD8544::createMenu(int x, int y, int length ,char *name, char *data[]){
+	this->pointer = x;
+	this->current = y;
 	this->lenOfMenu = length;
 	this->title = name;
-	for (int i = 0; i < length; i++){
+	for (int i = 0; i < this->lenOfMenu; i++){
 		this->Menu[i] = data[i]; 
 	}
 }
@@ -154,12 +157,12 @@ void PCD8544::displayMenu(){
 	this->lineDisplay(NON_REVERSE, title);
 	
 	register int i;
-	if (lenOfMenu < 5){
-		for (i = 0; i < lenOfMenu; i++){
+	if (this->lenOfMenu < 5){
+		for (i = 0; i < this->lenOfMenu; i++){
 			this->setCursor(0, i + 1);
 			this->lineDisplay(NON_REVERSE, Menu[current + i]);
 		}
-		for(i = lenOfMenu; i < 5; i++){
+		for(i = this->lenOfMenu; i < 5; i++){
 			this->setCursor(0, i + 1);
 			this->lineDisplay(NON_REVERSE, " ");
 		}
@@ -173,28 +176,28 @@ void PCD8544::displayMenu(){
 	this->setCursor(0, (pointer - current) + 1);
 	lineDisplay(REVERSE, Menu[pointer]);
 }
+
 int PCD8544::getPointer(){
-	return pointer;
+	return this->pointer;
 };
 
+char* PCD8544::getTitle(){
+	return this->title;
+}
 void PCD8544::increasePointer(){
-	if ((pointer + 1) < lenOfMenu){
+	if ((pointer + 1) < this->lenOfMenu){
 		pointer++;
-		if (((lenOfMenu - current ) > 5) && ((pointer - current) == 5)){
-			current++;
+		if (((this->lenOfMenu - this->current ) > 5) && ((this->pointer - this->current) == 5)){
+			this->current++;
 		}
 	}
-	this->displayMenu();
-	_delay_ms(200);
 }
 
 void PCD8544::decreasePointer(){
-	if (pointer > 0){
-		pointer--;
-		if (((lenOfMenu - pointer) > 4) && (pointer < current)){
-			current--;
+	if (this->pointer > 0){
+		this->pointer--;
+		if (((this->lenOfMenu - this->pointer) > 4) && (this->pointer < this->current)){
+			this->current--;
 		}
-	}
-	this->displayMenu();
-	_delay_ms(200);
+	}	
 }

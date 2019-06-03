@@ -26,6 +26,8 @@
 
 #define DDR_PCD		DDRC
 #define PORT_PCD	PORTC
+#define DDR_RST	DDRD
+#define PORT_RST	PORTD
 
 class PCD8544{
 public:
@@ -37,10 +39,11 @@ public:
 	void charDisplay(int isReverse, char data);
 	void lineDisplay(int isReverse, char *data);
 	
-	void createMenu(char *name, char *Menu[], int length);
+	void createMenu(int pointer, int current, int length, char *name, char *Menu[]);
 	void displayMenu();
 	
 	int getPointer();
+	char *getTitle();
 	
 	void increasePointer();
 	void decreasePointer();

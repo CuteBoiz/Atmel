@@ -17,7 +17,7 @@
 #define DDR_KB		DDRD
 #define PORT_KB		PORTD
 #define CLK_PIN		2
-#define DATA_PIN	3
+#define DATA_PIN	4
 
 ISR(INT0_vect);
 

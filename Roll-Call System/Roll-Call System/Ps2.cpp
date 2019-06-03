@@ -157,6 +157,7 @@ uint8_t PS2::getChar(){
 		case 0x5A: result = '\n';		break;
 		case 0x29: result = ' ';		break;
 		case 0x66: result = KB_BACKSPACE; break;
+		case 0x76: result = KB_ESC; break;
 		
 		case 0x58:{
 			if (kb_Capslock){
